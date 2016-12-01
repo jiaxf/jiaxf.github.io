@@ -86,11 +86,6 @@
                         </div>
                         
                         
-                        <div class="icon-wrap icon-me hide" data-idx="3">
-                            <div class="user"></div>
-                            <div class="shoulder"></div>
-                        </div>
-                        
                     </div>
                     
                 </div>
@@ -103,8 +98,6 @@
                         <li>友情链接</li>
                         
                         
-                        <li>关于我</li>
-                        
                     </ul>
                 </div>
             </div>
@@ -116,13 +109,13 @@
                     <nav class="header-menu">
                         <ul>
                         
-                            <li><a href="/Home">博客首页</a></li>
+                            <li><a href="/">博客首页</a></li>
                         
-                            <li><a href="/">技术文摘</a></li>
+                            <li><a href="/archives">技术文摘</a></li>
                         
                             <li><a href="/works">网址集锦</a></li>
                         
-                            <li><a href="/readings">静心阅读</a></li>
+                            <li><a href="/readings">阅读书单</a></li>
                         
                             <li><a href="/about">关于我</a></li>
                         
@@ -134,6 +127,8 @@
                                 <a class="fl mail" target="_blank" href="mailto:jiaxuefeng0@gmail.com" title="mail">mail</a>
                             
                                 <a class="fl github" target="_blank" href="https://github.com/jiaxf" title="github">github</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="https://zhihu.com/people/jia-xue-feng-0" title="zhihu">zhihu</a>
                             
                                 <a class="fl weibo" target="_blank" href="http://weibo.com/jiaxuefeng" title="weibo">weibo</a>
                             
@@ -162,12 +157,6 @@
                 
 
                 
-                
-                <section class="switch-part switch-part4">
-                
-                    <div id="js-aboutme">爱运动、爱交友、爱旅行、喜欢接触新鲜事物、迎接新的挑战，更爱游离于错综复杂的编码与逻辑中</div>
-                </section>
-                
             </div>
         </div>
     </header>                
@@ -195,13 +184,13 @@
             <nav class="header-menu">
                 <ul>
                 
-                    <li><a href="/Home">博客首页</a></li>
+                    <li><a href="/">博客首页</a></li>
                 
-                    <li><a href="/">技术文摘</a></li>
+                    <li><a href="/archives">技术文摘</a></li>
                 
                     <li><a href="/works">网址集锦</a></li>
                 
-                    <li><a href="/readings">静心阅读</a></li>
+                    <li><a href="/readings">阅读书单</a></li>
                 
                     <li><a href="/about">关于我</a></li>
                 
@@ -214,6 +203,8 @@
                         <a class="mail" target="_blank" href="mailto:jiaxuefeng0@gmail.com" title="mail">mail</a>
                     
                         <a class="github" target="_blank" href="https://github.com/jiaxf" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://zhihu.com/people/jia-xue-feng-0" title="zhihu">zhihu</a>
                     
                         <a class="weibo" target="_blank" href="http://weibo.com/jiaxuefeng" title="weibo">weibo</a>
                     
@@ -392,7 +383,7 @@
 
     <script>
         $(document).ready(function() {
-            var backgroundnum = 24;
+            var backgroundnum = 31;
             var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
             $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
             $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});

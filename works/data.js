@@ -451,7 +451,7 @@ var data =  {
 					"title":"游戏素材资源平台"
 				}]
 			},{
-				"tab": "交互/思维导图",
+				"tab": "思维导图",
 				"item": [{
 					"name": "processon",
 					"href": "http://www.processon.com/",
