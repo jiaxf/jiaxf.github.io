@@ -219,6 +219,97 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-FP" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/12/FP/" class="article-date">
+      <time datetime="2016-12-12T08:00:34.000Z" itemprop="datePublished">2016-12-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="Function-Program"><a href="#Function-Program" class="headerlink" title="Function Program"></a>Function Program</h1><h2 id="几个原则"><a href="#几个原则" class="headerlink" title="几个原则"></a>几个原则</h2><ul>
+<li>DRY（不要重复自己，don’t repeat yourself）</li>
+<li>高内聚低耦合（loose coupling high cohesion）</li>
+<li>YAGNI （你不会用到它的，ya ain’t gonna need it）</li>
+<li>最小意外原则（Principle of least surprise）</li>
+<li>单一责任（single responsibility）</li>
+<li>纯函数，尽量减少副作用</li>
+</ul>
+<blockquote>
+<p>纯函数是这样一种函数，即相同的输入，永远会得到相同的输出，而且没有任何可观察的副作用。</p>
+<p><em>副作用</em>是在计算结果的过程中，系统状态的一种变化，或者与外部世界进行的<em>可观察的交互</em>。</p>
+</blockquote>
+<p>几个数学定律应用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 结合律（assosiative）</span></div><div class="line">add(add(x, y), z) == add(x, add(y, z));</div><div class="line"></div><div class="line"><span class="comment">// 交换律（commutative）</span></div><div class="line">add(x, y) == add(y, x);</div><div class="line"></div><div class="line"><span class="comment">// 同一律（identity）</span></div><div class="line">add(x, <span class="number">0</span>) == x;</div><div class="line"></div><div class="line"><span class="comment">// 分配律（distributive）</span></div><div class="line">multiply(x, add(y,z)) == add(multiply(x, y), multiply(x, z));</div></pre></td></tr></table></figure>
+<h2 id="函数柯里化"><a href="#函数柯里化" class="headerlink" title="函数柯里化"></a>函数柯里化</h2><p>curry 的概念很简单：只传递给函数一部分参数来调用它，让它返回一个函数去处理剩下的参数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">y</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> x + y;</div><div class="line">  &#125;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> increment = add(<span class="number">1</span>);</div><div class="line"><span class="keyword">var</span> addTen = add(<span class="number">10</span>);</div><div class="line"></div><div class="line">increment(<span class="number">2</span>);</div><div class="line"><span class="comment">// 3</span></div><div class="line"></div><div class="line">addTen(<span class="number">2</span>);</div><div class="line"><span class="comment">// 12</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> curry = <span class="built_in">require</span>(<span class="string">'lodash'</span>).curry;</div><div class="line"></div><div class="line"><span class="keyword">var</span> match = curry(<span class="function"><span class="keyword">function</span>(<span class="params">what, str</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> str.match(what);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> replace = curry(<span class="function"><span class="keyword">function</span>(<span class="params">what, replacement, str</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> str.replace(what, replacement);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> filter = curry(<span class="function"><span class="keyword">function</span>(<span class="params">f, ary</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> ary.filter(f);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> map = curry(<span class="function"><span class="keyword">function</span>(<span class="params">f, ary</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> ary.map(f);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">match(<span class="regexp">/\s+/g</span>, <span class="string">"hello world"</span>);</div><div class="line"><span class="comment">// [ ' ' ]</span></div><div class="line"></div><div class="line">match(<span class="regexp">/\s+/g</span>)(<span class="string">"hello world"</span>);</div><div class="line"><span class="comment">// [ ' ' ]</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> hasSpaces = match(<span class="regexp">/\s+/g</span>);</div><div class="line"><span class="comment">// function(x) &#123; return x.match(/\s+/g) &#125;</span></div><div class="line"></div><div class="line">hasSpaces(<span class="string">"hello world"</span>);</div><div class="line"><span class="comment">// [ ' ' ]</span></div><div class="line"></div><div class="line">hasSpaces(<span class="string">"spaceless"</span>);</div><div class="line"><span class="comment">// null</span></div><div class="line"></div><div class="line">filter(hasSpaces, [<span class="string">"tori_spelling"</span>, <span class="string">"tori amos"</span>]);</div><div class="line"><span class="comment">// ["tori amos"]</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> findSpaces = filter(hasSpaces);</div><div class="line"><span class="comment">// function(xs) &#123; return xs.filter(function(x) &#123; return x.match(/\s+/g) &#125;) &#125;</span></div><div class="line"></div><div class="line">findSpaces([<span class="string">"tori_spelling"</span>, <span class="string">"tori amos"</span>]);</div><div class="line"><span class="comment">// ["tori amos"]</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> noVowels = replace(<span class="regexp">/[aeiou]/ig</span>);</div><div class="line"><span class="comment">// function(replacement, x) &#123; return x.replace(/[aeiou]/ig, replacement) &#125;</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> censored = noVowels(<span class="string">"*"</span>);</div><div class="line"><span class="comment">// function(x) &#123; return x.replace(/[aeiou]/ig, "*") &#125;</span></div><div class="line"></div><div class="line">censored(<span class="string">"Chocolate Rain"</span>);</div><div class="line"><span class="comment">// 'Ch*c*l*t* R**n'</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>“预加载”函数的能力，通过传递一到两个参数调用函数，就能得到一个记住了这些参数的新函数。</p>
+</blockquote>
+<h2 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h2><blockquote>
+<p>高阶函数（higher order function）（高阶函数：参数或返回值为函数的函数）。</p>
+</blockquote>
+<h2 id="函数组合"><a href="#函数组合" class="headerlink" title="函数组合"></a>函数组合</h2><p><code>组合</code>（compose，以下将称之为组合）：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> compose = <span class="function"><span class="keyword">function</span>(<span class="params">f,g</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> f(g(x));</div><div class="line">  &#125;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p><code>f</code> 和 <code>g</code> 都是函数，<code>x</code> 是在它们之间通过“管道”传输的值。在 <code>compose</code> 的定义中，<code>g</code> 将先于 <code>f</code> 执行，因此就创建了一个从右到左的数据流。</p>
+<p><code>组合</code>将两个函数结合产生一个新函数。组合用法如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> toUpperCase = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123; <span class="keyword">return</span> x.toUpperCase(); &#125;;</div><div class="line"><span class="keyword">var</span> exclaim = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123; <span class="keyword">return</span> x + <span class="string">'!'</span>; &#125;;</div><div class="line"><span class="keyword">var</span> shout = compose(exclaim, toUpperCase);</div><div class="line"></div><div class="line">shout(<span class="string">"send in the clowns"</span>);</div><div class="line"><span class="comment">//=&gt; "SEND IN THE CLOWNS!"</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> head = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123; <span class="keyword">return</span> x[<span class="number">0</span>]; &#125;;</div><div class="line"><span class="keyword">var</span> reverse = reduce(<span class="function"><span class="keyword">function</span>(<span class="params">acc, x</span>)</span>&#123; <span class="keyword">return</span> [x].concat(acc); &#125;, []);</div><div class="line"><span class="keyword">var</span> last = compose(head, reverse);</div><div class="line"></div><div class="line">last([<span class="string">'jumpkick'</span>, <span class="string">'roundhouse'</span>, <span class="string">'uppercut'</span>]);</div><div class="line"><span class="comment">//=&gt; 'uppercut'</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 结合律（associativity）</span></div><div class="line"><span class="keyword">var</span> associative = compose(f, compose(g, h)) == compose(compose(f, g), h);</div><div class="line"><span class="comment">// true</span></div></pre></td></tr></table></figure>
+<p>符合结合律意味着不管你是把 <code>g</code> 和 <code>h</code> 分到一组，还是把 <code>f</code> 和 <code>g</code> 分到一组都不重要。所以，如果我们想把字符串变为大写，可以这么写：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">compose(toUpperCase, compose(head, reverse));</div><div class="line"></div><div class="line"><span class="comment">// 或者</span></div><div class="line">compose(compose(toUpperCase, head), reverse);</div></pre></td></tr></table></figure>
+<p>因为如何为 <code>compose</code> 的调用分组不重要，所以结果都是一样的。</p>
+<p>结合律的一大好处是任何一个函数分组都可以被拆开来，然后再以它们自己的组合方式打包在一起。让我们来重构重构前面的例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> loudLastUpper = compose(exclaim, toUpperCase, head, reverse);</div><div class="line"></div><div class="line"><span class="comment">// 或</span></div><div class="line"><span class="keyword">var</span> last = compose(head, reverse);</div><div class="line"><span class="keyword">var</span> loudLastUpper = compose(exclaim, toUpperCase, last);</div><div class="line"></div><div class="line"><span class="comment">// 或</span></div><div class="line"><span class="keyword">var</span> last = compose(head, reverse);</div><div class="line"><span class="keyword">var</span> angry = compose(exclaim, toUpperCase);</div><div class="line"><span class="keyword">var</span> loudLastUpper = compose(angry, last);</div><div class="line"></div><div class="line"><span class="comment">// 更多变种...</span></div></pre></td></tr></table></figure>
+<h2 id="pointfree"><a href="#pointfree" class="headerlink" title="pointfree"></a>pointfree</h2><p>pointfree 模式指的是，永远不必说出你的数据。函数无须提及将要操作的数据是什么样的。一等公民的函数、柯里化（curry）以及组合协作起来非常有助于实现这种模式。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 非 pointfree，因为提到了数据：word</span></div><div class="line"><span class="keyword">var</span> snakeCase = <span class="function"><span class="keyword">function</span> (<span class="params">word</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> word.toLowerCase().replace(<span class="regexp">/\s+/ig</span>, <span class="string">'_'</span>);</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// pointfree</span></div><div class="line"><span class="keyword">var</span> snakeCase = compose(replace(<span class="regexp">/\s+/ig</span>, <span class="string">'_'</span>), toLowerCase);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 非 pointfree，因为提到了数据：name</span></div><div class="line"><span class="keyword">var</span> initials = <span class="function"><span class="keyword">function</span> (<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> name.split(<span class="string">' '</span>).map(compose(toUpperCase, head)).join(<span class="string">'. '</span>);</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// pointfree</span></div><div class="line"><span class="keyword">var</span> initials = compose(join(<span class="string">'. '</span>), map(compose(toUpperCase, head)), split(<span class="string">' '</span>));</div><div class="line"></div><div class="line">initials(<span class="string">"hunter stockton thompson"</span>);</div><div class="line"><span class="comment">// 'H. S. T'</span></div></pre></td></tr></table></figure>
+<p>pointfree 模式能够帮助我们减少不必要的命名，让代码保持简洁和通用。对函数式代码来说，pointfree 是非常好的石蕊试验，因为它能告诉我们一个函数是否是接受输入返回输出的小函数。比如，while 循环是不能组合的。不过你也要警惕，pointfree 就像是一把双刃剑，有时候也能混淆视听。并非所有的函数式代码都是 pointfree 的，不过这没关系。可以使用它的时候就使用，不能使用的时候就用普通函数。</p>
+<p>组合的一个常见错误是，在没有局部调用之前，就组合类似 map 这样接受两个参数的函数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 错误做法：我们传给了 `angry` 一个数组，根本不知道最后传给 `map` 的是什么东西。</span></div><div class="line"><span class="keyword">var</span> latin = compose(map, angry, reverse);</div><div class="line"></div><div class="line">latin([<span class="string">"frog"</span>, <span class="string">"eyes"</span>]);</div><div class="line"><span class="comment">// error</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 正确做法：每个函数都接受一个实际参数。</span></div><div class="line"><span class="keyword">var</span> latin = compose(map(angry), reverse);</div><div class="line"></div><div class="line">latin([<span class="string">"frog"</span>, <span class="string">"eyes"</span>]);</div><div class="line"><span class="comment">// ["EYES!", "FROG!"])</span></div></pre></td></tr></table></figure>
+<p>如果在 debug 组合的时候遇到了困难，那么可以使用下面这个实用的，但是不纯的 <code>trace</code> 函数来追踪代码的执行情况。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> trace = curry(<span class="function"><span class="keyword">function</span>(<span class="params">tag, x</span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(tag, x);</div><div class="line">  <span class="keyword">return</span> x;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> dasherize = compose(join(<span class="string">'-'</span>), toLower, split(<span class="string">' '</span>), replace(<span class="regexp">/\s&#123;2,&#125;/ig</span>, <span class="string">' '</span>));</div><div class="line"></div><div class="line">dasherize(<span class="string">'The world is a vampire'</span>);</div><div class="line"><span class="comment">// TypeError: Cannot read property 'apply' of undefined</span></div></pre></td></tr></table></figure>
+<p>这里报错了，来 <code>trace</code> 下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> dasherize = compose(join(<span class="string">'-'</span>), toLower, trace(<span class="string">"after split"</span>), split(<span class="string">' '</span>), replace(<span class="regexp">/\s&#123;2,&#125;/ig</span>, <span class="string">' '</span>));</div><div class="line"><span class="comment">// after split [ 'The', 'world', 'is', 'a', 'vampire' ]</span></div></pre></td></tr></table></figure>
+<p>啊！<code>toLower</code> 的参数是一个数组，所以需要先用 <code>map</code> 调用一下它。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> dasherize = compose(join(<span class="string">'-'</span>), map(toLower), split(<span class="string">' '</span>), replace(<span class="regexp">/\s&#123;2,&#125;/ig</span>, <span class="string">' '</span>));</div><div class="line"></div><div class="line">dasherize(<span class="string">'The world is a vampire'</span>);</div><div class="line"></div><div class="line"><span class="comment">// 'the-world-is-a-vampire'</span></div></pre></td></tr></table></figure>
+<p><code>trace</code> 函数允许我们在某个特定的点观察数据以便 debug。像 haskell 和 purescript 之类的语言出于开发的方便，也都提供了类似的函数。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-javascriptEvent" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -247,21 +338,12 @@
       
           
         <h3 id="JavaScript事件"><a href="#JavaScript事件" class="headerlink" title="JavaScript事件"></a>JavaScript事件</h3><h2 id="1-相关术语"><a href="#1-相关术语" class="headerlink" title="1. 相关术语"></a>1. 相关术语</h2><ul>
-<li><p>事件类型（event type）是一个用来说明发生什么类型事件的字符串。</p>
-<p>  例如，“mousemove”表示用户移动鼠标，“keydown”表示键盘上某个键被按下等等。</p>
-</li>
-<li><p>事件目标（event target）是发生的事件与之相关的对象。当讲事件时，我必须同时指明类型和目标。<br>  比如：window上的load事件或button元素的click事件。<br>  在客户端JavaScript应用程序中，Window、Document和Element对象是最常见的事件目标。</p>
-</li>
-<li><p>事件处理程序（event handler）或事件监听程序（event listener）是处理或响应事件的函数。</p>
-</li>
-<li><p>事件对象（event object）是与特定事件相关且包含有关该事件详细信息的对象。</p>
-<p>  事件对象作为参数传递给事件处理程序函数（不包括IE8及之前版本，在这些浏览器中有时仅能通过全局变量event才能得到）。</p>
-<p>  所有的事件对象都用来指定事件类型的type属性和指定事件目标的target属性。（在IE8及之前的版本中用srcElement而非target）</p>
-</li>
-<li><p>事件传播（event propagation）是浏览器决定哪个对象触发其事件处理程序的过程。当文档元素上发生某个类型的事件时，它们会在文档树上向上传播或“冒泡“（bubble）。</p>
-</li>
-<li><p>事件捕获（event capturing）：在容器元素上注册的特定处理程序有机会在事件传播到真实目标之前捕获它。</p>
-</li>
+<li>事件类型（event type）是一个用来说明发生什么类型事件的字符串。<br>  例如，“mousemove”表示用户移动鼠标，“keydown”表示键盘上某个键被按下等等。</li>
+<li>事件目标（event target）是发生的事件与之相关的对象。当讲事件时，我必须同时指明类型和目标。<br>  比如：window上的load事件或button元素的click事件。<br>  在客户端JavaScript应用程序中，Window、Document和Element对象是最常见的事件目标。</li>
+<li>事件处理程序（event handler）或事件监听程序（event listener）是处理或响应事件的函数。</li>
+<li>事件对象（event object）是与特定事件相关且包含有关该事件详细信息的对象。<br>  事件对象作为参数传递给事件处理程序函数（不包括IE8及之前版本，在这些浏览器中有时仅能通过全局变量event才能得到）。<br>  所有的事件对象都用来指定事件类型的type属性和指定事件目标的target属性。（在IE8及之前的版本中用srcElement而非target）</li>
+<li>事件传播（event propagation）是浏览器决定哪个对象触发其事件处理程序的过程。当文档元素上发生某个类型的事件时，它们会在文档树上向上传播或“冒泡“（bubble）。</li>
+<li>事件捕获（event capturing）：在容器元素上注册的特定处理程序有机会在事件传播到真实目标之前捕获它。</li>
 </ul>
 <hr>
 <h2 id="2-Event事件"><a href="#2-Event事件" class="headerlink" title="2.Event事件"></a>2.Event事件</h2><p>2.1 注册事件处理程序</p>
@@ -272,6 +354,101 @@
 <li>type：事件名称（事件类型），字符串，大小写不敏感。</li>
 <li>listener：监听函数。事件发生时，会调用该监听函数。</li>
 <li>useCapture：布尔值，表示监听函数是否在捕获阶段（capture）触发，默认为false（监听函数只在冒泡阶段被触发）。老式浏览器规定该参数必写，较新版本的浏览器允许该参数可选。为了保持兼容，建议总是写上该参数。</li>
+</ul>
+<p><em>使用addEventListener(）方法时，事件类型不应包括前缀“on”. 去除 removeEventListener（）</em></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">addEventListener(<span class="string">'click'</span>, listener, <span class="literal">false</span>);</div></pre></td></tr></table></figure>
+<p>2.3 事件处理程序的返回值</p>
+<p>  设置对象属性或HTML属性注册事件处理程序的返回值false告诉浏览器不要执行事件相关的默认操作。比如，表单提交按钮的onclick事件处理程序能返回false阻止浏览器提交表单。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">v.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>2.4 事件调用顺序</p>
+<ul>
+<li>通过设置对象属性或HTML属性注册的处理程序一直优先调用</li>
+<li>使用addEventListener() 注册的处理程序按照注册顺序调用</li>
+<li>使用attachEvent() 注册的处理程序可能按照任何顺序调用，代码不应该依赖于调用顺序。</li>
+</ul>
+<p>2.5 事件传播</p>
+<p>  在调用在目标元素上注册的事件处理函数，大部分事件会”冒泡”到DOM树根。发生再文档元素上的大部分事件都会冒泡，有些例外，比如<br>  focus、blur和scroll事件。文档元素上的load事件会冒泡，但会在Document对象上停止冒泡而不会传播到Window对象。只有整个文档<br>  都加载完毕时才会触发window对象的load事件。</p>
+<p>  三个阶段：</p>
+<ul>
+<li>捕获阶段（capture phrase）： 从window对象传导到目标对象。（window —-&gt;document —&gt; … —&gt; 目标对象）</li>
+<li>目标阶段（target phrase）： 目标对象本身的事件处理程序调用</li>
+<li>冒泡阶段（bubblling phrase）：从目标对象传导会window对象 （目标对象—&gt; 父元素—&gt; … —&gt; document –&gt;window）</li>
+</ul>
+<p>2.6 事件代理（事件委托）</p>
+<p>  基于事件会在冒泡阶段向上传播到父节点，可以将子节点的监听事件定义在父节点上，由父节点的监听函数统一处理多个子元素的事件。这种方叫事件的代理（delegation）。</p>
+<p>  <em>使用事件代理，以后插入的新节点仍然可可以监听到事件</em></p>
+<p>2.7 事件取消</p>
+<p>  用属性注册的事件处理程序返回值能用于取消事件的浏览器默认操作。在支持addEventListener()的浏览器中，能通过调用事件对象的<br>  preventDefault（）方法取消事件的默认操作。<br>  在IE9之前的IE中，可以通过设置事件对象的returnValue属性为false来取消。</p>
+  <figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function">function <span class="title">cancelHandler</span>(<span class="params"><span class="keyword">event</span></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> <span class="keyword">event</span> = <span class="keyword">event</span> || window.<span class="keyword">event</span>;</div><div class="line">  <span class="keyword">if</span>(<span class="keyword">event</span>.preventDefault)&#123; <span class="comment">// 标准</span></div><div class="line">    <span class="keyword">event</span>.preventDefault;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span>(<span class="keyword">event</span>.returnValue)&#123; <span class="comment">// IE</span></div><div class="line">    <span class="keyword">event</span>.returnValue = <span class="literal">false</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">//用于处理使用对象属性注册的处理程序</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>  取消事件传播<br>  在支持addEventListener()的浏览器中，可以调用事件对象的一个stopPropagation()方法以阻止事件的传播。<br>  Event对象上还有个方法stopImmediatePropagation() 阻止同一个事件的其他监听函数被调用。</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">e.stopPropagation();</div><div class="line"><span class="comment">// IE</span></div><div class="line">e.cancelBubble = <span class="literal">true</span>;</div></pre></td></tr></table></figure>
+<h2 id="3-文档事件"><a href="#3-文档事件" class="headerlink" title="3. 文档事件"></a>3. 文档事件</h2><p> (1) beforeunload事件、unload事件、load事件、error事件、pageshow事件、pagehide事件</p>
+<p> (2) DOMContentLoader事件、readystatechange事件</p>
+<p>  DOMContentLoader事件再文档加载解析完毕，图片和异步（async）脚本依旧在加载，单文档已准备就绪。发生再load事件之前。</p>
+<p>  readstatechange事件：document.readystatechange属性会随文档加载过程而变，每次状态改变，Document对象上的readystatechange事件都会触发。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.onreadystate = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span>(doucment.readyState == <span class="string">'complete'</span>)&#123;</div><div class="line"></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>  (3) scroll事件、resize事件</p>
+<p>  (4) hashchange事件、popstate事件</p>
+<p>  (5) cut事件、copy事件、 paste事件  文本操作事件</p>
+<pre><code>- cut事件：将选中的内容从文档中移除，加入剪贴板后触发
+- copy事件： 在选中的内容加入剪贴板后触发
+- paste事件： 在剪贴板内容被粘贴到文档后触发
+
+三个事件都有一个clipboardData只读属性，该属性存放剪贴的数据，是一个DataTransfer对象。
+</code></pre><p>  （6）焦点事件 发生在Element节点和document对象上。<br>      focus事件、blur事件、focusin事件、focusout事件</p>
+<h2 id="4-鼠标事件"><a href="#4-鼠标事件" class="headerlink" title="4. 鼠标事件"></a>4. 鼠标事件</h2><p>  （1） click事件 在Element节点、document节点、window对象上，单击鼠标时触发。<br>  （2）contextmenu 在一个节点上点击鼠标右键时触发，或者按下“上下文菜单”键时触发。<br>   (3) dblclick<br>   (4) mousedown、mouseup、mousemove、mouseover、mouseenter、mouseout、mouseleave<br>    除了mouseenter和mouseleave外的所有鼠标事件都能冒泡。</p>
+<h2 id="5-鼠标滚轮事件"><a href="#5-鼠标滚轮事件" class="headerlink" title="5. 鼠标滚轮事件"></a>5. 鼠标滚轮事件</h2><p>  浏览器支持mousewheel事件，但Firefox使用”DOMMouseScroll”事件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.onmousewheel = <span class="built_in">document</span>.onmousewheel = scrollWheel;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">scrollWheel</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">  e = e || <span class="built_in">window</span>.event;</div><div class="line">  <span class="keyword">if</span>(e.wheelDelta)&#123; <span class="comment">// 判断浏览器IE，谷歌滑轮事件</span></div><div class="line">    <span class="keyword">if</span>(e.wheelDelta &gt; <span class="number">0</span>)&#123;</div><div class="line">      <span class="comment">// 滑轮向上滚动时</span></div><div class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(e.wheelDelta &lt; <span class="number">0</span>)&#123;</div><div class="line">      <span class="comment">// 当滑轮向下滚动时</span></div><div class="line">    &#125;；</div><div class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(e.dedail)&#123; <span class="comment">// Firefox滑轮事件</span></div><div class="line">    <span class="keyword">if</span>(e.detail &lt; <span class="number">0</span>)&#123;</div><div class="line">      <span class="comment">// 当滑轮向上滚动时</span></div><div class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(e.detail &gt; <span class="number">0</span>)&#123;</div><div class="line">      <span class="comment">// 当滑轮向下滚动时</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>##　6. 键盘事件</p>
+<p>  keydown、keypress、keyup</p>
+<h2 id="7-表单事件"><a href="#7-表单事件" class="headerlink" title="7. 表单事件"></a>7. 表单事件</h2><p>  （1）input、propertychange （用在&lt;input&gt;、&lt;textarea&gt;， 当contenteditable属性设置为true时值变化触发）<br>  （2）change （&lt;input&gt;、&lt;select&gt;、&lt;textarea&gt;值变化时触发）</p>
+<pre><code>- 激活单选框（radio）或复选框（checkbox）时触发。
+- 用户提交时触发。比如，从下列列表（select）完成选择，在日期或文件输入框完成选择。
+- 当文本框或textarea元素的值发生改变，并且丧失焦点时触发。
+</code></pre><p>  （3）select （当&lt;input&gt;和&lt;textarea&gt; 中选中文本时触发select事件）</p>
+<p>  （4）reset、submit（表单对象事件）</p>
+<pre><code>- reset事件：当表单重置（所有表单成员的值变回默认值）时触发。  
+- submit事件：当表单数据向服务器提交时触发。
+</code></pre><h2 id="8-触控事件"><a href="#8-触控事件" class="headerlink" title="8. 触控事件"></a>8. 触控事件</h2><p>  触控事件提供了响应用户对触摸屏或触摸板上的操作能力。</p>
+<p>  接口：</p>
+<ul>
+<li>TouchEvent：代表当触摸行为在平面上发生变化时发生的事件（touchstart、touchend、touchmove、touchcancel、touchenter、touchleave）</li>
+<li>Touch：代表用户与触摸屏幕间的一个接触点</li>
+<li>TouchList：代表一系列的Touch；一般在用户多个手指同时解除屏幕时使用<br>其他： gesturestart、gestureendscale、rotation</li>
+</ul>
+<h2 id="9-进度事件"><a href="#9-进度事件" class="headerlink" title="9. 进度事件"></a>9. 进度事件</h2><p>  进度事件用例描述一个事件进展的过程。</p>
+<ul>
+<li>abort事件：当进度事件被中止时触发。如果发生错误，导致进程中止，不会触发该事件。   </li>
+<li>error事件：由于错误导致资源无法加载时触发。   </li>
+<li>load事件：进度成功结束时触发。   </li>
+<li>loadstart事件：进度开始时触发。   </li>
+<li>loadend事件：进度停止时触发，发生顺序排在error事件\abort事件\load事件后面。   </li>
+<li>progress事件：当操作处于进度之中，由传输的数据块不断触发。   </li>
+<li>timeout事件：进度超过限时触发。</li>
+</ul>
+<h2 id="10-拖放事件"><a href="#10-拖放事件" class="headerlink" title="10. 拖放事件"></a>10. 拖放事件</h2><p>  拖放（Drag-and-Drop，DnD）是在“拖放源drag source”和”拖放目标drop target”之间传输数据的用户界面。</p>
+<p> （1）事件</p>
+<ul>
+<li>dragstart：当一个元素开始被拖拽的时候触发。用户拖拽的元素需要附加dragstart事件。在这个事件中，监听器将设置与这次拖拽相关的信息，例如拖动的数据和图像。</li>
+<li>dragenter：当拖拽中的鼠标第一次进入一个元素的时候触发。这个事件的监听器需要指明是否允许在这个区域释放鼠标。如果没有设置监听器，或者监听器没有进行操作，则默认不允许释放。当你想要通过类似高亮或插入标记等方式来告知用户此处可以释放，你将需要监听这个事件。</li>
+<li>dragover：当拖拽中的鼠标移动经过一个元素的时候触发。大多数时候，监听过程发生的操作与dragenter事件是一样的。</li>
+<li>dragleave：当拖拽中的鼠标离开元素时触发。监听器需要将作为可释放反馈的高亮或插入标记去除。</li>
+<li>drag：这个事件在拖拽源触发。即在拖拽操作中触发dragstart事件的元素。</li>
+<li>drop：这个事件在拖拽操作结束释放时于释放元素上触发。一个监听器用来响应接收被拖拽的数据并插入到释放之地。这个事件只有在需要时才触发。当用户取消了拖拽操作时将不触发，例如按下了Escape（ESC）按键，或鼠标在非可释放目标上释放了按键。</li>
+<li>dragend：拖拽源在拖拽操作结束将得到dragend事件对象，不管操作成功与否。</li>
+</ul>
+<p>  （2）DataTransfer对象</p>
+<pre><code>dataTransfer属性用例保存需要传递的数据，返回一个DataTransfer对象。
+
+setData() 用来设置事件所带有的指定类型的数据。两个参数：一个是数据类型，第二个时具体数据。
+</code></pre><h2 id="11-自定义事件"><a href="#11-自定义事件" class="headerlink" title="11. 自定义事件"></a>11. 自定义事件</h2><figure class="highlight oxygene"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 新建事件实例</span></div><div class="line"><span class="keyword">var</span> <span class="keyword">event</span> = <span class="keyword">new</span> <span class="keyword">Event</span>(<span class="string">'play'</span>);</div><div class="line"><span class="comment">// 添加监听函数</span></div><div class="line">element.addEventListener(<span class="string">'play'</span>, <span class="function"><span class="keyword">function</span><span class="params">(e)</span><span class="comment">&#123;&#125;</span>, <span class="title">false</span>);</span></div><div class="line"><span class="comment">// 触发事件</span></div><div class="line">element.dispatchEvent(<span class="keyword">event</span>);</div></pre></td></tr></table></figure>
+<p>  可以使用CustomEvent构造函数生成自定义的事件对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> event = <span class="keyword">new</span> CustomEvent(<span class="string">'play'</span>, &#123;<span class="attr">detail</span>: <span class="string">'play'</span>&#125;);</div><div class="line"><span class="comment">// 添加监听函数</span></div><div class="line">element.addEventListener(<span class="string">'play'</span>, handler, <span class="literal">false</span>);</div><div class="line"><span class="comment">// 触发事件</span></div><div class="line">element.dispatchEvent(event);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">handler</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> data = e.detail;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// IE 不支持上面写法</span></div><div class="line"></div><div class="line"><span class="comment">// 新建Event实例</span></div><div class="line"><span class="keyword">var</span> event = <span class="built_in">document</span>.createEvent(<span class="string">'Event'</span>);</div><div class="line"><span class="comment">// 事件初始化</span></div><div class="line">event.initEvent(<span class="string">'play'</span>, <span class="literal">true</span>, <span class="literal">true</span>);</div><div class="line"><span class="comment">// 加上监听函数</span></div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'play'</span>, handler, fasle);</div><div class="line"><span class="comment">// 触发事件</span></div><div class="line"><span class="built_in">document</span>.dispatchEvent(event);</div></pre></td></tr></table></figure>
+<ul>
+<li>type：事件名称，格式为字符串。  </li>
+<li>bubbles：事件是否应该冒泡，格式为布尔值。可以使用event.bubbles属性读取它的值。  </li>
+<li>cancelable：事件是否能被取消，格式为布尔值。可以使用event.cancelable属性读取它的值。  </li>
+<li>option：为事件对象指定额外的属性。</li>
 </ul>
 
       
