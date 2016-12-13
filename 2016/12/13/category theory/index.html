@@ -14,7 +14,7 @@
 <meta property="og:image" content="http://jiaxf.github.io/images/cat_theory.png">
 <meta property="og:image" content="http://jiaxf.github.io/images/cat_comp1.png">
 <meta property="og:image" content="http://jiaxf.github.io/images/cat_comp2.png">
-<meta property="og:updated_time" content="2016-12-13T07:44:03.000Z">
+<meta property="og:updated_time" content="2016-12-13T08:06:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="范畴学基本知识">
 <meta name="twitter:description" content="范畴学基本知识范畴学（category theory）是数学中的一个抽象分支，能够形式化诸如集合论（set theory）、类型论（type theory）、群论（group theory）以及逻辑学（logic）等数学分支中的一些概念。范畴学主要处理对象（object）、态射（morphism）和变化式（transformation），而这些概念跟编程的联系非常紧密。下图是一些相同的概念分别在不">
@@ -145,7 +145,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/jsx/" style="font-size: 10px;">jsx</a> <a href="/tags/node/" style="font-size: 13.33px;">node</a> <a href="/tags/pattern/" style="font-size: 10px;">pattern</a> <a href="/tags/personal/" style="font-size: 10px;">personal</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/resume/" style="font-size: 10px;">resume</a> <a href="/tags/函数式编程/" style="font-size: 13.33px;">函数式编程</a>
+                        <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/jsx/" style="font-size: 10px;">jsx</a> <a href="/tags/node/" style="font-size: 13.33px;">node</a> <a href="/tags/pattern/" style="font-size: 10px;">pattern</a> <a href="/tags/personal/" style="font-size: 10px;">personal</a> <a href="/tags/php/" style="font-size: 13.33px;">php</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/resume/" style="font-size: 10px;">resume</a> <a href="/tags/函数式编程/" style="font-size: 13.33px;">函数式编程</a>
                     </div>
                 </section>
                 
@@ -262,7 +262,7 @@
       
           
         <h2 id="范畴学基本知识"><a href="#范畴学基本知识" class="headerlink" title="范畴学基本知识"></a>范畴学基本知识</h2><p>范畴学（category theory）是数学中的一个抽象分支，能够形式化诸如集合论（set theory）、类型论（type theory）、群论（group theory）以及逻辑学（logic）等数学分支中的一些概念。范畴学主要处理对象（object）、态射（morphism）和变化式（transformation），而这些概念跟编程的联系非常紧密。下图是一些相同的概念分别在不同理论下的形式：<br><a id="more"></a></p>
-<p><img src="images/cat_theory.png"></p>
+<p><img src="/images/cat_theory.png"></p>
 <p>在范畴学中，有一个概念叫做…范畴。有着以下这些组件（component）的搜集（collection）就构成了一个范畴：</p>
 <ul>
 <li>对象的搜集</li>
@@ -277,7 +277,7 @@
 <p><strong>态射的组合</strong></p>
 <p><code>compose</code> 函数是符合结合律的，这并非巧合，结合律是在范畴学中对任何组合都适用的一个特性。</p>
 <p>这张图展示了什么是组合：</p>
-<p><img src="images/cat_comp1.png"><br><img src="images/cat_comp2.png"></p>
+<p><img src="/images/cat_comp1.png"><br><img src="/images/cat_comp2.png"></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> g = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123; <span class="keyword">return</span> x.length; &#125;;</div><div class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123; <span class="keyword">return</span> x === <span class="number">4</span>; &#125;;</div><div class="line"><span class="keyword">var</span> isFourLetterWord = compose(f, g);</div></pre></td></tr></table></figure>
 <p><strong>identity 这个独特的态射</strong></p>
 <p>让我们介绍一个名为 <code>id</code> 的实用函数。这个函数接受随便什么输入然后原封不动地返回它：</p>
@@ -297,7 +297,7 @@
         <p><span>本文标题:</span><a href="/2016/12/13/category theory/">范畴学基本知识</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 飞天雪 的个人博客">飞天雪</a></p>
         <p><span>发布时间:</span>2016年12月13日 - 10时45分</p>
-        <p><span>最后更新:</span>2016年12月13日 - 15时44分</p>
+        <p><span>最后更新:</span>2016年12月13日 - 16时06分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/12/13/category theory/" title="范畴学基本知识">http://jiaxf.github.io/2016/12/13/category theory/</a>
             <span class="copy-path" data-clipboard-text="原文: http://jiaxf.github.io/2016/12/13/category theory/　　作者: 飞天雪" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -417,7 +417,7 @@
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/javascriptIntroduce/">前端知识学习（摘自阮一峰博客）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/category theory/">范畴学基本知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/12/FP/">函数式编程入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/javascriptEvent/">JavaScriptEvent</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/jsPattern/">javascript模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/30/index/">关于我</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/30/reactStudy/">React入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/29/hello-world/">Hexo使用入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/29/javascript错误/">js错误类型</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/javascriptIntroduce/">前端知识学习（摘自阮一峰博客）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/category theory/">范畴学基本知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/12/FP/">函数式编程入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/javascriptEvent/">JavaScriptEvent</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/jsPattern/">javascript模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/30/index/">关于我</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/30/reactStudy/">React入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/29/hello-world/">Hexo使用入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/29/javascript错误/">js错误类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/14/2015-02-14-php数据类型/">php数据类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/14/2015-02-14-php学习笔记/">php学习笔记</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
