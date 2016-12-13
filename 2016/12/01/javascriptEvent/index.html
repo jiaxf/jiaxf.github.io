@@ -15,7 +15,7 @@
 <meta property="og:description" content="JavaScript事件1. 相关术语
 事件类型（event type）是一个用来说明发生什么类型事件的字符串。  例如，“mousemove”表示用户移动鼠标，“keydown”表示键盘上某个键被按下等等。
 事件目标（event target）是发生的事件与之相关的对象。当讲事件时，我必须同时指明类型和目标。  比如：window上的load事件或button元素的click事件。  在客户端J">
-<meta property="og:updated_time" content="2016-12-02T08:09:07.000Z">
+<meta property="og:updated_time" content="2016-12-13T07:58:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScriptEvent">
 <meta name="twitter:description" content="JavaScript事件1. 相关术语
@@ -119,7 +119,7 @@
                         
                             <li><a href="/archives">技术文摘</a></li>
                         
-                            <li><a href="/works">网址集锦</a></li>
+                            <li><a href="/works">前端集锦</a></li>
                         
                             <li><a href="/readings">阅读书单</a></li>
                         
@@ -147,7 +147,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/jsx/" style="font-size: 10px;">jsx</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/pattern/" style="font-size: 10px;">pattern</a> <a href="/tags/personal/" style="font-size: 10px;">personal</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/resume/" style="font-size: 10px;">resume</a> <a href="/tags/函数式编程/" style="font-size: 13.33px;">函数式编程</a>
+                        <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/jsx/" style="font-size: 10px;">jsx</a> <a href="/tags/node/" style="font-size: 13.33px;">node</a> <a href="/tags/pattern/" style="font-size: 10px;">pattern</a> <a href="/tags/personal/" style="font-size: 10px;">personal</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/resume/" style="font-size: 10px;">resume</a> <a href="/tags/函数式编程/" style="font-size: 13.33px;">函数式编程</a>
                     </div>
                 </section>
                 
@@ -156,7 +156,7 @@
                 <section class="switch-part switch-part3">
                     <div id="js-friends">
                     
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://luuman.github.io/">name</a>
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://luuman.github.io/">luuman</a>
                     
                     </div>
                 </section>
@@ -194,7 +194,7 @@
                 
                     <li><a href="/archives">技术文摘</a></li>
                 
-                    <li><a href="/works">网址集锦</a></li>
+                    <li><a href="/works">前端集锦</a></li>
                 
                     <li><a href="/readings">阅读书单</a></li>
                 
@@ -272,6 +272,7 @@
 <li>事件捕获（event capturing）：在容器元素上注册的特定处理程序有机会在事件传播到真实目标之前捕获它。</li>
 </ul>
 <hr>
+<a id="more"></a>
 <h2 id="2-Event事件"><a href="#2-Event事件" class="headerlink" title="2.Event事件"></a>2.Event事件</h2><p>2.1 注册事件处理程序</p>
 <pre><code>给事件目标对象或文档元素设置属性，onclick、onchange等
 </code></pre><p>2.2 通过addEventListener()</p>
@@ -387,7 +388,7 @@ setData() 用来设置事件所带有的指定类型的数据。两个参数：�
         <p><span>本文标题:</span><a href="/2016/12/01/javascriptEvent/">JavaScriptEvent</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 飞天雪 的个人博客">飞天雪</a></p>
         <p><span>发布时间:</span>2016年12月01日 - 10时35分</p>
-        <p><span>最后更新:</span>2016年12月02日 - 16时09分</p>
+        <p><span>最后更新:</span>2016年12月13日 - 15时58分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/12/01/javascriptEvent/" title="JavaScriptEvent">http://jiaxf.github.io/2016/12/01/javascriptEvent/</a>
             <span class="copy-path" data-clipboard-text="原文: http://jiaxf.github.io/2016/12/01/javascriptEvent/　　作者: 飞天雪" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -573,7 +574,7 @@ setData() 用来设置事件所带有的指定类型的数据。两个参数：�
 
     <script>
         $(document).ready(function() {
-            var backgroundnum = 31;
+            var backgroundnum = 30;
             var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
             $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
             $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
