@@ -3,21 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hexo使用入门 | 飞天雪的技术博客</title>
+  <title>范畴学基本知识 | 飞天雪的技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+  <meta name="description" content="范畴学基本知识范畴学（category theory）是数学中的一个抽象分支，能够形式化诸如集合论（set theory）、类型论（type theory）、群论（group theory）以及逻辑学（logic）等数学分支中的一些概念。范畴学主要处理对象（object）、态射（morphism）和变化式（transformation），而这些概念跟编程的联系非常紧密。下图是一些相同的概念分别在不">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo使用入门">
-<meta property="og:url" content="http://jiaxf.github.io/2016/11/29/hello-world/index.html">
+<meta property="og:title" content="范畴学基本知识">
+<meta property="og:url" content="http://jiaxf.github.io/2016/12/13/category theory/index.html">
 <meta property="og:site_name" content="飞天雪的技术博客">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2016-11-30T07:53:57.000Z">
+<meta property="og:description" content="范畴学基本知识范畴学（category theory）是数学中的一个抽象分支，能够形式化诸如集合论（set theory）、类型论（type theory）、群论（group theory）以及逻辑学（logic）等数学分支中的一些概念。范畴学主要处理对象（object）、态射（morphism）和变化式（transformation），而这些概念跟编程的联系非常紧密。下图是一些相同的概念分别在不">
+<meta property="og:image" content="http://jiaxf.github.io/images/cat_theory.png">
+<meta property="og:image" content="http://jiaxf.github.io/images/cat_comp1.png">
+<meta property="og:image" content="http://jiaxf.github.io/images/cat_comp2.png">
+<meta property="og:updated_time" content="2016-12-13T06:32:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo使用入门">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="范畴学基本知识">
+<meta name="twitter:description" content="范畴学基本知识范畴学（category theory）是数学中的一个抽象分支，能够形式化诸如集合论（set theory）、类型论（type theory）、群论（group theory）以及逻辑学（logic）等数学分支中的一些概念。范畴学主要处理对象（object）、态射（morphism）和变化式（transformation），而这些概念跟编程的联系非常紧密。下图是一些相同的概念分别在不">
+<meta name="twitter:image" content="http://jiaxf.github.io/images/cat_theory.png">
   
     <link rel="alternative" href="/atom.xml" title="飞天雪的技术博客" type="application/atom+xml">
   
@@ -218,11 +219,11 @@ Quick">
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-category theory" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/11/29/hello-world/" class="article-date">
-      <time datetime="2016-11-29T07:06:55.000Z" itemprop="datePublished">2016-11-29</time>
+      <a href="/2016/12/13/category theory/" class="article-date">
+      <time datetime="2016-12-13T02:45:55.000Z" itemprop="datePublished">2016-12-13</time>
 </a>
     </div>
   
@@ -235,7 +236,7 @@ Quick">
         
   
     <h1 class="article-title" itemprop="name">
-      Hexo使用入门
+      范畴学基本知识
     </h1>
   
 
@@ -250,7 +251,7 @@ Quick">
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -260,15 +261,31 @@ Quick">
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h2 id="范畴学基本知识"><a href="#范畴学基本知识" class="headerlink" title="范畴学基本知识"></a>范畴学基本知识</h2><p>范畴学（category theory）是数学中的一个抽象分支，能够形式化诸如集合论（set theory）、类型论（type theory）、群论（group theory）以及逻辑学（logic）等数学分支中的一些概念。范畴学主要处理对象（object）、态射（morphism）和变化式（transformation），而这些概念跟编程的联系非常紧密。下图是一些相同的概念分别在不同理论下的形式：</p>
+<p><img src="images/cat_theory.png"></p>
+<p>在范畴学中，有一个概念叫做…范畴。有着以下这些组件（component）的搜集（collection）就构成了一个范畴：</p>
+<ul>
+<li>对象的搜集</li>
+<li>态射的搜集</li>
+<li>态射的组合</li>
+<li>identity 这个独特的态射</li>
+</ul>
+<p><strong>对象的搜集</strong></p>
+<p>对象就是数据类型，例如 <code>String</code>、<code>Boolean</code>、<code>Number</code> 和 <code>Object</code> 等等。通常我们把数据类型视作所有可能的值的一个集合（set）。像 <code>Boolean</code> 就可以看作是 <code>[true, false]</code> 的集合，<code>Number</code> 可以是所有实数的一个集合。把类型当作集合对待是有好处的，因为我们可以利用集合论（set theory）处理类型。</p>
+<p><strong>态射的搜集</strong></p>
+<p>态射是标准的、普通的纯函数。</p>
+<p><strong>态射的组合</strong></p>
+<p><code>compose</code> 函数是符合结合律的，这并非巧合，结合律是在范畴学中对任何组合都适用的一个特性。</p>
+<p>这张图展示了什么是组合：</p>
+<p><img src="images/cat_comp1.png"><br><img src="images/cat_comp2.png"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> g = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123; <span class="keyword">return</span> x.length; &#125;;</div><div class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123; <span class="keyword">return</span> x === <span class="number">4</span>; &#125;;</div><div class="line"><span class="keyword">var</span> isFourLetterWord = compose(f, g);</div></pre></td></tr></table></figure>
+<p><strong>identity 这个独特的态射</strong></p>
+<p>让我们介绍一个名为 <code>id</code> 的实用函数。这个函数接受随便什么输入然后原封不动地返回它：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> id = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123; <span class="keyword">return</span> x; &#125;;</div></pre></td></tr></table></figure>
+<p>除了类型和函数，还有什么范畴呢？还有很多，比如我们可以定义一个有向图（directed graph），以节点为对象，以边为态射，以路径连接为组合。还可以定义一个实数类型（Number），以所有的实数对象，以 &gt;= 为态射（实际上任何偏序（partial order）或全序（total order）都可以成为一个范畴）。</p>
+<h3 id="命令式编程-和-申明式编程-区别"><a href="#命令式编程-和-申明式编程-区别" class="headerlink" title="命令式编程 和 申明式编程 区别"></a>命令式编程 和 申明式编程 区别</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 命令式</span></div><div class="line"><span class="keyword">var</span> makes = [];</div><div class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; cars.length; i++) &#123;</div><div class="line">  makes.push(cars[i].make);</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 声明式</span></div><div class="line"><span class="keyword">var</span> makes = cars.map(<span class="function"><span class="keyword">function</span>(<span class="params">car</span>)</span>&#123; <span class="keyword">return</span> car.make; &#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 命令式</span></div><div class="line"><span class="keyword">var</span> authenticate = <span class="function"><span class="keyword">function</span>(<span class="params">form</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> user = toUser(form);</div><div class="line">  <span class="keyword">return</span> logIn(user);</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 声明式</span></div><div class="line"><span class="keyword">var</span> authenticate = compose(logIn, toUser);</div></pre></td></tr></table></figure>
+<p>声明式代码不指定执行顺序，所以它天然地适合进行并行运算。它与纯函数一起解释了为何函数式编程是未来并行计算的一个不错选择——我们真的不需要做什么就能实现一个并行／并发系统。</p>
 
       
     </div>
@@ -277,13 +294,13 @@ Quick">
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/11/29/hello-world/">Hexo使用入门</a></p>
+        <p><span>本文标题:</span><a href="/2016/12/13/category theory/">范畴学基本知识</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 飞天雪 的个人博客">飞天雪</a></p>
-        <p><span>发布时间:</span>2016年11月29日 - 15时06分</p>
-        <p><span>最后更新:</span>2016年11月30日 - 15时53分</p>
+        <p><span>发布时间:</span>2016年12月13日 - 10时45分</p>
+        <p><span>最后更新:</span>2016年12月13日 - 14时32分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/11/29/hello-world/" title="Hexo使用入门">http://jiaxf.github.io/2016/11/29/hello-world/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://jiaxf.github.io/2016/11/29/hello-world/　　作者: 飞天雪" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/13/category theory/" title="范畴学基本知识">http://jiaxf.github.io/2016/12/13/category theory/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://jiaxf.github.io/2016/12/13/category theory/　　作者: 飞天雪" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -296,18 +313,18 @@ Quick">
 
 <nav id="article-nav">
   
-    <a href="/2016/11/30/reactStudy/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/12/13/javascriptIntroduce/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          React入门
+          前端知识学习（摘自阮一峰博客）
         
       </div>
     </a>
   
   
-    <a href="/2016/11/29/javascript错误/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">js错误类型</div>
+    <a href="/2016/12/12/FP/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">函数式编程入门</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -318,7 +335,7 @@ Quick">
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#范畴学基本知识"><span class="toc-number">1.</span> <span class="toc-text">范畴学基本知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令式编程-和-申明式编程-区别"><span class="toc-number">1.1.</span> <span class="toc-text">命令式编程 和 申明式编程 区别</span></a></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -366,7 +383,7 @@ Quick">
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/11/29/hello-world/" data-title="Hexo使用入门" data-url="http://jiaxf.github.io/2016/11/29/hello-world/"></div>
+    <div class="ds-thread" data-thread-key="2016/12/13/category theory/" data-title="范畴学基本知识" data-url="http://jiaxf.github.io/2016/12/13/category theory/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -389,13 +406,13 @@ Quick">
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/11/30/reactStudy/" title="上一篇: React入门">
+            <a href="/2016/12/13/javascriptIntroduce/" title="上一篇: 前端知识学习（摘自阮一峰博客）">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2016/11/29/javascript错误/" title="下一篇: js错误类型">
+            <a href="/2016/12/12/FP/" title="下一篇: 函数式编程入门">
                 <i class="fa fa-angle-right"></i>
             </a>
         
