@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jiaxf.github.io/2016/12/13/javascriptIntroduce/</loc>
+    
+    <lastmod>2016-12-14T01:40:50.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jiaxf.github.io/2015/02/14/2015-02-14-php%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
     
     <lastmod>2016-12-13T08:14:07.000Z</lastmod>
@@ -33,13 +40,6 @@
     <loc>http://jiaxf.github.io/about/index.html</loc>
     
     <lastmod>2016-12-13T08:01:24.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jiaxf.github.io/2016/12/13/javascriptIntroduce/</loc>
-    
-    <lastmod>2016-12-13T08:00:50.000Z</lastmod>
     
   </url>
   

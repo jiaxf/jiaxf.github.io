@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jiaxf.github.io/"/>
-  <updated>2016-12-13T08:00:50.000Z</updated>
+  <updated>2016-12-14T01:40:50.000Z</updated>
   <id>http://jiaxf.github.io/</id>
   
   <author>
@@ -20,14 +20,15 @@
     <link href="http://jiaxf.github.io/2016/12/13/javascriptIntroduce/"/>
     <id>http://jiaxf.github.io/2016/12/13/javascriptIntroduce/</id>
     <published>2016-12-13T06:32:42.000Z</published>
-    <updated>2016-12-13T08:00:50.000Z</updated>
+    <updated>2016-12-14T01:40:50.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前端开发的历史和趋势"><a href="#前端开发的历史和趋势" class="headerlink" title="前端开发的历史和趋势"></a>前端开发的历史和趋势</h1><hr>
 <h2 id="什么是前端"><a href="#什么是前端" class="headerlink" title="什么是前端"></a>什么是前端</h2><ul>
 <li>前端：针对浏览器的开发，代码在浏览器运行</li>
-<li>后端：针对服务器的开发，代码在服务器运行<a id="more"></a>
-<img src="/img/frontend.png" alt=""></li>
+<li>后端：针对服务器的开发，代码在服务器运行</li>
 </ul>
+<a id="more"></a>
+<p><img src="/img/frontend.png" alt=""></p>
 <hr>
 <h2 id="前后端不分的时代"><a href="#前后端不分的时代" class="headerlink" title="前后端不分的时代"></a>前后端不分的时代</h2><p>互联网发展的早期，前后端开发是一体的，前端代码是后端代码的一部分。</p>
 <ol>
@@ -147,7 +148,8 @@
       &lt;h1 id=&quot;前端开发的历史和趋势&quot;&gt;&lt;a href=&quot;#前端开发的历史和趋势&quot; class=&quot;headerlink&quot; title=&quot;前端开发的历史和趋势&quot;&gt;&lt;/a&gt;前端开发的历史和趋势&lt;/h1&gt;&lt;hr&gt;
 &lt;h2 id=&quot;什么是前端&quot;&gt;&lt;a href=&quot;#什么是前端&quot; class=&quot;headerlink&quot; title=&quot;什么是前端&quot;&gt;&lt;/a&gt;什么是前端&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;前端：针对浏览器的开发，代码在浏览器运行&lt;/li&gt;
-&lt;li&gt;后端：针对服务器的开发，代码在服务器运行
+&lt;li&gt;后端：针对服务器的开发，代码在服务器运行&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
