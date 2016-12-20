@@ -156,7 +156,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/js/" style="font-size: 17.5px;">js</a> <a href="/tags/jsx/" style="font-size: 10px;">jsx</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/pattern/" style="font-size: 10px;">pattern</a> <a href="/tags/php/" style="font-size: 12.5px;">php</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/函数式编程/" style="font-size: 15px;">函数式编程</a>
+                        <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/js/" style="font-size: 17.5px;">js</a> <a href="/tags/jsx/" style="font-size: 10px;">jsx</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/pattern/" style="font-size: 10px;">pattern</a> <a href="/tags/php/" style="font-size: 12.5px;">php</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/函数式编程/" style="font-size: 15px;">函数式编程</a> <a href="/tags/缓存/" style="font-size: 10px;">缓存</a>
                     </div>
                 </section>
                 
@@ -240,6 +240,243 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-curry" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/20/curry/" class="article-date">
+      <time datetime="2016-12-20T04:02:11.000Z" itemprop="datePublished">2016-12-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/20/curry/">函数式编程入门</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="curring"><a href="#curring" class="headerlink" title="curring"></a>curring</h2><p>A curried function is one where multiple arguments are descirbed by a series of one<br>argument funtions.For example, curried addition would be :</p>
+<pre><code>记录传入的参数，在需要的时候求值。
+</code></pre><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">var</span> curry = require(<span class="string">'curry'</span>)</div><div class="line"><span class="selector-tag">var</span> add = curry(function(<span class="selector-tag">a</span>, b)&#123; return <span class="selector-tag">a</span> + b&#125;)</div><div class="line"><span class="selector-tag">var</span> add100 = add(<span class="number">100</span>)</div><div class="line"><span class="function"><span class="title">add100</span><span class="params">(<span class="number">1</span>)</span></span> <span class="comment">// =101</span></div></pre></td></tr></table></figure>
+<p>Curry allows you can aslo call a function with multiple arguments at once:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">var</span> sum3 = curry(function(<span class="selector-tag">a</span>, <span class="selector-tag">b</span>, c) &#123; return <span class="selector-tag">a</span> + <span class="selector-tag">b</span> + c&#125;)</div><div class="line"><span class="function"><span class="title">sum3</span><span class="params">(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span></span> <span class="comment">// =6</span></div><div class="line"><span class="function"><span class="title">sum3</span><span class="params">(<span class="number">1</span>)</span><span class="params">(<span class="number">2</span>,<span class="number">3</span>)</span></span> <span class="comment">// =6</span></div><div class="line"><span class="function"><span class="title">sum3</span><span class="params">(<span class="number">1</span>,<span class="number">2</span>)</span><span class="params">(<span class="number">3</span>)</span></span> <span class="comment">// =6</span></div></pre></td></tr></table></figure>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/12/20/curry/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-fp2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/20/fp2/" class="article-date">
+      <time datetime="2016-12-20T04:02:11.000Z" itemprop="datePublished">2016-12-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/20/fp2/">函数式编程入门</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="Functional-programs"><a href="#Functional-programs" class="headerlink" title="Functional programs"></a>Functional programs</h1><h2 id="PURE-FUNCTIONS"><a href="#PURE-FUNCTIONS" class="headerlink" title="PURE FUNCTIONS"></a>PURE FUNCTIONS</h2><pre><code>Pure functions are functions that have no side-effects.They don&apos;t assign to any outside variables, they don&apos;t consume input, they don&apos;t produce output, they don&apos;t read from or writ to a database, they don&apos;t modify the parameters they&apos;re passed, etc.
+
+The basic idea is that, if you call a function with the same inputs over and over again, you alwyas get the same result.
+
+You can certainly do things with impure functions(and you must, if your program is going to do amything interesting), but for the most part you&apos;ll want to keep most of your funtions pure.
+</code></pre><h2 id="IMMUTABILITY"><a href="#IMMUTABILITY" class="headerlink" title="IMMUTABILITY"></a>IMMUTABILITY</h2><pre><code>&quot;Immutable&quot; mean &quot;unchangeable&quot;.
+
+Immutability goes hand-in-hand with pure functions. Since pure functions aren&apos;t allowed to have side-effects, they aren&apos;t allowed
+to change outside data structures.They are forced to work with data in an immutable way.
+</code></pre><h3 id="Replace-loops-with-collection-iteration-functions"><a href="#Replace-loops-with-collection-iteration-functions" class="headerlink" title="Replace loops with collection-iteration functions"></a>Replace loops with collection-iteration functions</h3><p>（1）FOREACH</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// replace this:</span></div><div class="line"><span class="keyword">for</span>(<span class="keyword">const</span> value <span class="keyword">of</span> myArray)&#123;</div><div class="line">  <span class="built_in">console</span>.log(value);</div><div class="line">&#125;</div><div class="line"><span class="comment">// with:</span></div><div class="line">forEach(<span class="function"><span class="params">value</span> =&gt;</span> <span class="built_in">console</span>.log(value), myArray);</div></pre></td></tr></table></figure>
+<p>(2) MAP</p>
+<pre><code>Like `forEach`, `map` applies a function to each element of an array.However, unlike `forEach`, map collects the results of aaplying the function into a new array and returns it.
+</code></pre><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">map(x =&gt; x * <span class="number">2</span>, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]) <span class="comment">// --&gt;[2,4,6]</span></div><div class="line"></div><div class="line"><span class="comment">// or</span></div><div class="line"></div><div class="line">const double = x =&gt; x * <span class="number">2</span>;</div><div class="line">map(double, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</div></pre></td></tr></table></figure>
+<p>(3) FILTER/REJECT</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">const isEven = x =&gt; x%<span class="number">2</span> ===<span class="number">0</span></div><div class="line">filter(isEven, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]) <span class="comment">// --&gt; [2,4]</span></div></pre></td></tr></table></figure>
+<p><code>filter</code></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-redis" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/20/redis/" class="article-date">
+      <time datetime="2016-12-20T03:13:01.000Z" itemprop="datePublished">2016-12-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/20/redis/">Redis学习记录</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="Redis学习记录"><a href="#Redis学习记录" class="headerlink" title="Redis学习记录"></a>Redis学习记录</h1><p>业界常用的一些 key-value分布式缓存系统如下：</p>
+<ul>
+<li>Redis</li>
+<li>Memcached</li>
+<li>Cassandra（Facebook 开源）</li>
+<li>Tokyo Tyrant (Tokyo Cabinet)</li>
+</ul>
+<h2 id="Redis的几个特点："><a href="#Redis的几个特点：" class="headerlink" title="Redis的几个特点："></a>Redis的几个特点：</h2><ul>
+<li>Redis 是一个 key-value 的缓存(cache)和存储(store)系统（适合作缓存或DB）</li>
+<li>支持丰富的数据结构<ul>
+<li>List 就专门用于存储列表型数据，默认按操作时间排序</li>
+<li>Sorted Set 可以按分数排序元素，分数是一种广义概念，可以是时间或评分</li>
+<li>其丰富的数据结构为日后扩展提供了很大的方便。</li>
+</ul>
+</li>
+<li>提供的所有操作都是原子操作，为并发天然保驾护航。</li>
+<li>超快的性能，见其官方性能测试《<a href="https://redis.io/topics/benchmarks" target="_blank" rel="external">How fast is Redis?</a>》。</li>
+<li>拥有比较成熟的Java客户端 - Jedis，像新浪微博都是使用它作为客户端。（官方推荐的Clients）</li>
+</ul>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 查看redis的连接数</span></div><div class="line">sudo netstat -antp |<span class="string"> grep 6379 </span>|<span class="string"> wc -l</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：<code>redis</code>关闭集群链接时异常导致连接泄漏</p>
+</blockquote>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">redis<span class="selector-class">.max</span><span class="selector-class">.idle</span><span class="selector-class">.num</span>=<span class="number">32768</span></div><div class="line">redis<span class="selector-class">.min</span><span class="selector-class">.idle</span><span class="selector-class">.num</span>=<span class="number">30</span></div><div class="line">redis<span class="selector-class">.pool</span><span class="selector-class">.behaviour</span>=LIFO</div><div class="line">redis<span class="selector-class">.time</span><span class="selector-class">.between</span><span class="selector-class">.eviction</span><span class="selector-class">.runs</span><span class="selector-class">.seconds</span>=<span class="number">1</span></div><div class="line">redis<span class="selector-class">.num</span><span class="selector-class">.tests</span><span class="selector-class">.per</span><span class="selector-class">.eviction</span><span class="selector-class">.run</span>=<span class="number">10</span></div><div class="line">redis<span class="selector-class">.min</span><span class="selector-class">.evictable</span><span class="selector-class">.idle</span><span class="selector-class">.time</span><span class="selector-class">.minutes</span>=<span class="number">5</span></div><div class="line">redis<span class="selector-class">.max</span><span class="selector-class">.evictable</span><span class="selector-class">.idle</span><span class="selector-class">.time</span><span class="selector-class">.minutes</span>=<span class="number">30</span></div></pre></td></tr></table></figure>
+<p>LIFO“后进先出”栈方式 有效地利用了空闲队列里的热点池对象资源，随着流量的下降会使一些池对象长时间未被使用而空闲着，最终它们将被淘汰驱逐；</p>
+<p>而 FIFO“先进先出”队列方式 虽然使空闲队列里所有池对象都能在一段时间里被使用，看起来它好像分散了资源的请求，但其实这不利于资源的释放。<br>而这也是“客户端连接数一直降不下来”的根源之一。</p>
+<p><strong>结论： 1. 对象池的空闲队列行为（采用LIFO“后进先出”栈方式）</strong></p>
+<p><strong>2. 注意关闭集群链接时异常导致连接泄漏</strong></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-FP" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -351,7 +588,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 帮助函数：</span></div><div class="line"><span class="comment">// ===================</span></div><div class="line"><span class="comment">// $ :: String -&gt; IO DOM</span></div><div class="line"><span class="keyword">var</span> $ = <span class="function"><span class="keyword">function</span>(<span class="params">selector</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> IO(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">document</span>.querySelector(selector)</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// getVal :: String -&gt; IO String</span></div><div class="line"><span class="keyword">var</span> getVal = compose(map(_.prop(<span class="string">'value'</span>)), $);</div><div class="line"></div><div class="line"><span class="comment">// Exapmle</span></div><div class="line"><span class="comment">// ===================</span></div><div class="line"><span class="comment">// signIn :: String -&gt; String -&gt; Bool -&gt; User</span></div><div class="line"><span class="keyword">var</span> signIn = curry(<span class="function"><span class="keyword">function</span>(<span class="params">username, password, remember_me</span>)) </span>&#123;<span class="comment">/* singing in */</span>&#125;</div><div class="line"></div><div class="line">IO.of(signIn).ap(getVal(<span class="string">'#email'</span>)).ap(getVal(<span class="string">'#password'</span>)).ap(IO.of(<span class="literal">false</span>));</div></pre></td></tr></table></figure>
 <p><code>signIn</code> 是一个接收 3 个参数的 curry 函数，因此我们需要调用 <code>ap</code> 3 次。在每一次的 <code>ap</code> 调用中，<code>signIn</code> 就收到一个参数然后运行，直到所有的参数都传进来，它也就执行完毕了。我们可以继续扩展这种模式，处理任意多的参数。另外，左边两个参数在使用 getVal 调用后自然而然地成为了一个 <code>IO</code>，但是最右边的那个却需要手动 <code>lift</code>，然后变成一个 <code>IO</code>，这是因为 <code>ap</code> 需要调用者及其参数都属于同一类型。</p>
 <h2 id="lift"><a href="#lift" class="headerlink" title="lift"></a>lift</h2><p>我们来试试以一种 pointfree 的方式调用 applicative functor。因为 <code>map</code> 等价于 <code>of/ap</code>，那么我们就可以定义无数个能够 <code>ap</code> 通用函数。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> liftA2 = curry(<span class="function"><span class="keyword">function</span>(<span class="params">f, functor1, functor2</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> functor1.map(f).ap(functor2);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> liftA3 = curry(<span class="function"><span class="keyword">function</span>(<span class="params">f, functor1, functor2, functor3</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> functor1.map(f).ap(functor2).ap(functor3);</div><div class="line">&#125;)</div><div class="line"><span class="comment">// liftA4, etc</span></div></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> liftA2 = curry(<span class="function"><span class="keyword">function</span><span class="params">(f, functor1, functor2)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> functor1.map(f).ap(functor2);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> liftA3 = curry(<span class="function"><span class="keyword">function</span><span class="params">(f, functor1, functor2, functor3)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> functor1.map(f).ap(functor2).ap(functor3);</div><div class="line">&#125;)</div><div class="line"><span class="comment">// liftA4, etc</span></div></pre></td></tr></table></figure>
 <h2 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h2><p>在haskell、scala、PureScript以及swift等语言中，开发者可以创建自定义的中缀操作符(infix operators)</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-- haskell</div><div class="line">add <span class="tag">&lt;<span class="name">$</span>&gt;</span> Right 2 <span class="tag">&lt;<span class="name">*</span>&gt;</span> Right 3</div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">map(add, Right(<span class="number">2</span>)).ap(Right(<span class="number">3</span>))</div></pre></td></tr></table></figure>
@@ -359,10 +596,10 @@
 <h2 id="衍生函数（derived-function）"><a href="#衍生函数（derived-function）" class="headerlink" title="衍生函数（derived function）"></a>衍生函数（derived function）</h2><p><code>of/ap</code> 等价于<code>map</code>。</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 从of/ap衍生出的map</span></div><div class="line">X.prototype.map = function(f) &#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.<span class="keyword">constructor</span>.of(f).ap(<span class="keyword">this</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>如果已经有<code>chain</code>函数，可以免费得到functor 和 applicative：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 从chain 衍生出的map</span></div><div class="line">X.prototype.map = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> m = <span class="keyword">this</span>;</div><div class="line">  <span class="keyword">return</span> m.chain(<span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> m.constructor.of(f(a));</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 从 chain/map 衍生出的ap</span></div><div class="line">X.prototype.ap = <span class="function"><span class="keyword">function</span>(<span class="params">other</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.chain(<span class="function"><span class="keyword">function</span>(<span class="params">f</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> other.map(f);</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 从chain 衍生出的map</span></div><div class="line">X.prototype.map = <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</div><div class="line">  <span class="keyword">var</span> m = <span class="keyword">this</span>;</div><div class="line">  <span class="keyword">return</span> m.chain(<span class="function"><span class="keyword">function</span><span class="params">(a)</span> </span>&#123;</div><div class="line">      <span class="keyword">return</span> m.constructor.of(f(a));</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 从 chain/map 衍生出的ap</span></div><div class="line">X.prototype.ap = <span class="function"><span class="keyword">function</span><span class="params">(other)</span> </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.chain(<span class="function"><span class="keyword">function</span><span class="params">(f)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> other.map(f);</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="定律"><a href="#定律" class="headerlink" title="定律"></a>定律</h2><p>applicative functor 是“组合关闭”（closed under composition）的，意味着 <code>ap</code> 永远不会改变容器类型。</p>
 <p>###　同一律<br><figure class="highlight gcode"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 同一律</span></div><div class="line">A.of<span class="comment">(id)</span>.ap<span class="comment">(v)</span> == v</div></pre></td></tr></table></figure></p>
-<h3 id="同态"><a href="#同态" class="headerlink" title="同态"></a>同态</h3><figure class="highlight ceylon"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//同态</span></div><div class="line">A.<span class="keyword">of</span>(f).ap(A.<span class="keyword">of</span>(x)) == A.<span class="keyword">of</span>(f(x))</div></pre></td></tr></table></figure>
+<h3 id="同态"><a href="#同态" class="headerlink" title="同态"></a>同态</h3><figure class="highlight gcode"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//同态</span></div><div class="line">A.of<span class="comment">(f)</span>.ap<span class="comment">(A.of(x)</span>) == A.of<span class="comment">(f(x)</span>)</div></pre></td></tr></table></figure>
 <p>同态就是一个能够保持接结构的映射（structure preserving map).实际上，funcotr就是一个再不通范畴间的同态，因为funcotr在经过映射之后保持了原始范畴的结构。</p>
 <h3 id="互换（interchange）"><a href="#互换（interchange）" class="headerlink" title="互换（interchange）"></a>互换（interchange）</h3><p>互换（interchange）表明的是选择让函数再<code>ap</code>的左边还是右边发生lift是无关紧要的。</p>
 <figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 互换</span></div><div class="line">v.ap(A.<span class="keyword">of</span>(x)) == A.<span class="keyword">of</span>(<span class="function"><span class="keyword">function</span><span class="params">(f)</span> <span class="comment">&#123; return f(x)&#125;</span>).<span class="title">ap</span><span class="params">(v)</span></span></div></pre></td></tr></table></figure>
@@ -768,221 +1005,10 @@
 
 
   
-    <article id="post-javascript错误" class="article article-type-post" itemscope itemprop="blogPost">
   
-    <div class="article-meta">
-      <a href="/2016/11/29/javascript错误/" class="article-date">
-      <time datetime="2016-11-29T05:51:02.000Z" itemprop="datePublished">2016-11-29</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/29/javascript错误/">js错误类型</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="JavaScript原生错误类型"><a href="#JavaScript原生错误类型" class="headerlink" title="JavaScript原生错误类型"></a>JavaScript原生错误类型</h1><p>Error对象是最一遍的错误类型,在它基础上,JavaScript还定义了其他6种错误派生对象.</p>
-<h2 id="1-SyntaxError-解析代码时发生的错误"><a href="#1-SyntaxError-解析代码时发生的错误" class="headerlink" title="(1) SyntaxError 解析代码时发生的错误."></a>(1) SyntaxError 解析代码时发生的错误.</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 变量名错误</span></div><div class="line"><span class="keyword">var</span> <span class="number">1</span>a;</div><div class="line"></div><div class="line"><span class="comment">// 缺少括号</span></div><div class="line"><span class="built_in">console</span>.log <span class="string">'Hello'</span>);</div></pre></td></tr></table></figure>
-<h2 id="2-ReferenceError-引用一个不存在的变量时发生的错误"><a href="#2-ReferenceError-引用一个不存在的变量时发生的错误" class="headerlink" title="(2) ReferenceError 引用一个不存在的变量时发生的错误."></a>(2) ReferenceError 引用一个不存在的变量时发生的错误.</h2><figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">unknowVariable</div><div class="line"></div><div class="line">// ReferenceError: unknownVariable <span class="keyword">is</span> <span class="keyword">not</span> defined</div></pre></td></tr></table></figure>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/11/29/javascript错误/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-2015-02-14-php学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/02/14/2015-02-14-php学习笔记/" class="article-date">
-      <time datetime="2015-02-13T16:00:00.000Z" itemprop="datePublished">2015-02-14</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/02/14/2015-02-14-php学习笔记/">php学习笔记</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="php学习笔记"><a href="#php学习笔记" class="headerlink" title="php学习笔记"></a>php学习笔记</h1><h2 id="php能做什么？"><a href="#php能做什么？" class="headerlink" title="php能做什么？"></a>php能做什么？</h2><pre><code>php能够生成动态页面内容；
-php能够创建、打开、读取、写入、删除并关闭服务器上的文件；
-php能够接收表单数据；
-php能够发送并取回cookie；
-pph能够添加、删除、修改数据库中的数据； 
-php能够限制用户访问网站中的某些页面；
-php能够对数据进行加密；
-</code></pre><h2 id="为什么使用php？"><a href="#为什么使用php？" class="headerlink" title="为什么使用php？"></a>为什么使用php？</h2><pre><code>php运行于各种平台
-php兼容所有服务器（apache\iis）
-php支持多种数据库
-php高效，易于学习
-</code></pre>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/02/14/2015-02-14-php学习笔记/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-2015-02-14-php数据类型" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/02/14/2015-02-14-php数据类型/" class="article-date">
-      <time datetime="2015-02-13T16:00:00.000Z" itemprop="datePublished">2015-02-14</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/02/14/2015-02-14-php数据类型/">php数据类型</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="php数据类型"><a href="#php数据类型" class="headerlink" title="php数据类型"></a>php数据类型</h2><p><strong>字符串、整数、浮点数、逻辑、数组、对象、NULL。</strong></p>
-<p><em>PHP var_dump() 会返回变量的数据类型和值</em></p>
-<h3 id="PHP-字符串"><a href="#PHP-字符串" class="headerlink" title="PHP 字符串"></a>PHP 字符串</h3><p> 字符串可以是引号内的任何文本,可以使用单引号或双引号：</p>
-<h1 id="学习笔记"><a href="#学习笔记" class="headerlink" title="学习笔记"></a>学习笔记</h1><h3 id="PHP整数"><a href="#PHP整数" class="headerlink" title="PHP整数"></a>PHP整数</h3><p> PHP 整数可以用三种格式规定整数：十进制、十六进制（前缀是 0x）或八进制（前缀是 0）</p>
-<h3 id="PHP浮点数"><a href="#PHP浮点数" class="headerlink" title="PHP浮点数"></a>PHP浮点数</h3><p>　浮点数是有小数点或指数形式的数字<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/02/14/2015-02-14-php数据类型/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 </div>
       <footer id="footer">
