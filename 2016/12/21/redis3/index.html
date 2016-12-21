@@ -3,21 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>函数式编程入门（2） | 飞天雪的技术博客</title>
+  <title>Redis学习记录3 | 飞天雪的技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Applicative functor应用applicative functor作为一个接口可以让不通funcotr可以相互应用（apply）的能力。
-协调与激励1234567// Http.get :: String -&amp;gt; Task Error HTMLvar renderPage = curry(function(destinations, event) &amp;#123;    /* ren">
+  <meta name="description" content="Redis优化配置和redis.conf说明
+redis.conf 配置参数：
+
+12345678910111213141516171819202122#是否作为守护进程运行daemonize yes#如以后台进程运行，则需指定一个pid，默认为/var/run/redis.pidpidfile redis.pid#绑定主机IP，默认值为127.0.0.1#bind 127.0.0.1#Redis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="函数式编程入门（2）">
-<meta property="og:url" content="http://jiaxf.github.io/2016/12/16/applicativeFunctor/index.html">
+<meta property="og:title" content="Redis学习记录3">
+<meta property="og:url" content="http://jiaxf.github.io/2016/12/21/redis3/index.html">
 <meta property="og:site_name" content="飞天雪的技术博客">
-<meta property="og:description" content="Applicative functor应用applicative functor作为一个接口可以让不通funcotr可以相互应用（apply）的能力。
-协调与激励1234567// Http.get :: String -&amp;gt; Task Error HTMLvar renderPage = curry(function(destinations, event) &amp;#123;    /* ren">
-<meta property="og:updated_time" content="2016-12-19T01:53:44.000Z">
+<meta property="og:description" content="Redis优化配置和redis.conf说明
+redis.conf 配置参数：
+
+12345678910111213141516171819202122#是否作为守护进程运行daemonize yes#如以后台进程运行，则需指定一个pid，默认为/var/run/redis.pidpidfile redis.pid#绑定主机IP，默认值为127.0.0.1#bind 127.0.0.1#Redis">
+<meta property="og:updated_time" content="2016-12-21T01:53:16.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="函数式编程入门（2）">
-<meta name="twitter:description" content="Applicative functor应用applicative functor作为一个接口可以让不通funcotr可以相互应用（apply）的能力。
-协调与激励1234567// Http.get :: String -&amp;gt; Task Error HTMLvar renderPage = curry(function(destinations, event) &amp;#123;    /* ren">
+<meta name="twitter:title" content="Redis学习记录3">
+<meta name="twitter:description" content="Redis优化配置和redis.conf说明
+redis.conf 配置参数：
+
+12345678910111213141516171819202122#是否作为守护进程运行daemonize yes#如以后台进程运行，则需指定一个pid，默认为/var/run/redis.pidpidfile redis.pid#绑定主机IP，默认值为127.0.0.1#bind 127.0.0.1#Redis">
   
     <link rel="alternative" href="/atom.xml" title="飞天雪的技术博客" type="application/atom+xml">
   
@@ -240,11 +246,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-applicativeFunctor" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-redis3" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/12/16/applicativeFunctor/" class="article-date">
-      <time datetime="2016-12-16T06:15:09.000Z" itemprop="datePublished">2016-12-16</time>
+      <a href="/2016/12/21/redis3/" class="article-date">
+      <time datetime="2016-12-21T01:39:14.000Z" itemprop="datePublished">2016-12-21</time>
 </a>
     </div>
   
@@ -257,7 +263,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      函数式编程入门（2）
+      Redis学习记录3
     </h1>
   
 
@@ -272,7 +278,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -282,33 +288,45 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="Applicative-functor"><a href="#Applicative-functor" class="headerlink" title="Applicative functor"></a>Applicative functor</h1><p>应用applicative functor作为一个接口可以让不通funcotr可以相互应用（apply）的能力。</p>
-<h2 id="协调与激励"><a href="#协调与激励" class="headerlink" title="协调与激励"></a>协调与激励</h2><figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Http.get :: String -&gt; Task Error HTML</span></div><div class="line"><span class="keyword">var</span> renderPage = curry(<span class="function"><span class="keyword">function</span></span>(destinations, event) &#123;</div><div class="line">    <span class="comment">/* render page */</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line">Task.of(renderPage).ap(Http.<span class="keyword">get</span>(<span class="string">'/destinations'</span>)).ap(Http.<span class="keyword">get</span>(<span class="string">'/events'</span>))</div><div class="line"><span class="comment">// Task("&lt;div&gt;some page with dest and events&lt;/div&gt;")</span></div></pre></td></tr></table></figure>
-<p>两个请求将会同时立即执行，当两者的响应都返回之后，renderPage 就会被调用。这与 monad 版本的那种必须等待前一个任务完成才能继续执行后面的操作完全不同。本来我们就无需根据目的地来获取事件，因此也就不需要依赖顺序执行。</p>
-<p>再次强调，因为我们是使用局部调用的函数来达成上述结果的，所以必须要保证 renderpage 是 curry 函数，否则它就不会一直等到两个 Task 都完成。而且如果你碰巧自己做过类似的事，那你一定会感激 applicative functor 这个异常简洁的接口的。这就是那种能够让我们离“奇点”（singularity）更近一步的优美代码。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 帮助函数：</span></div><div class="line"><span class="comment">// ===================</span></div><div class="line"><span class="comment">// $ :: String -&gt; IO DOM</span></div><div class="line"><span class="keyword">var</span> $ = <span class="function"><span class="keyword">function</span>(<span class="params">selector</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> IO(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">document</span>.querySelector(selector)</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// getVal :: String -&gt; IO String</span></div><div class="line"><span class="keyword">var</span> getVal = compose(map(_.prop(<span class="string">'value'</span>)), $);</div><div class="line"></div><div class="line"><span class="comment">// Exapmle</span></div><div class="line"><span class="comment">// ===================</span></div><div class="line"><span class="comment">// signIn :: String -&gt; String -&gt; Bool -&gt; User</span></div><div class="line"><span class="keyword">var</span> signIn = curry(<span class="function"><span class="keyword">function</span>(<span class="params">username, password, remember_me</span>)) </span>&#123;<span class="comment">/* singing in */</span>&#125;</div><div class="line"></div><div class="line">IO.of(signIn).ap(getVal(<span class="string">'#email'</span>)).ap(getVal(<span class="string">'#password'</span>)).ap(IO.of(<span class="literal">false</span>));</div></pre></td></tr></table></figure>
-<p><code>signIn</code> 是一个接收 3 个参数的 curry 函数，因此我们需要调用 <code>ap</code> 3 次。在每一次的 <code>ap</code> 调用中，<code>signIn</code> 就收到一个参数然后运行，直到所有的参数都传进来，它也就执行完毕了。我们可以继续扩展这种模式，处理任意多的参数。另外，左边两个参数在使用 getVal 调用后自然而然地成为了一个 <code>IO</code>，但是最右边的那个却需要手动 <code>lift</code>，然后变成一个 <code>IO</code>，这是因为 <code>ap</code> 需要调用者及其参数都属于同一类型。</p>
-<h2 id="lift"><a href="#lift" class="headerlink" title="lift"></a>lift</h2><p>我们来试试以一种 pointfree 的方式调用 applicative functor。因为 <code>map</code> 等价于 <code>of/ap</code>，那么我们就可以定义无数个能够 <code>ap</code> 通用函数。</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> liftA2 = curry(<span class="function"><span class="keyword">function</span><span class="params">(f, functor1, functor2)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> functor1.map(f).ap(functor2);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> liftA3 = curry(<span class="function"><span class="keyword">function</span><span class="params">(f, functor1, functor2, functor3)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> functor1.map(f).ap(functor2).ap(functor3);</div><div class="line">&#125;)</div><div class="line"><span class="comment">// liftA4, etc</span></div></pre></td></tr></table></figure>
-<h2 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h2><p>在haskell、scala、PureScript以及swift等语言中，开发者可以创建自定义的中缀操作符(infix operators)</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-- haskell</div><div class="line">add <span class="tag">&lt;<span class="name">$</span>&gt;</span> Right 2 <span class="tag">&lt;<span class="name">*</span>&gt;</span> Right 3</div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">map(add, Right(<span class="number">2</span>)).ap(Right(<span class="number">3</span>))</div></pre></td></tr></table></figure>
-<p><code>&lt;$&gt;</code> 就是<code>map</code>（亦即<code>fmap</code>）， <code>&lt;*&gt;</code>就是<code>ap</code>。</p>
-<h2 id="衍生函数（derived-function）"><a href="#衍生函数（derived-function）" class="headerlink" title="衍生函数（derived function）"></a>衍生函数（derived function）</h2><p><code>of/ap</code> 等价于<code>map</code>。</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 从of/ap衍生出的map</span></div><div class="line">X.prototype.map = function(f) &#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.<span class="keyword">constructor</span>.of(f).ap(<span class="keyword">this</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>如果已经有<code>chain</code>函数，可以免费得到functor 和 applicative：</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 从chain 衍生出的map</span></div><div class="line">X.prototype.map = <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</div><div class="line">  <span class="keyword">var</span> m = <span class="keyword">this</span>;</div><div class="line">  <span class="keyword">return</span> m.chain(<span class="function"><span class="keyword">function</span><span class="params">(a)</span> </span>&#123;</div><div class="line">      <span class="keyword">return</span> m.constructor.of(f(a));</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 从 chain/map 衍生出的ap</span></div><div class="line">X.prototype.ap = <span class="function"><span class="keyword">function</span><span class="params">(other)</span> </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.chain(<span class="function"><span class="keyword">function</span><span class="params">(f)</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> other.map(f);</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="定律"><a href="#定律" class="headerlink" title="定律"></a>定律</h2><p>applicative functor 是“组合关闭”（closed under composition）的，意味着 <code>ap</code> 永远不会改变容器类型。</p>
-<p>###　同一律<br><figure class="highlight gcode"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 同一律</span></div><div class="line">A.of<span class="comment">(id)</span>.ap<span class="comment">(v)</span> == v</div></pre></td></tr></table></figure></p>
-<h3 id="同态"><a href="#同态" class="headerlink" title="同态"></a>同态</h3><figure class="highlight gcode"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//同态</span></div><div class="line">A.of<span class="comment">(f)</span>.ap<span class="comment">(A.of(x)</span>) == A.of<span class="comment">(f(x)</span>)</div></pre></td></tr></table></figure>
-<p>同态就是一个能够保持接结构的映射（structure preserving map).实际上，funcotr就是一个再不通范畴间的同态，因为funcotr在经过映射之后保持了原始范畴的结构。</p>
-<h3 id="互换（interchange）"><a href="#互换（interchange）" class="headerlink" title="互换（interchange）"></a>互换（interchange）</h3><p>互换（interchange）表明的是选择让函数再<code>ap</code>的左边还是右边发生lift是无关紧要的。</p>
-<figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 互换</span></div><div class="line">v.ap(A.<span class="keyword">of</span>(x)) == A.<span class="keyword">of</span>(<span class="function"><span class="keyword">function</span><span class="params">(f)</span> <span class="comment">&#123; return f(x)&#125;</span>).<span class="title">ap</span><span class="params">(v)</span></span></div></pre></td></tr></table></figure>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var v = <span class="keyword">Task</span>.<span class="keyword">of</span>(_.<span class="keyword">reverse</span>);</div><div class="line">var x = <span class="symbol">'Sparklehorse</span>';</div><div class="line"></div><div class="line">v.ap(<span class="keyword">Task</span>.<span class="keyword">of</span>(x)) == <span class="keyword">Task</span>.<span class="keyword">of</span>(<span class="keyword">function</span>(f) &#123; <span class="keyword">return</span> f(x)&#125;).ap(v)</div></pre></td></tr></table></figure>
-<h3 id="组合（composition"><a href="#组合（composition" class="headerlink" title="组合（composition)"></a>组合（composition)</h3><p>组合不过是在检查标准的函数组合是否适用于容器内部的函数调用。</p>
-<figure class="highlight gcode"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 组合</span></div><div class="line">A.of<span class="comment">(compose)</span>.ap<span class="comment">(u)</span>.ap<span class="comment">(v)</span>.ap<span class="comment">(w)</span> == u.ap<span class="comment">(v.ap(w)</span>);</div></pre></td></tr></table></figure>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> <span class="keyword">u</span> = IO.of(_.toUpper);</div><div class="line"><span class="keyword">var</span> v = IO.of(_.concat(<span class="string">"&amp; beyond"</span>));</div><div class="line"><span class="keyword">var</span> w = IO.of(<span class="string">"lood bath"</span>);</div><div class="line"></div><div class="line">IO.of(_compose).<span class="keyword">ap</span>(<span class="keyword">u</span>).<span class="keyword">ap</span>(v).<span class="keyword">ap</span>(w) == <span class="keyword">u</span>.<span class="keyword">ap</span>(v.<span class="keyword">ap</span>(w))</div></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>函数式嗯编程</p>
+        <h2 id="Redis优化配置和redis-conf说明"><a href="#Redis优化配置和redis-conf说明" class="headerlink" title="Redis优化配置和redis.conf说明"></a>Redis优化配置和redis.conf说明</h2><ol>
+<li>redis.conf 配置参数：</li>
+</ol>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#是否作为守护进程运行</span></div><div class="line">daemonize yes</div><div class="line"></div><div class="line"><span class="meta">#如以后台进程运行，则需指定一个pid，默认为/var/run/redis.pid</span></div><div class="line"></div><div class="line">pidfile redis.pid</div><div class="line"></div><div class="line"><span class="meta">#绑定主机IP，默认值为127.0.0.1</span></div><div class="line"></div><div class="line"><span class="meta">#bind 127.0.0.1</span></div><div class="line"></div><div class="line"><span class="meta">#Redis默认监听端口</span></div><div class="line"></div><div class="line">port <span class="number">6379</span></div><div class="line"></div><div class="line"><span class="meta">#客户端闲置多少秒后，断开连接，默认为300（秒）</span></div><div class="line"></div><div class="line">timeout <span class="number">300</span></div><div class="line"></div><div class="line"><span class="meta">#日志记录等级，有4个可选值，debug，verbose（默认值），notice，warning</span></div><div class="line"></div><div class="line">loglevel verbose</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div></pre></td><td class="code"><pre><div class="line">#指定日志输出的文件名，默认值为stdout，也可设为/dev/null屏蔽日志</div><div class="line"></div><div class="line">logfile stdout</div><div class="line"></div><div class="line">#可用数据库数，默认值为<span class="number">16</span>，默认数据库为<span class="number">0</span></div><div class="line"></div><div class="line">databases <span class="number">16</span></div><div class="line"></div><div class="line">#保存数据到disk的策略</div><div class="line"></div><div class="line">#当有一条Keys数据被改变是，<span class="number">900</span>秒刷新到disk一次</div><div class="line"></div><div class="line">save <span class="number">900</span> <span class="number">1</span></div><div class="line"></div><div class="line">#当有<span class="number">10</span>条Keys数据被改变时，<span class="number">300</span>秒刷新到disk一次</div><div class="line"></div><div class="line">save <span class="number">300</span> <span class="number">10</span></div><div class="line"></div><div class="line">#当有<span class="number">1</span>w条keys数据被改变时，<span class="number">60</span>秒刷新到disk一次</div><div class="line"></div><div class="line">save <span class="number">60</span> <span class="number">10000</span></div><div class="line"></div><div class="line">#当dump.rdb数据库的时候是否压缩数据对象</div><div class="line"></div><div class="line">rdbcompression yes</div><div class="line"></div><div class="line">#本地数据库文件名，默认值为dump.rdb</div><div class="line"></div><div class="line">dbfilename dump.rdb</div><div class="line"></div><div class="line">#本地数据库存放路径，默认值为 ./</div><div class="line"></div><div class="line">dir /var/lib/redis/</div><div class="line"></div><div class="line">########### Replication #####################</div><div class="line"></div><div class="line">#Redis的复制配置</div><div class="line"></div><div class="line"># slaveof &lt;masterip&gt; &lt;masterport&gt; 当本机为从服务时，设置主服务的IP及端口</div><div class="line"></div><div class="line"># masterauth &lt;master-password&gt; 当本机为从服务时，设置主服务的连接密码</div><div class="line"></div><div class="line">#连接密码</div><div class="line"></div><div class="line"># requirepass foobared</div><div class="line"></div><div class="line">#最大客户端连接数，默认不限制</div><div class="line"></div><div class="line"># maxclients <span class="number">128</span></div><div class="line"></div><div class="line">#最大内存使用设置，达到最大内存设置后，Redis会先尝试清除已到期或即将到期的Key，当此方法处理后，任到达最大内存设置，将无法再进行写入操作。</div><div class="line"></div><div class="line"># maxmemory &lt;bytes&gt;</div><div class="line"></div><div class="line">#是否在每次更新操作后进行日志记录，如果不开启，可能会在断电时导致一段时间内的数据丢失。因为redis本身同步数据文件是按上面save条件来同步的，所以有的数据会在一段时间内只存在于内存中。默认值为no</div><div class="line"></div><div class="line">appendonly no</div><div class="line"></div><div class="line">#更新日志文件名，默认值为appendonly.aof</div><div class="line"></div><div class="line">#appendfilename</div><div class="line"></div><div class="line">#更新日志条件，共有<span class="number">3</span>个可选值。no表示等操作系统进行数据缓存同步到磁盘，always表示每次更新操作后手动调用fsync()将数据写到磁盘，everysec表示每秒同步一次（默认值）。</div><div class="line"></div><div class="line"># appendfsync always</div><div class="line"></div><div class="line">appendfsync everysec</div><div class="line"></div><div class="line"># appendfsync no</div><div class="line"></div><div class="line">################ VIRTUAL MEMORY ###########</div><div class="line"></div><div class="line">#是否开启VM功能，默认值为no</div><div class="line"></div><div class="line">vm-enabled no</div><div class="line"></div><div class="line"># vm-enabled yes</div><div class="line"></div><div class="line">#虚拟内存文件路径，默认值为/tmp/redis.swap，不可多个Redis实例共享</div><div class="line"></div><div class="line">vm-swap-file /tmp/redis.swap</div><div class="line"></div><div class="line"># 将所有大于vm-max-memory的数据存入虚拟内存,无论vm-max-memory设置多小,所有索引数据都是内存存储的 (Redis的索引数据就是keys),也就是说,当vm-max-memory设置为<span class="number">0</span>的时候,其实是所有value都存在于磁盘。默认值为<span class="number">0</span>。</div><div class="line"></div><div class="line">vm-max-memory <span class="number">0</span></div><div class="line"></div><div class="line">vm-page-size <span class="number">32</span></div><div class="line"></div><div class="line">vm-pages <span class="number">134217728</span></div><div class="line"></div><div class="line">vm-max-threads <span class="number">4</span></div><div class="line"></div><div class="line">############# ADVANCED CONFIG ###############</div><div class="line"></div><div class="line">glueoutputbuf yes</div><div class="line"></div><div class="line">hash-max-zipmap-entries <span class="number">64</span></div><div class="line"></div><div class="line">hash-max-zipmap-value <span class="number">512</span></div><div class="line"></div><div class="line">#是否重置Hash表</div><div class="line"></div><div class="line">activerehashing yes</div></pre></td></tr></table></figure>
+<p>注意：Redis官方文档对VM的使用提出了一些建议:</p>
+<pre><code>当你的key很小而value很大时,使用VM的效果会比较好.因为这样节约的内存比较大.
+
+当你的key不小时,可以考虑使用一些非常方法将很大的key变成很大的value,比如你可以考虑将key,value组合成一个新的value.
+
+最好使用linux ext3 等对稀疏文件支持比较好的文件系统保存你的swap文件.
+
+vm-max-threads这个参数,可以设置访问swap文件的线程数,设置最好不要超过机器的核数.如果设置为0,那么所有对swap文件的操作都是串行的.可能会造成比较长时间的延迟,但是对数据完整性有很好的保证.
+</code></pre><ol>
+<li>调整系统内核参数</li>
+</ol>
+<p>如果内存情况比较紧张的话，需要设定内核参数：</p>
+<p><code>echo 1 &gt; /proc/sys/vm/overcommit_memory</code></p>
+<p>这里说一下这个配置的含义：/proc/sys/vm/overcommit_memory</p>
+<p>该文件指定了内核针对内存分配的策略，其值可以是0、1、2。</p>
+<p>0，表示内核将检查是否有足够的可用内存供应用进程使用；如果有足够的可用内存，内存申请允许；否则，内存申请失败，并把错误返回给应用进程。</p>
+<p>1，表示内核允许分配所有的物理内存，而不管当前的内存状态如何。</p>
+<p>2，表示内核允许分配超过所有物理内存和交换空间总和的内存</p>
+<p>Redis 在dump数据的时候，会fork出一个子进程，理论上child进程所占用的内存和parent是一样的，比如parent占用的内存为 8G，这个时候也要同样分配8G的内存给child, 如果内存无法负担，往往会造成redis服务器的down机或者IO负载过高，效率下降。所以这里比较优化的内存分配策略应该设置为 1（表示内核允许分配所有的物理内存，而不管当前的内存状态如何）</p>
+<p>一、 运行服务<br><figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># redis-server /etc/redis/redis.conf 开启</span></div><div class="line"></div><div class="line"><span class="meta"># redis-cli shutdown 关闭</span></div></pre></td></tr></table></figure></p>
+<p>二、 测试</p>
+<p>1) 可在后台启动redis服务后，用redis-benchmark命令测试</p>
+<p>2) 通过redis-cli命令实际操作测试</p>
+<p>三、 保存/备份</p>
+<p>数据备份可以通过定期备份该文件实现。</p>
+<p>因为redis是异步写入磁盘的，如果要让内存中的数据马上写入硬盘可以执行如下命令：</p>
+<p><code>redis-cli save 或者 redis-cli -p 6380 save（指定端口）</code></p>
+<p>注意，以上部署操作需要具备一定的权限，比如复制和设定内核参数等。</p>
+<p>执行redis-benchmark命令时也会将内存数据写入硬盘。</p>
+<p>四、 开启端口号</p>
+<p>1) 打开/etc/sysconfig/iptables，</p>
+<p>2) 在-【A INPUT -p tcp -m state –state NEW -m tcp –dport 22 -j ACCEPT】后面，<br> 加上 【-A INPUT -p tcp -m state –state NEW -m tcp –dport 6379 -j ACCEPT】  //这里的6379是Redis默认端口号</p>
+<p>3) 保存，重启防火墙：<code>/etc/init.d/iptables restart</code></p>
 
       
     </div>
@@ -317,13 +335,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/12/16/applicativeFunctor/">函数式编程入门（2）</a></p>
+        <p><span>本文标题:</span><a href="/2016/12/21/redis3/">Redis学习记录3</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Jiaxf 的个人博客">Jiaxf</a></p>
-        <p><span>发布时间:</span>2016年12月16日 - 14时15分</p>
-        <p><span>最后更新:</span>2016年12月19日 - 09时53分</p>
+        <p><span>发布时间:</span>2016年12月21日 - 09时39分</p>
+        <p><span>最后更新:</span>2016年12月21日 - 09时53分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/12/16/applicativeFunctor/" title="函数式编程入门（2）">http://jiaxf.github.io/2016/12/16/applicativeFunctor/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://jiaxf.github.io/2016/12/16/applicativeFunctor/　　作者: Jiaxf" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/21/redis3/" title="Redis学习记录3">http://jiaxf.github.io/2016/12/21/redis3/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://jiaxf.github.io/2016/12/21/redis3/　　作者: Jiaxf" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -336,18 +354,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2016/12/19/FP/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          函数式编程入门
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/12/13/javascriptIntroduce/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">前端知识学习（摘自阮一峰博客）</div>
+    <a href="/2016/12/21/redis2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Redis学习记录2</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -358,7 +367,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Applicative-functor"><span class="toc-number">1.</span> <span class="toc-text">Applicative functor</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#协调与激励"><span class="toc-number">1.1.</span> <span class="toc-text">协调与激励</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lift"><span class="toc-number">1.2.</span> <span class="toc-text">lift</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作符"><span class="toc-number">1.3.</span> <span class="toc-text">操作符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#衍生函数（derived-function）"><span class="toc-number">1.4.</span> <span class="toc-text">衍生函数（derived function）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定律"><span class="toc-number">1.5.</span> <span class="toc-text">定律</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#同态"><span class="toc-number">1.5.1.</span> <span class="toc-text">同态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#互换（interchange）"><span class="toc-number">1.5.2.</span> <span class="toc-text">互换（interchange）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组合（composition"><span class="toc-number">1.5.3.</span> <span class="toc-text">组合（composition)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">1.6.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis优化配置和redis-conf说明"><span class="toc-number">1.</span> <span class="toc-text">Redis优化配置和redis.conf说明</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -406,7 +415,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/12/16/applicativeFunctor/" data-title="函数式编程入门（2）" data-url="http://jiaxf.github.io/2016/12/16/applicativeFunctor/"></div>
+    <div class="ds-thread" data-thread-key="2016/12/21/redis3/" data-title="Redis学习记录3" data-url="http://jiaxf.github.io/2016/12/21/redis3/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -429,13 +438,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/12/19/FP/" title="上一篇: 函数式编程入门">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2016/12/13/javascriptIntroduce/" title="下一篇: 前端知识学习（摘自阮一峰博客）">
+            <a href="/2016/12/21/redis2/" title="下一篇: Redis学习记录2">
                 <i class="fa fa-angle-right"></i>
             </a>
         

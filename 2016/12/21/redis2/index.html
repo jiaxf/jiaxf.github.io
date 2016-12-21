@@ -3,17 +3,30 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2016/11 | 飞天雪的技术博客</title>
+  <title>Redis学习记录2 | 飞天雪的技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="jiaxf&apos;s blog | js | node | javascript">
-<meta property="og:type" content="website">
-<meta property="og:title" content="飞天雪的技术博客">
-<meta property="og:url" content="http://jiaxf.github.io/archives/2016/11/index.html">
+  <meta name="description" content="redis bgrewriteaof问题一、背景
+
+AOF:
+ Redis的AOF机制有点类似于Mysql binlog，是Redis的提供的一种持久化方式（另一种是RDB）， 它会将所有的写命令按照一定频率(no, always, every seconds)写入到日志文件中，当Redis停机 重启后恢复数据库。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis学习记录2">
+<meta property="og:url" content="http://jiaxf.github.io/2016/12/21/redis2/index.html">
 <meta property="og:site_name" content="飞天雪的技术博客">
-<meta property="og:description" content="jiaxf&apos;s blog | js | node | javascript">
+<meta property="og:description" content="redis bgrewriteaof问题一、背景
+
+AOF:
+ Redis的AOF机制有点类似于Mysql binlog，是Redis的提供的一种持久化方式（另一种是RDB）， 它会将所有的写命令按照一定频率(no, always, every seconds)写入到日志文件中，当Redis停机 重启后恢复数据库。">
+<meta property="og:image" content="http://jiaxf.github.io/images/20160203203442_310.png">
+<meta property="og:image" content="http://jiaxf.github.io/images/20160203203443_877.png">
+<meta property="og:updated_time" content="2016-12-21T01:39:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="飞天雪的技术博客">
-<meta name="twitter:description" content="jiaxf&apos;s blog | js | node | javascript">
+<meta name="twitter:title" content="Redis学习记录2">
+<meta name="twitter:description" content="redis bgrewriteaof问题一、背景
+
+AOF:
+ Redis的AOF机制有点类似于Mysql binlog，是Redis的提供的一种持久化方式（另一种是RDB）， 它会将所有的写命令按照一定频率(no, always, every seconds)写入到日志文件中，当Redis停机 重启后恢复数据库。">
+<meta name="twitter:image" content="http://jiaxf.github.io/images/20160203203442_310.png">
   
     <link rel="alternative" href="/atom.xml" title="飞天雪的技术博客" type="application/atom+xml">
   
@@ -39,8 +52,8 @@
           fancybox: true,
           animate: true,
           isHome: false,
-          isPost: false,
-          isArchive: true,
+          isPost: true,
+          isArchive: false,
           isTag: false,
           isCategory: false,
           open_in_new: false
@@ -236,93 +249,242 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-redis2" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/11/30/reactStudy/" class="archive-article-date">
-      <time datetime="2016-11-30T05:51:02.000Z" itemprop="datePublished">11-30</time>
+    <div class="article-meta">
+      <a href="/2016/12/21/redis2/" class="article-date">
+      <time datetime="2016-12-21T00:53:37.000Z" itemprop="datePublished">2016-12-21</time>
 </a>
-        </div>
-         
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/11/30/reactStudy/">React入门</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Redis学习记录2
     </h1>
   
 
-        <div class="article-info info-on-archive">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
     <div class="article-category tagcloud">
     <a class="article-category-link" href="/categories/技术/">技术</a>
     </div>
 
 
-          
+        
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jsx/">jsx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
     </div>
 
-        </div>
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
+      </div>
+      
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/11/29/javascript错误/" class="archive-article-date">
-      <time datetime="2016-11-29T05:51:02.000Z" itemprop="datePublished">11-29</time>
-</a>
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/11/29/javascript错误/">js错误类型</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
+    <div class="article-entry" itemprop="articleBody">
+      
           
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
+        <h2 id="redis-bgrewriteaof问题"><a href="#redis-bgrewriteaof问题" class="headerlink" title="redis bgrewriteaof问题"></a>redis bgrewriteaof问题</h2><p>一、背景</p>
+<ol>
+<li><p>AOF:</p>
+<p> Redis的AOF机制有点类似于Mysql binlog，是Redis的提供的一种持久化方式（另一种是RDB），<br> 它会将所有的写命令按照一定频率(no, always, every seconds)写入到日志文件中，当Redis停机<br> 重启后恢复数据库。</p>
+</li>
+</ol>
+<p><img src="/images/20160203203442_310.png" alt=""><br><a id="more"></a></p>
+<ol>
+<li><p>AOF重写：</p>
+<p>  (1) 随着AOF文件越来越大，里面会有大部分是重复命令或者可以合并的命令（100次incr = set key 100）</p>
+<p>  (2) 重写的好处：减少AOF日志尺寸，减少内存占用，加快数据库恢复时间。</p>
+</li>
+</ol>
+<p><img src="/images/20160203203443_877.png" alt=""></p>
+<p>二、单机多实例可能存在Swap和OOM的隐患:</p>
+<pre><code>由于Redis的单线程模型，理论上每个redis实例只会用到一个CPU, 也就是说可以在一台多核的服务器上
+部署多个实例（实际就是这么做的）。但是Redis的AOF重写是通过fork出一个Redis进程来实现的，
+所以有经验的Redis开发和运维人员会告诉你，在一台服务器上要预留一半的内存（防止出现AOF重写集
+中发生，出现swap和OOM）。
+</code></pre><p>三、最佳实践</p>
+<pre><code>1. meta信息：作为一个redis云系统，需要记录各个维度的数据，比如：业务组、机器、实例、应用、负责人多个维度的数据.
+2. AOF的管理方式：
+
+ (1) 自动：让每个redis决定是否做AOF重写操作（根据auto-aof-rewrite-percentage和auto-aof-rewrite-min-size两个参数）
+
+ (2) crontab: 定时任务，可能仍然会出现多个redis实例，属于一种折中方案。
+
+ (3) remote集中式：
+
+   最终目标是一台机器一个时刻，只有一个redis实例进行AOF重写。
+
+   具体做法其实很简单，以机器为单位，轮询每个机器的实例，如果满足条件就运行(比如currentSize和baseSize满足什么关系)bgrewriteaof命令。
+</code></pre><p>使用client list命令（类似于mysql processlist） <code>redis-cli -h host -p port client list | grep -v</code> “omem=0”，来查询输出缓冲区不为0的客户端连接</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">redis-cli -h <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> -p <span class="number">6379</span> client <span class="type">list</span></div></pre></td></tr></table></figure>
+<p>四、紧急处理和解决方法</p>
+<pre><code>进行主从切换（主从内存使用量不一致），也就是redis-cluster的fail-over操作，继续观察新的
+Master是否有异常，通过观察未出现异常。
+查找到真正的原因后，也就是monitor，关闭掉monitor命令的进程后，内存很快就降下来了。
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/12/21/redis2/">Redis学习记录2</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Jiaxf 的个人博客">Jiaxf</a></p>
+        <p><span>发布时间:</span>2016年12月21日 - 08时53分</p>
+        <p><span>最后更新:</span>2016年12月21日 - 09时39分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/21/redis2/" title="Redis学习记录2">http://jiaxf.github.io/2016/12/21/redis2/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://jiaxf.github.io/2016/12/21/redis2/　　作者: Jiaxf" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
     </div>
 
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
-    </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
+<nav id="article-nav">
+  
+    <a href="/2016/12/21/redis3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Redis学习记录3
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/20/fp2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">函数式编程入门</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#redis-bgrewriteaof问题"><span class="toc-number">1.</span> <span class="toc-text">redis bgrewriteaof问题</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/12/21/redis2/" data-title="Redis学习记录2" data-url="http://jiaxf.github.io/2016/12/21/redis2/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jiaxf"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
 
     
 
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/12/21/redis3/" title="上一篇: Redis学习记录3">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2016/12/20/fp2/" title="下一篇: 函数式编程入门">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/redis3/">Redis学习记录3</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/redis2/">Redis学习记录2</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/fp2/">函数式编程入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/curry/">函数式编程入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/redis/">Redis学习记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/FP/">函数式编程入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/applicativeFunctor/">函数式编程入门（2）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/javascriptIntroduce/">前端知识学习（摘自阮一峰博客）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/category theory/">范畴学基本知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/javascriptEvent/">JavaScriptEvent</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/jsPattern/">javascript模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/30/reactStudy/">React入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/29/javascript错误/">js错误类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/14/2015-02-14-php学习笔记/">php学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/14/2015-02-14-php数据类型/">php数据类型</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
@@ -400,17 +562,6 @@ ga('send', 'pageview');
         };
     })
 </script>
-
-    <button class="hide-labels">TAG 开关</button>
-    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js">
-    </script>
-    <script>
-        $(document).ready(function() {
-            $("button").click(function() {
-                $(".article-info").toggle(200);
-            });
-        });
-    </script>
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>

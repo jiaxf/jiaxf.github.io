@@ -156,7 +156,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/js/" style="font-size: 17.5px;">js</a> <a href="/tags/jsx/" style="font-size: 10px;">jsx</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/pattern/" style="font-size: 10px;">pattern</a> <a href="/tags/php/" style="font-size: 12.5px;">php</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/函数式编程/" style="font-size: 15px;">函数式编程</a> <a href="/tags/缓存/" style="font-size: 10px;">缓存</a>
+                        <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/js/" style="font-size: 18px;">js</a> <a href="/tags/jsx/" style="font-size: 10px;">jsx</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/pattern/" style="font-size: 10px;">pattern</a> <a href="/tags/php/" style="font-size: 12px;">php</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/redis/" style="font-size: 14px;">redis</a> <a href="/tags/函数式编程/" style="font-size: 16px;">函数式编程</a> <a href="/tags/缓存/" style="font-size: 14px;">缓存</a>
                     </div>
                 </section>
                 
@@ -241,6 +241,218 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-redis3" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/21/redis3/" class="article-date">
+      <time datetime="2016-12-21T01:39:14.000Z" itemprop="datePublished">2016-12-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/21/redis3/">Redis学习记录3</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="Redis优化配置和redis-conf说明"><a href="#Redis优化配置和redis-conf说明" class="headerlink" title="Redis优化配置和redis.conf说明"></a>Redis优化配置和redis.conf说明</h2><ol>
+<li>redis.conf 配置参数：</li>
+</ol>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#是否作为守护进程运行</span></div><div class="line">daemonize yes</div><div class="line"></div><div class="line"><span class="meta">#如以后台进程运行，则需指定一个pid，默认为/var/run/redis.pid</span></div><div class="line"></div><div class="line">pidfile redis.pid</div><div class="line"></div><div class="line"><span class="meta">#绑定主机IP，默认值为127.0.0.1</span></div><div class="line"></div><div class="line"><span class="meta">#bind 127.0.0.1</span></div><div class="line"></div><div class="line"><span class="meta">#Redis默认监听端口</span></div><div class="line"></div><div class="line">port <span class="number">6379</span></div><div class="line"></div><div class="line"><span class="meta">#客户端闲置多少秒后，断开连接，默认为300（秒）</span></div><div class="line"></div><div class="line">timeout <span class="number">300</span></div><div class="line"></div><div class="line"><span class="meta">#日志记录等级，有4个可选值，debug，verbose（默认值），notice，warning</span></div><div class="line"></div><div class="line">loglevel verbose</div></pre></td></tr></table></figure>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/12/21/redis3/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-redis2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/21/redis2/" class="article-date">
+      <time datetime="2016-12-21T00:53:37.000Z" itemprop="datePublished">2016-12-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/21/redis2/">Redis学习记录2</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="redis-bgrewriteaof问题"><a href="#redis-bgrewriteaof问题" class="headerlink" title="redis bgrewriteaof问题"></a>redis bgrewriteaof问题</h2><p>一、背景</p>
+<ol>
+<li><p>AOF:</p>
+<p> Redis的AOF机制有点类似于Mysql binlog，是Redis的提供的一种持久化方式（另一种是RDB），<br> 它会将所有的写命令按照一定频率(no, always, every seconds)写入到日志文件中，当Redis停机<br> 重启后恢复数据库。</p>
+</li>
+</ol>
+<p><img src="/images/20160203203442_310.png" alt=""><br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/12/21/redis2/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-fp2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/20/fp2/" class="article-date">
+      <time datetime="2016-12-20T04:02:11.000Z" itemprop="datePublished">2016-12-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/20/fp2/">函数式编程入门</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h1 id="Functional-programs"><a href="#Functional-programs" class="headerlink" title="Functional programs"></a>Functional programs</h1><h2 id="PURE-FUNCTIONS"><a href="#PURE-FUNCTIONS" class="headerlink" title="PURE FUNCTIONS"></a>PURE FUNCTIONS</h2><pre><code>Pure functions are functions that have no side-effects.They don&apos;t assign to any outside variables, they don&apos;t consume input, they don&apos;t produce output, they don&apos;t read from or writ to a database, they don&apos;t modify the parameters they&apos;re passed, etc.
+
+The basic idea is that, if you call a function with the same inputs over and over again, you alwyas get the same result.
+
+You can certainly do things with impure functions(and you must, if your program is going to do amything interesting), but for the most part you&apos;ll want to keep most of your funtions pure.
+</code></pre>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/12/20/fp2/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-curry" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -311,84 +523,6 @@
 
 
   
-    <article id="post-fp2" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/12/20/fp2/" class="article-date">
-      <time datetime="2016-12-20T04:02:11.000Z" itemprop="datePublished">2016-12-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/20/fp2/">函数式编程入门</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="Functional-programs"><a href="#Functional-programs" class="headerlink" title="Functional programs"></a>Functional programs</h1><h2 id="PURE-FUNCTIONS"><a href="#PURE-FUNCTIONS" class="headerlink" title="PURE FUNCTIONS"></a>PURE FUNCTIONS</h2><pre><code>Pure functions are functions that have no side-effects.They don&apos;t assign to any outside variables, they don&apos;t consume input, they don&apos;t produce output, they don&apos;t read from or writ to a database, they don&apos;t modify the parameters they&apos;re passed, etc.
-
-The basic idea is that, if you call a function with the same inputs over and over again, you alwyas get the same result.
-
-You can certainly do things with impure functions(and you must, if your program is going to do amything interesting), but for the most part you&apos;ll want to keep most of your funtions pure.
-</code></pre><h2 id="IMMUTABILITY"><a href="#IMMUTABILITY" class="headerlink" title="IMMUTABILITY"></a>IMMUTABILITY</h2><pre><code>&quot;Immutable&quot; mean &quot;unchangeable&quot;.
-
-Immutability goes hand-in-hand with pure functions. Since pure functions aren&apos;t allowed to have side-effects, they aren&apos;t allowed
-to change outside data structures.They are forced to work with data in an immutable way.
-</code></pre><h3 id="Replace-loops-with-collection-iteration-functions"><a href="#Replace-loops-with-collection-iteration-functions" class="headerlink" title="Replace loops with collection-iteration functions"></a>Replace loops with collection-iteration functions</h3><p>（1）FOREACH</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// replace this:</span></div><div class="line"><span class="keyword">for</span>(<span class="keyword">const</span> value <span class="keyword">of</span> myArray)&#123;</div><div class="line">  <span class="built_in">console</span>.log(value);</div><div class="line">&#125;</div><div class="line"><span class="comment">// with:</span></div><div class="line">forEach(<span class="function"><span class="params">value</span> =&gt;</span> <span class="built_in">console</span>.log(value), myArray);</div></pre></td></tr></table></figure>
-<p>(2) MAP</p>
-<pre><code>Like `forEach`, `map` applies a function to each element of an array.However, unlike `forEach`, map collects the results of aaplying the function into a new array and returns it.
-</code></pre><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">map(x =&gt; x * <span class="number">2</span>, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]) <span class="comment">// --&gt;[2,4,6]</span></div><div class="line"></div><div class="line"><span class="comment">// or</span></div><div class="line"></div><div class="line">const double = x =&gt; x * <span class="number">2</span>;</div><div class="line">map(double, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</div></pre></td></tr></table></figure>
-<p>(3) FILTER/REJECT</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">const isEven = x =&gt; x%<span class="number">2</span> ===<span class="number">0</span></div><div class="line">filter(isEven, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]) <span class="comment">// --&gt; [2,4]</span></div></pre></td></tr></table></figure>
-<p><code>filter</code></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-redis" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -416,7 +550,7 @@ to change outside data structures.They are forced to work with data in an immuta
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="Redis学习记录"><a href="#Redis学习记录" class="headerlink" title="Redis学习记录"></a>Redis学习记录</h1><p>业界常用的一些 key-value分布式缓存系统如下：</p>
+              <h1 id="Redis学习记录"><a href="#Redis学习记录" class="headerlink" title="Redis学习记录"></a>Redis学习记录</h1><p>业界常用的一些 key-value分布式缓存系统如下：</p>
 <ul>
 <li>Redis</li>
 <li>Memcached</li>
@@ -432,19 +566,10 @@ to change outside data structures.They are forced to work with data in an immuta
 </ul>
 </li>
 <li>提供的所有操作都是原子操作，为并发天然保驾护航。</li>
-<li>超快的性能，见其官方性能测试《<a href="https://redis.io/topics/benchmarks" target="_blank" rel="external">How fast is Redis?</a>》。</li>
+<li>超快的性能，见其官方性能测试《<a href="https://redis.io/topics/benchmarks">How fast is Redis?</a>》。</li>
 <li>拥有比较成熟的Java客户端 - Jedis，像新浪微博都是使用它作为客户端。（官方推荐的Clients）</li>
 </ul>
-<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 查看redis的连接数</span></div><div class="line">sudo netstat -antp |<span class="string"> grep 6379 </span>|<span class="string"> wc -l</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>注意：<code>redis</code>关闭集群链接时异常导致连接泄漏</p>
-</blockquote>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">redis<span class="selector-class">.max</span><span class="selector-class">.idle</span><span class="selector-class">.num</span>=<span class="number">32768</span></div><div class="line">redis<span class="selector-class">.min</span><span class="selector-class">.idle</span><span class="selector-class">.num</span>=<span class="number">30</span></div><div class="line">redis<span class="selector-class">.pool</span><span class="selector-class">.behaviour</span>=LIFO</div><div class="line">redis<span class="selector-class">.time</span><span class="selector-class">.between</span><span class="selector-class">.eviction</span><span class="selector-class">.runs</span><span class="selector-class">.seconds</span>=<span class="number">1</span></div><div class="line">redis<span class="selector-class">.num</span><span class="selector-class">.tests</span><span class="selector-class">.per</span><span class="selector-class">.eviction</span><span class="selector-class">.run</span>=<span class="number">10</span></div><div class="line">redis<span class="selector-class">.min</span><span class="selector-class">.evictable</span><span class="selector-class">.idle</span><span class="selector-class">.time</span><span class="selector-class">.minutes</span>=<span class="number">5</span></div><div class="line">redis<span class="selector-class">.max</span><span class="selector-class">.evictable</span><span class="selector-class">.idle</span><span class="selector-class">.time</span><span class="selector-class">.minutes</span>=<span class="number">30</span></div></pre></td></tr></table></figure>
-<p>LIFO“后进先出”栈方式 有效地利用了空闲队列里的热点池对象资源，随着流量的下降会使一些池对象长时间未被使用而空闲着，最终它们将被淘汰驱逐；</p>
-<p>而 FIFO“先进先出”队列方式 虽然使空闲队列里所有池对象都能在一段时间里被使用，看起来它好像分散了资源的请求，但其实这不利于资源的释放。<br>而这也是“客户端连接数一直降不下来”的根源之一。</p>
-<p><strong>结论： 1. 对象池的空闲队列行为（采用LIFO“后进先出”栈方式）</strong></p>
-<p><strong>2. 注意关闭集群链接时异常导致连接泄漏</strong></p>
-
+          
       
     </div>
     
@@ -461,6 +586,10 @@ to change outside data structures.They are forced to work with data in an immuta
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/12/20/redis/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -834,159 +963,6 @@ to change outside data structures.They are forced to work with data in an immuta
       
         <p class="article-more-link">
           <a  href="/2016/12/01/javascriptEvent/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-jsPattern" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/12/01/jsPattern/" class="article-date">
-      <time datetime="2016-12-01T01:11:46.000Z" itemprop="datePublished">2016-12-01</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/01/jsPattern/">javascript模式</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="javascriptPattern"><a href="#javascriptPattern" class="headerlink" title="javascriptPattern"></a>javascriptPattern</h1><p>《javascript设计模式与开发实践》学习记录</p>
-<h1 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h1><hr>
-<h2 id="什么是模式"><a href="#什么是模式" class="headerlink" title="什么是模式"></a>什么是模式</h2><p>模式是一个可复用的解决方案，可用于解决软件设计中的常见问题。三大好处：</p>
-<ol>
-<li>模式是已验证的解决方案</li>
-<li>模式很容易被复用</li>
-<li>模式富有表达力</li>
-</ol>
-<h2 id="优秀的模式"><a href="#优秀的模式" class="headerlink" title="优秀的模式"></a>优秀的模式</h2><p>优秀的模式应当可以执行以下操作：</p>
-<ol>
-<li>解决特殊问题</li>
-<li>没有显而易见的解决方案</li>
-<li>描述经过验证的概念</li>
-<li>描述一种关系</li>
-</ol>
-<h1 id="设计模式的类别"><a href="#设计模式的类别" class="headerlink" title="设计模式的类别"></a>设计模式的类别</h1>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pattern/">pattern</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/12/01/jsPattern/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-reactStudy" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/11/30/reactStudy/" class="article-date">
-      <time datetime="2016-11-30T05:51:02.000Z" itemprop="datePublished">2016-11-30</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/30/reactStudy/">React入门</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="React入门"><a href="#React入门" class="headerlink" title="React入门"></a>React入门</h1><p>运行React需要的3个库： react.js、react-dom.js、Browser.js</p>
-<blockquote>
-<p>react.js时React的核心库</p>
-<p>react-dom.js是提供与DOM相关的功能</p>
-<p>Browser.js的作用时将JSX语法转换为JavaScript语法，这一步较耗时间，世界上线时可以放到服务器完成，</p>
-</blockquote>
-<p><code>$ babel src --out-dir build</code><br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jsx/">jsx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/11/30/reactStudy/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
