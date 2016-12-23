@@ -3,24 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>函数式编程入门 | 飞天雪的技术博客</title>
+  <title>Thinking in Ramda 2 | 飞天雪的技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="curringA curried function is one where multiple arguments are descirbed by a series of oneargument funtions.For example, curried addition would be :
-记录传入的参数，在需要的时候求值。
-1234var curry = require(&apos;curry&apos;)v">
+  <meta name="description" content="Thinking in Ramda: Combining funtionsSimple CombinationsOnce you’ve gotten used to the idea of passing functions to other functions, you might start to find situations where you want to combine serera">
 <meta property="og:type" content="article">
-<meta property="og:title" content="函数式编程入门">
-<meta property="og:url" content="http://jiaxf.github.io/2016/12/20/curry/index.html">
+<meta property="og:title" content="Thinking in Ramda 2">
+<meta property="og:url" content="http://jiaxf.github.io/2016/12/22/2-Thinking in Ramda/index.html">
 <meta property="og:site_name" content="飞天雪的技术博客">
-<meta property="og:description" content="curringA curried function is one where multiple arguments are descirbed by a series of oneargument funtions.For example, curried addition would be :
-记录传入的参数，在需要的时候求值。
-1234var curry = require(&apos;curry&apos;)v">
-<meta property="og:updated_time" content="2016-12-20T04:03:00.000Z">
+<meta property="og:description" content="Thinking in Ramda: Combining funtionsSimple CombinationsOnce you’ve gotten used to the idea of passing functions to other functions, you might start to find situations where you want to combine serera">
+<meta property="og:updated_time" content="2016-12-22T09:06:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="函数式编程入门">
-<meta name="twitter:description" content="curringA curried function is one where multiple arguments are descirbed by a series of oneargument funtions.For example, curried addition would be :
-记录传入的参数，在需要的时候求值。
-1234var curry = require(&apos;curry&apos;)v">
+<meta name="twitter:title" content="Thinking in Ramda 2">
+<meta name="twitter:description" content="Thinking in Ramda: Combining funtionsSimple CombinationsOnce you’ve gotten used to the idea of passing functions to other functions, you might start to find situations where you want to combine serera">
   
     <link rel="alternative" href="/atom.xml" title="飞天雪的技术博客" type="application/atom+xml">
   
@@ -243,11 +237,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-curry" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-2-Thinking in Ramda" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/12/20/curry/" class="article-date">
-      <time datetime="2016-12-20T04:02:11.000Z" itemprop="datePublished">2016-12-20</time>
+      <a href="/2016/12/22/2-Thinking in Ramda/" class="article-date">
+      <time datetime="2016-12-22T01:52:11.000Z" itemprop="datePublished">2016-12-22</time>
 </a>
     </div>
   
@@ -260,7 +254,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      函数式编程入门
+      Thinking in Ramda 2
     </h1>
   
 
@@ -275,7 +269,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/functional/">functional</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ramda/">ramda</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -285,38 +279,29 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="curring"><a href="#curring" class="headerlink" title="curring"></a>curring</h2><p>A curried function is one where multiple arguments are descirbed by a series of one<br>argument funtions.For example, curried addition would be :</p>
-<pre><code>记录传入的参数，在需要的时候求值。
-</code></pre><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">var</span> curry = require(<span class="string">'curry'</span>)</div><div class="line"><span class="selector-tag">var</span> add = curry(function(<span class="selector-tag">a</span>, b)&#123; return <span class="selector-tag">a</span> + b&#125;)</div><div class="line"><span class="selector-tag">var</span> add100 = add(<span class="number">100</span>)</div><div class="line"><span class="function"><span class="title">add100</span><span class="params">(<span class="number">1</span>)</span></span> <span class="comment">// =101</span></div></pre></td></tr></table></figure>
-<p>Curry allows you can aslo call a function with multiple arguments at once:</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">var</span> sum3 = curry(function(<span class="selector-tag">a</span>, <span class="selector-tag">b</span>, c) &#123; return <span class="selector-tag">a</span> + <span class="selector-tag">b</span> + c&#125;)</div><div class="line"><span class="function"><span class="title">sum3</span><span class="params">(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span></span> <span class="comment">// =6</span></div><div class="line"><span class="function"><span class="title">sum3</span><span class="params">(<span class="number">1</span>)</span><span class="params">(<span class="number">2</span>,<span class="number">3</span>)</span></span> <span class="comment">// =6</span></div><div class="line"><span class="function"><span class="title">sum3</span><span class="params">(<span class="number">1</span>,<span class="number">2</span>)</span><span class="params">(<span class="number">3</span>)</span></span> <span class="comment">// =6</span></div></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="what-advantage-to-use-curry"><a href="#what-advantage-to-use-curry" class="headerlink" title="what advantage to use curry?"></a>what advantage to use curry?</h2><p>If you’re not used to languages in whice curried functions are part of daily life,<br>it’s probably not obvious what advantage this gives us. To my mind,the two main ones<br>are:</p>
-<ul>
-<li>Little pieces can be configured and reused with ease, without clutter;</li>
-<li>Functions are used throughout.</li>
-</ul>
-<h2 id="The-little-pieces"><a href="#The-little-pieces" class="headerlink" title="The little pieces"></a>The little pieces</h2><p>Take an obvious example;mapping over a collection to get the ids of its members:</p>
-<figure class="highlight qml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">var</span> objects = [&#123;<span class="attribute">id:</span><span class="string">1&#125;, &#123;id</span>:<span class="number">2</span>&#125;, &#123;<span class="attribute">id:</span><span class="string">3&#125;]</span></div><div class="line">objects.map(<span class="function"><span class="keyword">function</span>(<span class="params">o</span>)</span>&#123; <span class="keyword">return</span> o.id&#125;)</div></pre></td></tr></table></figure>
-<blockquote>
-<p>MAP over OBJECTS to getIDS</p>
-</blockquote>
-<p>There’s a lot of implementation cruft in just that line;in the form of the function<br>definition.Let’s clean that up:</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> <span class="keyword">get</span> = curry(<span class="function"><span class="keyword">function</span><span class="params">(property, object)</span> </span>&#123;<span class="keyword">return</span> object[property]&#125;)</div><div class="line">objects.map(<span class="keyword">get</span>(<span class="string">'id'</span>)) <span class="comment">// =[1,2,3]</span></div></pre></td></tr></table></figure>
-<p>Now we’re talking in terms of the real logic of the operation - map over these objects,<br>getting their ids.BAM. What we’v really created in the get function is a function<br>that can be partially configured.</p>
-<p>What if we want to re-use the ‘get ids from a list of objects’ functionality, though?<br>Let’s do it the naive way:</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> getIDs = <span class="function"><span class="keyword">function</span><span class="params">(objects)</span> </span>&#123;</div><div class="line">  <span class="keyword">return</span> objects.map(<span class="keyword">get</span>(<span class="string">'id'</span>))</div><div class="line">&#125;</div><div class="line"></div><div class="line">getIDs(objects) <span class="comment">// =[1,2,3]</span></div></pre></td></tr></table></figure>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> map = curry(<span class="function"><span class="keyword">function</span><span class="params">(fn, value)</span> </span>&#123; <span class="keyword">return</span> value.map(fn)&#125;)</div><div class="line"><span class="keyword">var</span> getIDs = map(<span class="keyword">get</span>(<span class="string">'id'</span>))</div><div class="line"></div><div class="line">getIDs(objects) <span class="comment">// =[1,2,3]</span></div></pre></td></tr></table></figure>
-<h2 id="Functions-through-and-throughout"><a href="#Functions-through-and-throughout" class="headerlink" title="Functions through and throughout"></a>Functions through and throughout</h2><p>Another avantage of this approach is that it encourages the creation of functions;<br>rather than of methods. While methods are beautiful things - allowing polymorphism,<br>and very readable code - they aren’t always the tool for the job, such as in heavlily<br>async code.</p>
-<p><code>Data</code><br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"user"</span>: <span class="string">"hughfdjackson"</span>,</div><div class="line">    <span class="attr">"posts"</span>: [</div><div class="line">        &#123; <span class="attr">"title"</span>: <span class="string">"why curry?"</span>, <span class="attr">"contents"</span>: <span class="string">"..."</span> &#125;,</div><div class="line">        &#123; <span class="attr">"title"</span>: <span class="string">"prototypes: the short(est possible) story"</span>, <span class="attr">"contents"</span>: <span class="string">"..."</span> &#125;</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>Your task is to get the titles for each of this users posts.</p>
-<figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">fetchFromServer()</div><div class="line">  .<span class="keyword">then</span>(JSON.parse)</div><div class="line">  .<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span><span class="params">(data)</span></span>&#123; <span class="keyword">return</span> <span class="keyword">data</span>.posts&#125;)</div><div class="line">  .<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span><span class="params">(posts)</span></span> &#123;</div><div class="line">      <span class="keyword">return</span> posts.map(<span class="function"><span class="keyword">function</span><span class="params">(post)</span></span>&#123;<span class="keyword">return</span> post.title&#125;)</div><div class="line">  &#125;)</div></pre></td></tr></table></figure>
-<p>Since chains of promises(or, if you prefer, callbacks) fundamentally work with<br>functions,you can’t easilly just map over an value when one is available from<br>the server without first wrapping it up in all that visual(and mental) clutter.</p>
-<p>Let’s go again, this time using the tools we’ve already defined:</p>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">fetchFromSever()</div><div class="line">  .<span class="keyword">then</span>(JSON.parse)</div><div class="line">  .<span class="keyword">then</span>(<span class="built_in">get</span>(<span class="string">'posts'</span>))</div><div class="line">  .<span class="keyword">then</span>(map(<span class="built_in">get</span>(<span class="string">'title'</span>)))</div></pre></td></tr></table></figure>
-<p>This is lean logic, easily expressed; something we couldn’t achieve nearly so<br>easily without curried functions.</p>
-<h2 id="tl-dr-Too-Long-Don’t-Read"><a href="#tl-dr-Too-Long-Don’t-Read" class="headerlink" title="tl;dr (Too Long;Don’t Read)"></a>tl;dr (Too Long;Don’t Read)</h2><p>curry gives you a tantalising amount of expressive power.</p>
-<p><code>node/npm</code><br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="keyword">install</span> curry</div></pre></td></tr></table></figure></p>
+        <h1 id="Thinking-in-Ramda-Combining-funtions"><a href="#Thinking-in-Ramda-Combining-funtions" class="headerlink" title="Thinking in Ramda: Combining funtions"></a>Thinking in Ramda: Combining funtions</h1><h2 id="Simple-Combinations"><a href="#Simple-Combinations" class="headerlink" title="Simple Combinations"></a>Simple Combinations</h2><p>Once you’ve gotten used to the idea of passing functions to other functions, you might start to find situations where you want to combine sereral functions together.</p>
+<p>Ramda provides several functions for doing simple combinations.</p>
+<h2 id="Complement"><a href="#Complement" class="headerlink" title="Complement"></a>Complement</h2><p>Ramda provides a higher-order-function,<code>complement</code>, that takes another function and return a new function that returns <code>true</code> when the original function returns a falsy value, and <code>false</code> when the original function returns a truthy value.<br><a id="more"></a></p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">const isEven = x =&gt; x % <span class="number">2</span> === <span class="number">0</span></div><div class="line">find(complement(isEven), [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]) <span class="comment">//--&gt; 1</span></div></pre></td></tr></table></figure>
+<p>Even better is to give the <code>complement</code>ed function its own name so it can be reused:</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">const isEven = x =&gt; x % <span class="number">2</span> ===<span class="number">0</span></div><div class="line">const isOdd = complement(isEven)</div><div class="line"></div><div class="line">find(isOdd, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])    <span class="comment">// --&gt; 1</span></div></pre></td></tr></table></figure>
+<p>Note that  <code>complement</code> implements the same idea for functions as the <code>!</code>(not) operator does for values.</p>
+<h2 id="BOTH-EITHER"><a href="#BOTH-EITHER" class="headerlink" title="BOTH/EITHER"></a>BOTH/EITHER</h2><p><code>both</code> takes two other functions and returns a new funtion that returns <code>true</code> if both functions return a truthy value when applied to the arguments and  <code>false</code> otherwise.</p>
+<p><code>either</code> takes two other functions and returns a new function that returns <code>true</code> if either function returns a truthy value when applied to the arguments and  <code>false</code> otherwise.</p>
+<p>Note that <code>both</code> implements the same idea for  functions as the <code>&amp;&amp;</code>(and) operator does for values, and <code>either</code> implements that same idea for functions as the <code>||</code>(or) operator does for values.</p>
+<p>Ramda also provides  <code>allPass</code> and <code>anyPass</code> that take an array of any number of functions. As their names suggest, <code>allPass</code> works like <code>both</code>, and  <code>anyPass</code> works like <code>either</code>.</p>
+<h2 id="Pipelines"><a href="#Pipelines" class="headerlink" title="Pipelines"></a>Pipelines</h2><p>Sometimes we want to apply several functions to some data in a pipeline fashion.For example, we might want to take tow numbers,multiply them together,and one, and square the result.We could write it like this.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> multiply = <span class="function">(<span class="params">a,b</span>) =&gt;</span> a*b   </div><div class="line"><span class="keyword">const</span> addOne = <span class="function"><span class="params">x</span> =&gt;</span> x + <span class="number">1</span></div><div class="line"><span class="keyword">const</span> square = <span class="function"><span class="params">x</span> =&gt;</span> x * x</div><div class="line"><span class="keyword">const</span> operate = <span class="function">(<span class="params">x, y</span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">const</span> product = multiply(x,y)</div><div class="line">  <span class="keyword">const</span> incremented = addOne(product)</div><div class="line">  <span class="keyword">const</span> square = square(incremented)</div><div class="line"></div><div class="line">  <span class="keyword">return</span> squared</div><div class="line">&#125;</div><div class="line"></div><div class="line">operate(<span class="number">3</span>, <span class="number">4</span>) <span class="comment">// =&gt; ((3*4)+1)^2 ==&gt; (12 +1)^2 ==&gt; 169</span></div></pre></td></tr></table></figure>
+<h3 id="Pipe"><a href="#Pipe" class="headerlink" title="Pipe"></a>Pipe</h3><p>Ramda provides the <code>pipe</code> functions,which takes a list of one or more functions and returns a new function.</p>
+<p>The new function takes the same number of arguments as the first function it is given.It then ‘pipes’ those arguments through each function in the list.It applies<br>the first function to the arguments, passes its result to the second function and so on. The result of the last function is the result of the <code>pipe</code> call.</p>
+<p>Note that all of the functions after the first must only take a single argument.</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">const</span> operate = pipe(</div><div class="line">  <span class="keyword">multiply,</span></div><div class="line">  <span class="keyword">addOne,</span></div><div class="line">  square</div><div class="line">)</div></pre></td></tr></table></figure>
+<h2 id="Compose"><a href="#Compose" class="headerlink" title="Compose"></a>Compose</h2><p><code>compose</code> works exactly the same way as <code>pipe</code>, except that it applies the functions in right-to-left order instead of left-to-right.</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">const</span> operate = compose(</div><div class="line">    square,</div><div class="line">    <span class="keyword">addOne,</span></div><div class="line">    <span class="keyword">multiply</span></div><div class="line">)</div></pre></td></tr></table></figure>
+<p>I always think of <code>compose</code> this way: <code>compose(f,g)(value)</code> is equivalent to <code>f(g(value))</code>.</p>
+<p>As with <code>pipe</code>, note that all of the functions except the last must only take a single argument.</p>
+<hr>
+<p><em>Cited From <a href="http://randycoulman.com/blog/2016/05/31/thinking-in-ramda-combining-functions/" target="_blank" rel="external">« Thinking in Ramda: Combining Functions »</a></em></p>
 
       
     </div>
@@ -325,13 +310,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/12/20/curry/">函数式编程入门</a></p>
+        <p><span>本文标题:</span><a href="/2016/12/22/2-Thinking in Ramda/">Thinking in Ramda 2</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Jiaxf 的个人博客">Jiaxf</a></p>
-        <p><span>发布时间:</span>2016年12月20日 - 12时02分</p>
-        <p><span>最后更新:</span>2016年12月20日 - 12时03分</p>
+        <p><span>发布时间:</span>2016年12月22日 - 09时52分</p>
+        <p><span>最后更新:</span>2016年12月22日 - 17时06分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/12/20/curry/" title="函数式编程入门">http://jiaxf.github.io/2016/12/20/curry/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://jiaxf.github.io/2016/12/20/curry/　　作者: Jiaxf" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/22/2-Thinking in Ramda/" title="Thinking in Ramda 2">http://jiaxf.github.io/2016/12/22/2-Thinking in Ramda/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://jiaxf.github.io/2016/12/22/2-Thinking in Ramda/　　作者: Jiaxf" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -344,18 +329,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2016/12/20/fp2/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/12/22/3-Thinking in Ramda/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          函数式编程入门
+          Thinking in Ramda 3
         
       </div>
     </a>
   
   
-    <a href="/2016/12/20/redis/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Redis学习记录</div>
+    <a href="/2016/12/22/1-Thinking in Ramda/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Thinking in Ramda 1</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -366,7 +351,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#curring"><span class="toc-number">1.</span> <span class="toc-text">curring</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#what-advantage-to-use-curry"><span class="toc-number">2.</span> <span class="toc-text">what advantage to use curry?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-little-pieces"><span class="toc-number">3.</span> <span class="toc-text">The little pieces</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Functions-through-and-throughout"><span class="toc-number">4.</span> <span class="toc-text">Functions through and throughout</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tl-dr-Too-Long-Don’t-Read"><span class="toc-number">5.</span> <span class="toc-text">tl;dr (Too Long;Don’t Read)</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Thinking-in-Ramda-Combining-funtions"><span class="toc-number">1.</span> <span class="toc-text">Thinking in Ramda: Combining funtions</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Simple-Combinations"><span class="toc-number">1.1.</span> <span class="toc-text">Simple Combinations</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Complement"><span class="toc-number">1.2.</span> <span class="toc-text">Complement</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BOTH-EITHER"><span class="toc-number">1.3.</span> <span class="toc-text">BOTH/EITHER</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pipelines"><span class="toc-number">1.4.</span> <span class="toc-text">Pipelines</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Pipe"><span class="toc-number">1.4.1.</span> <span class="toc-text">Pipe</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Compose"><span class="toc-number">1.5.</span> <span class="toc-text">Compose</span></a></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -414,7 +399,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/12/20/curry/" data-title="函数式编程入门" data-url="http://jiaxf.github.io/2016/12/20/curry/"></div>
+    <div class="ds-thread" data-thread-key="2016/12/22/2-Thinking in Ramda/" data-title="Thinking in Ramda 2" data-url="http://jiaxf.github.io/2016/12/22/2-Thinking in Ramda/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -437,13 +422,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/12/20/fp2/" title="上一篇: 函数式编程入门">
+            <a href="/2016/12/22/3-Thinking in Ramda/" title="上一篇: Thinking in Ramda 3">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2016/12/20/redis/" title="下一篇: Redis学习记录">
+            <a href="/2016/12/22/1-Thinking in Ramda/" title="下一篇: Thinking in Ramda 1">
                 <i class="fa fa-angle-right"></i>
             </a>
         
