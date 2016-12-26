@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>函数式编程入门 | 飞天雪的技术博客</title>
+  <title>Thinking in Ramda 8 | 飞天雪的技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Functional programsPURE FUNCTIONSPure functions are functions that have no side-effects.They don&amp;apos;t assign to any outside variables, they don&amp;apos;t consume input, they don&amp;apos;t produce output,">
+  <meta name="description" content="Thinking in Ramda: LensesRamda provides a more general tool for performing the operations such as read, update, and transform object properties and array elements in a declarative, immutable way, the">
 <meta property="og:type" content="article">
-<meta property="og:title" content="函数式编程入门">
-<meta property="og:url" content="http://jiaxf.github.io/2016/12/20/fp2/index.html">
+<meta property="og:title" content="Thinking in Ramda 8">
+<meta property="og:url" content="http://jiaxf.github.io/2016/12/26/8-Thinking in Ramda/index.html">
 <meta property="og:site_name" content="飞天雪的技术博客">
-<meta property="og:description" content="Functional programsPURE FUNCTIONSPure functions are functions that have no side-effects.They don&amp;apos;t assign to any outside variables, they don&amp;apos;t consume input, they don&amp;apos;t produce output,">
-<meta property="og:updated_time" content="2016-12-20T04:03:13.000Z">
+<meta property="og:description" content="Thinking in Ramda: LensesRamda provides a more general tool for performing the operations such as read, update, and transform object properties and array elements in a declarative, immutable way, the">
+<meta property="og:updated_time" content="2016-12-26T01:56:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="函数式编程入门">
-<meta name="twitter:description" content="Functional programsPURE FUNCTIONSPure functions are functions that have no side-effects.They don&amp;apos;t assign to any outside variables, they don&amp;apos;t consume input, they don&amp;apos;t produce output,">
+<meta name="twitter:title" content="Thinking in Ramda 8">
+<meta name="twitter:description" content="Thinking in Ramda: LensesRamda provides a more general tool for performing the operations such as read, update, and transform object properties and array elements in a declarative, immutable way, the">
   
     <link rel="alternative" href="/atom.xml" title="飞天雪的技术博客" type="application/atom+xml">
   
@@ -237,11 +237,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-fp2" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-8-Thinking in Ramda" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/12/20/fp2/" class="article-date">
-      <time datetime="2016-12-20T04:02:11.000Z" itemprop="datePublished">2016-12-20</time>
+      <a href="/2016/12/26/8-Thinking in Ramda/" class="article-date">
+      <time datetime="2016-12-26T00:38:35.000Z" itemprop="datePublished">2016-12-26</time>
 </a>
     </div>
   
@@ -254,7 +254,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      函数式编程入门
+      Thinking in Ramda 8
     </h1>
   
 
@@ -269,7 +269,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/functional/">functional</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ramda/">ramda</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -279,24 +279,32 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="Functional-programs"><a href="#Functional-programs" class="headerlink" title="Functional programs"></a>Functional programs</h1><h2 id="PURE-FUNCTIONS"><a href="#PURE-FUNCTIONS" class="headerlink" title="PURE FUNCTIONS"></a>PURE FUNCTIONS</h2><pre><code>Pure functions are functions that have no side-effects.They don&apos;t assign to any outside variables, they don&apos;t consume input, they don&apos;t produce output, they don&apos;t read from or writ to a database, they don&apos;t modify the parameters they&apos;re passed, etc.
-
-The basic idea is that, if you call a function with the same inputs over and over again, you alwyas get the same result.
-
-You can certainly do things with impure functions(and you must, if your program is going to do amything interesting), but for the most part you&apos;ll want to keep most of your funtions pure.
-</code></pre><a id="more"></a>
-<h2 id="IMMUTABILITY"><a href="#IMMUTABILITY" class="headerlink" title="IMMUTABILITY"></a>IMMUTABILITY</h2><pre><code>&quot;Immutable&quot; mean &quot;unchangeable&quot;.
-
-Immutability goes hand-in-hand with pure functions. Since pure functions aren&apos;t allowed to have side-effects, they aren&apos;t allowed
-to change outside data structures.They are forced to work with data in an immutable way.
-</code></pre><h3 id="Replace-loops-with-collection-iteration-functions"><a href="#Replace-loops-with-collection-iteration-functions" class="headerlink" title="Replace loops with collection-iteration functions"></a>Replace loops with collection-iteration functions</h3><p>（1）FOREACH</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// replace this:</span></div><div class="line"><span class="keyword">for</span>(<span class="keyword">const</span> value <span class="keyword">of</span> myArray)&#123;</div><div class="line">  <span class="built_in">console</span>.log(value);</div><div class="line">&#125;</div><div class="line"><span class="comment">// with:</span></div><div class="line">forEach(<span class="function"><span class="params">value</span> =&gt;</span> <span class="built_in">console</span>.log(value), myArray);</div></pre></td></tr></table></figure>
-<p>(2) MAP</p>
-<pre><code>Like `forEach`, `map` applies a function to each element of an array.However, unlike `forEach`, map collects the results of aaplying the function into a new array and returns it.
-</code></pre><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">map(x =&gt; x * <span class="number">2</span>, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]) <span class="comment">// --&gt;[2,4,6]</span></div><div class="line"></div><div class="line"><span class="comment">// or</span></div><div class="line"></div><div class="line">const double = x =&gt; x * <span class="number">2</span>;</div><div class="line">map(double, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</div></pre></td></tr></table></figure>
-<p>(3) FILTER/REJECT</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">const isEven = x =&gt; x%<span class="number">2</span> ===<span class="number">0</span></div><div class="line">filter(isEven, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]) <span class="comment">// --&gt; [2,4]</span></div></pre></td></tr></table></figure>
-<p><code>filter</code></p>
+        <h1 id="Thinking-in-Ramda-Lenses"><a href="#Thinking-in-Ramda-Lenses" class="headerlink" title="Thinking in Ramda: Lenses"></a>Thinking in Ramda: Lenses</h1><p>Ramda provides a more general tool for performing the operations such as read, update, and transform object properties and array elements in a declarative, immutable way, the lens.</p>
+<h2 id="What-is-a-Lens"><a href="#What-is-a-Lens" class="headerlink" title="What is a Lens?"></a>What is a Lens?</h2><p>A lens combines a “getter” function and a “setter” function into a single unit. Ramda provides a set of functions for working with lenses.</p>
+<p>We can think of a lens as something that focuses on a specific part of a larger data structure.</p>
+<h2 id="How-Do-I-Create-a-Lens"><a href="#How-Do-I-Create-a-Lens" class="headerlink" title="How Do I Create a Lens?"></a>How Do I Create a Lens?</h2><p>The most generic way to create a lens in Ramda is with the lens function. lens takes a getter function and a setter function and returns the new lens.</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> person = &#123;</div><div class="line">  name: <span class="string">'Randy'</span>,</div><div class="line">  socialMedia:&#123;</div><div class="line">    github: <span class="string">'randycoulamn'</span>,</div><div class="line">    twitter: <span class="string">'@randycoulman'</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> nameLens = lens(prop(<span class="string">'name'</span>), assoc(<span class="string">'name'</span>))</div><div class="line"><span class="keyword">const</span> twitterLens = lens(</div><div class="line">    path([<span class="string">'socialMedia'</span>, <span class="string">'twitter'</span>]),</div><div class="line">    assocPath([<span class="string">'socialMedia'</span>, <span class="string">'twitter'</span>])</div><div class="line">)</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>Here we’re using prop and path as our getter functions and <code>assoc</code> and <code>assocPath</code> as our setter functions.</p>
+<p>Note that we had to duplicate the property and path arguments to these functions. Fortunately， Ramda provides nice shortcuts for the most common uses of lenses：<br><code>lensProp</code>，<code>lensPath</code>, and <code>lensIndex</code>.</p>
+<ul>
+<li><code>lensProp</code> creates a lens that focuses on a property of an object.</li>
+<li><code>lensPath</code> creates a lens that focuses on a nested property of an object.</li>
+<li><code>lensIndex</code> creates a lens that focuses on an element of an array.</li>
+</ul>
+<p>We could rewrite our lenses above with <code>lensProp</code> and <code>lensPath</code>:</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> nameLens = lensProp(<span class="string">'name'</span>)</div><div class="line"><span class="keyword">const</span> twitterLens = lensPath([<span class="string">'socialMedia'</span>, <span class="string">'twitter'</span>])</div></pre></td></tr></table></figure>
+<h2 id="What-Can-I-Do-With-It"><a href="#What-Can-I-Do-With-It" class="headerlink" title="What Can I Do With It?"></a>What Can I Do With It?</h2><p>Ramda provides three functions for working with lenses.</p>
+<ul>
+<li><code>view</code> reads the value of the lens.</li>
+<li><code>set</code> updates the value of the lens.</li>
+<li><code>over</code> applies a transformation funtion to the lens.</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">view</span><span class="params">(nameLens, person)</span></span>  <span class="comment">// =&gt;'Randy'</span></div><div class="line"><span class="function"><span class="title">set</span><span class="params">(twitterLens, <span class="string">'@randy'</span>, person)</span></span></div><div class="line"><span class="comment">//=&gt;&#123;</span></div><div class="line"><span class="comment">//  name: 'Randy',</span></div><div class="line"><span class="comment">//  socialMedia: &#123;</span></div><div class="line"><span class="comment">//    github: 'randycoulman',</span></div><div class="line"><span class="comment">//    twitter: '@randy'</span></div><div class="line"><span class="comment">//  &#125;</span></div><div class="line"><span class="comment">//&#125;</span></div><div class="line"></div><div class="line"><span class="function"><span class="title">over</span><span class="params">(nameLens, toUpper, person)</span></span></div><div class="line"><span class="comment">// =&gt; &#123;</span></div><div class="line"><span class="comment">//  name: 'RANDY',</span></div><div class="line"><span class="comment">//  socialMedia: &#123;</span></div><div class="line"><span class="comment">//    github: 'randycoulman',</span></div><div class="line"><span class="comment">//    twitter: '@randycoulman'</span></div><div class="line"><span class="comment">//  &#125;</span></div><div class="line"><span class="comment">//&#125;</span></div></pre></td></tr></table></figure>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Lenses can be handy if we have a somewhat complex data structure that we want to abstract away from calling code.Rather than exposing the structure or providing a getter, setter, and transformer for every accessible property,we can instead expose lenses.</p>
+<p>Client code can the work with our data structure using <code>view</code>, <code>set</code>, and <code>over</code> without being coupled to the exact shape of the structrue.</p>
+<hr>
+<p><em>Cite From <a href="http://randycoulman.com/blog/2016/07/12/thinking-in-ramda-lenses/" target="_blank" rel="external">« Thinking in Ramda: Lenses »</a></em></p>
 
       
     </div>
@@ -305,13 +313,13 @@ to change outside data structures.They are forced to work with data in an immuta
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/12/20/fp2/">函数式编程入门</a></p>
+        <p><span>本文标题:</span><a href="/2016/12/26/8-Thinking in Ramda/">Thinking in Ramda 8</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Jiaxf 的个人博客">Jiaxf</a></p>
-        <p><span>发布时间:</span>2016年12月20日 - 12时02分</p>
-        <p><span>最后更新:</span>2016年12月20日 - 12时03分</p>
+        <p><span>发布时间:</span>2016年12月26日 - 08时38分</p>
+        <p><span>最后更新:</span>2016年12月26日 - 09时56分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/12/20/fp2/" title="函数式编程入门">http://jiaxf.github.io/2016/12/20/fp2/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://jiaxf.github.io/2016/12/20/fp2/　　作者: Jiaxf" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/26/8-Thinking in Ramda/" title="Thinking in Ramda 8">http://jiaxf.github.io/2016/12/26/8-Thinking in Ramda/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://jiaxf.github.io/2016/12/26/8-Thinking in Ramda/　　作者: Jiaxf" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -324,18 +332,18 @@ to change outside data structures.They are forced to work with data in an immuta
 
 <nav id="article-nav">
   
-    <a href="/2016/12/20/curry/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/12/26/9-Thinking in Ramda/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          函数式编程入门
+          Thinking in Ramda 9
         
       </div>
     </a>
   
   
-    <a href="/2016/12/20/redis/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Redis学习记录</div>
+    <a href="/2016/12/23/7-Thinking in Ramda/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Thinking in Ramda 7</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -346,7 +354,7 @@ to change outside data structures.They are forced to work with data in an immuta
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Functional-programs"><span class="toc-number">1.</span> <span class="toc-text">Functional programs</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#PURE-FUNCTIONS"><span class="toc-number">1.1.</span> <span class="toc-text">PURE FUNCTIONS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IMMUTABILITY"><span class="toc-number">1.2.</span> <span class="toc-text">IMMUTABILITY</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Replace-loops-with-collection-iteration-functions"><span class="toc-number">1.2.1.</span> <span class="toc-text">Replace loops with collection-iteration functions</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Thinking-in-Ramda-Lenses"><span class="toc-number">1.</span> <span class="toc-text">Thinking in Ramda: Lenses</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-a-Lens"><span class="toc-number">1.1.</span> <span class="toc-text">What is a Lens?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-Do-I-Create-a-Lens"><span class="toc-number">1.2.</span> <span class="toc-text">How Do I Create a Lens?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-Can-I-Do-With-It"><span class="toc-number">1.3.</span> <span class="toc-text">What Can I Do With It?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">1.4.</span> <span class="toc-text">Conclusion</span></a></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -394,7 +402,7 @@ to change outside data structures.They are forced to work with data in an immuta
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/12/20/fp2/" data-title="函数式编程入门" data-url="http://jiaxf.github.io/2016/12/20/fp2/"></div>
+    <div class="ds-thread" data-thread-key="2016/12/26/8-Thinking in Ramda/" data-title="Thinking in Ramda 8" data-url="http://jiaxf.github.io/2016/12/26/8-Thinking in Ramda/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -417,13 +425,13 @@ to change outside data structures.They are forced to work with data in an immuta
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/12/20/curry/" title="上一篇: 函数式编程入门">
+            <a href="/2016/12/26/9-Thinking in Ramda/" title="上一篇: Thinking in Ramda 9">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2016/12/20/redis/" title="下一篇: Redis学习记录">
+            <a href="/2016/12/23/7-Thinking in Ramda/" title="下一篇: Thinking in Ramda 7">
                 <i class="fa fa-angle-right"></i>
             </a>
         

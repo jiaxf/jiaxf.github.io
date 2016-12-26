@@ -156,7 +156,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/functional/" style="font-size: 16px;">functional</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/js/" style="font-size: 18px;">js</a> <a href="/tags/jsx/" style="font-size: 10px;">jsx</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/pattern/" style="font-size: 10px;">pattern</a> <a href="/tags/php/" style="font-size: 12px;">php</a> <a href="/tags/ramda/" style="font-size: 16px;">ramda</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/redis/" style="font-size: 14px;">redis</a> <a href="/tags/函数式编程/" style="font-size: 16px;">函数式编程</a> <a href="/tags/缓存/" style="font-size: 14px;">缓存</a>
+                        <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/functional/" style="font-size: 18.33px;">functional</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/jsx/" style="font-size: 10px;">jsx</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/pattern/" style="font-size: 10px;">pattern</a> <a href="/tags/php/" style="font-size: 11.67px;">php</a> <a href="/tags/ramda/" style="font-size: 18.33px;">ramda</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/redis/" style="font-size: 13.33px;">redis</a> <a href="/tags/函数式编程/" style="font-size: 15px;">函数式编程</a> <a href="/tags/缓存/" style="font-size: 13.33px;">缓存</a>
                     </div>
                 </section>
                 
@@ -240,6 +240,303 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-redis2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/21/redis2/" class="article-date">
+      <time datetime="2016-12-21T00:53:37.000Z" itemprop="datePublished">2016-12-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/21/redis2/">Redis学习记录2</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="redis-bgrewriteaof问题"><a href="#redis-bgrewriteaof问题" class="headerlink" title="redis bgrewriteaof问题"></a>redis bgrewriteaof问题</h2><p>一、背景</p>
+<ol>
+<li><p>AOF:</p>
+<p> Redis的AOF机制有点类似于Mysql binlog，是Redis的提供的一种持久化方式（另一种是RDB），<br> 它会将所有的写命令按照一定频率(no, always, every seconds)写入到日志文件中，当Redis停机<br> 重启后恢复数据库。</p>
+</li>
+</ol>
+<p><img src="/images/20160203203442_310.png" alt=""><br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/12/21/redis2/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-curry" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/20/curry/" class="article-date">
+      <time datetime="2016-12-20T04:02:11.000Z" itemprop="datePublished">2016-12-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/20/curry/">函数式编程入门</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="curring"><a href="#curring" class="headerlink" title="curring"></a>curring</h2><p>A curried function is one where multiple arguments are descirbed by a series of one<br>argument funtions.For example, curried addition would be :</p>
+<pre><code>记录传入的参数，在需要的时候求值。
+</code></pre><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">var</span> curry = require(<span class="string">'curry'</span>)</div><div class="line"><span class="selector-tag">var</span> add = curry(function(<span class="selector-tag">a</span>, b)&#123; return <span class="selector-tag">a</span> + b&#125;)</div><div class="line"><span class="selector-tag">var</span> add100 = add(<span class="number">100</span>)</div><div class="line"><span class="function"><span class="title">add100</span><span class="params">(<span class="number">1</span>)</span></span> <span class="comment">// =101</span></div></pre></td></tr></table></figure>
+<p>Curry allows you can aslo call a function with multiple arguments at once:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">var</span> sum3 = curry(function(<span class="selector-tag">a</span>, <span class="selector-tag">b</span>, c) &#123; return <span class="selector-tag">a</span> + <span class="selector-tag">b</span> + c&#125;)</div><div class="line"><span class="function"><span class="title">sum3</span><span class="params">(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span></span> <span class="comment">// =6</span></div><div class="line"><span class="function"><span class="title">sum3</span><span class="params">(<span class="number">1</span>)</span><span class="params">(<span class="number">2</span>,<span class="number">3</span>)</span></span> <span class="comment">// =6</span></div><div class="line"><span class="function"><span class="title">sum3</span><span class="params">(<span class="number">1</span>,<span class="number">2</span>)</span><span class="params">(<span class="number">3</span>)</span></span> <span class="comment">// =6</span></div></pre></td></tr></table></figure>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/12/20/curry/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-fp2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/20/fp2/" class="article-date">
+      <time datetime="2016-12-20T04:02:11.000Z" itemprop="datePublished">2016-12-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/20/fp2/">函数式编程入门</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h1 id="Functional-programs"><a href="#Functional-programs" class="headerlink" title="Functional programs"></a>Functional programs</h1><h2 id="PURE-FUNCTIONS"><a href="#PURE-FUNCTIONS" class="headerlink" title="PURE FUNCTIONS"></a>PURE FUNCTIONS</h2><pre><code>Pure functions are functions that have no side-effects.They don&apos;t assign to any outside variables, they don&apos;t consume input, they don&apos;t produce output, they don&apos;t read from or writ to a database, they don&apos;t modify the parameters they&apos;re passed, etc.
+
+The basic idea is that, if you call a function with the same inputs over and over again, you alwyas get the same result.
+
+You can certainly do things with impure functions(and you must, if your program is going to do amything interesting), but for the most part you&apos;ll want to keep most of your funtions pure.
+</code></pre>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/12/20/fp2/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-redis" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/20/redis/" class="article-date">
+      <time datetime="2016-12-20T03:13:01.000Z" itemprop="datePublished">2016-12-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/20/redis/">Redis学习记录</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h1 id="Redis学习记录"><a href="#Redis学习记录" class="headerlink" title="Redis学习记录"></a>Redis学习记录</h1><p>业界常用的一些 key-value分布式缓存系统如下：</p>
+<ul>
+<li>Redis</li>
+<li>Memcached</li>
+<li>Cassandra（Facebook 开源）</li>
+<li>Tokyo Tyrant (Tokyo Cabinet)</li>
+</ul>
+<h2 id="Redis的几个特点："><a href="#Redis的几个特点：" class="headerlink" title="Redis的几个特点："></a>Redis的几个特点：</h2><ul>
+<li>Redis 是一个 key-value 的缓存(cache)和存储(store)系统（适合作缓存或DB）</li>
+<li>支持丰富的数据结构<ul>
+<li>List 就专门用于存储列表型数据，默认按操作时间排序</li>
+<li>Sorted Set 可以按分数排序元素，分数是一种广义概念，可以是时间或评分</li>
+<li>其丰富的数据结构为日后扩展提供了很大的方便。</li>
+</ul>
+</li>
+<li>提供的所有操作都是原子操作，为并发天然保驾护航。</li>
+<li>超快的性能，见其官方性能测试《<a href="https://redis.io/topics/benchmarks">How fast is Redis?</a>》。</li>
+<li>拥有比较成熟的Java客户端 - Jedis，像新浪微博都是使用它作为客户端。（官方推荐的Clients）</li>
+</ul>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/12/20/redis/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-FP" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -696,296 +993,9 @@
 
 
   
-    <article id="post-reactStudy" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/11/30/reactStudy/" class="article-date">
-      <time datetime="2016-11-30T05:51:02.000Z" itemprop="datePublished">2016-11-30</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/30/reactStudy/">React入门</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="React入门"><a href="#React入门" class="headerlink" title="React入门"></a>React入门</h1><p>运行React需要的3个库： react.js、react-dom.js、Browser.js</p>
-<blockquote>
-<p>react.js时React的核心库</p>
-<p>react-dom.js是提供与DOM相关的功能</p>
-<p>Browser.js的作用时将JSX语法转换为JavaScript语法，这一步较耗时间，世界上线时可以放到服务器完成，</p>
-</blockquote>
-<p><code>$ babel src --out-dir build</code><br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jsx/">jsx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/11/30/reactStudy/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-javascript错误" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/11/29/javascript错误/" class="article-date">
-      <time datetime="2016-11-29T05:51:02.000Z" itemprop="datePublished">2016-11-29</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/29/javascript错误/">js错误类型</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="JavaScript原生错误类型"><a href="#JavaScript原生错误类型" class="headerlink" title="JavaScript原生错误类型"></a>JavaScript原生错误类型</h1><p>Error对象是最一遍的错误类型,在它基础上,JavaScript还定义了其他6种错误派生对象.</p>
-<h2 id="1-SyntaxError-解析代码时发生的错误"><a href="#1-SyntaxError-解析代码时发生的错误" class="headerlink" title="(1) SyntaxError 解析代码时发生的错误."></a>(1) SyntaxError 解析代码时发生的错误.</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 变量名错误</span></div><div class="line"><span class="keyword">var</span> <span class="number">1</span>a;</div><div class="line"></div><div class="line"><span class="comment">// 缺少括号</span></div><div class="line"><span class="built_in">console</span>.log <span class="string">'Hello'</span>);</div></pre></td></tr></table></figure>
-<h2 id="2-ReferenceError-引用一个不存在的变量时发生的错误"><a href="#2-ReferenceError-引用一个不存在的变量时发生的错误" class="headerlink" title="(2) ReferenceError 引用一个不存在的变量时发生的错误."></a>(2) ReferenceError 引用一个不存在的变量时发生的错误.</h2><figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">unknowVariable</div><div class="line"></div><div class="line">// ReferenceError: unknownVariable <span class="keyword">is</span> <span class="keyword">not</span> defined</div></pre></td></tr></table></figure>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/11/29/javascript错误/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-2015-02-14-php数据类型" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/02/14/2015-02-14-php数据类型/" class="article-date">
-      <time datetime="2015-02-13T16:00:00.000Z" itemprop="datePublished">2015-02-14</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/02/14/2015-02-14-php数据类型/">php数据类型</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="php数据类型"><a href="#php数据类型" class="headerlink" title="php数据类型"></a>php数据类型</h2><p><strong>字符串、整数、浮点数、逻辑、数组、对象、NULL。</strong></p>
-<p><em>PHP var_dump() 会返回变量的数据类型和值</em></p>
-<h3 id="PHP-字符串"><a href="#PHP-字符串" class="headerlink" title="PHP 字符串"></a>PHP 字符串</h3><p> 字符串可以是引号内的任何文本,可以使用单引号或双引号：</p>
-<h1 id="学习笔记"><a href="#学习笔记" class="headerlink" title="学习笔记"></a>学习笔记</h1><h3 id="PHP整数"><a href="#PHP整数" class="headerlink" title="PHP整数"></a>PHP整数</h3><p> PHP 整数可以用三种格式规定整数：十进制、十六进制（前缀是 0x）或八进制（前缀是 0）</p>
-<h3 id="PHP浮点数"><a href="#PHP浮点数" class="headerlink" title="PHP浮点数"></a>PHP浮点数</h3><p>　浮点数是有小数点或指数形式的数字<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/02/14/2015-02-14-php数据类型/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-2015-02-14-php学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/02/14/2015-02-14-php学习笔记/" class="article-date">
-      <time datetime="2015-02-13T16:00:00.000Z" itemprop="datePublished">2015-02-14</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/02/14/2015-02-14-php学习笔记/">php学习笔记</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="php学习笔记"><a href="#php学习笔记" class="headerlink" title="php学习笔记"></a>php学习笔记</h1><h2 id="php能做什么？"><a href="#php能做什么？" class="headerlink" title="php能做什么？"></a>php能做什么？</h2><pre><code>php能够生成动态页面内容；
-php能够创建、打开、读取、写入、删除并关闭服务器上的文件；
-php能够接收表单数据；
-php能够发送并取回cookie；
-pph能够添加、删除、修改数据库中的数据； 
-php能够限制用户访问网站中的某些页面；
-php能够对数据进行加密；
-</code></pre><h2 id="为什么使用php？"><a href="#为什么使用php？" class="headerlink" title="为什么使用php？"></a>为什么使用php？</h2><pre><code>php运行于各种平台
-php兼容所有服务器（apache\iis）
-php支持多种数据库
-php高效，易于学习
-</code></pre>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/02/14/2015-02-14-php学习笔记/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 </div>
