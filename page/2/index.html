@@ -156,7 +156,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/functional/" style="font-size: 18.33px;">functional</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/jsx/" style="font-size: 10px;">jsx</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/pattern/" style="font-size: 10px;">pattern</a> <a href="/tags/php/" style="font-size: 11.67px;">php</a> <a href="/tags/ramda/" style="font-size: 18.33px;">ramda</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/redis/" style="font-size: 13.33px;">redis</a> <a href="/tags/函数式编程/" style="font-size: 15px;">函数式编程</a> <a href="/tags/缓存/" style="font-size: 13.33px;">缓存</a>
+                        <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/functional/" style="font-size: 18.33px;">functional</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/jsx/" style="font-size: 10px;">jsx</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/pattern/" style="font-size: 10px;">pattern</a> <a href="/tags/php/" style="font-size: 11.67px;">php</a> <a href="/tags/ramda/" style="font-size: 18.33px;">ramda</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/redis/" style="font-size: 13.33px;">redis</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/函数式编程/" style="font-size: 15px;">函数式编程</a> <a href="/tags/缓存/" style="font-size: 13.33px;">缓存</a>
                     </div>
                 </section>
                 
@@ -240,6 +240,75 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-redis3" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/21/redis3/" class="article-date">
+      <time datetime="2016-12-21T01:39:14.000Z" itemprop="datePublished">2016-12-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/21/redis3/">Redis学习记录3</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="Redis优化配置和redis-conf说明"><a href="#Redis优化配置和redis-conf说明" class="headerlink" title="Redis优化配置和redis.conf说明"></a>Redis优化配置和redis.conf说明</h2><ol>
+<li>redis.conf 配置参数：</li>
+</ol>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#是否作为守护进程运行</span></div><div class="line">daemonize yes</div><div class="line"></div><div class="line"><span class="meta">#如以后台进程运行，则需指定一个pid，默认为/var/run/redis.pid</span></div><div class="line"></div><div class="line">pidfile redis.pid</div><div class="line"></div><div class="line"><span class="meta">#绑定主机IP，默认值为127.0.0.1</span></div><div class="line"></div><div class="line"><span class="meta">#bind 127.0.0.1</span></div><div class="line"></div><div class="line"><span class="meta">#Redis默认监听端口</span></div><div class="line"></div><div class="line">port <span class="number">6379</span></div><div class="line"></div><div class="line"><span class="meta">#客户端闲置多少秒后，断开连接，默认为300（秒）</span></div><div class="line"></div><div class="line">timeout <span class="number">300</span></div><div class="line"></div><div class="line"><span class="meta">#日志记录等级，有4个可选值，debug，verbose（默认值），notice，warning</span></div><div class="line"></div><div class="line">loglevel verbose</div></pre></td></tr></table></figure>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/12/21/redis3/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-redis2" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -912,87 +981,6 @@ You can certainly do things with impure functions(and you must, if your program 
 
 
   
-    <article id="post-jsPattern" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/12/01/jsPattern/" class="article-date">
-      <time datetime="2016-12-01T01:11:46.000Z" itemprop="datePublished">2016-12-01</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/01/jsPattern/">javascript模式</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="javascriptPattern"><a href="#javascriptPattern" class="headerlink" title="javascriptPattern"></a>javascriptPattern</h1><p>《javascript设计模式与开发实践》学习记录</p>
-<h1 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h1><hr>
-<h2 id="什么是模式"><a href="#什么是模式" class="headerlink" title="什么是模式"></a>什么是模式</h2><p>模式是一个可复用的解决方案，可用于解决软件设计中的常见问题。三大好处：</p>
-<ol>
-<li>模式是已验证的解决方案</li>
-<li>模式很容易被复用</li>
-<li>模式富有表达力</li>
-</ol>
-<h2 id="优秀的模式"><a href="#优秀的模式" class="headerlink" title="优秀的模式"></a>优秀的模式</h2><p>优秀的模式应当可以执行以下操作：</p>
-<ol>
-<li>解决特殊问题</li>
-<li>没有显而易见的解决方案</li>
-<li>描述经过验证的概念</li>
-<li>描述一种关系</li>
-</ol>
-<h1 id="设计模式的类别"><a href="#设计模式的类别" class="headerlink" title="设计模式的类别"></a>设计模式的类别</h1>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pattern/">pattern</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/12/01/jsPattern/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1003,7 +991,7 @@ You can certainly do things with impure functions(and you must, if your program 
     <div class="outer">
         <div id="footer-info">
             <div class="footer-left">
-                &copy; 2016 Jiaxf
+                &copy; 2017 Jiaxf
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
