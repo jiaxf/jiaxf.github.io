@@ -3,27 +3,37 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Redis学习记录3 | 飞天雪的技术博客</title>
+  <title>mysql调优 | 飞天雪的技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Redis优化配置和redis.conf说明
-redis.conf 配置参数：
-
-12345678910111213141516171819202122#是否作为守护进程运行daemonize yes#如以后台进程运行，则需指定一个pid，默认为/var/run/redis.pidpidfile redis.pid#绑定主机IP，默认值为127.0.0.1#bind 127.0.0.1#Redis">
+  <meta name="description" content="MySQL双主一致性架构优化一、双主保证高可用
+MySQL数据库集群常使用一主多从，主从同步，读写分离的方式来扩充数据库的读性能，保证读库的高可用，但此时写库仍然是单点。
+在一个MySQL数据库集群中可以设置两个主库，并设置双向同步，以冗余写库的方式来保证写库的高可用。
+二、并发引发不一致
+数据冗余会引发数据的一致性问题，因为数据的同步有一个时间差，并发的写入可能导致数据同步失败，引起数据丢失：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Redis学习记录3">
-<meta property="og:url" content="http://jiaxf.github.io/2016/12/21/redis3/index.html">
+<meta property="og:title" content="mysql调优">
+<meta property="og:url" content="http://jiaxf.github.io/2017/07/03/mysqlMySQL双主一致性架构优化/index.html">
 <meta property="og:site_name" content="飞天雪的技术博客">
-<meta property="og:description" content="Redis优化配置和redis.conf说明
-redis.conf 配置参数：
-
-12345678910111213141516171819202122#是否作为守护进程运行daemonize yes#如以后台进程运行，则需指定一个pid，默认为/var/run/redis.pidpidfile redis.pid#绑定主机IP，默认值为127.0.0.1#bind 127.0.0.1#Redis">
-<meta property="og:updated_time" content="2016-12-21T01:53:16.000Z">
+<meta property="og:description" content="MySQL双主一致性架构优化一、双主保证高可用
+MySQL数据库集群常使用一主多从，主从同步，读写分离的方式来扩充数据库的读性能，保证读库的高可用，但此时写库仍然是单点。
+在一个MySQL数据库集群中可以设置两个主库，并设置双向同步，以冗余写库的方式来保证写库的高可用。
+二、并发引发不一致
+数据冗余会引发数据的一致性问题，因为数据的同步有一个时间差，并发的写入可能导致数据同步失败，引起数据丢失：">
+<meta property="og:image" content="http://jiaxf.github.io/images/640.png">
+<meta property="og:image" content="http://jiaxf.github.io/images/641.png">
+<meta property="og:image" content="http://jiaxf.github.io/images/642.png">
+<meta property="og:image" content="http://jiaxf.github.io/images/643.png">
+<meta property="og:image" content="http://jiaxf.github.io/images/644.png">
+<meta property="og:image" content="http://jiaxf.github.io/images/645.png">
+<meta property="og:updated_time" content="2017-07-03T01:25:16.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Redis学习记录3">
-<meta name="twitter:description" content="Redis优化配置和redis.conf说明
-redis.conf 配置参数：
-
-12345678910111213141516171819202122#是否作为守护进程运行daemonize yes#如以后台进程运行，则需指定一个pid，默认为/var/run/redis.pidpidfile redis.pid#绑定主机IP，默认值为127.0.0.1#bind 127.0.0.1#Redis">
+<meta name="twitter:title" content="mysql调优">
+<meta name="twitter:description" content="MySQL双主一致性架构优化一、双主保证高可用
+MySQL数据库集群常使用一主多从，主从同步，读写分离的方式来扩充数据库的读性能，保证读库的高可用，但此时写库仍然是单点。
+在一个MySQL数据库集群中可以设置两个主库，并设置双向同步，以冗余写库的方式来保证写库的高可用。
+二、并发引发不一致
+数据冗余会引发数据的一致性问题，因为数据的同步有一个时间差，并发的写入可能导致数据同步失败，引起数据丢失：">
+<meta name="twitter:image" content="http://jiaxf.github.io/images/640.png">
   
     <link rel="alternative" href="/atom.xml" title="飞天雪的技术博客" type="application/atom+xml">
   
@@ -246,11 +256,11 @@ redis.conf 配置参数：
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-redis3" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-mysqlMySQL双主一致性架构优化" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/12/21/redis3/" class="article-date">
-      <time datetime="2016-12-21T01:39:14.000Z" itemprop="datePublished">2016-12-21</time>
+      <a href="/2017/07/03/mysqlMySQL双主一致性架构优化/" class="article-date">
+      <time datetime="2017-07-03T00:57:39.000Z" itemprop="datePublished">2017-07-03</time>
 </a>
     </div>
   
@@ -263,7 +273,7 @@ redis.conf 配置参数：
         
   
     <h1 class="article-title" itemprop="name">
-      Redis学习记录3
+      mysql调优
     </h1>
   
 
@@ -278,7 +288,7 @@ redis.conf 配置参数：
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -288,45 +298,70 @@ redis.conf 配置参数：
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="Redis优化配置和redis-conf说明"><a href="#Redis优化配置和redis-conf说明" class="headerlink" title="Redis优化配置和redis.conf说明"></a>Redis优化配置和redis.conf说明</h2><ol>
-<li>redis.conf 配置参数：</li>
-</ol>
-<figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#是否作为守护进程运行</span></div><div class="line">daemonize yes</div><div class="line"></div><div class="line"><span class="meta">#如以后台进程运行，则需指定一个pid，默认为/var/run/redis.pid</span></div><div class="line"></div><div class="line">pidfile redis.pid</div><div class="line"></div><div class="line"><span class="meta">#绑定主机IP，默认值为127.0.0.1</span></div><div class="line"></div><div class="line"><span class="meta">#bind 127.0.0.1</span></div><div class="line"></div><div class="line"><span class="meta">#Redis默认监听端口</span></div><div class="line"></div><div class="line">port <span class="number">6379</span></div><div class="line"></div><div class="line"><span class="meta">#客户端闲置多少秒后，断开连接，默认为300（秒）</span></div><div class="line"></div><div class="line">timeout <span class="number">300</span></div><div class="line"></div><div class="line"><span class="meta">#日志记录等级，有4个可选值，debug，verbose（默认值），notice，warning</span></div><div class="line"></div><div class="line">loglevel verbose</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div></pre></td><td class="code"><pre><div class="line">#指定日志输出的文件名，默认值为stdout，也可设为/dev/null屏蔽日志</div><div class="line"></div><div class="line">logfile stdout</div><div class="line"></div><div class="line">#可用数据库数，默认值为<span class="number">16</span>，默认数据库为<span class="number">0</span></div><div class="line"></div><div class="line">databases <span class="number">16</span></div><div class="line"></div><div class="line">#保存数据到disk的策略</div><div class="line"></div><div class="line">#当有一条Keys数据被改变是，<span class="number">900</span>秒刷新到disk一次</div><div class="line"></div><div class="line">save <span class="number">900</span> <span class="number">1</span></div><div class="line"></div><div class="line">#当有<span class="number">10</span>条Keys数据被改变时，<span class="number">300</span>秒刷新到disk一次</div><div class="line"></div><div class="line">save <span class="number">300</span> <span class="number">10</span></div><div class="line"></div><div class="line">#当有<span class="number">1</span>w条keys数据被改变时，<span class="number">60</span>秒刷新到disk一次</div><div class="line"></div><div class="line">save <span class="number">60</span> <span class="number">10000</span></div><div class="line"></div><div class="line">#当dump.rdb数据库的时候是否压缩数据对象</div><div class="line"></div><div class="line">rdbcompression yes</div><div class="line"></div><div class="line">#本地数据库文件名，默认值为dump.rdb</div><div class="line"></div><div class="line">dbfilename dump.rdb</div><div class="line"></div><div class="line">#本地数据库存放路径，默认值为 ./</div><div class="line"></div><div class="line">dir /var/lib/redis/</div><div class="line"></div><div class="line">########### Replication #####################</div><div class="line"></div><div class="line">#Redis的复制配置</div><div class="line"></div><div class="line"># slaveof &lt;masterip&gt; &lt;masterport&gt; 当本机为从服务时，设置主服务的IP及端口</div><div class="line"></div><div class="line"># masterauth &lt;master-password&gt; 当本机为从服务时，设置主服务的连接密码</div><div class="line"></div><div class="line">#连接密码</div><div class="line"></div><div class="line"># requirepass foobared</div><div class="line"></div><div class="line">#最大客户端连接数，默认不限制</div><div class="line"></div><div class="line"># maxclients <span class="number">128</span></div><div class="line"></div><div class="line">#最大内存使用设置，达到最大内存设置后，Redis会先尝试清除已到期或即将到期的Key，当此方法处理后，任到达最大内存设置，将无法再进行写入操作。</div><div class="line"></div><div class="line"># maxmemory &lt;bytes&gt;</div><div class="line"></div><div class="line">#是否在每次更新操作后进行日志记录，如果不开启，可能会在断电时导致一段时间内的数据丢失。因为redis本身同步数据文件是按上面save条件来同步的，所以有的数据会在一段时间内只存在于内存中。默认值为no</div><div class="line"></div><div class="line">appendonly no</div><div class="line"></div><div class="line">#更新日志文件名，默认值为appendonly.aof</div><div class="line"></div><div class="line">#appendfilename</div><div class="line"></div><div class="line">#更新日志条件，共有<span class="number">3</span>个可选值。no表示等操作系统进行数据缓存同步到磁盘，always表示每次更新操作后手动调用fsync()将数据写到磁盘，everysec表示每秒同步一次（默认值）。</div><div class="line"></div><div class="line"># appendfsync always</div><div class="line"></div><div class="line">appendfsync everysec</div><div class="line"></div><div class="line"># appendfsync no</div><div class="line"></div><div class="line">################ VIRTUAL MEMORY ###########</div><div class="line"></div><div class="line">#是否开启VM功能，默认值为no</div><div class="line"></div><div class="line">vm-enabled no</div><div class="line"></div><div class="line"># vm-enabled yes</div><div class="line"></div><div class="line">#虚拟内存文件路径，默认值为/tmp/redis.swap，不可多个Redis实例共享</div><div class="line"></div><div class="line">vm-swap-file /tmp/redis.swap</div><div class="line"></div><div class="line"># 将所有大于vm-max-memory的数据存入虚拟内存,无论vm-max-memory设置多小,所有索引数据都是内存存储的 (Redis的索引数据就是keys),也就是说,当vm-max-memory设置为<span class="number">0</span>的时候,其实是所有value都存在于磁盘。默认值为<span class="number">0</span>。</div><div class="line"></div><div class="line">vm-max-memory <span class="number">0</span></div><div class="line"></div><div class="line">vm-page-size <span class="number">32</span></div><div class="line"></div><div class="line">vm-pages <span class="number">134217728</span></div><div class="line"></div><div class="line">vm-max-threads <span class="number">4</span></div><div class="line"></div><div class="line">############# ADVANCED CONFIG ###############</div><div class="line"></div><div class="line">glueoutputbuf yes</div><div class="line"></div><div class="line">hash-max-zipmap-entries <span class="number">64</span></div><div class="line"></div><div class="line">hash-max-zipmap-value <span class="number">512</span></div><div class="line"></div><div class="line">#是否重置Hash表</div><div class="line"></div><div class="line">activerehashing yes</div></pre></td></tr></table></figure>
-<p>注意：Redis官方文档对VM的使用提出了一些建议:</p>
-<pre><code>当你的key很小而value很大时,使用VM的效果会比较好.因为这样节约的内存比较大.
-
-当你的key不小时,可以考虑使用一些非常方法将很大的key变成很大的value,比如你可以考虑将key,value组合成一个新的value.
-
-最好使用linux ext3 等对稀疏文件支持比较好的文件系统保存你的swap文件.
-
-vm-max-threads这个参数,可以设置访问swap文件的线程数,设置最好不要超过机器的核数.如果设置为0,那么所有对swap文件的操作都是串行的.可能会造成比较长时间的延迟,但是对数据完整性有很好的保证.
-</code></pre><ol>
-<li>调整系统内核参数</li>
-</ol>
-<p>如果内存情况比较紧张的话，需要设定内核参数：</p>
-<p><code>echo 1 &gt; /proc/sys/vm/overcommit_memory</code></p>
-<p>这里说一下这个配置的含义：/proc/sys/vm/overcommit_memory</p>
-<p>该文件指定了内核针对内存分配的策略，其值可以是0、1、2。</p>
-<p>0，表示内核将检查是否有足够的可用内存供应用进程使用；如果有足够的可用内存，内存申请允许；否则，内存申请失败，并把错误返回给应用进程。</p>
-<p>1，表示内核允许分配所有的物理内存，而不管当前的内存状态如何。</p>
-<p>2，表示内核允许分配超过所有物理内存和交换空间总和的内存</p>
-<p>Redis 在dump数据的时候，会fork出一个子进程，理论上child进程所占用的内存和parent是一样的，比如parent占用的内存为 8G，这个时候也要同样分配8G的内存给child, 如果内存无法负担，往往会造成redis服务器的down机或者IO负载过高，效率下降。所以这里比较优化的内存分配策略应该设置为 1（表示内核允许分配所有的物理内存，而不管当前的内存状态如何）</p>
-<p>一、 运行服务<br><figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># redis-server /etc/redis/redis.conf 开启</span></div><div class="line"></div><div class="line"><span class="meta"># redis-cli shutdown 关闭</span></div></pre></td></tr></table></figure></p>
-<p>二、 测试</p>
-<p>1) 可在后台启动redis服务后，用redis-benchmark命令测试</p>
-<p>2) 通过redis-cli命令实际操作测试</p>
-<p>三、 保存/备份</p>
-<p>数据备份可以通过定期备份该文件实现。</p>
-<p>因为redis是异步写入磁盘的，如果要让内存中的数据马上写入硬盘可以执行如下命令：</p>
-<p><code>redis-cli save 或者 redis-cli -p 6380 save（指定端口）</code></p>
-<p>注意，以上部署操作需要具备一定的权限，比如复制和设定内核参数等。</p>
-<p>执行redis-benchmark命令时也会将内存数据写入硬盘。</p>
-<p>四、 开启端口号</p>
-<p>1) 打开/etc/sysconfig/iptables，</p>
-<p>2) 在-【A INPUT -p tcp -m state –state NEW -m tcp –dport 22 -j ACCEPT】后面，<br> 加上 【-A INPUT -p tcp -m state –state NEW -m tcp –dport 6379 -j ACCEPT】  //这里的6379是Redis默认端口号</p>
-<p>3) 保存，重启防火墙：<code>/etc/init.d/iptables restart</code></p>
+        <h1 id="MySQL双主一致性架构优化"><a href="#MySQL双主一致性架构优化" class="headerlink" title="MySQL双主一致性架构优化"></a>MySQL双主一致性架构优化</h1><p>一、双主保证高可用</p>
+<p>MySQL数据库集群常使用一主多从，主从同步，读写分离的方式来扩充数据库的读性能，保证读库的高可用，但此时写库仍然是单点。</p>
+<p>在一个MySQL数据库集群中可以设置两个主库，并设置双向同步，以冗余写库的方式来保证写库的高可用。</p>
+<p>二、并发引发不一致</p>
+<p>数据冗余会引发数据的一致性问题，因为数据的同步有一个时间差，并发的写入可能导致数据同步失败，引起数据丢失：</p>
+<p><img src="/images/640.png" alt=""></p>
+<p>如上图所述，假设主库使用了auto increment来作为自增主键：</p>
+<ul>
+<li>两个MySQL-master设置双向同步可以用来保证主库的高可用</li>
+<li>数据库中现存的记录主键是1，2，3</li>
+<li>主库1插入了一条记录，主键为4，并向主库2同步数据</li>
+<li>数据同步成功之前，主库2也插入了一条记录，由于数据还没有同步成功，插入记录生成的主键也为4，并向主库1也同步数据</li>
+<li>主库1和主库2都插入了主键为4的记录，双主同步失败，数据不一致</li>
+</ul>
+<p>三、相同步长免冲突</p>
+<p>能否保证两个主库生成的主键一定不冲突呢？<br>回答：</p>
+<ul>
+<li>设置不同的初始值</li>
+<li>设置相同的增长步长</li>
+</ul>
+<p>就能够做到。</p>
+<p><img src="/images/641.png" alt=""></p>
+<p>如上图所示：<br>两个MySQL-master设置双向同步可以用来保证主库的高可用</p>
+<ul>
+<li>库1的自增初始值是1，库2的自增初始值是2，增长步长都为2</li>
+<li>库1中插入数据主键为1/3/5/7，库2中插入数据主键为2/4/6/8，不冲突</li>
+<li>数据双向同步后，两个主库会包含全部数据</li>
+</ul>
+<p><img src="/images/642.png" alt=""></p>
+<p>如上图所示，两个主库最终都将包含1/2/3/4/5/6/7/8所有数据，即使有一个主库挂了，另一个主库也能够保证写库的高可用。</p>
+<p>四、上游生成ID避冲突</p>
+<p>换一个思路，为何要依赖于数据库的自增ID，来保证数据的一致性呢？<br>完全可以由业务上游，使用统一的ID生成器，来保证ID的生成不冲突：</p>
+<p><img src="/images/643.png" alt=""></p>
+<p>如上图所示，调用方插入数据时，带入全局唯一ID，而不依赖于数据库的auto increment，也能解决这个问题。</p>
+<p>至于如何生成全局唯一，趋势递增的ID，参见文章《分布式ID生成算法》。</p>
+<p>五、消除双写不治本</p>
+<p>使用auto increment两个主库并发写可能导致数据不一致，只使用一个主库提供服务，另一个主库作为shadow-master，只用来保证高可用，能否避免一致性问题呢？</p>
+<p><img src="/images/644.png" alt=""></p>
+<p>如上图所示：</p>
+<ul>
+<li>两个MySQL-master设置双向同步可以用来保证主库的高可用</li>
+<li>只有主库1对外提供写入服务</li>
+<li>两个主库设置相同的虚IP，在主库1挂掉或者网络异常的时候，虚IP自动漂移，shadow master顶上，保证主库的高可用</li>
+</ul>
+<p>这个切换由于虚IP没有变化，所以切换过程对调用方是透明的，但在极限的情况下，也可能引发数据的不一致：</p>
+<p><img src="/images/645.png" alt=""></p>
+<p>如上图所示：</p>
+<ul>
+<li>两个MySQL-master设置双向同步可以用来保证主库的高可用，并设置了相同的虚IP</li>
+<li>网络抖动前，主库1对上游提供写入服务，插入了一条记录，主键为4，并向shadow master主库2同步数据</li>
+<li>突然主库1网络异常，keepalived检测出异常后，实施虚IP漂移，主库2开始提供服务</li>
+<li>在主键4的数据同步成功之前，主库2插入了一条记录，也生成了主键为4的记录，结果导致数据不一致</li>
+</ul>
+<p>六、内网DNS探测</p>
+<p>虚IP漂移，双主同步延时导致的数据不一致，本质上，需要在双主同步完数据之后，再实施虚IP偏移，使用内网DNS探测，可以实现shadow master延时高可用：<br>使用内网域名连接数据库，例如：db.58daojia.org<br>主库1和主库2设置双主同步，不使用相同虚IP，而是分别使用ip1和ip2<br>一开始db.58daojia.org指向ip1<br>用一个小脚本轮询探测ip1主库的连通性<br>当ip1主库发生异常时，小脚本delay一个x秒的延时，等待主库2同步完数据之后，再将db.58daojia.org解析到ip2<br>程序以内网域名进行重连，即可自动连接到ip2主库，并保证了数据的一致性</p>
+<p>七、总结</p>
+<p>主库高可用，主库一致性，一些小技巧：</p>
+<ul>
+<li>双主同步是一种常见的保证写库高可用的方式</li>
+<li>设置相同步长，不同初始值，可以避免auto increment生成冲突主键</li>
+<li>不依赖数据库，业务调用方自己生成全局唯一ID是一个好方法</li>
+<li>shadow master保证写库高可用，只有一个写库提供服务，并不能完全保证一致性</li>
+<li>内网DNS探测，可以实现在主库1出现问题后，延时一个时间，再进行主库切换，以保证数据一致性</li>
+</ul>
 
       
     </div>
@@ -335,13 +370,13 @@ vm-max-threads这个参数,可以设置访问swap文件的线程数,设置最好
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/12/21/redis3/">Redis学习记录3</a></p>
+        <p><span>本文标题:</span><a href="/2017/07/03/mysqlMySQL双主一致性架构优化/">mysql调优</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Jiaxf 的个人博客">Jiaxf</a></p>
-        <p><span>发布时间:</span>2016年12月21日 - 09时39分</p>
-        <p><span>最后更新:</span>2016年12月21日 - 09时53分</p>
+        <p><span>发布时间:</span>2017年07月03日 - 08时57分</p>
+        <p><span>最后更新:</span>2017年07月03日 - 09时25分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/12/21/redis3/" title="Redis学习记录3">http://jiaxf.github.io/2016/12/21/redis3/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://jiaxf.github.io/2016/12/21/redis3/　　作者: Jiaxf" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/07/03/mysqlMySQL双主一致性架构优化/" title="mysql调优">http://jiaxf.github.io/2017/07/03/mysqlMySQL双主一致性架构优化/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://jiaxf.github.io/2017/07/03/mysqlMySQL双主一致性架构优化/　　作者: Jiaxf" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -354,18 +389,9 @@ vm-max-threads这个参数,可以设置访问swap文件的线程数,设置最好
 
 <nav id="article-nav">
   
-    <a href="/2016/12/22/1-Thinking in Ramda/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Thinking in Ramda 1
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/12/21/redis2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Redis学习记录2</div>
+    <a href="/2017/04/07/mysql调优/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">mysql调优</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -376,7 +402,7 @@ vm-max-threads这个参数,可以设置访问swap文件的线程数,设置最好
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis优化配置和redis-conf说明"><span class="toc-number">1.</span> <span class="toc-text">Redis优化配置和redis.conf说明</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQL双主一致性架构优化"><span class="toc-number">1.</span> <span class="toc-text">MySQL双主一致性架构优化</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -424,7 +450,7 @@ vm-max-threads这个参数,可以设置访问swap文件的线程数,设置最好
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/12/21/redis3/" data-title="Redis学习记录3" data-url="http://jiaxf.github.io/2016/12/21/redis3/"></div>
+    <div class="ds-thread" data-thread-key="2017/07/03/mysqlMySQL双主一致性架构优化/" data-title="mysql调优" data-url="http://jiaxf.github.io/2017/07/03/mysqlMySQL双主一致性架构优化/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -447,13 +473,11 @@ vm-max-threads这个参数,可以设置访问swap文件的线程数,设置最好
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/12/22/1-Thinking in Ramda/" title="上一篇: Thinking in Ramda 1">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2016/12/21/redis2/" title="下一篇: Redis学习记录2">
+            <a href="/2017/04/07/mysql调优/" title="下一篇: mysql调优">
                 <i class="fa fa-angle-right"></i>
             </a>
         

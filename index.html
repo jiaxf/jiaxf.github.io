@@ -156,7 +156,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/functional/" style="font-size: 18.33px;">functional</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/jsx/" style="font-size: 10px;">jsx</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/pattern/" style="font-size: 10px;">pattern</a> <a href="/tags/php/" style="font-size: 11.67px;">php</a> <a href="/tags/ramda/" style="font-size: 18.33px;">ramda</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/redis/" style="font-size: 13.33px;">redis</a> <a href="/tags/web/" style="font-size: 11.67px;">web</a> <a href="/tags/函数式编程/" style="font-size: 15px;">函数式编程</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/缓存/" style="font-size: 13.33px;">缓存</a>
+                        <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/functional/" style="font-size: 18.33px;">functional</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/jsx/" style="font-size: 10px;">jsx</a> <a href="/tags/mysql/" style="font-size: 11.67px;">mysql</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/pattern/" style="font-size: 10px;">pattern</a> <a href="/tags/php/" style="font-size: 11.67px;">php</a> <a href="/tags/ramda/" style="font-size: 18.33px;">ramda</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/redis/" style="font-size: 13.33px;">redis</a> <a href="/tags/web/" style="font-size: 11.67px;">web</a> <a href="/tags/函数式编程/" style="font-size: 15px;">函数式编程</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/缓存/" style="font-size: 13.33px;">缓存</a>
                     </div>
                 </section>
                 
@@ -240,6 +240,131 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-mysqlMySQL双主一致性架构优化" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/07/03/mysqlMySQL双主一致性架构优化/" class="article-date">
+      <time datetime="2017-07-03T00:57:39.000Z" itemprop="datePublished">2017-07-03</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/03/mysqlMySQL双主一致性架构优化/">mysql调优</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="MySQL双主一致性架构优化"><a href="#MySQL双主一致性架构优化" class="headerlink" title="MySQL双主一致性架构优化"></a>MySQL双主一致性架构优化</h1><p>一、双主保证高可用</p>
+<p>MySQL数据库集群常使用一主多从，主从同步，读写分离的方式来扩充数据库的读性能，保证读库的高可用，但此时写库仍然是单点。</p>
+<p>在一个MySQL数据库集群中可以设置两个主库，并设置双向同步，以冗余写库的方式来保证写库的高可用。</p>
+<p>二、并发引发不一致</p>
+<p>数据冗余会引发数据的一致性问题，因为数据的同步有一个时间差，并发的写入可能导致数据同步失败，引起数据丢失：</p>
+<p><img src="/images/640.png" alt=""></p>
+<p>如上图所述，假设主库使用了auto increment来作为自增主键：</p>
+<ul>
+<li>两个MySQL-master设置双向同步可以用来保证主库的高可用</li>
+<li>数据库中现存的记录主键是1，2，3</li>
+<li>主库1插入了一条记录，主键为4，并向主库2同步数据</li>
+<li>数据同步成功之前，主库2也插入了一条记录，由于数据还没有同步成功，插入记录生成的主键也为4，并向主库1也同步数据</li>
+<li>主库1和主库2都插入了主键为4的记录，双主同步失败，数据不一致</li>
+</ul>
+<p>三、相同步长免冲突</p>
+<p>能否保证两个主库生成的主键一定不冲突呢？<br>回答：</p>
+<ul>
+<li>设置不同的初始值</li>
+<li>设置相同的增长步长</li>
+</ul>
+<p>就能够做到。</p>
+<p><img src="/images/641.png" alt=""></p>
+<p>如上图所示：<br>两个MySQL-master设置双向同步可以用来保证主库的高可用</p>
+<ul>
+<li>库1的自增初始值是1，库2的自增初始值是2，增长步长都为2</li>
+<li>库1中插入数据主键为1/3/5/7，库2中插入数据主键为2/4/6/8，不冲突</li>
+<li>数据双向同步后，两个主库会包含全部数据</li>
+</ul>
+<p><img src="/images/642.png" alt=""></p>
+<p>如上图所示，两个主库最终都将包含1/2/3/4/5/6/7/8所有数据，即使有一个主库挂了，另一个主库也能够保证写库的高可用。</p>
+<p>四、上游生成ID避冲突</p>
+<p>换一个思路，为何要依赖于数据库的自增ID，来保证数据的一致性呢？<br>完全可以由业务上游，使用统一的ID生成器，来保证ID的生成不冲突：</p>
+<p><img src="/images/643.png" alt=""></p>
+<p>如上图所示，调用方插入数据时，带入全局唯一ID，而不依赖于数据库的auto increment，也能解决这个问题。</p>
+<p>至于如何生成全局唯一，趋势递增的ID，参见文章《分布式ID生成算法》。</p>
+<p>五、消除双写不治本</p>
+<p>使用auto increment两个主库并发写可能导致数据不一致，只使用一个主库提供服务，另一个主库作为shadow-master，只用来保证高可用，能否避免一致性问题呢？</p>
+<p><img src="/images/644.png" alt=""></p>
+<p>如上图所示：</p>
+<ul>
+<li>两个MySQL-master设置双向同步可以用来保证主库的高可用</li>
+<li>只有主库1对外提供写入服务</li>
+<li>两个主库设置相同的虚IP，在主库1挂掉或者网络异常的时候，虚IP自动漂移，shadow master顶上，保证主库的高可用</li>
+</ul>
+<p>这个切换由于虚IP没有变化，所以切换过程对调用方是透明的，但在极限的情况下，也可能引发数据的不一致：</p>
+<p><img src="/images/645.png" alt=""></p>
+<p>如上图所示：</p>
+<ul>
+<li>两个MySQL-master设置双向同步可以用来保证主库的高可用，并设置了相同的虚IP</li>
+<li>网络抖动前，主库1对上游提供写入服务，插入了一条记录，主键为4，并向shadow master主库2同步数据</li>
+<li>突然主库1网络异常，keepalived检测出异常后，实施虚IP漂移，主库2开始提供服务</li>
+<li>在主键4的数据同步成功之前，主库2插入了一条记录，也生成了主键为4的记录，结果导致数据不一致</li>
+</ul>
+<p>六、内网DNS探测</p>
+<p>虚IP漂移，双主同步延时导致的数据不一致，本质上，需要在双主同步完数据之后，再实施虚IP偏移，使用内网DNS探测，可以实现shadow master延时高可用：<br>使用内网域名连接数据库，例如：db.58daojia.org<br>主库1和主库2设置双主同步，不使用相同虚IP，而是分别使用ip1和ip2<br>一开始db.58daojia.org指向ip1<br>用一个小脚本轮询探测ip1主库的连通性<br>当ip1主库发生异常时，小脚本delay一个x秒的延时，等待主库2同步完数据之后，再将db.58daojia.org解析到ip2<br>程序以内网域名进行重连，即可自动连接到ip2主库，并保证了数据的一致性</p>
+<p>七、总结</p>
+<p>主库高可用，主库一致性，一些小技巧：</p>
+<ul>
+<li>双主同步是一种常见的保证写库高可用的方式</li>
+<li>设置相同步长，不同初始值，可以避免auto increment生成冲突主键</li>
+<li>不依赖数据库，业务调用方自己生成全局唯一ID是一个好方法</li>
+<li>shadow master保证写库高可用，只有一个写库提供服务，并不能完全保证一致性</li>
+<li>内网DNS探测，可以实现在主库1出现问题后，延时一个时间，再进行主库切换，以保证数据一致性</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-mysql调优" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -864,73 +989,6 @@
       
         <p class="article-more-link">
           <a  href="/2016/12/22/4-Thinking in Ramda/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-3-Thinking in Ramda" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/12/22/3-Thinking in Ramda/" class="article-date">
-      <time datetime="2016-12-22T03:26:14.000Z" itemprop="datePublished">2016-12-22</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/22/3-Thinking in Ramda/">Thinking in Ramda 3</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="Thinking-in-Ramda-Partial-Application"><a href="#Thinking-in-Ramda-Partial-Application" class="headerlink" title="Thinking in Ramda: Partial Application"></a>Thinking in Ramda: Partial Application</h1><h2 id="Higher-Order-Functions"><a href="#Higher-Order-Functions" class="headerlink" title="Higher-Order Functions"></a>Higher-Order Functions</h2><p>Functions that take or return other functions are known as “higher-order functions”.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//  Full function version:</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">publishedInYear</span>(<span class="params">year</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">book</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> book.year === year</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Arrow function version:</span></div><div class="line"><span class="keyword">const</span> publishedInYear = <span class="function"><span class="params">year</span> =&gt;</span> book =&gt; book.year === year</div><div class="line"><span class="keyword">const</span> titlesForYear = <span class="function">(<span class="params">books, year</span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">const</span> selected = filter(publishedInYear(year), books)</div><div class="line"></div><div class="line">  <span class="keyword">return</span> map(<span class="function"><span class="params">book</span> =&gt;</span> book.title, selected)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/functional/">functional</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ramda/">ramda</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/12/22/3-Thinking in Ramda/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
