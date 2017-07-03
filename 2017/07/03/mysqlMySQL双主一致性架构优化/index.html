@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>mysql调优 | 飞天雪的技术博客</title>
+  <title>MySQL双主一致性架构优化 | 飞天雪的技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="MySQL双主一致性架构优化一、双主保证高可用
 MySQL数据库集群常使用一主多从，主从同步，读写分离的方式来扩充数据库的读性能，保证读库的高可用，但此时写库仍然是单点。
@@ -11,7 +11,7 @@ MySQL数据库集群常使用一主多从，主从同步，读写分离的方式
 二、并发引发不一致
 数据冗余会引发数据的一致性问题，因为数据的同步有一个时间差，并发的写入可能导致数据同步失败，引起数据丢失：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mysql调优">
+<meta property="og:title" content="MySQL双主一致性架构优化">
 <meta property="og:url" content="http://jiaxf.github.io/2017/07/03/mysqlMySQL双主一致性架构优化/index.html">
 <meta property="og:site_name" content="飞天雪的技术博客">
 <meta property="og:description" content="MySQL双主一致性架构优化一、双主保证高可用
@@ -25,9 +25,9 @@ MySQL数据库集群常使用一主多从，主从同步，读写分离的方式
 <meta property="og:image" content="http://jiaxf.github.io/images/643.png">
 <meta property="og:image" content="http://jiaxf.github.io/images/644.png">
 <meta property="og:image" content="http://jiaxf.github.io/images/645.png">
-<meta property="og:updated_time" content="2017-07-03T01:25:16.000Z">
+<meta property="og:updated_time" content="2017-07-03T01:31:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mysql调优">
+<meta name="twitter:title" content="MySQL双主一致性架构优化">
 <meta name="twitter:description" content="MySQL双主一致性架构优化一、双主保证高可用
 MySQL数据库集群常使用一主多从，主从同步，读写分离的方式来扩充数据库的读性能，保证读库的高可用，但此时写库仍然是单点。
 在一个MySQL数据库集群中可以设置两个主库，并设置双向同步，以冗余写库的方式来保证写库的高可用。
@@ -273,7 +273,7 @@ MySQL数据库集群常使用一主多从，主从同步，读写分离的方式
         
   
     <h1 class="article-title" itemprop="name">
-      mysql调优
+      MySQL双主一致性架构优化
     </h1>
   
 
@@ -312,6 +312,7 @@ MySQL数据库集群常使用一主多从，主从同步，读写分离的方式
 <li>数据同步成功之前，主库2也插入了一条记录，由于数据还没有同步成功，插入记录生成的主键也为4，并向主库1也同步数据</li>
 <li>主库1和主库2都插入了主键为4的记录，双主同步失败，数据不一致</li>
 </ul>
+<a id="more"></a>
 <p>三、相同步长免冲突</p>
 <p>能否保证两个主库生成的主键一定不冲突呢？<br>回答：</p>
 <ul>
@@ -370,12 +371,12 @@ MySQL数据库集群常使用一主多从，主从同步，读写分离的方式
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/07/03/mysqlMySQL双主一致性架构优化/">mysql调优</a></p>
+        <p><span>本文标题:</span><a href="/2017/07/03/mysqlMySQL双主一致性架构优化/">MySQL双主一致性架构优化</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Jiaxf 的个人博客">Jiaxf</a></p>
         <p><span>发布时间:</span>2017年07月03日 - 08时57分</p>
-        <p><span>最后更新:</span>2017年07月03日 - 09时25分</p>
+        <p><span>最后更新:</span>2017年07月03日 - 09时31分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/07/03/mysqlMySQL双主一致性架构优化/" title="mysql调优">http://jiaxf.github.io/2017/07/03/mysqlMySQL双主一致性架构优化/</a>
+            <span>原始链接:</span><a class="post-url" href="/2017/07/03/mysqlMySQL双主一致性架构优化/" title="MySQL双主一致性架构优化">http://jiaxf.github.io/2017/07/03/mysqlMySQL双主一致性架构优化/</a>
             <span class="copy-path" data-clipboard-text="原文: http://jiaxf.github.io/2017/07/03/mysqlMySQL双主一致性架构优化/　　作者: Jiaxf" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
@@ -450,7 +451,7 @@ MySQL数据库集群常使用一主多从，主从同步，读写分离的方式
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/07/03/mysqlMySQL双主一致性架构优化/" data-title="mysql调优" data-url="http://jiaxf.github.io/2017/07/03/mysqlMySQL双主一致性架构优化/"></div>
+    <div class="ds-thread" data-thread-key="2017/07/03/mysqlMySQL双主一致性架构优化/" data-title="MySQL双主一致性架构优化" data-url="http://jiaxf.github.io/2017/07/03/mysqlMySQL双主一致性架构优化/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -482,7 +483,7 @@ MySQL数据库集群常使用一主多从，主从同步，读写分离的方式
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/03/mysqlMySQL双主一致性架构优化/">mysql调优</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/07/mysql调优/">mysql调优</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/前端自适应CSS3相对单位rem/">前端自适应css3相对单位rem</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/03/webWorkers/">Web Worker study</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/26/9-Thinking in Ramda/">Thinking in Ramda 9</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/26/8-Thinking in Ramda/">Thinking in Ramda 8</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/23/7-Thinking in Ramda/">Thinking in Ramda 7</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/23/6-Thinking in Ramda/">Thinking in Ramda 6</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/5-Thinking in Radam/">Thinking in Ramda 5</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/4-Thinking in Ramda/">Thinking in Ramda 4</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/3-Thinking in Ramda/">Thinking in Ramda 3</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/2-Thinking in Ramda/">Thinking in Ramda 2</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/1-Thinking in Ramda/">Thinking in Ramda 1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/redis3/">Redis学习记录3</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/redis2/">Redis学习记录2</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/fp2/">函数式编程入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/curry/">函数式编程入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/redis/">Redis学习记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/FP/">函数式编程入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/applicativeFunctor/">函数式编程入门（2）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/javascriptIntroduce/">前端知识学习（摘自阮一峰博客）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/category theory/">范畴学基本知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/javascriptEvent/">JavaScriptEvent</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/jsPattern/">javascript模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/30/reactStudy/">React入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/29/javascript错误/">js错误类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/14/2015-02-14-php学习笔记/">php学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/14/2015-02-14-php数据类型/">php数据类型</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/03/mysqlMySQL双主一致性架构优化/">MySQL双主一致性架构优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/07/mysql调优/">mysql调优</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/前端自适应CSS3相对单位rem/">前端自适应css3相对单位rem</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/03/webWorkers/">Web Worker study</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/26/9-Thinking in Ramda/">Thinking in Ramda 9</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/26/8-Thinking in Ramda/">Thinking in Ramda 8</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/23/7-Thinking in Ramda/">Thinking in Ramda 7</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/23/6-Thinking in Ramda/">Thinking in Ramda 6</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/5-Thinking in Radam/">Thinking in Ramda 5</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/4-Thinking in Ramda/">Thinking in Ramda 4</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/3-Thinking in Ramda/">Thinking in Ramda 3</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/2-Thinking in Ramda/">Thinking in Ramda 2</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/1-Thinking in Ramda/">Thinking in Ramda 1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/redis3/">Redis学习记录3</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/redis2/">Redis学习记录2</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/curry/">函数式编程入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/fp2/">函数式编程入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/redis/">Redis学习记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/FP/">函数式编程入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/applicativeFunctor/">函数式编程入门（2）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/javascriptIntroduce/">前端知识学习（摘自阮一峰博客）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/category theory/">范畴学基本知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/javascriptEvent/">JavaScriptEvent</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/jsPattern/">javascript模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/30/reactStudy/">React入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/29/javascript错误/">js错误类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/14/2015-02-14-php数据类型/">php数据类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/14/2015-02-14-php学习笔记/">php学习笔记</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
