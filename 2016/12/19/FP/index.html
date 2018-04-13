@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>函数式编程入门 | 飞天雪的技术博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Function Program几个原则 DRY（不要重复自己，don’t repeat yourself） 高内聚低耦合（loose coupling high cohesion） YAGNI （你不会用到它的，ya ain’t gonna need it） 最小意外原则（Principle of least surprise） 单一责任（single responsibility） 纯函数，尽">
+<meta name="keywords" content="javascript,js,函数式编程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="函数式编程入门">
+<meta property="og:url" content="http://jiaxf.github.io/2016/12/19/FP/index.html">
+<meta property="og:site_name" content="飞天雪的技术博客">
+<meta property="og:description" content="Function Program几个原则 DRY（不要重复自己，don’t repeat yourself） 高内聚低耦合（loose coupling high cohesion） YAGNI （你不会用到它的，ya ain’t gonna need it） 最小意外原则（Principle of least surprise） 单一责任（single responsibility） 纯函数，尽">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2016-12-19T01:52:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="函数式编程入门">
+<meta name="twitter:description" content="Function Program几个原则 DRY（不要重复自己，don’t repeat yourself） 高内聚低耦合（loose coupling high cohesion） YAGNI （你不会用到它的，ya ain’t gonna need it） 最小意外原则（Principle of least surprise） 单一责任（single responsibility） 纯函数，尽">
+  
+    <link rel="alternative" href="/atom.xml" title="飞天雪的技术博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/linux.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="jiaxf欢迎您来访！">Jiaxf</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">技术无止境</p>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="search" placeholder=" Search...">
+            </form>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">博客首页</a></li>
+                        
+                            <li><a href="/archives">技术文摘</a></li>
+                        
+                            <li><a href="/works">前端集锦</a></li>
+                        
+                            <li><a href="/readings">阅读书单</a></li>
+                        
+                            <li><a href="/about">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="mailto:jiaxuefeng0@gmail.com" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/jiaxf" title="github">github</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="https://zhihu.com/people/jia-xue-feng-0" title="zhihu">zhihu</a>
+                            
+                                <a class="fl weibo" target="_blank" href="http://weibo.com/jiaxuefeng" title="weibo">weibo</a>
+                            
+                                <a class="fl linkedin" target="_blank" href="http://cn.linkedin.com/in/jiaxuefeng" title="linkedin">linkedin</a>
+                            
+                                <a class="fl rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/functional/" style="font-size: 18.57px;">functional</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/js/" style="font-size: 17.14px;">js</a> <a href="/tags/jsx/" style="font-size: 10px;">jsx</a> <a href="/tags/mysql/" style="font-size: 11.43px;">mysql</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/pattern/" style="font-size: 10px;">pattern</a> <a href="/tags/php/" style="font-size: 11.43px;">php</a> <a href="/tags/ramda/" style="font-size: 18.57px;">ramda</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/redis/" style="font-size: 14.29px;">redis</a> <a href="/tags/web/" style="font-size: 11.43px;">web</a> <a href="/tags/函数式编程/" style="font-size: 15.71px;">函数式编程</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/缓存/" style="font-size: 12.86px;">缓存</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://luuman.github.io/">luuman</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">码农一枚，追求极客！</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+<script type="text/javascript">(function(){document.write(unescape('%3Cdiv id="bdcs"%3E%3C/div%3E'));var bdcs = document.createElement('script');bdcs.type = 'text/javascript';bdcs.async = true;bdcs.src = 'http://znsv.baidu.com/customer_search/api/js?sid=13578845068435931330' + '&plate_url=' + encodeURIComponent(window.location.href) + '&t=' + Math.ceil(new Date()/3600000);var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(bdcs, s);})();</script>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Jiaxf</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/linux.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Jiaxf</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">技术无止境</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">博客首页</a></li>
+                
+                    <li><a href="/archives">技术文摘</a></li>
+                
+                    <li><a href="/works">前端集锦</a></li>
+                
+                    <li><a href="/readings">阅读书单</a></li>
+                
+                    <li><a href="/about">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="mailto:jiaxuefeng0@gmail.com" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/jiaxf" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://zhihu.com/people/jia-xue-feng-0" title="zhihu">zhihu</a>
+                    
+                        <a class="weibo" target="_blank" href="http://weibo.com/jiaxuefeng" title="weibo">weibo</a>
+                    
+                        <a class="linkedin" target="_blank" href="http://cn.linkedin.com/in/jiaxuefeng" title="linkedin">linkedin</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-FP" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/19/FP/" class="article-date">
+      <time datetime="2016-12-19T01:52:21.000Z" itemprop="datePublished">2016-12-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      函数式编程入门
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="Function-Program"><a href="#Function-Program" class="headerlink" title="Function Program"></a>Function Program</h1><h2 id="几个原则"><a href="#几个原则" class="headerlink" title="几个原则"></a>几个原则</h2><ul>
+<li>DRY（不要重复自己，don’t repeat yourself）</li>
+<li>高内聚低耦合（loose coupling high cohesion）</li>
+<li>YAGNI （你不会用到它的，ya ain’t gonna need it）</li>
+<li>最小意外原则（Principle of least surprise）</li>
+<li>单一责任（single responsibility）</li>
+<li>纯函数，尽量减少副作用</li>
+</ul>
+<blockquote>
+<p>纯函数是这样一种函数，即相同的输入，永远会得到相同的输出，而且没有任何可观察的副作用。</p>
+</blockquote>
+<blockquote>
+<p><em>副作用</em>是在计算结果的过程中，系统状态的一种变化，或者与外部世界进行的<em>可观察的交互</em>。<br><a id="more"></a></p>
+</blockquote>
+<p>几个数学定律应用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 结合律（assosiative）</span></span><br><span class="line">add(add(x, y), z) == add(x, add(y, z));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 交换律（commutative）</span></span><br><span class="line">add(x, y) == add(y, x);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 同一律（identity）</span></span><br><span class="line">add(x, <span class="number">0</span>) == x;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 分配律（distributive）</span></span><br><span class="line">multiply(x, add(y,z)) == add(multiply(x, y), multiply(x, z));</span><br></pre></td></tr></table></figure>
+<h2 id="函数柯里化"><a href="#函数柯里化" class="headerlink" title="函数柯里化"></a>函数柯里化</h2><p>curry 的概念很简单：只传递给函数一部分参数来调用它，让它返回一个函数去处理剩下的参数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> increment = add(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">var</span> addTen = add(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">increment(<span class="number">2</span>);</span><br><span class="line"><span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line">addTen(<span class="number">2</span>);</span><br><span class="line"><span class="comment">// 12</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> curry = <span class="built_in">require</span>(<span class="string">'lodash'</span>).curry;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> match = curry(<span class="function"><span class="keyword">function</span>(<span class="params">what, str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> str.match(what);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> replace = curry(<span class="function"><span class="keyword">function</span>(<span class="params">what, replacement, str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> str.replace(what, replacement);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> filter = curry(<span class="function"><span class="keyword">function</span>(<span class="params">f, ary</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> ary.filter(f);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> map = curry(<span class="function"><span class="keyword">function</span>(<span class="params">f, ary</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> ary.map(f);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">match(<span class="regexp">/\s+/g</span>, <span class="string">"hello world"</span>);</span><br><span class="line"><span class="comment">// [ ' ' ]</span></span><br><span class="line"></span><br><span class="line">match(<span class="regexp">/\s+/g</span>)(<span class="string">"hello world"</span>);</span><br><span class="line"><span class="comment">// [ ' ' ]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> hasSpaces = match(<span class="regexp">/\s+/g</span>);</span><br><span class="line"><span class="comment">// function(x) &#123; return x.match(/\s+/g) &#125;</span></span><br><span class="line"></span><br><span class="line">hasSpaces(<span class="string">"hello world"</span>);</span><br><span class="line"><span class="comment">// [ ' ' ]</span></span><br><span class="line"></span><br><span class="line">hasSpaces(<span class="string">"spaceless"</span>);</span><br><span class="line"><span class="comment">// null</span></span><br><span class="line"></span><br><span class="line">filter(hasSpaces, [<span class="string">"tori_spelling"</span>, <span class="string">"tori amos"</span>]);</span><br><span class="line"><span class="comment">// ["tori amos"]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> findSpaces = filter(hasSpaces);</span><br><span class="line"><span class="comment">// function(xs) &#123; return xs.filter(function(x) &#123; return x.match(/\s+/g) &#125;) &#125;</span></span><br><span class="line"></span><br><span class="line">findSpaces([<span class="string">"tori_spelling"</span>, <span class="string">"tori amos"</span>]);</span><br><span class="line"><span class="comment">// ["tori amos"]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> noVowels = replace(<span class="regexp">/[aeiou]/ig</span>);</span><br><span class="line"><span class="comment">// function(replacement, x) &#123; return x.replace(/[aeiou]/ig, replacement) &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> censored = noVowels(<span class="string">"*"</span>);</span><br><span class="line"><span class="comment">// function(x) &#123; return x.replace(/[aeiou]/ig, "*") &#125;</span></span><br><span class="line"></span><br><span class="line">censored(<span class="string">"Chocolate Rain"</span>);</span><br><span class="line"><span class="comment">// 'Ch*c*l*t* R**n'</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>“预加载”函数的能力，通过传递一到两个参数调用函数，就能得到一个记住了这些参数的新函数。</p>
+</blockquote>
+<h2 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h2><blockquote>
+<p>高阶函数（higher order function）（高阶函数：参数或返回值为函数的函数）。</p>
+</blockquote>
+<h2 id="函数组合"><a href="#函数组合" class="headerlink" title="函数组合"></a>函数组合</h2><p><code>组合</code>（compose，以下将称之为组合）：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> compose = <span class="function"><span class="keyword">function</span>(<span class="params">f,g</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> f(g(x));</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><code>f</code> 和 <code>g</code> 都是函数，<code>x</code> 是在它们之间通过“管道”传输的值。在 <code>compose</code> 的定义中，<code>g</code> 将先于 <code>f</code> 执行，因此就创建了一个从右到左的数据流。</p>
+<p><code>组合</code>将两个函数结合产生一个新函数。组合用法如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> toUpperCase = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123; <span class="keyword">return</span> x.toUpperCase(); &#125;;</span><br><span class="line"><span class="keyword">var</span> exclaim = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123; <span class="keyword">return</span> x + <span class="string">'!'</span>; &#125;;</span><br><span class="line"><span class="keyword">var</span> shout = compose(exclaim, toUpperCase);</span><br><span class="line"></span><br><span class="line">shout(<span class="string">"send in the clowns"</span>);</span><br><span class="line"><span class="comment">//=&gt; "SEND IN THE CLOWNS!"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> head = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123; <span class="keyword">return</span> x[<span class="number">0</span>]; &#125;;</span><br><span class="line"><span class="keyword">var</span> reverse = reduce(<span class="function"><span class="keyword">function</span>(<span class="params">acc, x</span>)</span>&#123; <span class="keyword">return</span> [x].concat(acc); &#125;, []);</span><br><span class="line"><span class="keyword">var</span> last = compose(head, reverse);</span><br><span class="line"></span><br><span class="line">last([<span class="string">'jumpkick'</span>, <span class="string">'roundhouse'</span>, <span class="string">'uppercut'</span>]);</span><br><span class="line"><span class="comment">//=&gt; 'uppercut'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 结合律（associativity）</span></span><br><span class="line"><span class="keyword">var</span> associative = compose(f, compose(g, h)) == compose(compose(f, g), h);</span><br><span class="line"><span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>符合结合律意味着不管你是把 <code>g</code> 和 <code>h</code> 分到一组，还是把 <code>f</code> 和 <code>g</code> 分到一组都不重要。所以，如果我们想把字符串变为大写，可以这么写：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">compose(toUpperCase, compose(head, reverse));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line">compose(compose(toUpperCase, head), reverse);</span><br></pre></td></tr></table></figure>
+<p>因为如何为 <code>compose</code> 的调用分组不重要，所以结果都是一样的。</p>
+<p>结合律的一大好处是任何一个函数分组都可以被拆开来，然后再以它们自己的组合方式打包在一起。让我们来重构重构前面的例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> loudLastUpper = compose(exclaim, toUpperCase, head, reverse);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或</span></span><br><span class="line"><span class="keyword">var</span> last = compose(head, reverse);</span><br><span class="line"><span class="keyword">var</span> loudLastUpper = compose(exclaim, toUpperCase, last);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或</span></span><br><span class="line"><span class="keyword">var</span> last = compose(head, reverse);</span><br><span class="line"><span class="keyword">var</span> angry = compose(exclaim, toUpperCase);</span><br><span class="line"><span class="keyword">var</span> loudLastUpper = compose(angry, last);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 更多变种...</span></span><br></pre></td></tr></table></figure>
+<h2 id="pointfree"><a href="#pointfree" class="headerlink" title="pointfree"></a>pointfree</h2><p>pointfree 模式指的是，永远不必说出你的数据。函数无须提及将要操作的数据是什么样的。一等公民的函数、柯里化（curry）以及组合协作起来非常有助于实现这种模式。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 非 pointfree，因为提到了数据：word</span></span><br><span class="line"><span class="keyword">var</span> snakeCase = <span class="function"><span class="keyword">function</span> (<span class="params">word</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> word.toLowerCase().replace(<span class="regexp">/\s+/ig</span>, <span class="string">'_'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// pointfree</span></span><br><span class="line"><span class="keyword">var</span> snakeCase = compose(replace(<span class="regexp">/\s+/ig</span>, <span class="string">'_'</span>), toLowerCase);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 非 pointfree，因为提到了数据：name</span></span><br><span class="line"><span class="keyword">var</span> initials = <span class="function"><span class="keyword">function</span> (<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> name.split(<span class="string">' '</span>).map(compose(toUpperCase, head)).join(<span class="string">'. '</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// pointfree</span></span><br><span class="line"><span class="keyword">var</span> initials = compose(join(<span class="string">'. '</span>), map(compose(toUpperCase, head)), split(<span class="string">' '</span>));</span><br><span class="line"></span><br><span class="line">initials(<span class="string">"hunter stockton thompson"</span>);</span><br><span class="line"><span class="comment">// 'H. S. T'</span></span><br></pre></td></tr></table></figure>
+<p>pointfree 模式能够帮助我们减少不必要的命名，让代码保持简洁和通用。对函数式代码来说，pointfree 是非常好的石蕊试验，因为它能告诉我们一个函数是否是接受输入返回输出的小函数。比如，while 循环是不能组合的。不过你也要警惕，pointfree 就像是一把双刃剑，有时候也能混淆视听。并非所有的函数式代码都是 pointfree 的，不过这没关系。可以使用它的时候就使用，不能使用的时候就用普通函数。</p>
+<p>组合的一个常见错误是，在没有局部调用之前，就组合类似 map 这样接受两个参数的函数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 错误做法：我们传给了 `angry` 一个数组，根本不知道最后传给 `map` 的是什么东西。</span></span><br><span class="line"><span class="keyword">var</span> latin = compose(map, angry, reverse);</span><br><span class="line"></span><br><span class="line">latin([<span class="string">"frog"</span>, <span class="string">"eyes"</span>]);</span><br><span class="line"><span class="comment">// error</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 正确做法：每个函数都接受一个实际参数。</span></span><br><span class="line"><span class="keyword">var</span> latin = compose(map(angry), reverse);</span><br><span class="line"></span><br><span class="line">latin([<span class="string">"frog"</span>, <span class="string">"eyes"</span>]);</span><br><span class="line"><span class="comment">// ["EYES!", "FROG!"])</span></span><br></pre></td></tr></table></figure>
+<p>如果在 debug 组合的时候遇到了困难，那么可以使用下面这个实用的，但是不纯的 <code>trace</code> 函数来追踪代码的执行情况。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> trace = curry(<span class="function"><span class="keyword">function</span>(<span class="params">tag, x</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(tag, x);</span><br><span class="line">  <span class="keyword">return</span> x;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> dasherize = compose(join(<span class="string">'-'</span>), toLower, split(<span class="string">' '</span>), replace(<span class="regexp">/\s&#123;2,&#125;/ig</span>, <span class="string">' '</span>));</span><br><span class="line"></span><br><span class="line">dasherize(<span class="string">'The world is a vampire'</span>);</span><br><span class="line"><span class="comment">// TypeError: Cannot read property 'apply' of undefined</span></span><br></pre></td></tr></table></figure>
+<p>这里报错了，来 <code>trace</code> 下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> dasherize = compose(join(<span class="string">'-'</span>), toLower, trace(<span class="string">"after split"</span>), split(<span class="string">' '</span>), replace(<span class="regexp">/\s&#123;2,&#125;/ig</span>, <span class="string">' '</span>));</span><br><span class="line"><span class="comment">// after split [ 'The', 'world', 'is', 'a', 'vampire' ]</span></span><br></pre></td></tr></table></figure>
+<p>啊！<code>toLower</code> 的参数是一个数组，所以需要先用 <code>map</code> 调用一下它。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> dasherize = compose(join(<span class="string">'-'</span>), map(toLower), split(<span class="string">' '</span>), replace(<span class="regexp">/\s&#123;2,&#125;/ig</span>, <span class="string">' '</span>));</span><br><span class="line"></span><br><span class="line">dasherize(<span class="string">'The world is a vampire'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 'the-world-is-a-vampire'</span></span><br></pre></td></tr></table></figure>
+<p><code>trace</code> 函数允许我们在某个特定的点观察数据以便 debug。像 haskell 和 purescript 之类的语言出于开发的方便，也都提供了类似的函数。</p>
+<blockquote>
+<p>However, it does offer a different style of coding, a style that’s taken for granted in purely functional programming languages: Ramda makes it simple for you to build complex logic through functional composition. Note that any library with a compose function will allow you do functional composition; the real point here is: “makes it simple”.</p>
+</blockquote>
+<h2 id="异步任务"><a href="#异步任务" class="headerlink" title="异步任务"></a>异步任务</h2><p>回调（callback）是通往地狱的狭窄的螺旋阶梯。使用 Quildreen Motta 的 <a href="http://folktalejs.org/" target="_blank" rel="noopener">Folktale</a> 里的 <code>Data.Task</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Node readfile example:</span></span><br><span class="line"><span class="comment">//=======================</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//  readFile :: String -&gt; Task(Error, JSON)</span></span><br><span class="line"><span class="keyword">var</span> readFile = <span class="function"><span class="keyword">function</span>(<span class="params">filename</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> Task(<span class="function"><span class="keyword">function</span>(<span class="params">reject, result</span>) </span>&#123;</span><br><span class="line">    fs.readFile(filename, <span class="string">'utf-8'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, data</span>) </span>&#123;</span><br><span class="line">      err ? reject(err) : result(data);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">readFile(<span class="string">"metamorphosis"</span>).map(split(<span class="string">'\n'</span>)).map(head);</span><br><span class="line"><span class="comment">// Task("One morning, as Gregor Samsa was waking up from anxious dreams, he discovered that</span></span><br><span class="line"><span class="comment">// in bed he had been changed into a monstrous verminous bug.")</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// jQuery getJSON example:</span></span><br><span class="line"><span class="comment">//========================</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//  getJSON :: String -&gt; &#123;&#125; -&gt; Task(Error, JSON)</span></span><br><span class="line"><span class="keyword">var</span> getJSON = curry(<span class="function"><span class="keyword">function</span>(<span class="params">url, params</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> Task(<span class="function"><span class="keyword">function</span>(<span class="params">reject, result</span>) </span>&#123;</span><br><span class="line">    $.getJSON(url, params, result).fail(reject);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">getJSON(<span class="string">'/video'</span>, &#123;<span class="attr">id</span>: <span class="number">10</span>&#125;).map(_.prop(<span class="string">'title'</span>));</span><br><span class="line"><span class="comment">// Task("Family Matters ep 15")</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 传入普通的实际值也没问题</span></span><br><span class="line">Task.of(<span class="number">3</span>).map(<span class="function"><span class="keyword">function</span>(<span class="params">three</span>)</span>&#123; <span class="keyword">return</span> three + <span class="number">1</span> &#125;);</span><br><span class="line"><span class="comment">// Task(4)</span></span><br></pre></td></tr></table></figure>
+<p>例子中的 <code>reject</code> 和 <code>result</code> 函数分别是失败和成功的回调。正如你看到的，我们只是简单地调用 <code>Task</code> 的 <code>map</code> 函数，就能操作将来的值，好像这个值就在那儿似的。到现在 <code>map</code> 对你来说应该不稀奇了。</p>
+<p>如果熟悉 promise 的话，你该能认出来 <code>map</code> 就是 <code>then</code>，<code>Task</code> 就是一个 promise。如果不熟悉你也不必气馁，反正我们也不会用它，因为它并不纯；但刚才的类比还是成立的。</p>
+<p>与 <code>IO</code> 类似，<code>Task</code> 在我们给它绿灯之前是不会运行的。事实上，正因为它要等我们的命令，<code>IO</code> 实际就被纳入到了 <code>Task</code> 名下，代表所有的异步操作——<code>readFile</code> 和 <code>getJSON</code> 并不需要一个额外的 <code>IO</code> 容器来变纯。更重要的是，当我们调用它的 <code>map</code> 的时候，<code>Task</code> 工作的方式与 <code>IO</code> 几无差别：都是把对未来的操作的指示放在一个时间胶囊里，就像家务列表（chore chart）那样——真是一种精密的拖延术。</p>
+<h2 id="一点理论"><a href="#一点理论" class="headerlink" title="一点理论"></a>一点理论</h2><p>前面提到，functor 的概念来自于范畴学，并满足一些定律。我们先来探索这些实用的定律。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// identity</span></span><br><span class="line">map(id) === id;</span><br><span class="line"></span><br><span class="line"><span class="comment">// composition</span></span><br><span class="line">compose(map(f), map(g)) === map(compose(f, g));</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>我们已经认识了几个不同的 functor，但它们的数量其实是无限的。有一些值得注意的可迭代数据类型（iterable data structure）我们没有介绍，像 tree、list、map 和 pair 等，以及所有你能说出来的。eventstream 和 observable 也都是 functor。</p>
+<h2 id="chain-函数"><a href="#chain-函数" class="headerlink" title="chain 函数"></a>chain 函数</h2><p><code>chain</code> 可以轻松地嵌套多个作用，因此我们就能以一种纯函数式的方式来表示 <em>序列</em>（sequence） 和 <em>变量赋值</em>（variable assignment）。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// getJSON :: Url -&gt; Params -&gt; Task JSON</span></span><br><span class="line"><span class="comment">// querySelector :: Selector -&gt; IO DOM</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">getJSON(<span class="string">'/authenticate'</span>, &#123;<span class="attr">username</span>: <span class="string">'stale'</span>, <span class="attr">password</span>: <span class="string">'crackers'</span>&#125;)</span><br><span class="line">  .chain(<span class="function"><span class="keyword">function</span>(<span class="params">user</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> getJSON(<span class="string">'/friends'</span>, &#123;<span class="attr">user_id</span>: user.id&#125;);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// Task([&#123;name: 'Seimith', id: 14&#125;, &#123;name: 'Ric', id: 39&#125;]);</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">querySelector(<span class="string">"input.username"</span>).chain(<span class="function"><span class="keyword">function</span>(<span class="params">uname</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> querySelector(<span class="string">"input.email"</span>).chain(<span class="function"><span class="keyword">function</span>(<span class="params">email</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> IO.of(</span><br><span class="line">      <span class="string">"Welcome "</span> + uname.value + <span class="string">" "</span> + <span class="string">"prepare for spam at "</span> + email.value</span><br><span class="line">    );</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// IO("Welcome Olivia prepare for spam at olivia@tremorcontrol.net");</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Maybe.of(<span class="number">3</span>).chain(<span class="function"><span class="keyword">function</span>(<span class="params">three</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> Maybe.of(<span class="number">2</span>).map(add(three));</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// Maybe(5);</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Maybe.of(<span class="literal">null</span>).chain(safeProp(<span class="string">'address'</span>)).chain(safeProp(<span class="string">'street'</span>));</span><br><span class="line"><span class="comment">// Maybe(null);</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">querySelector(<span class="string">"input.username"</span>).chain(<span class="function"><span class="keyword">function</span><span class="params">(uname)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> querySelector(<span class="string">"input.email"</span>).map(<span class="function"><span class="keyword">function</span><span class="params">(email)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">"Welcome"</span> + uname.value + <span class="string">" prepare for spam at "</span> + email.value;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>返回的如果是”普通值”就用<code>map</code>，如果是<code>functor</code>就用<code>chain</code>。</p>
+</blockquote>
+<h3 id="等式推导（equational-reasoning）"><a href="#等式推导（equational-reasoning）" class="headerlink" title="等式推导（equational reasoning）"></a>等式推导（equational reasoning）</h3><h3 id="可靠特性-reliable-properties"><a href="#可靠特性-reliable-properties" class="headerlink" title="可靠特性(reliable properties)"></a>可靠特性(reliable properties)</h3><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// upload :: String -&gt; (String -&gt; a) -&gt; Void</span></span><br><span class="line"><span class="keyword">var</span> upload = <span class="function"><span class="keyword">function</span><span class="params">(filename, callback)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(!filename) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="string">"You need a filename!"</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    readFile(filename, <span class="function"><span class="keyword">function</span><span class="params">(err, contents)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(err) <span class="keyword">throw</span> err;</span><br><span class="line">        httpPost(contents, <span class="function"><span class="keyword">function</span><span class="params">(err, json)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(err) <span class="keyword">throw</span> err;</span><br><span class="line">            callback(json);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">函数式编程</span><br><span class="line">// readFile :: Filename -&gt; Either <span class="built_in">String</span> （Future <span class="literal">Error</span> <span class="built_in">String</span>）</span><br><span class="line">// httpPost :: <span class="built_in">String</span> -&gt; Futrue <span class="literal">Error</span> JSON</span><br><span class="line"></span><br><span class="line">// upload :: <span class="built_in">String</span> -&gt; Either <span class="built_in">String</span> (Futrue <span class="literal">Error</span> JSON)</span><br><span class="line">var upload = compose(<span class="keyword">map</span>(chain(httpPost('/uploads'))), readFile);</span><br></pre></td></tr></table></figure>
+<h1 id="函数式编程理论"><a href="#函数式编程理论" class="headerlink" title="函数式编程理论"></a>函数式编程理论</h1><figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 结合律</span></span><br><span class="line">compose(<span class="keyword">join</span>, <span class="built_in">map</span>(<span class="keyword">join</span>)) == compose(<span class="keyword">join</span>, <span class="keyword">join</span>)</span><br></pre></td></tr></table></figure>
+<p>这个定律表明了monad的嵌套本质，</p>
+<ul>
+<li>join</li>
+<li>map</li>
+<li>compose</li>
+<li>curry</li>
+</ul>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 同一律</span></span><br><span class="line">compose(<span class="keyword">join</span>, <span class="keyword">of</span>) == compose(<span class="keyword">join</span>, map(<span class="keyword">of</span>)) == id</span><br></pre></td></tr></table></figure>
+<pre><code>对任意的monad `M` `of` 和`join`相当与`id`，也可以使用`map(of)`由内而外实现相同效果。
+这个定律叫“三角同一律”（triangle identity）。
+</code></pre><figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mcompose = <span class="function"><span class="keyword">function</span><span class="params">(f, g)</span> <span class="comment">&#123;</span></span></span><br><span class="line"><span class="function"><span class="comment">  return compose(chain(f), chain(g));</span></span></span><br><span class="line"><span class="function"><span class="comment">&#125;</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 左同一律</span></span></span><br><span class="line"><span class="function"><span class="title">mcompose</span><span class="params">(M, f)</span> == <span class="title">f</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 右同一律</span></span></span><br><span class="line"><span class="function"><span class="title">mcompose</span><span class="params">(f, M)</span> == <span class="title">f</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// 结合律</span></span></span><br><span class="line"><span class="function"><span class="title">mcompose</span><span class="params">(mcompose(f, g)</span>, <span class="title">h</span>) == <span class="title">mcompose</span><span class="params">(f, mcompose(g, h)</span>)</span></span><br></pre></td></tr></table></figure>
+<p>monad 来自于一个叫 “Kleisli 范畴”的范畴，这个范畴里边所有的对象都是 monad，所有的态射都是联结函数（chained funtions）。</p>
+<h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><p>monad 让我们深入到嵌套的运算当中，使我们能够在完全避免回调金字塔（pyramid of doom）情况下，为变量赋值，运行有序的作用，执行异步任务等等。当一个值被困在几层相同类型的容器中时，monad 能够拯救它。借助 “pointed” 这个可靠的帮手，monad 能够借给我们从盒子中取出的值，而且知道我们会在结束使用后还给它。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/12/19/FP/">函数式编程入门</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Jiaxf 的个人博客">Jiaxf</a></p>
+        <p><span>发布时间:</span>2016年12月19日 - 09时52分</p>
+        <p><span>最后更新:</span>2016年12月19日 - 09时52分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/19/FP/" title="函数式编程入门">http://jiaxf.github.io/2016/12/19/FP/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://jiaxf.github.io/2016/12/19/FP/　　作者: Jiaxf" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2016/12/20/redis/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Redis学习记录
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/16/applicativeFunctor/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">函数式编程入门（2）</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Function-Program"><span class="toc-number">1.</span> <span class="toc-text">Function Program</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#几个原则"><span class="toc-number">1.1.</span> <span class="toc-text">几个原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数柯里化"><span class="toc-number">1.2.</span> <span class="toc-text">函数柯里化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#高阶函数"><span class="toc-number">1.3.</span> <span class="toc-text">高阶函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数组合"><span class="toc-number">1.4.</span> <span class="toc-text">函数组合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pointfree"><span class="toc-number">1.5.</span> <span class="toc-text">pointfree</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#异步任务"><span class="toc-number">1.6.</span> <span class="toc-text">异步任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一点理论"><span class="toc-number">1.7.</span> <span class="toc-text">一点理论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">1.8.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#chain-函数"><span class="toc-number">1.9.</span> <span class="toc-text">chain 函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#等式推导（equational-reasoning）"><span class="toc-number">1.9.1.</span> <span class="toc-text">等式推导（equational reasoning）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可靠特性-reliable-properties"><span class="toc-number">1.9.2.</span> <span class="toc-text">可靠特性(reliable properties)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#函数式编程理论"><span class="toc-number">2.</span> <span class="toc-text">函数式编程理论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#总结-1"><span class="toc-number">2.1.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/12/19/FP/" data-title="函数式编程入门" data-url="http://jiaxf.github.io/2016/12/19/FP/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jiaxf"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/12/20/redis/" title="上一篇: Redis学习记录">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2016/12/16/applicativeFunctor/" title="下一篇: 函数式编程入门（2）">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/03/29/redis配置/">redis配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/03/mysqlMySQL双主一致性架构优化/">MySQL双主一致性架构优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/07/mysql调优/">mysql调优</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/前端自适应CSS3相对单位rem/">前端自适应css3相对单位rem</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/03/webWorkers/">Web Worker study</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/26/9-Thinking in Ramda/">Thinking in Ramda 9</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/26/8-Thinking in Ramda/">Thinking in Ramda 8</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/23/7-Thinking in Ramda/">Thinking in Ramda 7</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/23/6-Thinking in Ramda/">Thinking in Ramda 6</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/5-Thinking in Radam/">Thinking in Ramda 5</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/4-Thinking in Ramda/">Thinking in Ramda 4</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/3-Thinking in Ramda/">Thinking in Ramda 3</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/2-Thinking in Ramda/">Thinking in Ramda 2</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/1-Thinking in Ramda/">Thinking in Ramda 1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/redis3/">Redis学习记录3</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/redis2/">Redis学习记录2</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/curry/">函数式编程入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/fp2/">函数式编程入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/redis/">Redis学习记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/FP/">函数式编程入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/applicativeFunctor/">函数式编程入门（2）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/javascriptIntroduce/">前端知识学习（摘自阮一峰博客）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/category theory/">范畴学基本知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/javascriptEvent/">JavaScriptEvent</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/jsPattern/">javascript模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/30/reactStudy/">React入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/29/javascript错误/">js错误类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/14/2015-02-14-php学习笔记/">php学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/14/2015-02-14-php数据类型/">php数据类型</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2018 Jiaxf
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >用户到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 30;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-70677304-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+    <script type="text/javascript">
+      window.onload = function(){
+        document.getElementById("search").onclick = function(){
+            console.log("search")
+            search();
+        }
+      }
+      function search(){
+        (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+        (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+        })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+        _st('install','f9SxgsuoT3T5zTyGctUR','2.0.0');
+        
+      }
+    </script>
+
+  </div>
+</body>
+</html>
+<a href="https://github.com/jiaxf"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>

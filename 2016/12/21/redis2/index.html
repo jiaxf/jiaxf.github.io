@@ -3,19 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>飞天雪的技术博客</title>
+  <title>Redis学习记录2 | 飞天雪的技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="TG-网址导航 		 		 	 		 			前端网址集锦 		 		 			欢迎来到前端网址导航，本站收集了一些常用优秀的网址.（摘自铁锅博客的网址导航）">
-<meta property="og:type" content="website">
-<meta property="og:title" content="飞天雪的技术博客">
-<meta property="og:url" content="http://jiaxf.github.io/works/index.html">
+  <meta name="description" content="redis bgrewriteaof问题一、背景  AOF:  Redis的AOF机制有点类似于Mysql binlog，是Redis的提供的一种持久化方式（另一种是RDB）， 它会将所有的写命令按照一定频率(no, always, every seconds)写入到日志文件中，当Redis停机 重启后恢复数据库。">
+<meta name="keywords" content="redis,缓存">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis学习记录2">
+<meta property="og:url" content="http://jiaxf.github.io/2016/12/21/redis2/index.html">
 <meta property="og:site_name" content="飞天雪的技术博客">
-<meta property="og:description" content="TG-网址导航 		 		 	 		 			前端网址集锦 		 		 			欢迎来到前端网址导航，本站收集了一些常用优秀的网址.（摘自铁锅博客的网址导航）">
+<meta property="og:description" content="redis bgrewriteaof问题一、背景  AOF:  Redis的AOF机制有点类似于Mysql binlog，是Redis的提供的一种持久化方式（另一种是RDB）， 它会将所有的写命令按照一定频率(no, always, every seconds)写入到日志文件中，当Redis停机 重启后恢复数据库。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-12-01T07:39:25.000Z">
+<meta property="og:image" content="http://jiaxf.github.io/images/20160203203442_310.png">
+<meta property="og:image" content="http://jiaxf.github.io/images/20160203203443_877.png">
+<meta property="og:updated_time" content="2016-12-21T01:39:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="飞天雪的技术博客">
-<meta name="twitter:description" content="TG-网址导航 		 		 	 		 			前端网址集锦 		 		 			欢迎来到前端网址导航，本站收集了一些常用优秀的网址.（摘自铁锅博客的网址导航）">
+<meta name="twitter:title" content="Redis学习记录2">
+<meta name="twitter:description" content="redis bgrewriteaof问题一、背景  AOF:  Redis的AOF机制有点类似于Mysql binlog，是Redis的提供的一种持久化方式（另一种是RDB）， 它会将所有的写命令按照一定频率(no, always, every seconds)写入到日志文件中，当Redis停机 重启后恢复数据库。">
+<meta name="twitter:image" content="http://jiaxf.github.io/images/20160203203442_310.png">
   
     <link rel="alternative" href="/atom.xml" title="飞天雪的技术博客" type="application/atom+xml">
   
@@ -41,7 +45,7 @@
           fancybox: true,
           animate: true,
           isHome: false,
-          isPost: false,
+          isPost: true,
           isArchive: false,
           isTag: false,
           isCategory: false,
@@ -238,11 +242,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-redis2" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/works/index.html" class="article-date">
-      <time datetime="2016-12-01T07:39:25.000Z" itemprop="datePublished">2016-12-01</time>
+      <a href="/2016/12/21/redis2/" class="article-date">
+      <time datetime="2016-12-21T00:53:37.000Z" itemprop="datePublished">2016-12-21</time>
 </a>
     </div>
   
@@ -251,85 +255,150 @@
       <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Redis学习记录2
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-              <style>
-    .article-meta {
-        display: none;
-    }
-    #container .article .article-title {
-        padding-right: 0;
-    }
-    .article-header {
-        padding: 0;
-        padding-top: 26px;
-        border-left: none;
-        text-align: center;
-    }
-    .article-header:hover {
-        border-left: none;
-    }
-    .article-title {
-        font-size: 1.6em
-    }
-    .article-meta {
-        display: none;
-    }
-    .article-entry hr {
-        margin: 0;
-    }
-    #container .article-info-post.article-info {
-      display: none;
-      }
-    #container .article .article-title {
-    padding: 0;
-    }
-</style>
+        <h2 id="redis-bgrewriteaof问题"><a href="#redis-bgrewriteaof问题" class="headerlink" title="redis bgrewriteaof问题"></a>redis bgrewriteaof问题</h2><p>一、背景</p>
+<ol>
+<li><p>AOF:</p>
+<p> Redis的AOF机制有点类似于Mysql binlog，是Redis的提供的一种持久化方式（另一种是RDB），<br> 它会将所有的写命令按照一定频率(no, always, every seconds)写入到日志文件中，当Redis停机<br> 重启后恢复数据库。</p>
+</li>
+</ol>
+<p><img src="/images/20160203203442_310.png" alt=""><br><a id="more"></a></p>
+<ol start="2">
+<li><p>AOF重写：</p>
+<p>  (1) 随着AOF文件越来越大，里面会有大部分是重复命令或者可以合并的命令（100次incr = set key 100）</p>
+<p>  (2) 重写的好处：减少AOF日志尺寸，减少内存占用，加快数据库恢复时间。</p>
+</li>
+</ol>
+<p><img src="/images/20160203203443_877.png" alt=""></p>
+<p>二、单机多实例可能存在Swap和OOM的隐患:</p>
+<pre><code>由于Redis的单线程模型，理论上每个redis实例只会用到一个CPU, 也就是说可以在一台多核的服务器上
+部署多个实例（实际就是这么做的）。但是Redis的AOF重写是通过fork出一个Redis进程来实现的，
+所以有经验的Redis开发和运维人员会告诉你，在一台服务器上要预留一半的内存（防止出现AOF重写集
+中发生，出现swap和OOM）。
+</code></pre><p>三、最佳实践</p>
+<pre><code>1. meta信息：作为一个redis云系统，需要记录各个维度的数据，比如：业务组、机器、实例、应用、负责人多个维度的数据.
+2. AOF的管理方式：
 
+ (1) 自动：让每个redis决定是否做AOF重写操作（根据auto-aof-rewrite-percentage和auto-aof-rewrite-min-size两个参数）
 
-          
-        
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
-		<title>TG-网址导航</title>
-		<link href="http://jiaxf.github.io/apple-touch-icon.png" rel="shortcut icon">
-		<link href="navigation.css" rel="stylesheet">
-	</head>
-		<header class="nav-navbar">
-			<a href="http://ghmagical.com/search/navigation" target="_blank" rel="noopener">前端网址集锦</a>
-		</header>
-		<div class="nav-notice">
-			欢迎来到前端网址导航，本站收集了一些常用优秀的网址.（摘自<a href="http://ghmagical.com/" title="TG" target="_blank" rel="noopener">铁锅博客</a>的<a href="http://ghmagical.com/search/navigation" target="_blank" rel="noopener">网址导航</a>）
-		</div>
-		<div class="nav-container">
-			<div class="nav-content"></div>
-			<aside class="nav-aside">
-				<ul></ul>
-			</aside>
-		</div>
+ (2) crontab: 定时任务，可能仍然会出现多个redis实例，属于一种折中方案。
 
-    <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
-    <script src="data.js"></script>
-		<script src="util.js"></script>
-	<body>
-	</body>
+ (3) remote集中式：
 
-</html>
+   最终目标是一台机器一个时刻，只有一个redis实例进行AOF重写。
 
+   具体做法其实很简单，以机器为单位，轮询每个机器的实例，如果满足条件就运行(比如currentSize和baseSize满足什么关系)bgrewriteaof命令。
+</code></pre><p>使用client list命令（类似于mysql processlist） <code>redis-cli -h host -p port client list | grep -v</code> “omem=0”，来查询输出缓冲区不为0的客户端连接</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -h 127.0.0.1 -p 6379<span class="built_in"> client </span>list</span><br></pre></td></tr></table></figure>
+<p>四、紧急处理和解决方法</p>
+<pre><code>进行主从切换（主从内存使用量不一致），也就是redis-cluster的fail-over操作，继续观察新的
+Master是否有异常，通过观察未出现异常。
+查找到真正的原因后，也就是monitor，关闭掉monitor命令的进程后，内存很快就降下来了。
+</code></pre>
       
     </div>
     
   </div>
   
     
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/12/21/redis2/">Redis学习记录2</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Jiaxf 的个人博客">Jiaxf</a></p>
+        <p><span>发布时间:</span>2016年12月21日 - 08时53分</p>
+        <p><span>最后更新:</span>2016年12月21日 - 09时39分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/21/redis2/" title="Redis学习记录2">http://jiaxf.github.io/2016/12/21/redis2/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://jiaxf.github.io/2016/12/21/redis2/　　作者: Jiaxf" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
 
+
+
+<nav id="article-nav">
+  
+    <a href="/2016/12/21/redis3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Redis学习记录3
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/20/curry/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">函数式编程入门</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
 
   
 </article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#redis-bgrewriteaof问题"><span class="toc-number">1.</span> <span class="toc-text">redis bgrewriteaof问题</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
 
 
 
@@ -350,7 +419,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="works/index.html" data-title="" data-url="http://jiaxf.github.io/works/index.html"></div>
+    <div class="ds-thread" data-thread-key="2016/12/21/redis2/" data-title="Redis学习记录2" data-url="http://jiaxf.github.io/2016/12/21/redis2/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -370,6 +439,39 @@
     
 
 
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/12/21/redis3/" title="上一篇: Redis学习记录3">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2016/12/20/curry/" title="下一篇: 函数式编程入门">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/03/29/redis配置/">redis配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/03/mysqlMySQL双主一致性架构优化/">MySQL双主一致性架构优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/07/mysql调优/">mysql调优</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/前端自适应CSS3相对单位rem/">前端自适应css3相对单位rem</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/03/webWorkers/">Web Worker study</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/26/9-Thinking in Ramda/">Thinking in Ramda 9</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/26/8-Thinking in Ramda/">Thinking in Ramda 8</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/23/7-Thinking in Ramda/">Thinking in Ramda 7</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/23/6-Thinking in Ramda/">Thinking in Ramda 6</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/5-Thinking in Radam/">Thinking in Ramda 5</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/4-Thinking in Ramda/">Thinking in Ramda 4</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/3-Thinking in Ramda/">Thinking in Ramda 3</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/2-Thinking in Ramda/">Thinking in Ramda 2</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/1-Thinking in Ramda/">Thinking in Ramda 1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/redis3/">Redis学习记录3</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/redis2/">Redis学习记录2</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/curry/">函数式编程入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/fp2/">函数式编程入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/redis/">Redis学习记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/FP/">函数式编程入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/applicativeFunctor/">函数式编程入门（2）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/javascriptIntroduce/">前端知识学习（摘自阮一峰博客）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/category theory/">范畴学基本知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/javascriptEvent/">JavaScriptEvent</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/jsPattern/">javascript模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/30/reactStudy/">React入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/29/javascript错误/">js错误类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/14/2015-02-14-php学习笔记/">php学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/14/2015-02-14-php数据类型/">php数据类型</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
 
 
 

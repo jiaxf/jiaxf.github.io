@@ -3,19 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>飞天雪的技术博客</title>
+  <title>函数式编程入门 | 飞天雪的技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="TG-网址导航 		 		 	 		 			前端网址集锦 		 		 			欢迎来到前端网址导航，本站收集了一些常用优秀的网址.（摘自铁锅博客的网址导航）">
-<meta property="og:type" content="website">
-<meta property="og:title" content="飞天雪的技术博客">
-<meta property="og:url" content="http://jiaxf.github.io/works/index.html">
+  <meta name="description" content="Functional programsPURE FUNCTIONSPure functions are functions that have no side-effects.They don&amp;apos;t assign to any outside variables, they don&amp;apos;t consume input, they don&amp;apos;t produce output,">
+<meta name="keywords" content="javascript,js,函数式编程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="函数式编程入门">
+<meta property="og:url" content="http://jiaxf.github.io/2016/12/20/fp2/index.html">
 <meta property="og:site_name" content="飞天雪的技术博客">
-<meta property="og:description" content="TG-网址导航 		 		 	 		 			前端网址集锦 		 		 			欢迎来到前端网址导航，本站收集了一些常用优秀的网址.（摘自铁锅博客的网址导航）">
+<meta property="og:description" content="Functional programsPURE FUNCTIONSPure functions are functions that have no side-effects.They don&amp;apos;t assign to any outside variables, they don&amp;apos;t consume input, they don&amp;apos;t produce output,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-12-01T07:39:25.000Z">
+<meta property="og:updated_time" content="2016-12-20T04:03:13.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="飞天雪的技术博客">
-<meta name="twitter:description" content="TG-网址导航 		 		 	 		 			前端网址集锦 		 		 			欢迎来到前端网址导航，本站收集了一些常用优秀的网址.（摘自铁锅博客的网址导航）">
+<meta name="twitter:title" content="函数式编程入门">
+<meta name="twitter:description" content="Functional programsPURE FUNCTIONSPure functions are functions that have no side-effects.They don&amp;apos;t assign to any outside variables, they don&amp;apos;t consume input, they don&amp;apos;t produce output,">
   
     <link rel="alternative" href="/atom.xml" title="飞天雪的技术博客" type="application/atom+xml">
   
@@ -41,7 +42,7 @@
           fancybox: true,
           animate: true,
           isHome: false,
-          isPost: false,
+          isPost: true,
           isArchive: false,
           isTag: false,
           isCategory: false,
@@ -238,11 +239,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-fp2" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/works/index.html" class="article-date">
-      <time datetime="2016-12-01T07:39:25.000Z" itemprop="datePublished">2016-12-01</time>
+      <a href="/2016/12/20/fp2/" class="article-date">
+      <time datetime="2016-12-20T04:02:11.000Z" itemprop="datePublished">2016-12-20</time>
 </a>
     </div>
   
@@ -251,74 +252,53 @@
       <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      函数式编程入门
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-              <style>
-    .article-meta {
-        display: none;
-    }
-    #container .article .article-title {
-        padding-right: 0;
-    }
-    .article-header {
-        padding: 0;
-        padding-top: 26px;
-        border-left: none;
-        text-align: center;
-    }
-    .article-header:hover {
-        border-left: none;
-    }
-    .article-title {
-        font-size: 1.6em
-    }
-    .article-meta {
-        display: none;
-    }
-    .article-entry hr {
-        margin: 0;
-    }
-    #container .article-info-post.article-info {
-      display: none;
-      }
-    #container .article .article-title {
-    padding: 0;
-    }
-</style>
+        <h1 id="Functional-programs"><a href="#Functional-programs" class="headerlink" title="Functional programs"></a>Functional programs</h1><h2 id="PURE-FUNCTIONS"><a href="#PURE-FUNCTIONS" class="headerlink" title="PURE FUNCTIONS"></a>PURE FUNCTIONS</h2><pre><code>Pure functions are functions that have no side-effects.They don&apos;t assign to any outside variables, they don&apos;t consume input, they don&apos;t produce output, they don&apos;t read from or writ to a database, they don&apos;t modify the parameters they&apos;re passed, etc.
 
+The basic idea is that, if you call a function with the same inputs over and over again, you alwyas get the same result.
 
-          
-        
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
-		<title>TG-网址导航</title>
-		<link href="http://jiaxf.github.io/apple-touch-icon.png" rel="shortcut icon">
-		<link href="navigation.css" rel="stylesheet">
-	</head>
-		<header class="nav-navbar">
-			<a href="http://ghmagical.com/search/navigation" target="_blank" rel="noopener">前端网址集锦</a>
-		</header>
-		<div class="nav-notice">
-			欢迎来到前端网址导航，本站收集了一些常用优秀的网址.（摘自<a href="http://ghmagical.com/" title="TG" target="_blank" rel="noopener">铁锅博客</a>的<a href="http://ghmagical.com/search/navigation" target="_blank" rel="noopener">网址导航</a>）
-		</div>
-		<div class="nav-container">
-			<div class="nav-content"></div>
-			<aside class="nav-aside">
-				<ul></ul>
-			</aside>
-		</div>
+You can certainly do things with impure functions(and you must, if your program is going to do amything interesting), but for the most part you&apos;ll want to keep most of your funtions pure.
+</code></pre><a id="more"></a>
+<h2 id="IMMUTABILITY"><a href="#IMMUTABILITY" class="headerlink" title="IMMUTABILITY"></a>IMMUTABILITY</h2><pre><code>&quot;Immutable&quot; mean &quot;unchangeable&quot;.
 
-    <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
-    <script src="data.js"></script>
-		<script src="util.js"></script>
-	<body>
-	</body>
-
-</html>
+Immutability goes hand-in-hand with pure functions. Since pure functions aren&apos;t allowed to have side-effects, they aren&apos;t allowed
+to change outside data structures.They are forced to work with data in an immutable way.
+</code></pre><h3 id="Replace-loops-with-collection-iteration-functions"><a href="#Replace-loops-with-collection-iteration-functions" class="headerlink" title="Replace loops with collection-iteration functions"></a>Replace loops with collection-iteration functions</h3><p>（1）FOREACH</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// replace this:</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">const</span> value <span class="keyword">of</span> myArray)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// with:</span></span><br><span class="line">forEach(<span class="function"><span class="params">value</span> =&gt;</span> <span class="built_in">console</span>.log(value), myArray);</span><br></pre></td></tr></table></figure>
+<p>(2) MAP</p>
+<pre><code>Like `forEach`, `map` applies a function to each element of an array.However, unlike `forEach`, map collects the results of aaplying the function into a new array and returns it.
+</code></pre><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">map(x =&gt; x * <span class="number">2</span>, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]) <span class="comment">// --&gt;[2,4,6]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// or</span></span><br><span class="line"></span><br><span class="line">const double = x =&gt; x * <span class="number">2</span>;</span><br><span class="line">map(double, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br></pre></td></tr></table></figure>
+<p>(3) FILTER/REJECT</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const isEven = x =&gt; x%<span class="number">2</span> ===<span class="number">0</span></span><br><span class="line">filter(isEven, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]) <span class="comment">// --&gt; [2,4]</span></span><br></pre></td></tr></table></figure>
+<p><code>filter</code></p>
 
       
     </div>
@@ -326,10 +306,76 @@
   </div>
   
     
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/12/20/fp2/">函数式编程入门</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Jiaxf 的个人博客">Jiaxf</a></p>
+        <p><span>发布时间:</span>2016年12月20日 - 12时02分</p>
+        <p><span>最后更新:</span>2016年12月20日 - 12时03分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/20/fp2/" title="函数式编程入门">http://jiaxf.github.io/2016/12/20/fp2/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://jiaxf.github.io/2016/12/20/fp2/　　作者: Jiaxf" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
 
+
+
+<nav id="article-nav">
+  
+    <a href="/2016/12/20/curry/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          函数式编程入门
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/20/redis/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Redis学习记录</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
 
   
 </article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Functional-programs"><span class="toc-number">1.</span> <span class="toc-text">Functional programs</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#PURE-FUNCTIONS"><span class="toc-number">1.1.</span> <span class="toc-text">PURE FUNCTIONS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IMMUTABILITY"><span class="toc-number">1.2.</span> <span class="toc-text">IMMUTABILITY</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Replace-loops-with-collection-iteration-functions"><span class="toc-number">1.2.1.</span> <span class="toc-text">Replace loops with collection-iteration functions</span></a></li></ol></li></ol></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
 
 
 
@@ -350,7 +396,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="works/index.html" data-title="" data-url="http://jiaxf.github.io/works/index.html"></div>
+    <div class="ds-thread" data-thread-key="2016/12/20/fp2/" data-title="函数式编程入门" data-url="http://jiaxf.github.io/2016/12/20/fp2/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -370,6 +416,39 @@
     
 
 
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/12/20/curry/" title="上一篇: 函数式编程入门">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2016/12/20/redis/" title="下一篇: Redis学习记录">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/03/29/redis配置/">redis配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/03/mysqlMySQL双主一致性架构优化/">MySQL双主一致性架构优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/07/mysql调优/">mysql调优</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/前端自适应CSS3相对单位rem/">前端自适应css3相对单位rem</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/03/webWorkers/">Web Worker study</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/26/9-Thinking in Ramda/">Thinking in Ramda 9</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/26/8-Thinking in Ramda/">Thinking in Ramda 8</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/23/7-Thinking in Ramda/">Thinking in Ramda 7</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/23/6-Thinking in Ramda/">Thinking in Ramda 6</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/5-Thinking in Radam/">Thinking in Ramda 5</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/4-Thinking in Ramda/">Thinking in Ramda 4</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/3-Thinking in Ramda/">Thinking in Ramda 3</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/2-Thinking in Ramda/">Thinking in Ramda 2</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/1-Thinking in Ramda/">Thinking in Ramda 1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/redis3/">Redis学习记录3</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/redis2/">Redis学习记录2</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/curry/">函数式编程入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/fp2/">函数式编程入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/redis/">Redis学习记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/FP/">函数式编程入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/applicativeFunctor/">函数式编程入门（2）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/javascriptIntroduce/">前端知识学习（摘自阮一峰博客）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/category theory/">范畴学基本知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/javascriptEvent/">JavaScriptEvent</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/jsPattern/">javascript模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/30/reactStudy/">React入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/29/javascript错误/">js错误类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/14/2015-02-14-php学习笔记/">php学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/14/2015-02-14-php数据类型/">php数据类型</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
 
 
 
