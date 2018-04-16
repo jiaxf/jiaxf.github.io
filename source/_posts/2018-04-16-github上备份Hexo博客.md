@@ -81,4 +81,4 @@ $ npm install
 $ npm install hexo-deployer-git
 ```
 
-> 注：再需要执行`hexo init`命令。
+> 注：不再需要执行`hexo init`命令。
