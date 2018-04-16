@@ -8,7 +8,7 @@ subtitle: 技术无止境
 description: jiaxf's blog | js | node | javascript
 author: Jiaxf
 language: zh-Hans
-timezone: 
+timezone: Asia/Shanghai 
 email: jiaxuefeng0@gmail.com #联系邮箱
 
 # URL
@@ -75,6 +75,7 @@ tag: 1
 ## Themes: http://hexo.io/themes/
 theme: spfk
 #theme: next
+#theme: tomotoes
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html

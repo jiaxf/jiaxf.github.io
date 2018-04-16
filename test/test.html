@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello world!</title>
+    <!-- zui -->
+    <style>
+      /* 为可拖动的条目应用可移动光标类型 */
+      #sortableList > .list-group-item {cursor: move}
+
+      /* 为正在被拖动的条目应用半透明外观 */
+      #sortableList > .list-group-item.dragging {
+        visibility: visible;
+        opacity: .3;
+      }
+    </style>
+
+    <!-- ZUI 标准版压缩后的 CSS 文件 -->
+    <link rel="stylesheet" href="css/zui.min.css">
+
+    <!-- ZUI Javascript 依赖 jQuery -->
+    <script src="js/jquery.js"></script>
+    <!-- ZUI 标准版压缩后的 JavaScript 文件 -->
+    <script src="js/zui.min.js"></script>
+    <script src="js/zui.sortable.js"></script>
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+
+    <!-- 在此处编码你的创意 -->
+    <div class="list-group" id="sortableList">
+      <div class="list-group-item"><i class="icon-move"></i> 猫咪</div>
+      <div class="list-group-item"><i class="icon-move"></i> 小鸡</div>
+      <div class="list-group-item"><i class="icon-move"></i> 大黄</div>
+      <div class="list-group-item"><i class="icon-move"></i> 鹅鹅鹅</div>
+      <div class="list-group-item"><i class="icon-move"></i> 猪王</div>
+    </div>
+    <script>
+      $(function(){
+        // 定义选项对象
+        var options = {
+            selector: '.sortable-item',
+            finish: function(e) {
+                console.log('排序完成：', e);
+            }
+            // 设置更多选项...
+        };
+
+        // 初始化时传入选项参数
+        $('#sortableList').sortable();
+      });
+    </script>
+  </body>
+</html>
