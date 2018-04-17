@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>mysql调优 | 飞天雪的技术博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="MySQL 调优mysql中的两个关键参数(1)interactive_timeout: 参数含义：服务器关闭交互式连接前等待活动的秒数。交互式客户端定义为在mysql_real_connect()中使用CLIENT_INTERACTIVE选项的客户端。参数默认值：28800秒（8小时） (2)wait_timeout: 参数含义：服务器关闭非交互连接之前等待活动的秒数。在线程启动时，根据全局wa">
+<meta name="keywords" content="mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql调优">
+<meta property="og:url" content="http://jiaxf.github.io/2017/04/07/mysql调优/index.html">
+<meta property="og:site_name" content="飞天雪的技术博客">
+<meta property="og:description" content="MySQL 调优mysql中的两个关键参数(1)interactive_timeout: 参数含义：服务器关闭交互式连接前等待活动的秒数。交互式客户端定义为在mysql_real_connect()中使用CLIENT_INTERACTIVE选项的客户端。参数默认值：28800秒（8小时） (2)wait_timeout: 参数含义：服务器关闭非交互连接之前等待活动的秒数。在线程启动时，根据全局wa">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-13T07:56:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mysql调优">
+<meta name="twitter:description" content="MySQL 调优mysql中的两个关键参数(1)interactive_timeout: 参数含义：服务器关闭交互式连接前等待活动的秒数。交互式客户端定义为在mysql_real_connect()中使用CLIENT_INTERACTIVE选项的客户端。参数默认值：28800秒（8小时） (2)wait_timeout: 参数含义：服务器关闭非交互连接之前等待活动的秒数。在线程启动时，根据全局wa">
+  
+    <link rel="alternative" href="/atom.xml" title="飞天雪的技术博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/linux.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="jiaxf欢迎您来访！">Jiaxf</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">技术无止境</p>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="search" placeholder=" Search...">
+            </form>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">博客首页</a></li>
+                        
+                            <li><a href="/archives">技术文摘</a></li>
+                        
+                            <li><a href="/works">前端集锦</a></li>
+                        
+                            <li><a href="/readings">阅读书单</a></li>
+                        
+                            <li><a href="/about">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="mailto:jiaxuefeng0@gmail.com" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/jiaxf" title="github">github</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="https://zhihu.com/people/jia-xue-feng-0" title="zhihu">zhihu</a>
+                            
+                                <a class="fl weibo" target="_blank" href="http://weibo.com/jiaxuefeng" title="weibo">weibo</a>
+                            
+                                <a class="fl linkedin" target="_blank" href="http://cn.linkedin.com/in/jiaxuefeng" title="linkedin">linkedin</a>
+                            
+                                <a class="fl rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                                <a class="fl douban" target="_blank" href="https://www.douban.com/people/54387876/" title="douban">douban</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/functional/" style="font-size: 18.57px;">functional</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/js/" style="font-size: 17.14px;">js</a> <a href="/tags/jsx/" style="font-size: 10px;">jsx</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/mysql/" style="font-size: 11.43px;">mysql</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/pattern/" style="font-size: 10px;">pattern</a> <a href="/tags/php/" style="font-size: 11.43px;">php</a> <a href="/tags/ramda/" style="font-size: 18.57px;">ramda</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/redis/" style="font-size: 14.29px;">redis</a> <a href="/tags/web/" style="font-size: 11.43px;">web</a> <a href="/tags/函数式编程/" style="font-size: 15.71px;">函数式编程</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/技术/" style="font-size: 11.43px;">技术</a> <a href="/tags/缓存/" style="font-size: 12.86px;">缓存</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://luuman.github.io/">luuman</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">码农一枚，追求极客！</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+<script type="text/javascript">(function(){document.write(unescape('%3Cdiv id="bdcs"%3E%3C/div%3E'));var bdcs = document.createElement('script');bdcs.type = 'text/javascript';bdcs.async = true;bdcs.src = 'http://znsv.baidu.com/customer_search/api/js?sid=13578845068435931330' + '&plate_url=' + encodeURIComponent(window.location.href) + '&t=' + Math.ceil(new Date()/3600000);var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(bdcs, s);})();</script>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Jiaxf</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/linux.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Jiaxf</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">技术无止境</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">博客首页</a></li>
+                
+                    <li><a href="/archives">技术文摘</a></li>
+                
+                    <li><a href="/works">前端集锦</a></li>
+                
+                    <li><a href="/readings">阅读书单</a></li>
+                
+                    <li><a href="/about">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="mailto:jiaxuefeng0@gmail.com" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/jiaxf" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://zhihu.com/people/jia-xue-feng-0" title="zhihu">zhihu</a>
+                    
+                        <a class="weibo" target="_blank" href="http://weibo.com/jiaxuefeng" title="weibo">weibo</a>
+                    
+                        <a class="linkedin" target="_blank" href="http://cn.linkedin.com/in/jiaxuefeng" title="linkedin">linkedin</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                        <a class="douban" target="_blank" href="https://www.douban.com/people/54387876/" title="douban">douban</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-mysql调优" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/04/07/mysql调优/" class="article-date">
+      <time datetime="2017-04-07T07:20:33.000Z" itemprop="datePublished">2017-04-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      mysql调优
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="MySQL-调优"><a href="#MySQL-调优" class="headerlink" title="MySQL 调优"></a>MySQL 调优</h1><h2 id="mysql中的两个关键参数"><a href="#mysql中的两个关键参数" class="headerlink" title="mysql中的两个关键参数"></a>mysql中的两个关键参数</h2><p>(1)interactive_timeout:</p>
+<p>参数含义：服务器关闭交互式连接前等待活动的秒数。交互式客户端定义为在mysql_real_connect()中使用CLIENT_INTERACTIVE选项的客户端。<br>参数默认值：28800秒（8小时）</p>
+<p>(2)wait_timeout:</p>
+<p>参数含义：服务器关闭非交互连接之前等待活动的秒数。<br>在线程启动时，根据全局wait_timeout值或全局interactive_timeout值初始化会话wait_timeout值，取决于客户端类型(由mysql_real_connect()的连接选项CLIENT_INTERACTIVE定义)。<br>参数默认值：28800秒（8小时）</p>
+<p>wait_timeout过大有弊端，其体现就是MySQL里大量的SLEEP进程无法及时释放，拖累系统性能，不过也不能把这个指设置的过小，否则你可 能会遭遇到“MySQL has gone away”之类的问题，通常来说，我觉得把wait_timeout设置为10是个不错的选择，但某些情况下可能也会出问题，比如说有一个CRON脚本， 其中两次SQL查询的间隔时间大于10秒的话，那么这个设置就有问题了（当然，这也不是不能解决的问题，你可以在程序里时不时mysql_ping一下， 以便服务器知道你还活着，重新计算wait_timeout时间）</p>
+<a id="more"></a>
+<figure class="highlight plain"><figcaption><span>set global wait_timeout</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="mysqladmin-uroot-ppassword-variables-grep-cache"><a href="#mysqladmin-uroot-ppassword-variables-grep-cache" class="headerlink" title="mysqladmin -uroot -ppassword variables|grep _cache"></a>mysqladmin -uroot -ppassword variables|grep _cache</h4><p>[mysqld]<br>#</p>
+<h1 id="Basic-Settings"><a href="#Basic-Settings" class="headerlink" title="* Basic Settings"></a>* Basic Settings</h1><p>#<br>user            = mysql<br>socket          = /var/run/mysqld/mysqld.sock<br>port            = 3306<br>basedir         = /usr<br>datadir         = /var/lib/mysql<br>pid-file        = /var/run/mysqld/mysqld.pid<br>tmpdir          = /tmp<br>lc-messages-dir = /usr/share/mysql      </p>
+<p>#binlog的名字最好不要为默认，这样便于数据库的移植</p>
+<p>#造成睡眠连接过多的原因？</p>
+<p>#1.使用了太多持久连接（个人觉得，在高并发系统中，不适合使用持久连接）</p>
+<p>#2.程序中，没有及时关闭mysql连接</p>
+<p>#3.数据库查询不够优化，过度耗时<br>wait_timeout=300<br>interactive_timeout=300</p>
+<p>#MySQL允许最大连接数<br>max_connections = 5000</p>
+<p>#可以允许多少个错误连接<br>max_connect_errors = 6000</p>
+<p>#忽略大小写<br>lower_case_table_names = 1</p>
+<p>#避免Mysql的外部锁定，减少出错几率增加稳定性</p>
+<p>#当外部锁定（external-locking）起作用时，每个进程若要访问数据表，则必须等待之前的进程完成操作并解除锁定。</p>
+<p>#由于服务器访问数据表时经常需要等待解锁，因此在单服务器环境下external locking会让MySQL性能下降。</p>
+<p>#所以在很多Linux发行版的源中，MySQL配置文件中默认使用了skip-external-locking来避免external locking。</p>
+<p>#当使用了skip-external-locking后，为了使用MyISAMChk检查数据库或者修复、优化表，你必须保证在此过程中MySQL服务器没有使用需要操作的表。</p>
+<p>#如果没有停止服务器，也至少需要先运行</p>
+<p>#mysqladmin flush-tables</p>
+<p>#详见<a href="http://www.bootf.com/594.html" target="_blank" rel="noopener">http://www.bootf.com/594.html</a><br>skip-external-locking</p>
+<p>#禁止mysql对外部链接进行DNS解析，使用这一选项可以消除Mysql进行DNS解析的时间,但需要注意，</p>
+<p>#如果开启该选项，则所有远程主机连接授权都要使用IP地址的方式没,否则Mysql将无法正常处理连接请求!<br>skip-name-resolve</p>
+<p>#指定MySQL可能的连接数量。当MySQL主线程在很短的时间内接收到非常多的连接请求，该参数生效，主线程花费很短的时间检查连接并且启动一个新线程。</p>
+<p>#back_log 参数的值指出在MySQL暂时停止响应新请求之前的短时间内多少个请求可以被存在堆栈中。</p>
+<p>#如果系统在一个短时间内有很多连接，则需要增大该参数的值，该参数值指定到来的TCP/IP连接的侦听队列的大小。</p>
+<p>#不同的操作系统在这个队列大小上有它自己的限制。</p>
+<p>#试图设定back_log高于你的操作系统的限制将是无效的。默认值为50。对于Linux系统推荐设置为小于512的整数</p>
+<p>#在linux下这个参数的值不能大于系统参数tcp_max_syn_backlog的值。</p>
+<p>#通过以下命令可以查看tcp_max_syn_backlog的当前值 cat /proc/sys/net/ipv4/tcp_max_syn_backlog。</p>
+<p>#我将该值设为300，作为测试</p>
+<p>#mysql&gt; show variables like ‘back_log’;<br>back_log=300</p>
+<p>wait_timeout=181440<br>#</p>
+<h1 id="Instead-of-skip-networking-the-default-is-now-to-listen-only-on"><a href="#Instead-of-skip-networking-the-default-is-now-to-listen-only-on" class="headerlink" title="Instead of skip-networking the default is now to listen only on"></a>Instead of skip-networking the default is now to listen only on</h1><h1 id="localhost-which-is-more-compatible-and-is-not-less-secure"><a href="#localhost-which-is-more-compatible-and-is-not-less-secure" class="headerlink" title="localhost which is more compatible and is not less secure."></a>localhost which is more compatible and is not less secure.</h1><p>#bind-address           = 129.0.0.124<br>#</p>
+<h1 id="Fine-Tuning"><a href="#Fine-Tuning" class="headerlink" title="* Fine Tuning"></a>* Fine Tuning</h1><p>#</p>
+<p>#索引块是缓冲的并且被所有的线程共享。key_buffer_size是用于索引块的缓冲区大小，</p>
+<p>#增加它可得到更好处理的索引(对所有读和多重写)，到你能负担得起那样多。如果你使它太大，</p>
+<p>#系统将开始换页并且真的变慢了。</p>
+<p>#<a href="http://dev.mysql.com/doc/refman/5.5/en/server-system-variables.html" target="_blank" rel="noopener">http://dev.mysql.com/doc/refman/5.5/en/server-system-variables.html</a></p>
+<p>#You can increase the value to get better index handling for all reads and multiple writes;</p>
+<p>#on a system whose primary function is to run MySQL using the MyISAM storage engine,</p>
+<p>#25% of the machine’s total memory is an acceptable value for this variable.</p>
+<p>#mysql&gt; show variables like ‘key_buffer%’<br>key_buffer_size         = 1G<br>max_allowed_packet      = 128M</p>
+<p>#The stack size for each thread. Many of the limits detected by the crash-me test are dependent on this value.</p>
+<p>#The default of 192KB (256KB for 64-bit systems) is large enough for normal operation.</p>
+<p>#If the thread stack size is too small, it limits the complexity of the SQL statements that the server can handle,</p>
+<p>#the recursion depth of stored procedures, and other memory-consuming actions.</p>
+<p>#<a href="http://dev.mysql.com/doc/refman/5.5/en/server-system-variables.html" target="_blank" rel="noopener">http://dev.mysql.com/doc/refman/5.5/en/server-system-variables.html</a><br>thread_stack            = 256K</p>
+<p>#服务器线程缓存thread_cache_size没有进行设置，或者设置过小,这个值表示可以重新利用保存在缓存中线程的数量,</p>
+<p>#当断开连接时如果缓存中还有空间,那么客户端的线程将被放到缓存中,如果线程重新被请求，那么请求将从缓存中读取,</p>
+<p>#如果缓存中是空的或者是新的请求，那么这个线程将被重新创建,如果有很多新的线程，增加这个值可以改善系统性能.</p>
+<p>#通过比较 Connections 和 Threads_created 状态的变量，可以看到这个变量的作用。(–&gt;表示要调整的值)根据物理内存设置规则如下：</p>
+<p>#1G  —&gt; 8</p>
+<p>#2G  —&gt; 16</p>
+<p>#3G  —&gt; 32</p>
+<p>#&gt;3G  —&gt; 64<br>thread_cache_size       = 64</p>
+<p>#为了更快的open表，这个参数很重要；比如200个并发connection，table_open_cache=200×N（一个查询中参与join的最大表的数量，也可能是分区表），如果是myisam表的话，table_open_cache=200×(N×2),还要考虑突发的临时表的文件描述符；在os可以支持打开文件数时，如果table_open_cache设置的比较高，mysql用光所有的文件描述符，就会拒绝连</p>
+<p>#，查询出错.table_open_cache设置多大合适呢？处理从上面的理论推理计算外，还可以根据状态变量来监控“Opened_tables”，这个状态变量表示，从server服务启动为止，open表的数量，可以根据这个状态变量来比较精准的设置table_oprn_cache</p>
+<p>#暂时设定为1024，需要有大规模考试测试做依据</p>
+<p>#show global status like ‘%open%table%’<br>table_open_cache = 1024</p>
+<h1 id="Sort-Buffer-Size-是一个connection级参数，在每个connection（session）第一次需要使用这个buffer的时候，一次性分配设置的内存。"><a href="#Sort-Buffer-Size-是一个connection级参数，在每个connection（session）第一次需要使用这个buffer的时候，一次性分配设置的内存。" class="headerlink" title="Sort_Buffer_Size 是一个connection级参数，在每个connection（session）第一次需要使用这个buffer的时候，一次性分配设置的内存。"></a>Sort_Buffer_Size 是一个connection级参数，在每个connection（session）第一次需要使用这个buffer的时候，一次性分配设置的内存。</h1><p>#Sort_Buffer_Size 并不是越大越好，由于是connection级的参数，过大的设置+高并发可能会耗尽系统内存资源。例如：500个连接将会消耗 500*sort_buffer_size(8M)=4G内存</p>
+<p>#Sort_Buffer_Size 超过2KB的时候，就会使用mmap() 而不是 malloc() 来进行内存分配，导致效率降低。</p>
+<p>#技术导读 <a href="http://blog.webshuo.com/2011/02/16/mysql-sort_buffer_size/" target="_blank" rel="noopener">http://blog.webshuo.com/2011/02/16/mysql-sort_buffer_size/</a></p>
+<p>#dev-doc: <a href="http://dev.mysql.com/doc/refman/5.5/en/server-parameters.html" target="_blank" rel="noopener">http://dev.mysql.com/doc/refman/5.5/en/server-parameters.html</a></p>
+<p>#explain select*from table where order limit；出现filesort</p>
+<p>#属重点优化参数<br>sort_buffer_size = 16M</p>
+<p>#用于表间关联缓存的大小<br>join_buffer_size = 16M</p>
+<h1 id="MySql读入缓冲区大小。对表进行顺序扫描的请求将分配一个读入缓冲区，MySql会为它分配一段内存缓冲区。read-buffer-size变量控制这一缓冲区的大小。如果对表的顺序扫-gt-描请求非常频繁，并且你认为频繁扫描进行得太慢，可以通过增加该变量值以及内存缓冲区大小提高其性能。"><a href="#MySql读入缓冲区大小。对表进行顺序扫描的请求将分配一个读入缓冲区，MySql会为它分配一段内存缓冲区。read-buffer-size变量控制这一缓冲区的大小。如果对表的顺序扫-gt-描请求非常频繁，并且你认为频繁扫描进行得太慢，可以通过增加该变量值以及内存缓冲区大小提高其性能。" class="headerlink" title="MySql读入缓冲区大小。对表进行顺序扫描的请求将分配一个读入缓冲区，MySql会为它分配一段内存缓冲区。read_buffer_size变量控制这一缓冲区的大小。如果对表的顺序扫&gt;描请求非常频繁，并且你认为频繁扫描进行得太慢，可以通过增加该变量值以及内存缓冲区大小提高其性能。"></a>MySql读入缓冲区大小。对表进行顺序扫描的请求将分配一个读入缓冲区，MySql会为它分配一段内存缓冲区。read_buffer_size变量控制这一缓冲区的大小。如果对表的顺序扫&gt;描请求非常频繁，并且你认为频繁扫描进行得太慢，可以通过增加该变量值以及内存缓冲区大小提高其性能。</h1><p>read_buffer_size = 32M</p>
+<h1 id="MySql的随机读（查询操作）缓冲区大小。当按任意顺序读取行时-例如，按照排序顺序-，将分配一个随机读缓存区。进行排序查询时，MySql会首先扫描一遍该缓冲，以避免磁-gt-盘搜索，提高查询速度，如果需要排序大量数据，可适当调高该值。但MySql会为每个客户连接发放该缓冲空间，所以应尽量适当设置该值，以避免内存开销过-gt-大。"><a href="#MySql的随机读（查询操作）缓冲区大小。当按任意顺序读取行时-例如，按照排序顺序-，将分配一个随机读缓存区。进行排序查询时，MySql会首先扫描一遍该缓冲，以避免磁-gt-盘搜索，提高查询速度，如果需要排序大量数据，可适当调高该值。但MySql会为每个客户连接发放该缓冲空间，所以应尽量适当设置该值，以避免内存开销过-gt-大。" class="headerlink" title="MySql的随机读（查询操作）缓冲区大小。当按任意顺序读取行时(例如，按照排序顺序)，将分配一个随机读缓存区。进行排序查询时，MySql会首先扫描一遍该缓冲，以避免磁&gt;盘搜索，提高查询速度，如果需要排序大量数据，可适当调高该值。但MySql会为每个客户连接发放该缓冲空间，所以应尽量适当设置该值，以避免内存开销过&gt;大。"></a>MySql的随机读（查询操作）缓冲区大小。当按任意顺序读取行时(例如，按照排序顺序)，将分配一个随机读缓存区。进行排序查询时，MySql会首先扫描一遍该缓冲，以避免磁&gt;盘搜索，提高查询速度，如果需要排序大量数据，可适当调高该值。但MySql会为每个客户连接发放该缓冲空间，所以应尽量适当设置该值，以避免内存开销过&gt;大。</h1><p>read_rnd_buffer_size = 32M</p>
+<h1 id="MyISAM表发生变化时重新排序所需的缓冲"><a href="#MyISAM表发生变化时重新排序所需的缓冲" class="headerlink" title="MyISAM表发生变化时重新排序所需的缓冲"></a>MyISAM表发生变化时重新排序所需的缓冲</h1><p>myisam_sort_buffer_size = 128M</p>
+<h1 id="This-replaces-the-startup-script-and-checks-MyISAM-tables-if-needed"><a href="#This-replaces-the-startup-script-and-checks-MyISAM-tables-if-needed" class="headerlink" title="This replaces the startup script and checks MyISAM tables if needed"></a>This replaces the startup script and checks MyISAM tables if needed</h1><h1 id="the-first-time-they-are-touch"><a href="#the-first-time-they-are-touch" class="headerlink" title="the first time they are touch"></a>the first time they are touch</h1><p>myisam-recover         = BACKUP</p>
+<p>#max_connections        = 100</p>
+<p>#table_cache            = 64</p>
+<p>#thread_concurrency     = 10<br>#</p>
+<h1 id="Query-Cache-Configuration"><a href="#Query-Cache-Configuration" class="headerlink" title="* Query Cache Configuration"></a>* Query Cache Configuration</h1><p>#允许cache 的单条 Query 结果集的最大容量，默认是1MB，超过此参数设置的 Query 结果集将不会被 Cache<br>query_cache_limit       = 4M</p>
+<p>#设置Query Cache所使用的内存大小，默认值为0，大小必须是1024的整数倍，如果不是整数倍，MySQL 会自动调整降低最小量以达到1024的倍数。</p>
+<p>#当我们打开了 Query Cache功能，MySQL在接受到一条select语句的请求后，如果该语句满足Query Cache的要求</p>
+<p>#(未显式说明不允许使用Query Cache，或者已经显式申明需要使用Query Cache)，</p>
+<p>#MySQL会直接根据预先设定好的HASH算法将接受到的select语句以字符串方式进行hash，然后到Query Cache中直接查找是否已经缓存。</p>
+<p>#也就是说，如果已经在缓存中，该select请求就会直接将数据返回，</p>
+<p>#从而省略了后面所有的步骤(如SQL语句的解析，优化器优化以及向存储引擎请求数据等)，极大的提高性能。</p>
+<p>#当然，Query Cache也有一个致命的缺陷，那就是当某个表的数据有任何任何变化，都会导致所有引用了该表的select语句在Query Cache中的缓存数据失效。</p>
+<p>#所以，当我们的数据变化非常频繁的情况下，使用Query Cache可能会得不偿失。</p>
+<p>#以往的经验来看，如果不是用来缓存基本不变的数据的MySQL数据库，query_cache_size一般256MB是一个比较合适的大小。</p>
+<p>#当然，这可以通过计算Query Cache的命中率(Qcache_hits/(Qcache_hits+Qcache_inserts)*100))来进行调整。</p>
+<p>#这里我设置为512Ｍ需要具体测试结果来查看最后Querycache的命中率</p>
+<p>#<a href="http://www.csdn.net/article/2011-10-28/306555" target="_blank" rel="noopener">http://www.csdn.net/article/2011-10-28/306555</a><br>query_cache_size        = 512M</p>
+<p>#</p>
+<h1 id="Logging-and-Replication"><a href="#Logging-and-Replication" class="headerlink" title="* Logging and Replication"></a>* Logging and Replication</h1><p>#</p>
+<h1 id="Both-location-gets-rotated-by-the-cronjob"><a href="#Both-location-gets-rotated-by-the-cronjob" class="headerlink" title="Both location gets rotated by the cronjob."></a>Both location gets rotated by the cronjob.</h1><h1 id="Be-aware-that-this-log-type-is-a-performance-killer"><a href="#Be-aware-that-this-log-type-is-a-performance-killer" class="headerlink" title="Be aware that this log type is a performance killer."></a>Be aware that this log type is a performance killer.</h1><h1 id="As-of-5-1-you-can-enable-the-log-at-runtime"><a href="#As-of-5-1-you-can-enable-the-log-at-runtime" class="headerlink" title="As of 5.1 you can enable the log at runtime!"></a>As of 5.1 you can enable the log at runtime!</h1><p>#general_log_file        = /var/log/mysql/mysql.log</p>
+<p>#general_log             = 1<br>#</p>
+<h1 id="Error-logging-goes-to-syslog-due-to-etc-mysql-conf-d-mysqld-safe-syslog-cnf"><a href="#Error-logging-goes-to-syslog-due-to-etc-mysql-conf-d-mysqld-safe-syslog-cnf" class="headerlink" title="Error logging goes to syslog due to /etc/mysql/conf.d/mysqld_safe_syslog.cnf."></a>Error logging goes to syslog due to /etc/mysql/conf.d/mysqld_safe_syslog.cnf.</h1><h1 id="Here-you-can-see-queries-with-especially-long-duration"><a href="#Here-you-can-see-queries-with-especially-long-duration" class="headerlink" title="Here you can see queries with especially long duration"></a>Here you can see queries with especially long duration</h1><p>#log_slow_queries        = /usr/local/mysql5/log/mysql-slow.log</p>
+<p>#默认设置为2表示执行时间超过2秒的都算慢查询(itest中是否有过多的慢查询，开启log文件后可看到具体的详细信息<br>long_query_time = 4<br>log_error               = /var/log/mysql/error.log  </p>
+<p>#log-queries-not-using-indexes<br>#</p>
+<h1 id="The-following-can-be-used-as-easy-to-replay-backup-logs-or-for-replication"><a href="#The-following-can-be-used-as-easy-to-replay-backup-logs-or-for-replication" class="headerlink" title="The following can be used as easy to replay backup logs or for replication."></a>The following can be used as easy to replay backup logs or for replication.</h1><h1 id="note-if-you-are-setting-up-a-replication-slave-see-README-Debian-about"><a href="#note-if-you-are-setting-up-a-replication-slave-see-README-Debian-about" class="headerlink" title="note: if you are setting up a replication slave, see README.Debian about"></a>note: if you are setting up a replication slave, see README.Debian about</h1><h1 id="other-settings-you-may-need-to-change"><a href="#other-settings-you-may-need-to-change" class="headerlink" title="other settings you may need to change."></a>other settings you may need to change.</h1><p>#For mysql Master and Slave<br>server-id              = 56</p>
+<p>#binlog的名字最好不要为默认，这样便于数据库的移植</p>
+<p>#log-bin                = /usr/local/mysql5/log/mysql-bin.log</p>
+<p>#relay_log              = /usr/local/mysql5/log/relay-bin</p>
+<p>#skip_slave_start</p>
+<p>#read_only<br>expire_logs_days       = 10<br>max_binlog_size        = 100M</p>
+<p>#############I##nnoDB部分##################</p>
+<p>#完整的InnoDB优化方案:<a href="http://www.mysqlperformanceblog.com/2007/11/01/innodb-performance-optimization-basics/" target="_blank" rel="noopener">http://www.mysqlperformanceblog.com/2007/11/01/innodb-performance-optimization-basics/</a></p>
+<p>#<a href="http://swachian.iteye.com/blog/193788" target="_blank" rel="noopener">http://swachian.iteye.com/blog/193788</a></p>
+<p>#抱怨Innodb比MyISAM慢100倍？那么你大概是忘了调整这个值。</p>
+<p>#默认值1的意思是每一次事务提交或事务外的指令都需要把日志写入（flush）硬盘，这是很费时的。</p>
+<p>#特别是使用电池供电缓存（Battery backed up cache）时。设成2对于很多运用，特别是从MyISAM表转过来的是可以的，</p>
+<p>#它的意思是不写入硬盘而是写入系统缓存。日志仍然会每秒flush到硬 盘，所以你一般不会丢失超过1-2秒的更新。</p>
+<p>#设成0会更快一点，但安全方面比较差，即使MySQL挂了也可能会丢失事务的数据。而值2只会在整个操作系统挂了时才可能丢数据。<br>innodb_flush_log_at_trx_commit=0</p>
+<h1 id="Set-buffer-pool-size-to-50-80-of-your-computer’s-memory"><a href="#Set-buffer-pool-size-to-50-80-of-your-computer’s-memory" class="headerlink" title="Set buffer pool size to 50-80% of your computer’s memory"></a>Set buffer pool size to 50-80% of your computer’s memory</h1><p>#针对服务器学校服务器比较烂的原因，我选择4Ｇ内存作为基准</p>
+<p>#高过1Ｇ启动不了<br>innodb_buffer_pool_size=8G</p>
+<p>#<a href="http://www.cnblogs.com/zuoxingyu/archive/2012/10/25/2738864.html" target="_blank" rel="noopener">http://www.cnblogs.com/zuoxingyu/archive/2012/10/25/2738864.html</a><br>innodb_log_file_size= 64M<br>innodb_log_buffer_size = 16M</p>
+<h1 id="附加的内存池被InnoDB用来保存-metadata-信息"><a href="#附加的内存池被InnoDB用来保存-metadata-信息" class="headerlink" title="附加的内存池被InnoDB用来保存 metadata 信息"></a>附加的内存池被InnoDB用来保存 metadata 信息</h1><h1 id="如果InnoDB为此目的需要更多的内存-它会开始从OS这里申请内存"><a href="#如果InnoDB为此目的需要更多的内存-它会开始从OS这里申请内存" class="headerlink" title="如果InnoDB为此目的需要更多的内存,它会开始从OS这里申请内存."></a>如果InnoDB为此目的需要更多的内存,它会开始从OS这里申请内存.</h1><h1 id="由于这个操作在大多数现代操作系统上已经足够快-你一般不需要修改此值"><a href="#由于这个操作在大多数现代操作系统上已经足够快-你一般不需要修改此值" class="headerlink" title="由于这个操作在大多数现代操作系统上已经足够快, 你一般不需要修改此值."></a>由于这个操作在大多数现代操作系统上已经足够快, 你一般不需要修改此值.</h1><h1 id="SHOW-INNODB-STATUS-命令会显示当先使用的数量"><a href="#SHOW-INNODB-STATUS-命令会显示当先使用的数量" class="headerlink" title="SHOW INNODB STATUS 命令会显示当先使用的数量."></a>SHOW INNODB STATUS 命令会显示当先使用的数量.</h1><h1 id="根据表的多少来确定大小，一般16M己能适用于几百个表"><a href="#根据表的多少来确定大小，一般16M己能适用于几百个表" class="headerlink" title="根据表的多少来确定大小，一般16M己能适用于几百个表"></a>根据表的多少来确定大小，一般16M己能适用于几百个表</h1><p>#innodb_additional_mem_pool_size=16M</p>
+<h1 id="在InnoDb核心内的允许线程数量"><a href="#在InnoDb核心内的允许线程数量" class="headerlink" title="在InnoDb核心内的允许线程数量."></a>在InnoDb核心内的允许线程数量.</h1><h1 id="最优值依赖于应用程序-硬件以及操作系统的调度方式"><a href="#最优值依赖于应用程序-硬件以及操作系统的调度方式" class="headerlink" title="最优值依赖于应用程序,硬件以及操作系统的调度方式."></a>最优值依赖于应用程序,硬件以及操作系统的调度方式.</h1><h1 id="过高的值可能导致线程的互斥颠簸"><a href="#过高的值可能导致线程的互斥颠簸" class="headerlink" title="过高的值可能导致线程的互斥颠簸."></a>过高的值可能导致线程的互斥颠簸.</h1><p>#innodb_thread_concurrency=8</p>
+<p>#Avoid double buffering and reduce swap pressure, in most cases this setting improves performance.</p>
+<p>#Though be careful if you do not have battery backed up RAID cache as when write IO may suffer.</p>
+<p>#在Linux上使用Direct IO。可以显著提高速度，特别是在RAID系统上。避免额外的数据复制和double buffering（mysql buffering 和OS buffering）。<br>innodb_flush_method=O_DIRECT</p>
+<h1 id="Buffer-Pool中Dirty-Page所占的数量，直接影响InnoDB的关闭时间。参数innodb-max-dirty-pages-pct可以直接控制了Dirty-Page在Buffer-Pool中所占的比率，而且幸运的是innodb-max-dirty-pages-pct是可以动态改变的。所以，在关闭InnoDB之前先将innodb-max-dirty-pages-pct调小，强制数据块Flush一段时间，则能够大大缩-gt-短MySQL关闭的时间-gt-。"><a href="#Buffer-Pool中Dirty-Page所占的数量，直接影响InnoDB的关闭时间。参数innodb-max-dirty-pages-pct可以直接控制了Dirty-Page在Buffer-Pool中所占的比率，而且幸运的是innodb-max-dirty-pages-pct是可以动态改变的。所以，在关闭InnoDB之前先将innodb-max-dirty-pages-pct调小，强制数据块Flush一段时间，则能够大大缩-gt-短MySQL关闭的时间-gt-。" class="headerlink" title="Buffer_Pool中Dirty_Page所占的数量，直接影响InnoDB的关闭时间。参数innodb_max_dirty_pages_pct可以直接控制了Dirty_Page在Buffer_Pool中所占的比率，而且幸运的是innodb_max_dirty_pages_pct是可以动态改变的。所以，在关闭InnoDB之前先将innodb_max_dirty_pages_pct调小，强制数据块Flush一段时间，则能够大大缩&gt;短MySQL关闭的时间&gt;。"></a>Buffer_Pool中Dirty_Page所占的数量，直接影响InnoDB的关闭时间。参数innodb_max_dirty_pages_pct可以直接控制了Dirty_Page在Buffer_Pool中所占的比率，而且幸运的是innodb_max_dirty_pages_pct是可以动态改变的。所以，在关闭InnoDB之前先将innodb_max_dirty_pages_pct调小，强制数据块Flush一段时间，则能够大大缩&gt;短MySQL关闭的时间&gt;。</h1><p>innodb_max_dirty_pages_pct = 90</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>back_log = 600   </p>
+<p>#在MYSQL暂时停止响应新请求之前，短时间内的多少个请求可以被存在堆栈中。如果系统在短时间内有很多连接，则需要增大该参数的值，该参数值指定到来的TCP/IP连接的监听队列的大小。默认值50。</p>
+<p>max_connections = 3000   </p>
+<p>#MySQL允许最大的进程连接数，如果经常出现Too Many Connections的错误提示，则需要增大此值。</p>
+<p>max_connect_errors = 6000   </p>
+<p>#设置每个主机的连接请求异常中断的最大次数，当超过该次数，MYSQL服务器将禁止host的连接请求，直到mysql服务器重启或通过flush hosts命令清空此host的相关信息。</p>
+<p>table_cache = 614  </p>
+<p>#指示表调整缓冲区大小。# table_cache 参数设置表高速缓存的数目。每个连接进来，都会至少打开一个表缓存。#因此， table_cache 的大小应与 max_connections 的设置有关。例如，对于 200 个#并行运行的连接，应该让表的缓存至少有 200 × N ，这里 N 是应用可以执行的查询#的一个联接中表的最大数量。此外，还需要为临时表和文件保留一些额外的文件描述符。</p>
+<h1 id="当-Mysql-访问一个表时，如果该表在缓存中已经被打开，则可以直接访问缓存；如果-还没有被缓存，但是在-Mysql-表缓冲区中还有空间，那么这个表就被打开并放入表缓-冲区；如果表缓存满了，则会按照一定的规则将当前未用的表释放，或者临时扩大表缓存来存放，使用表缓存的好处是可以更快速地访问表中的内容。执行-flush-tables-会-清空缓存的内容。一般来说，可以通过查看数据库运行峰值时间的状态值-Open-tables-和-Opened-tables-，判断是否需要增加-table-cache-的值（其中-open-tables-是当-前打开的表的数量，-Opened-tables-则是已经打开的表的数量）。即如果open-tables接近table-cache的时候，并且Opened-tables这个值在逐步增加，那就要考虑增加这个-值的大小了。还有就是Table-locks-waited比较高的时候，也需要增加table-cache。"><a href="#当-Mysql-访问一个表时，如果该表在缓存中已经被打开，则可以直接访问缓存；如果-还没有被缓存，但是在-Mysql-表缓冲区中还有空间，那么这个表就被打开并放入表缓-冲区；如果表缓存满了，则会按照一定的规则将当前未用的表释放，或者临时扩大表缓存来存放，使用表缓存的好处是可以更快速地访问表中的内容。执行-flush-tables-会-清空缓存的内容。一般来说，可以通过查看数据库运行峰值时间的状态值-Open-tables-和-Opened-tables-，判断是否需要增加-table-cache-的值（其中-open-tables-是当-前打开的表的数量，-Opened-tables-则是已经打开的表的数量）。即如果open-tables接近table-cache的时候，并且Opened-tables这个值在逐步增加，那就要考虑增加这个-值的大小了。还有就是Table-locks-waited比较高的时候，也需要增加table-cache。" class="headerlink" title="当 Mysql 访问一个表时，如果该表在缓存中已经被打开，则可以直接访问缓存；如果#还没有被缓存，但是在 Mysql 表缓冲区中还有空间，那么这个表就被打开并放入表缓#冲区；如果表缓存满了，则会按照一定的规则将当前未用的表释放，或者临时扩大表缓存来存放，使用表缓存的好处是可以更快速地访问表中的内容。执行 flush tables 会#清空缓存的内容。一般来说，可以通过查看数据库运行峰值时间的状态值 Open_tables #和 Opened_tables ，判断是否需要增加 table_cache 的值（其中 open_tables 是当#前打开的表的数量， Opened_tables 则是已经打开的表的数量）。即如果open_tables接近table_cache的时候，并且Opened_tables这个值在逐步增加，那就要考虑增加这个#值的大小了。还有就是Table_locks_waited比较高的时候，也需要增加table_cache。"></a>当 Mysql 访问一个表时，如果该表在缓存中已经被打开，则可以直接访问缓存；如果#还没有被缓存，但是在 Mysql 表缓冲区中还有空间，那么这个表就被打开并放入表缓#冲区；如果表缓存满了，则会按照一定的规则将当前未用的表释放，或者临时扩大表缓存来存放，使用表缓存的好处是可以更快速地访问表中的内容。执行 flush tables 会#清空缓存的内容。一般来说，可以通过查看数据库运行峰值时间的状态值 Open_tables #和 Opened_tables ，判断是否需要增加 table_cache 的值（其中 open_tables 是当#前打开的表的数量， Opened_tables 则是已经打开的表的数量）。即如果open_tables接近table_cache的时候，并且Opened_tables这个值在逐步增加，那就要考虑增加这个#值的大小了。还有就是Table_locks_waited比较高的时候，也需要增加table_cache。</h1><p>external-locking = FALSE  </p>
+<p>#使用–skip-external-locking MySQL选项以避免外部锁定。该选项默认开启</p>
+<p>max_allowed_packet = 32M  </p>
+<p>#设置在网络传输中一次消息传输量的最大值。系统默认值 为1MB，最大值是1GB，必须设置1024的倍数。</p>
+<p>sort_buffer_size = 2M  </p>
+<h1 id="Sort-Buffer-Size-是一个connection级参数，在每个connection（session）第一次需要使用这个buffer的时候，一次性分配设置的内存。-1"><a href="#Sort-Buffer-Size-是一个connection级参数，在每个connection（session）第一次需要使用这个buffer的时候，一次性分配设置的内存。-1" class="headerlink" title="Sort_Buffer_Size 是一个connection级参数，在每个connection（session）第一次需要使用这个buffer的时候，一次性分配设置的内存。"></a>Sort_Buffer_Size 是一个connection级参数，在每个connection（session）第一次需要使用这个buffer的时候，一次性分配设置的内存。</h1><p>#Sort_Buffer_Size 并不是越大越好，由于是connection级的参数，过大的设置+高并发可能会耗尽系统内存资源。例如：500个连接将会消耗 500*sort_buffer_size(8M)=4G内存</p>
+<p>#Sort_Buffer_Size 超过2KB的时候，就会使用mmap() 而不是 malloc() 来进行内存分配，导致效率降低。</p>
+<p>#技术导读 <a href="http://blog.webshuo.com/2011/02/16/mysql-sort_buffer_size/" target="_blank" rel="noopener">http://blog.webshuo.com/2011/02/16/mysql-sort_buffer_size/</a></p>
+<p>#dev-doc: <a href="http://dev.mysql.com/doc/refman/5.5/en/server-parameters.html" target="_blank" rel="noopener">http://dev.mysql.com/doc/refman/5.5/en/server-parameters.html</a></p>
+<p>#explain select*from table where order limit；出现filesort</p>
+<p>#属重点优化参数</p>
+<p>join_buffer_size = 2M   </p>
+<p>#用于表间关联缓存的大小，和sort_buffer_size一样，该参数对应的分配内存也是每个连接独享。</p>
+<p>thread_cache_size = 300   </p>
+<h1 id="服务器线程缓存这个值表示可以重新利用保存在缓存中线程的数量-当断开连接时如果缓存中还有空间-那么客户端的线程将被放到缓存中-如果线程重新被请求，那么请求将从缓存中读取-如果缓存中是空的或者是新的请求，那么这个线程将被重新创建-如果有很多新的线程，增加这个值可以改善系统性能-通过比较-Connections-和-Threads-created-状态的变量，可以看到这个变量的作用。设置规则如下：1GB-内存配置为8，2GB配置为16，3GB配置为32，4GB或更高内存，可配置更大。"><a href="#服务器线程缓存这个值表示可以重新利用保存在缓存中线程的数量-当断开连接时如果缓存中还有空间-那么客户端的线程将被放到缓存中-如果线程重新被请求，那么请求将从缓存中读取-如果缓存中是空的或者是新的请求，那么这个线程将被重新创建-如果有很多新的线程，增加这个值可以改善系统性能-通过比较-Connections-和-Threads-created-状态的变量，可以看到这个变量的作用。设置规则如下：1GB-内存配置为8，2GB配置为16，3GB配置为32，4GB或更高内存，可配置更大。" class="headerlink" title="服务器线程缓存这个值表示可以重新利用保存在缓存中线程的数量,当断开连接时如果缓存中还有空间,那么客户端的线程将被放到缓存中,如果线程重新被请求，那么请求将从缓存中读取,如果缓存中是空的或者是新的请求，那么这个线程将被重新创建,如果有很多新的线程，增加这个值可以改善系统性能.通过比较 Connections 和 Threads_created 状态的变量，可以看到这个变量的作用。设置规则如下：1GB 内存配置为8，2GB配置为16，3GB配置为32，4GB或更高内存，可配置更大。"></a>服务器线程缓存这个值表示可以重新利用保存在缓存中线程的数量,当断开连接时如果缓存中还有空间,那么客户端的线程将被放到缓存中,如果线程重新被请求，那么请求将从缓存中读取,如果缓存中是空的或者是新的请求，那么这个线程将被重新创建,如果有很多新的线程，增加这个值可以改善系统性能.通过比较 Connections 和 Threads_created 状态的变量，可以看到这个变量的作用。设置规则如下：1GB 内存配置为8，2GB配置为16，3GB配置为32，4GB或更高内存，可配置更大。</h1><p>thread_concurrency = 8   </p>
+<h1 id="设置thread-concurrency的值的正确与否-对mysql的性能影响很大-在多个cpu-或多核-的情况下，错误设置了thread-concurrency的值-会导致mysql不能充分利用多cpu-或多核-出现同一时刻只能一个cpu-或核-在工作的情况。thread-concurrency应设为CPU核数的2倍-比如有一个双核的CPU-那么thread-concurrency的应该为4-2个双核的cpu-thread-concurrency的值应为8"><a href="#设置thread-concurrency的值的正确与否-对mysql的性能影响很大-在多个cpu-或多核-的情况下，错误设置了thread-concurrency的值-会导致mysql不能充分利用多cpu-或多核-出现同一时刻只能一个cpu-或核-在工作的情况。thread-concurrency应设为CPU核数的2倍-比如有一个双核的CPU-那么thread-concurrency的应该为4-2个双核的cpu-thread-concurrency的值应为8" class="headerlink" title="设置thread_concurrency的值的正确与否, 对mysql的性能影响很大, 在多个cpu(或多核)的情况下，错误设置了thread_concurrency的值, 会导致mysql不能充分利用多cpu(或多核), 出现同一时刻只能一个cpu(或核)在工作的情况。thread_concurrency应设为CPU核数的2倍. 比如有一个双核的CPU, 那么thread_concurrency的应该为4; 2个双核的cpu, thread_concurrency的值应为8"></a>设置thread_concurrency的值的正确与否, 对mysql的性能影响很大, 在多个cpu(或多核)的情况下，错误设置了thread_concurrency的值, 会导致mysql不能充分利用多cpu(或多核), 出现同一时刻只能一个cpu(或核)在工作的情况。thread_concurrency应设为CPU核数的2倍. 比如有一个双核的CPU, 那么thread_concurrency的应该为4; 2个双核的cpu, thread_concurrency的值应为8</h1><p>#属重点优化参数</p>
+<p>query_cache_size = 64M   </p>
+<h2 id="对于使用MySQL的用户，对于这个变量大家一定不会陌生。前几年的MyISAM引擎优化中，这个参数也是一个重要的优化参数。但随着发展，这个参数也爆露出来一些问题。机器的内存越来越大，人们也都习惯性的把以前有用的参数分配的值越来越大。这个参数加大后也引发了一系列问题。我们首先分析一下-query-cache-size的工作原理：一个SELECT查询在DB中工作后，DB会把该语句缓存下来，当同样的一个SQL再次来到DB里调用时，DB在该表没发生变化的情况下把结果从缓存中返回给Client。这里有一个关建点，就是DB在利用Query-cache工作时，要求该语句涉及的表在这段时间内没有发生变更。那如果该表在发生变更时，Query-cache里的数据又怎么处理呢？首先要把Query-cache和该表相关的语句全部置为失效，然后在写入更新。那么如果Query-cache非常大，该表的查询结构又比较多，查询语句失效也慢，一个更新或是Insert就会很慢，这样看到的就是Update或是Insert怎么这么慢了。所以在数据库写入量或是更新量也比较大的系统，该参数不适合分配过大。而且在高并发，写入量大的系统，建议把该功能禁掉。"><a href="#对于使用MySQL的用户，对于这个变量大家一定不会陌生。前几年的MyISAM引擎优化中，这个参数也是一个重要的优化参数。但随着发展，这个参数也爆露出来一些问题。机器的内存越来越大，人们也都习惯性的把以前有用的参数分配的值越来越大。这个参数加大后也引发了一系列问题。我们首先分析一下-query-cache-size的工作原理：一个SELECT查询在DB中工作后，DB会把该语句缓存下来，当同样的一个SQL再次来到DB里调用时，DB在该表没发生变化的情况下把结果从缓存中返回给Client。这里有一个关建点，就是DB在利用Query-cache工作时，要求该语句涉及的表在这段时间内没有发生变更。那如果该表在发生变更时，Query-cache里的数据又怎么处理呢？首先要把Query-cache和该表相关的语句全部置为失效，然后在写入更新。那么如果Query-cache非常大，该表的查询结构又比较多，查询语句失效也慢，一个更新或是Insert就会很慢，这样看到的就是Update或是Insert怎么这么慢了。所以在数据库写入量或是更新量也比较大的系统，该参数不适合分配过大。而且在高并发，写入量大的系统，建议把该功能禁掉。" class="headerlink" title="对于使用MySQL的用户，对于这个变量大家一定不会陌生。前几年的MyISAM引擎优化中，这个参数也是一个重要的优化参数。但随着发展，这个参数也爆露出来一些问题。机器的内存越来越大，人们也都习惯性的把以前有用的参数分配的值越来越大。这个参数加大后也引发了一系列问题。我们首先分析一下 query_cache_size的工作原理：一个SELECT查询在DB中工作后，DB会把该语句缓存下来，当同样的一个SQL再次来到DB里调用时，DB在该表没发生变化的情况下把结果从缓存中返回给Client。这里有一个关建点，就是DB在利用Query_cache工作时，要求该语句涉及的表在这段时间内没有发生变更。那如果该表在发生变更时，Query_cache里的数据又怎么处理呢？首先要把Query_cache和该表相关的语句全部置为失效，然后在写入更新。那么如果Query_cache非常大，该表的查询结构又比较多，查询语句失效也慢，一个更新或是Insert就会很慢，这样看到的就是Update或是Insert怎么这么慢了。所以在数据库写入量或是更新量也比较大的系统，该参数不适合分配过大。而且在高并发，写入量大的系统，建议把该功能禁掉。"></a>对于使用MySQL的用户，对于这个变量大家一定不会陌生。前几年的MyISAM引擎优化中，这个参数也是一个重要的优化参数。但随着发展，这个参数也爆露出来一些问题。机器的内存越来越大，人们也都习惯性的把以前有用的参数分配的值越来越大。这个参数加大后也引发了一系列问题。我们首先分析一下 query_cache_size的工作原理：一个SELECT查询在DB中工作后，DB会把该语句缓存下来，当同样的一个SQL再次来到DB里调用时，DB在该表没发生变化的情况下把结果从缓存中返回给Client。这里有一个关建点，就是DB在利用Query_cache工作时，要求该语句涉及的表在这段时间内没有发生变更。那如果该表在发生变更时，Query_cache里的数据又怎么处理呢？首先要把Query_cache和该表相关的语句全部置为失效，然后在写入更新。那么如果Query_cache非常大，该表的查询结构又比较多，查询语句失效也慢，一个更新或是Insert就会很慢，这样看到的就是Update或是Insert怎么这么慢了。所以在数据库写入量或是更新量也比较大的系统，该参数不适合分配过大。而且在高并发，写入量大的系统，建议把该功能禁掉。</h2><p>#重点优化参数（主库 增删改-MyISAM）</p>
+<p>query_cache_limit = 4M    </p>
+<p>#指定单个查询能够使用的缓冲区大小，缺省为1M</p>
+<p>query_cache_min_res_unit = 2k    </p>
+<p>#默认是4KB，设置值大对大数据查询有好处，但如果你的查询都是小数据查询，就容易造成内存碎片和浪费</p>
+<p>#查询缓存碎片率 = Qcache_free_blocks / Qcache_total_blocks * 100%</p>
+<p>#如果查询缓存碎片率超过20%，可以用FLUSH QUERY CACHE整理缓存碎片，或者试试减小query_cache_min_res_unit，如果你的查询都是小数据量的话。</p>
+<p>#查询缓存利用率 = (query_cache_size – Qcache_free_memory) / query_cache_size * 100%</p>
+<p>#查询缓存利用率在25%以下的话说明query_cache_size设置的过大，可适当减小;查询缓存利用率在80%以上而且Qcache_lowmem_prunes &gt; 50的话说明query_cache_size可能有点小，要不就是碎片太多。</p>
+<p>#查询缓存命中率 = (Qcache_hits – Qcache_inserts) / Qcache_hits * 100%</p>
+<p>default-storage-engine = MyISAM</p>
+<p>#default_table_type = InnoDB</p>
+<p>thread_stack = 192K  </p>
+<p>#设置MYSQL每个线程的堆栈大小，默认值足够大，可满足普通操作。可设置范围为128K至4GB，默认为192KB。</p>
+<p>transaction_isolation = READ-COMMITTED   </p>
+<h1 id="设定默认的事务隔离级别-可用的级别如下"><a href="#设定默认的事务隔离级别-可用的级别如下" class="headerlink" title="设定默认的事务隔离级别.可用的级别如下:"></a>设定默认的事务隔离级别.可用的级别如下:</h1><h1 id="READ-UNCOMMITTED-READ-COMMITTED-REPEATABLE-READ-SERIALIZABLE"><a href="#READ-UNCOMMITTED-READ-COMMITTED-REPEATABLE-READ-SERIALIZABLE" class="headerlink" title="READ-UNCOMMITTED, READ-COMMITTED, REPEATABLE-READ, SERIALIZABLE"></a>READ-UNCOMMITTED, READ-COMMITTED, REPEATABLE-READ, SERIALIZABLE</h1><h1 id="1-READ-UNCOMMITTED-读未提交2-READ-COMMITTE-读已提交3-REPEATABLE-READ-可重复读4-SERIALIZABLE-串行"><a href="#1-READ-UNCOMMITTED-读未提交2-READ-COMMITTE-读已提交3-REPEATABLE-READ-可重复读4-SERIALIZABLE-串行" class="headerlink" title="1.READ UNCOMMITTED-读未提交2.READ COMMITTE-读已提交3.REPEATABLE READ -可重复读4.SERIALIZABLE -串行"></a>1.READ UNCOMMITTED-读未提交2.READ COMMITTE-读已提交3.REPEATABLE READ -可重复读4.SERIALIZABLE -串行</h1><p>tmp_table_size = 256M   </p>
+<h1 id="tmp-table-size-的默认大小是-32M。如果一张临时表超出该大小，MySQL产生一个-The-table-tbl-name-is-full-形式的错误，如果你做很多高级-GROUP-BY-查询，增加-tmp-table-size-值。如果超过该值，则会将临时表写入磁盘。"><a href="#tmp-table-size-的默认大小是-32M。如果一张临时表超出该大小，MySQL产生一个-The-table-tbl-name-is-full-形式的错误，如果你做很多高级-GROUP-BY-查询，增加-tmp-table-size-值。如果超过该值，则会将临时表写入磁盘。" class="headerlink" title="tmp_table_size 的默认大小是 32M。如果一张临时表超出该大小，MySQL产生一个 The table tbl_name is full 形式的错误，如果你做很多高级 GROUP BY 查询，增加 tmp_table_size 值。如果超过该值，则会将临时表写入磁盘。"></a>tmp_table_size 的默认大小是 32M。如果一张临时表超出该大小，MySQL产生一个 The table tbl_name is full 形式的错误，如果你做很多高级 GROUP BY 查询，增加 tmp_table_size 值。如果超过该值，则会将临时表写入磁盘。</h1><p>max_heap_table_size = 256M<br>long_query_time = 2<br>log_long_format<br>log-slow-queries=/data/3306/slow-log.log</p>
+<p>#log-bin = /data/3306/mysql-bin<br>log-bin<br>binlog_cache_size = 4M<br>max_binlog_cache_size = 8M<br>max_binlog_size = 512M</p>
+<p>expire_logs_days = 7<br>key_buffer_size = 2048M</p>
+<p>#批定用于索引的缓冲区大小，增加它可以得到更好的索引处理性能，对于内存在4GB左右的服务器来说，该参数可设置为256MB或384MB。</p>
+<p>read_buffer_size = 1M  </p>
+<h1 id="MySql读入缓冲区大小。对表进行顺序扫描的请求将分配一个读入缓冲区，MySql会为它分配一段内存缓冲区。read-buffer-size变量控制这一缓冲区的大小。如果对表的顺序扫描请求非常频繁，并且你认为频繁扫描进行得太慢，可以通过增加该变量值以及内存缓冲区大小提高其性能。和sort-buffer-size一样，该参数对应的分配内存也是每个连接独享。"><a href="#MySql读入缓冲区大小。对表进行顺序扫描的请求将分配一个读入缓冲区，MySql会为它分配一段内存缓冲区。read-buffer-size变量控制这一缓冲区的大小。如果对表的顺序扫描请求非常频繁，并且你认为频繁扫描进行得太慢，可以通过增加该变量值以及内存缓冲区大小提高其性能。和sort-buffer-size一样，该参数对应的分配内存也是每个连接独享。" class="headerlink" title="MySql读入缓冲区大小。对表进行顺序扫描的请求将分配一个读入缓冲区，MySql会为它分配一段内存缓冲区。read_buffer_size变量控制这一缓冲区的大小。如果对表的顺序扫描请求非常频繁，并且你认为频繁扫描进行得太慢，可以通过增加该变量值以及内存缓冲区大小提高其性能。和sort_buffer_size一样，该参数对应的分配内存也是每个连接独享。"></a>MySql读入缓冲区大小。对表进行顺序扫描的请求将分配一个读入缓冲区，MySql会为它分配一段内存缓冲区。read_buffer_size变量控制这一缓冲区的大小。如果对表的顺序扫描请求非常频繁，并且你认为频繁扫描进行得太慢，可以通过增加该变量值以及内存缓冲区大小提高其性能。和sort_buffer_size一样，该参数对应的分配内存也是每个连接独享。</h1><p>read_rnd_buffer_size = 16M   </p>
+<h1 id="MySql的随机读（查询操作）缓冲区大小。当按任意顺序读取行时-例如，按照排序顺序-，将分配一个随机读缓存区。进行排序查询时，MySql会首先扫描一遍该缓冲，以避免磁盘搜索，提高查询速度，如果需要排序大量数据，可适当调高该值。但MySql会为每个客户连接发放该缓冲空间，所以应尽量适当设置该值，以避免内存开销过大。"><a href="#MySql的随机读（查询操作）缓冲区大小。当按任意顺序读取行时-例如，按照排序顺序-，将分配一个随机读缓存区。进行排序查询时，MySql会首先扫描一遍该缓冲，以避免磁盘搜索，提高查询速度，如果需要排序大量数据，可适当调高该值。但MySql会为每个客户连接发放该缓冲空间，所以应尽量适当设置该值，以避免内存开销过大。" class="headerlink" title="MySql的随机读（查询操作）缓冲区大小。当按任意顺序读取行时(例如，按照排序顺序)，将分配一个随机读缓存区。进行排序查询时，MySql会首先扫描一遍该缓冲，以避免磁盘搜索，提高查询速度，如果需要排序大量数据，可适当调高该值。但MySql会为每个客户连接发放该缓冲空间，所以应尽量适当设置该值，以避免内存开销过大。"></a>MySql的随机读（查询操作）缓冲区大小。当按任意顺序读取行时(例如，按照排序顺序)，将分配一个随机读缓存区。进行排序查询时，MySql会首先扫描一遍该缓冲，以避免磁盘搜索，提高查询速度，如果需要排序大量数据，可适当调高该值。但MySql会为每个客户连接发放该缓冲空间，所以应尽量适当设置该值，以避免内存开销过大。</h1><p>bulk_insert_buffer_size = 64M   </p>
+<p>#批量插入数据缓存大小，可以有效提高插入效率，默认为8M</p>
+<p>myisam_sort_buffer_size = 128M   </p>
+<h1 id="MyISAM表发生变化时重新排序所需的缓冲-1"><a href="#MyISAM表发生变化时重新排序所需的缓冲-1" class="headerlink" title="MyISAM表发生变化时重新排序所需的缓冲"></a>MyISAM表发生变化时重新排序所需的缓冲</h1><p>myisam_max_sort_file_size = 10G   </p>
+<h1 id="MySQL重建索引时所允许的最大临时文件的大小-当-REPAIR-ALTER-TABLE-或者-LOAD-DATA-INFILE"><a href="#MySQL重建索引时所允许的最大临时文件的大小-当-REPAIR-ALTER-TABLE-或者-LOAD-DATA-INFILE" class="headerlink" title="MySQL重建索引时所允许的最大临时文件的大小 (当 REPAIR, ALTER TABLE 或者 LOAD DATA INFILE)."></a>MySQL重建索引时所允许的最大临时文件的大小 (当 REPAIR, ALTER TABLE 或者 LOAD DATA INFILE).</h1><h1 id="如果文件大小比此值更大-索引会通过键值缓冲创建-更慢"><a href="#如果文件大小比此值更大-索引会通过键值缓冲创建-更慢" class="headerlink" title="如果文件大小比此值更大,索引会通过键值缓冲创建(更慢)"></a>如果文件大小比此值更大,索引会通过键值缓冲创建(更慢)</h1><p>myisam_max_extra_sort_file_size = 10G<br>myisam_repair_threads = 1   </p>
+<h1 id="如果一个表拥有超过一个索引-MyISAM-可以通过并行排序使用超过一个线程去修复他们"><a href="#如果一个表拥有超过一个索引-MyISAM-可以通过并行排序使用超过一个线程去修复他们" class="headerlink" title="如果一个表拥有超过一个索引, MyISAM 可以通过并行排序使用超过一个线程去修复他们."></a>如果一个表拥有超过一个索引, MyISAM 可以通过并行排序使用超过一个线程去修复他们.</h1><h1 id="这对于拥有多个CPU以及大量内存情况的用户-是一个很好的选择"><a href="#这对于拥有多个CPU以及大量内存情况的用户-是一个很好的选择" class="headerlink" title="这对于拥有多个CPU以及大量内存情况的用户,是一个很好的选择."></a>这对于拥有多个CPU以及大量内存情况的用户,是一个很好的选择.</h1><p>myisam_recover   </p>
+<p>#自动检查和修复没有适当关闭的 MyISAM 表<br>skip-name-resolve<br>lower_case_table_names = 1</p>
+<p>server-id = 1</p>
+<p>innodb_additional_mem_pool_size = 16M   </p>
+<p>#这个参数用来设置 InnoDB 存储的数据目录信息和其它内部数据结构的内存池大小，类似于Oracle的library cache。这不是一个强制参数，可以被突破。</p>
+<p>innodb_buffer_pool_size = 2048M   </p>
+<h1 id="这对Innodb表来说非常重要。Innodb相比MyISAM表对缓冲更为敏感。MyISAM可以在默认的-key-buffer-size-设置下运行的可以，然而Innodb在默认的-innodb-buffer-pool-size-设置下却跟蜗牛似的。由于Innodb把数据和索引都缓存起来，无需留给操作系统太多的内存，因此如果只需要用Innodb的话则可以设置它高达-70-80-的可用内存。一些应用于-key-buffer-的规则有-—-如果你的数据量不大，并且不会暴增，那么无需把-innodb-buffer-pool-size-设置的太大了"><a href="#这对Innodb表来说非常重要。Innodb相比MyISAM表对缓冲更为敏感。MyISAM可以在默认的-key-buffer-size-设置下运行的可以，然而Innodb在默认的-innodb-buffer-pool-size-设置下却跟蜗牛似的。由于Innodb把数据和索引都缓存起来，无需留给操作系统太多的内存，因此如果只需要用Innodb的话则可以设置它高达-70-80-的可用内存。一些应用于-key-buffer-的规则有-—-如果你的数据量不大，并且不会暴增，那么无需把-innodb-buffer-pool-size-设置的太大了" class="headerlink" title="这对Innodb表来说非常重要。Innodb相比MyISAM表对缓冲更为敏感。MyISAM可以在默认的 key_buffer_size 设置下运行的可以，然而Innodb在默认的 innodb_buffer_pool_size 设置下却跟蜗牛似的。由于Innodb把数据和索引都缓存起来，无需留给操作系统太多的内存，因此如果只需要用Innodb的话则可以设置它高达 70-80% 的可用内存。一些应用于 key_buffer 的规则有 — 如果你的数据量不大，并且不会暴增，那么无需把 innodb_buffer_pool_size 设置的太大了"></a>这对Innodb表来说非常重要。Innodb相比MyISAM表对缓冲更为敏感。MyISAM可以在默认的 key_buffer_size 设置下运行的可以，然而Innodb在默认的 innodb_buffer_pool_size 设置下却跟蜗牛似的。由于Innodb把数据和索引都缓存起来，无需留给操作系统太多的内存，因此如果只需要用Innodb的话则可以设置它高达 70-80% 的可用内存。一些应用于 key_buffer 的规则有 — 如果你的数据量不大，并且不会暴增，那么无需把 innodb_buffer_pool_size 设置的太大了</h1><p>innodb_data_file_path = ibdata1:1024M:autoextend   </p>
+<p>#表空间文件 重要数据</p>
+<p>innodb_file_io_threads = 4   </p>
+<p>#文件IO的线程数，一般为 4，但是在 Windows 下，可以设置得较大。</p>
+<p>innodb_thread_concurrency = 8   </p>
+<p>#服务器有几个CPU就设置为几，建议用默认设置，一般为8.</p>
+<p>innodb_flush_log_at_trx_commit = 2   </p>
+<h1 id="如果将此参数设置为1，将在每次提交事务后将日志写入磁盘。为提供性能，可以设置为0或2，但要承担在发生故障时丢失数据的风险。设置为0表示事务日志写入日志文件，而日志文件每秒刷新到磁盘一次。设置为2表示事务日志将在提交时写入日志，但日志文件每次刷新到磁盘一次。"><a href="#如果将此参数设置为1，将在每次提交事务后将日志写入磁盘。为提供性能，可以设置为0或2，但要承担在发生故障时丢失数据的风险。设置为0表示事务日志写入日志文件，而日志文件每秒刷新到磁盘一次。设置为2表示事务日志将在提交时写入日志，但日志文件每次刷新到磁盘一次。" class="headerlink" title="如果将此参数设置为1，将在每次提交事务后将日志写入磁盘。为提供性能，可以设置为0或2，但要承担在发生故障时丢失数据的风险。设置为0表示事务日志写入日志文件，而日志文件每秒刷新到磁盘一次。设置为2表示事务日志将在提交时写入日志，但日志文件每次刷新到磁盘一次。"></a>如果将此参数设置为1，将在每次提交事务后将日志写入磁盘。为提供性能，可以设置为0或2，但要承担在发生故障时丢失数据的风险。设置为0表示事务日志写入日志文件，而日志文件每秒刷新到磁盘一次。设置为2表示事务日志将在提交时写入日志，但日志文件每次刷新到磁盘一次。</h1><p>innodb_log_buffer_size = 16M  </p>
+<p>#此参数确定些日志文件所用的内存大小，以M为单位。缓冲区更大能提高性能，但意外的故障将会丢失数据.MySQL开发人员建议设置为1－8M之间</p>
+<p>innodb_log_file_size = 128M   </p>
+<p>#此参数确定数据日志文件的大小，以M为单位，更大的设置可以提高性能，但也会增加恢复故障数据库所需的时间</p>
+<p>innodb_log_files_in_group = 3   </p>
+<p>#为提高性能，MySQL可以以循环方式将日志文件写到多个文件。推荐设置为3M</p>
+<p>innodb_max_dirty_pages_pct = 90   </p>
+<p>#推荐阅读 <a href="http://www.taobaodba.com/html/221_innodb_max_dirty_pages_pct_checkpoint.html" target="_blank" rel="noopener">http://www.taobaodba.com/html/221_innodb_max_dirty_pages_pct_checkpoint.html</a></p>
+<h1 id="Buffer-Pool中Dirty-Page所占的数量，直接影响InnoDB的关闭时间。参数innodb-max-dirty-pages-pct-可以直接控制了Dirty-Page在Buffer-Pool中所占的比率，而且幸运的是innodb-max-dirty-pages-pct是可以动态改变的。所以，在关闭InnoDB之前先将innodb-max-dirty-pages-pct调小，强制数据块Flush一段时间，则能够大大缩短-MySQL关闭的时间。"><a href="#Buffer-Pool中Dirty-Page所占的数量，直接影响InnoDB的关闭时间。参数innodb-max-dirty-pages-pct-可以直接控制了Dirty-Page在Buffer-Pool中所占的比率，而且幸运的是innodb-max-dirty-pages-pct是可以动态改变的。所以，在关闭InnoDB之前先将innodb-max-dirty-pages-pct调小，强制数据块Flush一段时间，则能够大大缩短-MySQL关闭的时间。" class="headerlink" title="Buffer_Pool中Dirty_Page所占的数量，直接影响InnoDB的关闭时间。参数innodb_max_dirty_pages_pct 可以直接控制了Dirty_Page在Buffer_Pool中所占的比率，而且幸运的是innodb_max_dirty_pages_pct是可以动态改变的。所以，在关闭InnoDB之前先将innodb_max_dirty_pages_pct调小，强制数据块Flush一段时间，则能够大大缩短 MySQL关闭的时间。"></a>Buffer_Pool中Dirty_Page所占的数量，直接影响InnoDB的关闭时间。参数innodb_max_dirty_pages_pct 可以直接控制了Dirty_Page在Buffer_Pool中所占的比率，而且幸运的是innodb_max_dirty_pages_pct是可以动态改变的。所以，在关闭InnoDB之前先将innodb_max_dirty_pages_pct调小，强制数据块Flush一段时间，则能够大大缩短 MySQL关闭的时间。</h1><p>innodb_lock_wait_timeout = 120   </p>
+<h1 id="InnoDB-有其内置的死锁检测机制，能导致未完成的事务回滚。但是，如果结合InnoDB使用MyISAM的lock-tables-语句或第三方事务引擎-则InnoDB无法识别死锁。为消除这种可能性，可以将innodb-lock-wait-timeout设置为一个整数值，指示-MySQL在允许其他事务修改那些最终受事务回滚的数据之前要等待多长时间-秒数"><a href="#InnoDB-有其内置的死锁检测机制，能导致未完成的事务回滚。但是，如果结合InnoDB使用MyISAM的lock-tables-语句或第三方事务引擎-则InnoDB无法识别死锁。为消除这种可能性，可以将innodb-lock-wait-timeout设置为一个整数值，指示-MySQL在允许其他事务修改那些最终受事务回滚的数据之前要等待多长时间-秒数" class="headerlink" title="InnoDB 有其内置的死锁检测机制，能导致未完成的事务回滚。但是，如果结合InnoDB使用MyISAM的lock tables 语句或第三方事务引擎,则InnoDB无法识别死锁。为消除这种可能性，可以将innodb_lock_wait_timeout设置为一个整数值，指示 MySQL在允许其他事务修改那些最终受事务回滚的数据之前要等待多长时间(秒数)"></a>InnoDB 有其内置的死锁检测机制，能导致未完成的事务回滚。但是，如果结合InnoDB使用MyISAM的lock tables 语句或第三方事务引擎,则InnoDB无法识别死锁。为消除这种可能性，可以将innodb_lock_wait_timeout设置为一个整数值，指示 MySQL在允许其他事务修改那些最终受事务回滚的数据之前要等待多长时间(秒数)</h1><p>innodb_file_per_table = 0   </p>
+<p>#独享表空间（关闭）</p>
+<p>[mysqldump]<br>quick<br>max_allowed_packet = 32M</p>
+<p>[mysqld_safe]<br>log-error=/data/3306/mysql_oldboy.err<br>pid-file=/data/3306/mysqld.pid</p>
+<p>#补充</p>
+<p>#wait_timeout = 10   </p>
+<p>#指定一个请求的最大连接时间，对于4GB左右的内存服务器来说，可以将其设置为5-10。</p>
+<p>#skip_networking   </p>
+<p>#开启该选可以彻底关闭MYSQL的TCP/IP连接方式，如果WEB服务器是以远程连接的方式访问MYSQL数据库服务器的，则不要开启该选项，否则将无法正常连接。</p>
+<p>#log-queries-not-using-indexes<br>将没有使用索引的查询也记录下来</p>
+<p><code>`</code></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/04/07/mysql调优/">mysql调优</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Jiaxf 的个人博客">Jiaxf</a></p>
+        <p><span>发布时间:</span>2017年04月07日 - 15时20分</p>
+        <p><span>最后更新:</span>2018年04月13日 - 15时56分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/04/07/mysql调优/" title="mysql调优">http://jiaxf.github.io/2017/04/07/mysql调优/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://jiaxf.github.io/2017/04/07/mysql调优/　　作者: Jiaxf" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2017/07/03/mysqlMySQL双主一致性架构优化/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          MySQL双主一致性架构优化
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/01/12/前端自适应CSS3相对单位rem/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">前端自适应css3相对单位rem</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQL-调优"><span class="toc-number">1.</span> <span class="toc-text">MySQL 调优</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql中的两个关键参数"><span class="toc-number">1.1.</span> <span class="toc-text">mysql中的两个关键参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mysqladmin-uroot-ppassword-variables-grep-cache"><span class="toc-number">1.1.0.1.</span> <span class="toc-text">mysqladmin -uroot -ppassword variables|grep _cache</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Basic-Settings"><span class="toc-number">2.</span> <span class="toc-text">* Basic Settings</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Instead-of-skip-networking-the-default-is-now-to-listen-only-on"><span class="toc-number">3.</span> <span class="toc-text">Instead of skip-networking the default is now to listen only on</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#localhost-which-is-more-compatible-and-is-not-less-secure"><span class="toc-number">4.</span> <span class="toc-text">localhost which is more compatible and is not less secure.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Fine-Tuning"><span class="toc-number">5.</span> <span class="toc-text">* Fine Tuning</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Sort-Buffer-Size-是一个connection级参数，在每个connection（session）第一次需要使用这个buffer的时候，一次性分配设置的内存。"><span class="toc-number">6.</span> <span class="toc-text">Sort_Buffer_Size 是一个connection级参数，在每个connection（session）第一次需要使用这个buffer的时候，一次性分配设置的内存。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MySql读入缓冲区大小。对表进行顺序扫描的请求将分配一个读入缓冲区，MySql会为它分配一段内存缓冲区。read-buffer-size变量控制这一缓冲区的大小。如果对表的顺序扫-gt-描请求非常频繁，并且你认为频繁扫描进行得太慢，可以通过增加该变量值以及内存缓冲区大小提高其性能。"><span class="toc-number">7.</span> <span class="toc-text">MySql读入缓冲区大小。对表进行顺序扫描的请求将分配一个读入缓冲区，MySql会为它分配一段内存缓冲区。read_buffer_size变量控制这一缓冲区的大小。如果对表的顺序扫&gt;描请求非常频繁，并且你认为频繁扫描进行得太慢，可以通过增加该变量值以及内存缓冲区大小提高其性能。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MySql的随机读（查询操作）缓冲区大小。当按任意顺序读取行时-例如，按照排序顺序-，将分配一个随机读缓存区。进行排序查询时，MySql会首先扫描一遍该缓冲，以避免磁-gt-盘搜索，提高查询速度，如果需要排序大量数据，可适当调高该值。但MySql会为每个客户连接发放该缓冲空间，所以应尽量适当设置该值，以避免内存开销过-gt-大。"><span class="toc-number">8.</span> <span class="toc-text">MySql的随机读（查询操作）缓冲区大小。当按任意顺序读取行时(例如，按照排序顺序)，将分配一个随机读缓存区。进行排序查询时，MySql会首先扫描一遍该缓冲，以避免磁&gt;盘搜索，提高查询速度，如果需要排序大量数据，可适当调高该值。但MySql会为每个客户连接发放该缓冲空间，所以应尽量适当设置该值，以避免内存开销过&gt;大。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MyISAM表发生变化时重新排序所需的缓冲"><span class="toc-number">9.</span> <span class="toc-text">MyISAM表发生变化时重新排序所需的缓冲</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#This-replaces-the-startup-script-and-checks-MyISAM-tables-if-needed"><span class="toc-number">10.</span> <span class="toc-text">This replaces the startup script and checks MyISAM tables if needed</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#the-first-time-they-are-touch"><span class="toc-number">11.</span> <span class="toc-text">the first time they are touch</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Query-Cache-Configuration"><span class="toc-number">12.</span> <span class="toc-text">* Query Cache Configuration</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Logging-and-Replication"><span class="toc-number">13.</span> <span class="toc-text">* Logging and Replication</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Both-location-gets-rotated-by-the-cronjob"><span class="toc-number">14.</span> <span class="toc-text">Both location gets rotated by the cronjob.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Be-aware-that-this-log-type-is-a-performance-killer"><span class="toc-number">15.</span> <span class="toc-text">Be aware that this log type is a performance killer.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#As-of-5-1-you-can-enable-the-log-at-runtime"><span class="toc-number">16.</span> <span class="toc-text">As of 5.1 you can enable the log at runtime!</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Error-logging-goes-to-syslog-due-to-etc-mysql-conf-d-mysqld-safe-syslog-cnf"><span class="toc-number">17.</span> <span class="toc-text">Error logging goes to syslog due to /etc/mysql/conf.d/mysqld_safe_syslog.cnf.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Here-you-can-see-queries-with-especially-long-duration"><span class="toc-number">18.</span> <span class="toc-text">Here you can see queries with especially long duration</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#The-following-can-be-used-as-easy-to-replay-backup-logs-or-for-replication"><span class="toc-number">19.</span> <span class="toc-text">The following can be used as easy to replay backup logs or for replication.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#note-if-you-are-setting-up-a-replication-slave-see-README-Debian-about"><span class="toc-number">20.</span> <span class="toc-text">note: if you are setting up a replication slave, see README.Debian about</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#other-settings-you-may-need-to-change"><span class="toc-number">21.</span> <span class="toc-text">other settings you may need to change.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Set-buffer-pool-size-to-50-80-of-your-computer’s-memory"><span class="toc-number">22.</span> <span class="toc-text">Set buffer pool size to 50-80% of your computer’s memory</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#附加的内存池被InnoDB用来保存-metadata-信息"><span class="toc-number">23.</span> <span class="toc-text">附加的内存池被InnoDB用来保存 metadata 信息</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#如果InnoDB为此目的需要更多的内存-它会开始从OS这里申请内存"><span class="toc-number">24.</span> <span class="toc-text">如果InnoDB为此目的需要更多的内存,它会开始从OS这里申请内存.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#由于这个操作在大多数现代操作系统上已经足够快-你一般不需要修改此值"><span class="toc-number">25.</span> <span class="toc-text">由于这个操作在大多数现代操作系统上已经足够快, 你一般不需要修改此值.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SHOW-INNODB-STATUS-命令会显示当先使用的数量"><span class="toc-number">26.</span> <span class="toc-text">SHOW INNODB STATUS 命令会显示当先使用的数量.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#根据表的多少来确定大小，一般16M己能适用于几百个表"><span class="toc-number">27.</span> <span class="toc-text">根据表的多少来确定大小，一般16M己能适用于几百个表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#在InnoDb核心内的允许线程数量"><span class="toc-number">28.</span> <span class="toc-text">在InnoDb核心内的允许线程数量.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#最优值依赖于应用程序-硬件以及操作系统的调度方式"><span class="toc-number">29.</span> <span class="toc-text">最优值依赖于应用程序,硬件以及操作系统的调度方式.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#过高的值可能导致线程的互斥颠簸"><span class="toc-number">30.</span> <span class="toc-text">过高的值可能导致线程的互斥颠簸.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Buffer-Pool中Dirty-Page所占的数量，直接影响InnoDB的关闭时间。参数innodb-max-dirty-pages-pct可以直接控制了Dirty-Page在Buffer-Pool中所占的比率，而且幸运的是innodb-max-dirty-pages-pct是可以动态改变的。所以，在关闭InnoDB之前先将innodb-max-dirty-pages-pct调小，强制数据块Flush一段时间，则能够大大缩-gt-短MySQL关闭的时间-gt-。"><span class="toc-number">31.</span> <span class="toc-text">Buffer_Pool中Dirty_Page所占的数量，直接影响InnoDB的关闭时间。参数innodb_max_dirty_pages_pct可以直接控制了Dirty_Page在Buffer_Pool中所占的比率，而且幸运的是innodb_max_dirty_pages_pct是可以动态改变的。所以，在关闭InnoDB之前先将innodb_max_dirty_pages_pct调小，强制数据块Flush一段时间，则能够大大缩&gt;短MySQL关闭的时间&gt;。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#当-Mysql-访问一个表时，如果该表在缓存中已经被打开，则可以直接访问缓存；如果-还没有被缓存，但是在-Mysql-表缓冲区中还有空间，那么这个表就被打开并放入表缓-冲区；如果表缓存满了，则会按照一定的规则将当前未用的表释放，或者临时扩大表缓存来存放，使用表缓存的好处是可以更快速地访问表中的内容。执行-flush-tables-会-清空缓存的内容。一般来说，可以通过查看数据库运行峰值时间的状态值-Open-tables-和-Opened-tables-，判断是否需要增加-table-cache-的值（其中-open-tables-是当-前打开的表的数量，-Opened-tables-则是已经打开的表的数量）。即如果open-tables接近table-cache的时候，并且Opened-tables这个值在逐步增加，那就要考虑增加这个-值的大小了。还有就是Table-locks-waited比较高的时候，也需要增加table-cache。"><span class="toc-number">32.</span> <span class="toc-text">当 Mysql 访问一个表时，如果该表在缓存中已经被打开，则可以直接访问缓存；如果#还没有被缓存，但是在 Mysql 表缓冲区中还有空间，那么这个表就被打开并放入表缓#冲区；如果表缓存满了，则会按照一定的规则将当前未用的表释放，或者临时扩大表缓存来存放，使用表缓存的好处是可以更快速地访问表中的内容。执行 flush tables 会#清空缓存的内容。一般来说，可以通过查看数据库运行峰值时间的状态值 Open_tables #和 Opened_tables ，判断是否需要增加 table_cache 的值（其中 open_tables 是当#前打开的表的数量， Opened_tables 则是已经打开的表的数量）。即如果open_tables接近table_cache的时候，并且Opened_tables这个值在逐步增加，那就要考虑增加这个#值的大小了。还有就是Table_locks_waited比较高的时候，也需要增加table_cache。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Sort-Buffer-Size-是一个connection级参数，在每个connection（session）第一次需要使用这个buffer的时候，一次性分配设置的内存。-1"><span class="toc-number">33.</span> <span class="toc-text">Sort_Buffer_Size 是一个connection级参数，在每个connection（session）第一次需要使用这个buffer的时候，一次性分配设置的内存。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#服务器线程缓存这个值表示可以重新利用保存在缓存中线程的数量-当断开连接时如果缓存中还有空间-那么客户端的线程将被放到缓存中-如果线程重新被请求，那么请求将从缓存中读取-如果缓存中是空的或者是新的请求，那么这个线程将被重新创建-如果有很多新的线程，增加这个值可以改善系统性能-通过比较-Connections-和-Threads-created-状态的变量，可以看到这个变量的作用。设置规则如下：1GB-内存配置为8，2GB配置为16，3GB配置为32，4GB或更高内存，可配置更大。"><span class="toc-number">34.</span> <span class="toc-text">服务器线程缓存这个值表示可以重新利用保存在缓存中线程的数量,当断开连接时如果缓存中还有空间,那么客户端的线程将被放到缓存中,如果线程重新被请求，那么请求将从缓存中读取,如果缓存中是空的或者是新的请求，那么这个线程将被重新创建,如果有很多新的线程，增加这个值可以改善系统性能.通过比较 Connections 和 Threads_created 状态的变量，可以看到这个变量的作用。设置规则如下：1GB 内存配置为8，2GB配置为16，3GB配置为32，4GB或更高内存，可配置更大。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#设置thread-concurrency的值的正确与否-对mysql的性能影响很大-在多个cpu-或多核-的情况下，错误设置了thread-concurrency的值-会导致mysql不能充分利用多cpu-或多核-出现同一时刻只能一个cpu-或核-在工作的情况。thread-concurrency应设为CPU核数的2倍-比如有一个双核的CPU-那么thread-concurrency的应该为4-2个双核的cpu-thread-concurrency的值应为8"><span class="toc-number">35.</span> <span class="toc-text">设置thread_concurrency的值的正确与否, 对mysql的性能影响很大, 在多个cpu(或多核)的情况下，错误设置了thread_concurrency的值, 会导致mysql不能充分利用多cpu(或多核), 出现同一时刻只能一个cpu(或核)在工作的情况。thread_concurrency应设为CPU核数的2倍. 比如有一个双核的CPU, 那么thread_concurrency的应该为4; 2个双核的cpu, thread_concurrency的值应为8</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#对于使用MySQL的用户，对于这个变量大家一定不会陌生。前几年的MyISAM引擎优化中，这个参数也是一个重要的优化参数。但随着发展，这个参数也爆露出来一些问题。机器的内存越来越大，人们也都习惯性的把以前有用的参数分配的值越来越大。这个参数加大后也引发了一系列问题。我们首先分析一下-query-cache-size的工作原理：一个SELECT查询在DB中工作后，DB会把该语句缓存下来，当同样的一个SQL再次来到DB里调用时，DB在该表没发生变化的情况下把结果从缓存中返回给Client。这里有一个关建点，就是DB在利用Query-cache工作时，要求该语句涉及的表在这段时间内没有发生变更。那如果该表在发生变更时，Query-cache里的数据又怎么处理呢？首先要把Query-cache和该表相关的语句全部置为失效，然后在写入更新。那么如果Query-cache非常大，该表的查询结构又比较多，查询语句失效也慢，一个更新或是Insert就会很慢，这样看到的就是Update或是Insert怎么这么慢了。所以在数据库写入量或是更新量也比较大的系统，该参数不适合分配过大。而且在高并发，写入量大的系统，建议把该功能禁掉。"><span class="toc-number">35.1.</span> <span class="toc-text">对于使用MySQL的用户，对于这个变量大家一定不会陌生。前几年的MyISAM引擎优化中，这个参数也是一个重要的优化参数。但随着发展，这个参数也爆露出来一些问题。机器的内存越来越大，人们也都习惯性的把以前有用的参数分配的值越来越大。这个参数加大后也引发了一系列问题。我们首先分析一下 query_cache_size的工作原理：一个SELECT查询在DB中工作后，DB会把该语句缓存下来，当同样的一个SQL再次来到DB里调用时，DB在该表没发生变化的情况下把结果从缓存中返回给Client。这里有一个关建点，就是DB在利用Query_cache工作时，要求该语句涉及的表在这段时间内没有发生变更。那如果该表在发生变更时，Query_cache里的数据又怎么处理呢？首先要把Query_cache和该表相关的语句全部置为失效，然后在写入更新。那么如果Query_cache非常大，该表的查询结构又比较多，查询语句失效也慢，一个更新或是Insert就会很慢，这样看到的就是Update或是Insert怎么这么慢了。所以在数据库写入量或是更新量也比较大的系统，该参数不适合分配过大。而且在高并发，写入量大的系统，建议把该功能禁掉。</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#设定默认的事务隔离级别-可用的级别如下"><span class="toc-number">36.</span> <span class="toc-text">设定默认的事务隔离级别.可用的级别如下:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#READ-UNCOMMITTED-READ-COMMITTED-REPEATABLE-READ-SERIALIZABLE"><span class="toc-number">37.</span> <span class="toc-text">READ-UNCOMMITTED, READ-COMMITTED, REPEATABLE-READ, SERIALIZABLE</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-READ-UNCOMMITTED-读未提交2-READ-COMMITTE-读已提交3-REPEATABLE-READ-可重复读4-SERIALIZABLE-串行"><span class="toc-number">38.</span> <span class="toc-text">1.READ UNCOMMITTED-读未提交2.READ COMMITTE-读已提交3.REPEATABLE READ -可重复读4.SERIALIZABLE -串行</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tmp-table-size-的默认大小是-32M。如果一张临时表超出该大小，MySQL产生一个-The-table-tbl-name-is-full-形式的错误，如果你做很多高级-GROUP-BY-查询，增加-tmp-table-size-值。如果超过该值，则会将临时表写入磁盘。"><span class="toc-number">39.</span> <span class="toc-text">tmp_table_size 的默认大小是 32M。如果一张临时表超出该大小，MySQL产生一个 The table tbl_name is full 形式的错误，如果你做很多高级 GROUP BY 查询，增加 tmp_table_size 值。如果超过该值，则会将临时表写入磁盘。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MySql读入缓冲区大小。对表进行顺序扫描的请求将分配一个读入缓冲区，MySql会为它分配一段内存缓冲区。read-buffer-size变量控制这一缓冲区的大小。如果对表的顺序扫描请求非常频繁，并且你认为频繁扫描进行得太慢，可以通过增加该变量值以及内存缓冲区大小提高其性能。和sort-buffer-size一样，该参数对应的分配内存也是每个连接独享。"><span class="toc-number">40.</span> <span class="toc-text">MySql读入缓冲区大小。对表进行顺序扫描的请求将分配一个读入缓冲区，MySql会为它分配一段内存缓冲区。read_buffer_size变量控制这一缓冲区的大小。如果对表的顺序扫描请求非常频繁，并且你认为频繁扫描进行得太慢，可以通过增加该变量值以及内存缓冲区大小提高其性能。和sort_buffer_size一样，该参数对应的分配内存也是每个连接独享。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MySql的随机读（查询操作）缓冲区大小。当按任意顺序读取行时-例如，按照排序顺序-，将分配一个随机读缓存区。进行排序查询时，MySql会首先扫描一遍该缓冲，以避免磁盘搜索，提高查询速度，如果需要排序大量数据，可适当调高该值。但MySql会为每个客户连接发放该缓冲空间，所以应尽量适当设置该值，以避免内存开销过大。"><span class="toc-number">41.</span> <span class="toc-text">MySql的随机读（查询操作）缓冲区大小。当按任意顺序读取行时(例如，按照排序顺序)，将分配一个随机读缓存区。进行排序查询时，MySql会首先扫描一遍该缓冲，以避免磁盘搜索，提高查询速度，如果需要排序大量数据，可适当调高该值。但MySql会为每个客户连接发放该缓冲空间，所以应尽量适当设置该值，以避免内存开销过大。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MyISAM表发生变化时重新排序所需的缓冲-1"><span class="toc-number">42.</span> <span class="toc-text">MyISAM表发生变化时重新排序所需的缓冲</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQL重建索引时所允许的最大临时文件的大小-当-REPAIR-ALTER-TABLE-或者-LOAD-DATA-INFILE"><span class="toc-number">43.</span> <span class="toc-text">MySQL重建索引时所允许的最大临时文件的大小 (当 REPAIR, ALTER TABLE 或者 LOAD DATA INFILE).</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#如果文件大小比此值更大-索引会通过键值缓冲创建-更慢"><span class="toc-number">44.</span> <span class="toc-text">如果文件大小比此值更大,索引会通过键值缓冲创建(更慢)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#如果一个表拥有超过一个索引-MyISAM-可以通过并行排序使用超过一个线程去修复他们"><span class="toc-number">45.</span> <span class="toc-text">如果一个表拥有超过一个索引, MyISAM 可以通过并行排序使用超过一个线程去修复他们.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#这对于拥有多个CPU以及大量内存情况的用户-是一个很好的选择"><span class="toc-number">46.</span> <span class="toc-text">这对于拥有多个CPU以及大量内存情况的用户,是一个很好的选择.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#这对Innodb表来说非常重要。Innodb相比MyISAM表对缓冲更为敏感。MyISAM可以在默认的-key-buffer-size-设置下运行的可以，然而Innodb在默认的-innodb-buffer-pool-size-设置下却跟蜗牛似的。由于Innodb把数据和索引都缓存起来，无需留给操作系统太多的内存，因此如果只需要用Innodb的话则可以设置它高达-70-80-的可用内存。一些应用于-key-buffer-的规则有-—-如果你的数据量不大，并且不会暴增，那么无需把-innodb-buffer-pool-size-设置的太大了"><span class="toc-number">47.</span> <span class="toc-text">这对Innodb表来说非常重要。Innodb相比MyISAM表对缓冲更为敏感。MyISAM可以在默认的 key_buffer_size 设置下运行的可以，然而Innodb在默认的 innodb_buffer_pool_size 设置下却跟蜗牛似的。由于Innodb把数据和索引都缓存起来，无需留给操作系统太多的内存，因此如果只需要用Innodb的话则可以设置它高达 70-80% 的可用内存。一些应用于 key_buffer 的规则有 — 如果你的数据量不大，并且不会暴增，那么无需把 innodb_buffer_pool_size 设置的太大了</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#如果将此参数设置为1，将在每次提交事务后将日志写入磁盘。为提供性能，可以设置为0或2，但要承担在发生故障时丢失数据的风险。设置为0表示事务日志写入日志文件，而日志文件每秒刷新到磁盘一次。设置为2表示事务日志将在提交时写入日志，但日志文件每次刷新到磁盘一次。"><span class="toc-number">48.</span> <span class="toc-text">如果将此参数设置为1，将在每次提交事务后将日志写入磁盘。为提供性能，可以设置为0或2，但要承担在发生故障时丢失数据的风险。设置为0表示事务日志写入日志文件，而日志文件每秒刷新到磁盘一次。设置为2表示事务日志将在提交时写入日志，但日志文件每次刷新到磁盘一次。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Buffer-Pool中Dirty-Page所占的数量，直接影响InnoDB的关闭时间。参数innodb-max-dirty-pages-pct-可以直接控制了Dirty-Page在Buffer-Pool中所占的比率，而且幸运的是innodb-max-dirty-pages-pct是可以动态改变的。所以，在关闭InnoDB之前先将innodb-max-dirty-pages-pct调小，强制数据块Flush一段时间，则能够大大缩短-MySQL关闭的时间。"><span class="toc-number">49.</span> <span class="toc-text">Buffer_Pool中Dirty_Page所占的数量，直接影响InnoDB的关闭时间。参数innodb_max_dirty_pages_pct 可以直接控制了Dirty_Page在Buffer_Pool中所占的比率，而且幸运的是innodb_max_dirty_pages_pct是可以动态改变的。所以，在关闭InnoDB之前先将innodb_max_dirty_pages_pct调小，强制数据块Flush一段时间，则能够大大缩短 MySQL关闭的时间。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#InnoDB-有其内置的死锁检测机制，能导致未完成的事务回滚。但是，如果结合InnoDB使用MyISAM的lock-tables-语句或第三方事务引擎-则InnoDB无法识别死锁。为消除这种可能性，可以将innodb-lock-wait-timeout设置为一个整数值，指示-MySQL在允许其他事务修改那些最终受事务回滚的数据之前要等待多长时间-秒数"><span class="toc-number">50.</span> <span class="toc-text">InnoDB 有其内置的死锁检测机制，能导致未完成的事务回滚。但是，如果结合InnoDB使用MyISAM的lock tables 语句或第三方事务引擎,则InnoDB无法识别死锁。为消除这种可能性，可以将innodb_lock_wait_timeout设置为一个整数值，指示 MySQL在允许其他事务修改那些最终受事务回滚的数据之前要等待多长时间(秒数)</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2017/04/07/mysql调优/" data-title="mysql调优" data-url="http://jiaxf.github.io/2017/04/07/mysql调优/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jiaxf"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/07/03/mysqlMySQL双主一致性架构优化/" title="上一篇: MySQL双主一致性架构优化">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2017/01/12/前端自适应CSS3相对单位rem/" title="下一篇: 前端自适应css3相对单位rem">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/04/16/2018-04-16-github上备份Hexo博客/">2018-04-16-github上备份Hexo博客.md</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/13/2018-04-13-python-md-1/">2018-04-13-技术随笔.md</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/29/redis配置/">redis配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/03/mysqlMySQL双主一致性架构优化/">MySQL双主一致性架构优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/07/mysql调优/">mysql调优</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/前端自适应CSS3相对单位rem/">前端自适应css3相对单位rem</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/03/webWorkers/">Web Worker study</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/26/9-Thinking in Ramda/">Thinking in Ramda 9</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/26/8-Thinking in Ramda/">Thinking in Ramda 8</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/23/7-Thinking in Ramda/">Thinking in Ramda 7</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/23/6-Thinking in Ramda/">Thinking in Ramda 6</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/5-Thinking in Radam/">Thinking in Ramda 5</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/4-Thinking in Ramda/">Thinking in Ramda 4</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/3-Thinking in Ramda/">Thinking in Ramda 3</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/2-Thinking in Ramda/">Thinking in Ramda 2</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/1-Thinking in Ramda/">Thinking in Ramda 1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/redis3/">Redis学习记录3</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/redis2/">Redis学习记录2</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/fp2/">函数式编程入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/curry/">函数式编程入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/redis/">Redis学习记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/FP/">函数式编程入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/applicativeFunctor/">函数式编程入门（2）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/javascriptIntroduce/">前端知识学习（摘自阮一峰博客）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/category theory/">范畴学基本知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/javascriptEvent/">JavaScriptEvent</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/jsPattern/">javascript模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/30/reactStudy/">React入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/29/javascript错误/">js错误类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/14/2015-02-14-php学习笔记/">php学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/14/2015-02-14-php数据类型/">php数据类型</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2018 Jiaxf
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >用户到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 30;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-70677304-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+    <script type="text/javascript">
+      window.onload = function(){
+        document.getElementById("search").onclick = function(){
+            console.log("search")
+            search();
+        }
+      }
+      function search(){
+        (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+        (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+        })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+        _st('install','f9SxgsuoT3T5zTyGctUR','2.0.0');
+        
+      }
+    </script>
+
+  </div>
+</body>
+</html>
+<a href="https://github.com/jiaxf"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
