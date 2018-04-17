@@ -90,9 +90,9 @@ date: 2016-12-01 11:56:41
 
 ## 【联系我】
 
-- Email : [jiaxuefeng@fltrp.com]
-- 新浪微博 ：[@飞天雪峰]
-- github ：[@jiaxf]
-- LinkdeIn :[xuefeng jia]
+- Email : [jiaxuefeng0@gmail.com](mailto: jiaxuefeng0@gmail.com)
+- 新浪微博 ：[@飞天雪峰](https://weibo.com/jiaxuefeng)
+- github ：[@jiaxf](https://github.com/jiaxf)
+- LinkdeIn :[xuefeng jia](https://www.linkedin.com/in/jiaxuefeng/)
 
 ---
