@@ -1,11 +1,12 @@
 ---
 layout: post
 title: 2018/04/17/spring-boot入门.md
-date: 2018-04-17 14:19:50
 tags:
   - 技术
   - spring
   - java
+abbrlink: 25098
+date: 2018-04-17 14:19:50
 ---
 
 # SpringBoot入门
@@ -78,10 +79,11 @@ com
  3. service 层主要是业务类代码
  4. controller 负责页面访问控制
 
- 采用默认配置可以省去很多配置，当然也可以根据自己的喜欢来进行更改
- 最后，启动Application main方法，至此一个java项目搭建好了！
+>采用默认配置可以省去很多配置，当然也可以根据自己的喜欢来进行更改。
 
- ###引入ｗｅｂ模块
+最后，启动Application main方法，至此一个java项目搭建好了！
+
+### 引入ｗｅｂ模块
 
  1、pom.xml中添加支持web的模块：
 
@@ -109,7 +111,7 @@ public class HelloWorldController {
 ```
 @RestController 的意思就是controller里面的方法都以json格式输出，不用再写什么jackjson配置的了！
 
-3、启动主程序，打开浏览器访问http://localhost:8080/hello，就可以看到效果了，有木有很简单！
+3、启动主程序，打开浏览器访问[http://localhost:8080/hello](http://localhost:8080/hello)，就可以看到效果了，有木有很简单！
 
 ### 如何做单元测试
 
