@@ -1,45 +1,92 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
-    <meta http-equiv="Content-Language" content="zh-cn">
-    <meta charset="utf-8">
-    
-    
-    
-    <title>mysql调优 | 飞天雪的技术博客 | 技术无止境</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    
-    <meta name="theme-color" content="#77AAFF">
-    
-    
-    <meta name="keywords" content="mysql">
-    
-    
-
-    
-
-    <!-- Baidu Push -->
-<script>
-	(function(){
-		var bp = document.createElement('script');
-		var curProtocol = window.location.protocol.split(':')[0];
-		if (curProtocol === 'https') {
-			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-		}
-		else {
-			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-		}
-		var s = document.getElementsByTagName("script")[0];
-		s.parentNode.insertBefore(bp, s);
-	})();
-
-	var _hmt = _hmt || [];
-</script>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
 
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
     
-    <meta name="description" content="MySQL 调优mysql中的两个关键参数(1)interactive_timeout: 参数含义：服务器关闭交互式连接前等待活动的秒数。交互式客户端定义为在mysql_real_connect()中使用CLIENT_INTERACTIVE选项的客户端。参数默认值：28800秒（8小时） (2)wait_timeout: 参数含义：服务器关闭非交互连接之前等待活动的秒数。在线程启动时，根据全局wa">
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="mysql," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="飞天雪的技术博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="MySQL 调优mysql中的两个关键参数(1)interactive_timeout: 参数含义：服务器关闭交互式连接前等待活动的秒数。交互式客户端定义为在mysql_real_connect()中使用CLIENT_INTERACTIVE选项的客户端。参数默认值：28800秒（8小时） (2)wait_timeout: 参数含义：服务器关闭非交互连接之前等待活动的秒数。在线程启动时，根据全局wa">
 <meta name="keywords" content="mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql调优">
@@ -51,181 +98,282 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql调优">
 <meta name="twitter:description" content="MySQL 调优mysql中的两个关键参数(1)interactive_timeout: 参数含义：服务器关闭交互式连接前等待活动的秒数。交互式客户端定义为在mysql_real_connect()中使用CLIENT_INTERACTIVE选项的客户端。参数默认值：28800秒（8小时） (2)wait_timeout: 参数含义：服务器关闭非交互连接之前等待活动的秒数。在线程启动时，根据全局wa">
-    
-        <link rel="alternate" type="application/atom+xml" title="飞天雪的技术博客" href="/atom.xml">
-    
-    <link rel="shortcut icon" href="/img/favicon.ico">
-    <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
-    <script>window.lazyScripts=[]</script>
 
-    <!-- custom head -->
-    
-            
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://jiaxf.github.io/2017/04/07/mysql调优/"/>
+
+
+
+
+
+  <title> mysql调优 | 飞天雪的技术博客 </title>
 </head>
 
-<body>
-    <div id="loading" class="active"></div>
-    <aside id="menu"  class="hide" >
-  <div class="inner flex-row-vertical">
-    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">飞天雪的技术博客</span>
+      <span class="logo-line-after"><i></i></span>
     </a>
-    <div class="brand-wrap" >
-      <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpg" alt="avatar">
-        </a>
-        <hgroup class="introduce">
-          <h5 class="nickname" id="name">Jiaxf</h5>
-          
-            <div id="yiyanmotto" class="motto">&nbsp;</div>
-          
-        </hgroup>
-      </div>
-    </div>
-    <div class="scroll-wrap flex-col">
-      <ul class="nav">
-        
-              <li class="waves-block waves-effect">
-                  <a href="/"  >
-                    <i class="icon icon-lg icon-home"></i>
-                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
-                  </a>
-              </li>
-            
-              <li class="waves-block waves-effect">
-                  <a href="/archives"  >
-                    <i class="icon icon-lg icon-archives"></i>
-                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
-                  </a>
-              </li>
-            
-              <li class="waves-block waves-effect">
-                  <a href="/categories"  >
-                    <i class="icon icon-lg icon-th-list"></i>
-                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
-                  </a>
-              </li>
-            
-              <li class="waves-block waves-effect">
-                  <a href="/tags"  >
-                    <i class="icon icon-lg icon-tags"></i>
-                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
-                  </a>
-              </li>
-            
-              <li class="waves-block waves-effect">
-                  <a href="/about"  >
-                    <i class="icon icon-lg icon-smile-o"></i>
-                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
-                  </a>
-              </li>
-            
-      <div class="nav2">
-          
-              <a class="nav2item" data-title="Email" href="mailto:jiaxuefeng0@gmail.com" target="_parent"title="Email" >
-                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
-              </a>
-          
-              <a class="nav2item" data-title="Github" href="https://github.com/jiaxf" target="_blank"title="Github" >
-                <i class="icon icon-lg icon-github github"></i>
-              </a>
-          
-              <a class="nav2item" data-title="微博" href="https://weibo.com/u/jiaxuefeng" target="_blank"title="微博" >
-                <i class="icon icon-lg icon-weibo weibo"></i>
-              </a>
-          
-
-            </div>
-        
-      </ul>
-        
-    </div>
   </div>
- 
-</aside>
+  <p class="site-subtitle">技术无止境</p>
+</div>
 
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
 
-    <main id="main">
-        <header class="top-header" id="header">
-    <div class="flex-row">
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">mysql调优</div>
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
         
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="global.search_input_hint">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
-        </div>
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
         
-        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
-            <i class="icon icon-lg icon-rss"></i>
-        </a>
-    </div>
-</header>
-<header class="content-header post-header">
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            Sitemap
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://jiaxf.github.io/2017/04/07/mysql调优/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Jiaxf">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="飞天雪的技术博客">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="飞天雪的技术博客" src="">
+    </span>
+  </span>
+
     
-    <div class="container fade-scale">
-        <div id="myheader">
-            <h1 class="title">
-                
-            </h1>
-            <h5 class="subtitle">
-                
-                
-            </h5>
-        </div>
-    </div>
+      <header class="post-header">
 
-</header>
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                mysql调优
+              
+            
+          </h1>
+        
 
-
-<div class="container body-wrap">
-    
-    <aside class="post-widget">
-        <nav class="post-toc-wrap" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#MySQL-调优"><span class="post-toc-number">1.</span> <span class="post-toc-text">MySQL 调优</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mysql中的两个关键参数"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">mysql中的两个关键参数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#mysqladmin-uroot-ppassword-variables-grep-cache"><span class="post-toc-number">1.1.0.1.</span> <span class="post-toc-text">mysqladmin -uroot -ppassword variables|grep _cache</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Basic-Settings"><span class="post-toc-number">2.</span> <span class="post-toc-text">* Basic Settings</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Instead-of-skip-networking-the-default-is-now-to-listen-only-on"><span class="post-toc-number">3.</span> <span class="post-toc-text">Instead of skip-networking the default is now to listen only on</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#localhost-which-is-more-compatible-and-is-not-less-secure"><span class="post-toc-number">4.</span> <span class="post-toc-text">localhost which is more compatible and is not less secure.</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Fine-Tuning"><span class="post-toc-number">5.</span> <span class="post-toc-text">* Fine Tuning</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Sort-Buffer-Size-是一个connection级参数，在每个connection（session）第一次需要使用这个buffer的时候，一次性分配设置的内存。"><span class="post-toc-number">6.</span> <span class="post-toc-text">Sort_Buffer_Size 是一个connection级参数，在每个connection（session）第一次需要使用这个buffer的时候，一次性分配设置的内存。</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#MySql读入缓冲区大小。对表进行顺序扫描的请求将分配一个读入缓冲区，MySql会为它分配一段内存缓冲区。read-buffer-size变量控制这一缓冲区的大小。如果对表的顺序扫-gt-描请求非常频繁，并且你认为频繁扫描进行得太慢，可以通过增加该变量值以及内存缓冲区大小提高其性能。"><span class="post-toc-number">7.</span> <span class="post-toc-text">MySql读入缓冲区大小。对表进行顺序扫描的请求将分配一个读入缓冲区，MySql会为它分配一段内存缓冲区。read_buffer_size变量控制这一缓冲区的大小。如果对表的顺序扫&gt;描请求非常频繁，并且你认为频繁扫描进行得太慢，可以通过增加该变量值以及内存缓冲区大小提高其性能。</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#MySql的随机读（查询操作）缓冲区大小。当按任意顺序读取行时-例如，按照排序顺序-，将分配一个随机读缓存区。进行排序查询时，MySql会首先扫描一遍该缓冲，以避免磁-gt-盘搜索，提高查询速度，如果需要排序大量数据，可适当调高该值。但MySql会为每个客户连接发放该缓冲空间，所以应尽量适当设置该值，以避免内存开销过-gt-大。"><span class="post-toc-number">8.</span> <span class="post-toc-text">MySql的随机读（查询操作）缓冲区大小。当按任意顺序读取行时(例如，按照排序顺序)，将分配一个随机读缓存区。进行排序查询时，MySql会首先扫描一遍该缓冲，以避免磁&gt;盘搜索，提高查询速度，如果需要排序大量数据，可适当调高该值。但MySql会为每个客户连接发放该缓冲空间，所以应尽量适当设置该值，以避免内存开销过&gt;大。</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#MyISAM表发生变化时重新排序所需的缓冲"><span class="post-toc-number">9.</span> <span class="post-toc-text">MyISAM表发生变化时重新排序所需的缓冲</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#This-replaces-the-startup-script-and-checks-MyISAM-tables-if-needed"><span class="post-toc-number">10.</span> <span class="post-toc-text">This replaces the startup script and checks MyISAM tables if needed</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#the-first-time-they-are-touch"><span class="post-toc-number">11.</span> <span class="post-toc-text">the first time they are touch</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Query-Cache-Configuration"><span class="post-toc-number">12.</span> <span class="post-toc-text">* Query Cache Configuration</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Logging-and-Replication"><span class="post-toc-number">13.</span> <span class="post-toc-text">* Logging and Replication</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Both-location-gets-rotated-by-the-cronjob"><span class="post-toc-number">14.</span> <span class="post-toc-text">Both location gets rotated by the cronjob.</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Be-aware-that-this-log-type-is-a-performance-killer"><span class="post-toc-number">15.</span> <span class="post-toc-text">Be aware that this log type is a performance killer.</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#As-of-5-1-you-can-enable-the-log-at-runtime"><span class="post-toc-number">16.</span> <span class="post-toc-text">As of 5.1 you can enable the log at runtime!</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Error-logging-goes-to-syslog-due-to-etc-mysql-conf-d-mysqld-safe-syslog-cnf"><span class="post-toc-number">17.</span> <span class="post-toc-text">Error logging goes to syslog due to /etc/mysql/conf.d/mysqld_safe_syslog.cnf.</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Here-you-can-see-queries-with-especially-long-duration"><span class="post-toc-number">18.</span> <span class="post-toc-text">Here you can see queries with especially long duration</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#The-following-can-be-used-as-easy-to-replay-backup-logs-or-for-replication"><span class="post-toc-number">19.</span> <span class="post-toc-text">The following can be used as easy to replay backup logs or for replication.</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#note-if-you-are-setting-up-a-replication-slave-see-README-Debian-about"><span class="post-toc-number">20.</span> <span class="post-toc-text">note: if you are setting up a replication slave, see README.Debian about</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#other-settings-you-may-need-to-change"><span class="post-toc-number">21.</span> <span class="post-toc-text">other settings you may need to change.</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Set-buffer-pool-size-to-50-80-of-your-computer’s-memory"><span class="post-toc-number">22.</span> <span class="post-toc-text">Set buffer pool size to 50-80% of your computer’s memory</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#附加的内存池被InnoDB用来保存-metadata-信息"><span class="post-toc-number">23.</span> <span class="post-toc-text">附加的内存池被InnoDB用来保存 metadata 信息</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#如果InnoDB为此目的需要更多的内存-它会开始从OS这里申请内存"><span class="post-toc-number">24.</span> <span class="post-toc-text">如果InnoDB为此目的需要更多的内存,它会开始从OS这里申请内存.</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#由于这个操作在大多数现代操作系统上已经足够快-你一般不需要修改此值"><span class="post-toc-number">25.</span> <span class="post-toc-text">由于这个操作在大多数现代操作系统上已经足够快, 你一般不需要修改此值.</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#SHOW-INNODB-STATUS-命令会显示当先使用的数量"><span class="post-toc-number">26.</span> <span class="post-toc-text">SHOW INNODB STATUS 命令会显示当先使用的数量.</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#根据表的多少来确定大小，一般16M己能适用于几百个表"><span class="post-toc-number">27.</span> <span class="post-toc-text">根据表的多少来确定大小，一般16M己能适用于几百个表</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#在InnoDb核心内的允许线程数量"><span class="post-toc-number">28.</span> <span class="post-toc-text">在InnoDb核心内的允许线程数量.</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#最优值依赖于应用程序-硬件以及操作系统的调度方式"><span class="post-toc-number">29.</span> <span class="post-toc-text">最优值依赖于应用程序,硬件以及操作系统的调度方式.</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#过高的值可能导致线程的互斥颠簸"><span class="post-toc-number">30.</span> <span class="post-toc-text">过高的值可能导致线程的互斥颠簸.</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Buffer-Pool中Dirty-Page所占的数量，直接影响InnoDB的关闭时间。参数innodb-max-dirty-pages-pct可以直接控制了Dirty-Page在Buffer-Pool中所占的比率，而且幸运的是innodb-max-dirty-pages-pct是可以动态改变的。所以，在关闭InnoDB之前先将innodb-max-dirty-pages-pct调小，强制数据块Flush一段时间，则能够大大缩-gt-短MySQL关闭的时间-gt-。"><span class="post-toc-number">31.</span> <span class="post-toc-text">Buffer_Pool中Dirty_Page所占的数量，直接影响InnoDB的关闭时间。参数innodb_max_dirty_pages_pct可以直接控制了Dirty_Page在Buffer_Pool中所占的比率，而且幸运的是innodb_max_dirty_pages_pct是可以动态改变的。所以，在关闭InnoDB之前先将innodb_max_dirty_pages_pct调小，强制数据块Flush一段时间，则能够大大缩&gt;短MySQL关闭的时间&gt;。</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#当-Mysql-访问一个表时，如果该表在缓存中已经被打开，则可以直接访问缓存；如果-还没有被缓存，但是在-Mysql-表缓冲区中还有空间，那么这个表就被打开并放入表缓-冲区；如果表缓存满了，则会按照一定的规则将当前未用的表释放，或者临时扩大表缓存来存放，使用表缓存的好处是可以更快速地访问表中的内容。执行-flush-tables-会-清空缓存的内容。一般来说，可以通过查看数据库运行峰值时间的状态值-Open-tables-和-Opened-tables-，判断是否需要增加-table-cache-的值（其中-open-tables-是当-前打开的表的数量，-Opened-tables-则是已经打开的表的数量）。即如果open-tables接近table-cache的时候，并且Opened-tables这个值在逐步增加，那就要考虑增加这个-值的大小了。还有就是Table-locks-waited比较高的时候，也需要增加table-cache。"><span class="post-toc-number">32.</span> <span class="post-toc-text">当 Mysql 访问一个表时，如果该表在缓存中已经被打开，则可以直接访问缓存；如果#还没有被缓存，但是在 Mysql 表缓冲区中还有空间，那么这个表就被打开并放入表缓#冲区；如果表缓存满了，则会按照一定的规则将当前未用的表释放，或者临时扩大表缓存来存放，使用表缓存的好处是可以更快速地访问表中的内容。执行 flush tables 会#清空缓存的内容。一般来说，可以通过查看数据库运行峰值时间的状态值 Open_tables #和 Opened_tables ，判断是否需要增加 table_cache 的值（其中 open_tables 是当#前打开的表的数量， Opened_tables 则是已经打开的表的数量）。即如果open_tables接近table_cache的时候，并且Opened_tables这个值在逐步增加，那就要考虑增加这个#值的大小了。还有就是Table_locks_waited比较高的时候，也需要增加table_cache。</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Sort-Buffer-Size-是一个connection级参数，在每个connection（session）第一次需要使用这个buffer的时候，一次性分配设置的内存。-1"><span class="post-toc-number">33.</span> <span class="post-toc-text">Sort_Buffer_Size 是一个connection级参数，在每个connection（session）第一次需要使用这个buffer的时候，一次性分配设置的内存。</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#服务器线程缓存这个值表示可以重新利用保存在缓存中线程的数量-当断开连接时如果缓存中还有空间-那么客户端的线程将被放到缓存中-如果线程重新被请求，那么请求将从缓存中读取-如果缓存中是空的或者是新的请求，那么这个线程将被重新创建-如果有很多新的线程，增加这个值可以改善系统性能-通过比较-Connections-和-Threads-created-状态的变量，可以看到这个变量的作用。设置规则如下：1GB-内存配置为8，2GB配置为16，3GB配置为32，4GB或更高内存，可配置更大。"><span class="post-toc-number">34.</span> <span class="post-toc-text">服务器线程缓存这个值表示可以重新利用保存在缓存中线程的数量,当断开连接时如果缓存中还有空间,那么客户端的线程将被放到缓存中,如果线程重新被请求，那么请求将从缓存中读取,如果缓存中是空的或者是新的请求，那么这个线程将被重新创建,如果有很多新的线程，增加这个值可以改善系统性能.通过比较 Connections 和 Threads_created 状态的变量，可以看到这个变量的作用。设置规则如下：1GB 内存配置为8，2GB配置为16，3GB配置为32，4GB或更高内存，可配置更大。</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#设置thread-concurrency的值的正确与否-对mysql的性能影响很大-在多个cpu-或多核-的情况下，错误设置了thread-concurrency的值-会导致mysql不能充分利用多cpu-或多核-出现同一时刻只能一个cpu-或核-在工作的情况。thread-concurrency应设为CPU核数的2倍-比如有一个双核的CPU-那么thread-concurrency的应该为4-2个双核的cpu-thread-concurrency的值应为8"><span class="post-toc-number">35.</span> <span class="post-toc-text">设置thread_concurrency的值的正确与否, 对mysql的性能影响很大, 在多个cpu(或多核)的情况下，错误设置了thread_concurrency的值, 会导致mysql不能充分利用多cpu(或多核), 出现同一时刻只能一个cpu(或核)在工作的情况。thread_concurrency应设为CPU核数的2倍. 比如有一个双核的CPU, 那么thread_concurrency的应该为4; 2个双核的cpu, thread_concurrency的值应为8</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对于使用MySQL的用户，对于这个变量大家一定不会陌生。前几年的MyISAM引擎优化中，这个参数也是一个重要的优化参数。但随着发展，这个参数也爆露出来一些问题。机器的内存越来越大，人们也都习惯性的把以前有用的参数分配的值越来越大。这个参数加大后也引发了一系列问题。我们首先分析一下-query-cache-size的工作原理：一个SELECT查询在DB中工作后，DB会把该语句缓存下来，当同样的一个SQL再次来到DB里调用时，DB在该表没发生变化的情况下把结果从缓存中返回给Client。这里有一个关建点，就是DB在利用Query-cache工作时，要求该语句涉及的表在这段时间内没有发生变更。那如果该表在发生变更时，Query-cache里的数据又怎么处理呢？首先要把Query-cache和该表相关的语句全部置为失效，然后在写入更新。那么如果Query-cache非常大，该表的查询结构又比较多，查询语句失效也慢，一个更新或是Insert就会很慢，这样看到的就是Update或是Insert怎么这么慢了。所以在数据库写入量或是更新量也比较大的系统，该参数不适合分配过大。而且在高并发，写入量大的系统，建议把该功能禁掉。"><span class="post-toc-number">35.1.</span> <span class="post-toc-text">对于使用MySQL的用户，对于这个变量大家一定不会陌生。前几年的MyISAM引擎优化中，这个参数也是一个重要的优化参数。但随着发展，这个参数也爆露出来一些问题。机器的内存越来越大，人们也都习惯性的把以前有用的参数分配的值越来越大。这个参数加大后也引发了一系列问题。我们首先分析一下 query_cache_size的工作原理：一个SELECT查询在DB中工作后，DB会把该语句缓存下来，当同样的一个SQL再次来到DB里调用时，DB在该表没发生变化的情况下把结果从缓存中返回给Client。这里有一个关建点，就是DB在利用Query_cache工作时，要求该语句涉及的表在这段时间内没有发生变更。那如果该表在发生变更时，Query_cache里的数据又怎么处理呢？首先要把Query_cache和该表相关的语句全部置为失效，然后在写入更新。那么如果Query_cache非常大，该表的查询结构又比较多，查询语句失效也慢，一个更新或是Insert就会很慢，这样看到的就是Update或是Insert怎么这么慢了。所以在数据库写入量或是更新量也比较大的系统，该参数不适合分配过大。而且在高并发，写入量大的系统，建议把该功能禁掉。</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#设定默认的事务隔离级别-可用的级别如下"><span class="post-toc-number">36.</span> <span class="post-toc-text">设定默认的事务隔离级别.可用的级别如下:</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#READ-UNCOMMITTED-READ-COMMITTED-REPEATABLE-READ-SERIALIZABLE"><span class="post-toc-number">37.</span> <span class="post-toc-text">READ-UNCOMMITTED, READ-COMMITTED, REPEATABLE-READ, SERIALIZABLE</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-READ-UNCOMMITTED-读未提交2-READ-COMMITTE-读已提交3-REPEATABLE-READ-可重复读4-SERIALIZABLE-串行"><span class="post-toc-number">38.</span> <span class="post-toc-text">1.READ UNCOMMITTED-读未提交2.READ COMMITTE-读已提交3.REPEATABLE READ -可重复读4.SERIALIZABLE -串行</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#tmp-table-size-的默认大小是-32M。如果一张临时表超出该大小，MySQL产生一个-The-table-tbl-name-is-full-形式的错误，如果你做很多高级-GROUP-BY-查询，增加-tmp-table-size-值。如果超过该值，则会将临时表写入磁盘。"><span class="post-toc-number">39.</span> <span class="post-toc-text">tmp_table_size 的默认大小是 32M。如果一张临时表超出该大小，MySQL产生一个 The table tbl_name is full 形式的错误，如果你做很多高级 GROUP BY 查询，增加 tmp_table_size 值。如果超过该值，则会将临时表写入磁盘。</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#MySql读入缓冲区大小。对表进行顺序扫描的请求将分配一个读入缓冲区，MySql会为它分配一段内存缓冲区。read-buffer-size变量控制这一缓冲区的大小。如果对表的顺序扫描请求非常频繁，并且你认为频繁扫描进行得太慢，可以通过增加该变量值以及内存缓冲区大小提高其性能。和sort-buffer-size一样，该参数对应的分配内存也是每个连接独享。"><span class="post-toc-number">40.</span> <span class="post-toc-text">MySql读入缓冲区大小。对表进行顺序扫描的请求将分配一个读入缓冲区，MySql会为它分配一段内存缓冲区。read_buffer_size变量控制这一缓冲区的大小。如果对表的顺序扫描请求非常频繁，并且你认为频繁扫描进行得太慢，可以通过增加该变量值以及内存缓冲区大小提高其性能。和sort_buffer_size一样，该参数对应的分配内存也是每个连接独享。</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#MySql的随机读（查询操作）缓冲区大小。当按任意顺序读取行时-例如，按照排序顺序-，将分配一个随机读缓存区。进行排序查询时，MySql会首先扫描一遍该缓冲，以避免磁盘搜索，提高查询速度，如果需要排序大量数据，可适当调高该值。但MySql会为每个客户连接发放该缓冲空间，所以应尽量适当设置该值，以避免内存开销过大。"><span class="post-toc-number">41.</span> <span class="post-toc-text">MySql的随机读（查询操作）缓冲区大小。当按任意顺序读取行时(例如，按照排序顺序)，将分配一个随机读缓存区。进行排序查询时，MySql会首先扫描一遍该缓冲，以避免磁盘搜索，提高查询速度，如果需要排序大量数据，可适当调高该值。但MySql会为每个客户连接发放该缓冲空间，所以应尽量适当设置该值，以避免内存开销过大。</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#MyISAM表发生变化时重新排序所需的缓冲-1"><span class="post-toc-number">42.</span> <span class="post-toc-text">MyISAM表发生变化时重新排序所需的缓冲</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#MySQL重建索引时所允许的最大临时文件的大小-当-REPAIR-ALTER-TABLE-或者-LOAD-DATA-INFILE"><span class="post-toc-number">43.</span> <span class="post-toc-text">MySQL重建索引时所允许的最大临时文件的大小 (当 REPAIR, ALTER TABLE 或者 LOAD DATA INFILE).</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#如果文件大小比此值更大-索引会通过键值缓冲创建-更慢"><span class="post-toc-number">44.</span> <span class="post-toc-text">如果文件大小比此值更大,索引会通过键值缓冲创建(更慢)</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#如果一个表拥有超过一个索引-MyISAM-可以通过并行排序使用超过一个线程去修复他们"><span class="post-toc-number">45.</span> <span class="post-toc-text">如果一个表拥有超过一个索引, MyISAM 可以通过并行排序使用超过一个线程去修复他们.</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#这对于拥有多个CPU以及大量内存情况的用户-是一个很好的选择"><span class="post-toc-number">46.</span> <span class="post-toc-text">这对于拥有多个CPU以及大量内存情况的用户,是一个很好的选择.</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#这对Innodb表来说非常重要。Innodb相比MyISAM表对缓冲更为敏感。MyISAM可以在默认的-key-buffer-size-设置下运行的可以，然而Innodb在默认的-innodb-buffer-pool-size-设置下却跟蜗牛似的。由于Innodb把数据和索引都缓存起来，无需留给操作系统太多的内存，因此如果只需要用Innodb的话则可以设置它高达-70-80-的可用内存。一些应用于-key-buffer-的规则有-—-如果你的数据量不大，并且不会暴增，那么无需把-innodb-buffer-pool-size-设置的太大了"><span class="post-toc-number">47.</span> <span class="post-toc-text">这对Innodb表来说非常重要。Innodb相比MyISAM表对缓冲更为敏感。MyISAM可以在默认的 key_buffer_size 设置下运行的可以，然而Innodb在默认的 innodb_buffer_pool_size 设置下却跟蜗牛似的。由于Innodb把数据和索引都缓存起来，无需留给操作系统太多的内存，因此如果只需要用Innodb的话则可以设置它高达 70-80% 的可用内存。一些应用于 key_buffer 的规则有 — 如果你的数据量不大，并且不会暴增，那么无需把 innodb_buffer_pool_size 设置的太大了</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#如果将此参数设置为1，将在每次提交事务后将日志写入磁盘。为提供性能，可以设置为0或2，但要承担在发生故障时丢失数据的风险。设置为0表示事务日志写入日志文件，而日志文件每秒刷新到磁盘一次。设置为2表示事务日志将在提交时写入日志，但日志文件每次刷新到磁盘一次。"><span class="post-toc-number">48.</span> <span class="post-toc-text">如果将此参数设置为1，将在每次提交事务后将日志写入磁盘。为提供性能，可以设置为0或2，但要承担在发生故障时丢失数据的风险。设置为0表示事务日志写入日志文件，而日志文件每秒刷新到磁盘一次。设置为2表示事务日志将在提交时写入日志，但日志文件每次刷新到磁盘一次。</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Buffer-Pool中Dirty-Page所占的数量，直接影响InnoDB的关闭时间。参数innodb-max-dirty-pages-pct-可以直接控制了Dirty-Page在Buffer-Pool中所占的比率，而且幸运的是innodb-max-dirty-pages-pct是可以动态改变的。所以，在关闭InnoDB之前先将innodb-max-dirty-pages-pct调小，强制数据块Flush一段时间，则能够大大缩短-MySQL关闭的时间。"><span class="post-toc-number">49.</span> <span class="post-toc-text">Buffer_Pool中Dirty_Page所占的数量，直接影响InnoDB的关闭时间。参数innodb_max_dirty_pages_pct 可以直接控制了Dirty_Page在Buffer_Pool中所占的比率，而且幸运的是innodb_max_dirty_pages_pct是可以动态改变的。所以，在关闭InnoDB之前先将innodb_max_dirty_pages_pct调小，强制数据块Flush一段时间，则能够大大缩短 MySQL关闭的时间。</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#InnoDB-有其内置的死锁检测机制，能导致未完成的事务回滚。但是，如果结合InnoDB使用MyISAM的lock-tables-语句或第三方事务引擎-则InnoDB无法识别死锁。为消除这种可能性，可以将innodb-lock-wait-timeout设置为一个整数值，指示-MySQL在允许其他事务修改那些最终受事务回滚的数据之前要等待多长时间-秒数"><span class="post-toc-number">50.</span> <span class="post-toc-text">InnoDB 有其内置的死锁检测机制，能导致未完成的事务回滚。但是，如果结合InnoDB使用MyISAM的lock tables 语句或第三方事务引擎,则InnoDB无法识别死锁。为消除这种可能性，可以将innodb_lock_wait_timeout设置为一个整数值，指示 MySQL在允许其他事务修改那些最终受事务回滚的数据之前要等待多长时间(秒数)</span></a></li></ol>
-        </nav>
-    </aside>
-   
-<article id="post-mysql调优"
-  class="post-article article-type-post fade" itemprop="blogPost">
-
-    <div class="post-card">
-        <h1 class="post-card-title">mysql调优</h1>
         <div class="post-meta">
-            <i class="icon icon-lg icon-calendar-o"></i>
-            发表于
-            <time class="post-time" title="2017-04-07 15:20:33" datetime="2017-04-07T07:20:33.000Z"  itemprop="datePublished">2017-04-07</time>
-
-            <br id="mybreak"/>
+          <span class="post-time">
             
-	<i class="icon icon-lg icon-folder-o"></i>
-	分类：<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/技术/">技术</a></li></ul>
-
-
-            <i>·</i>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-07T15:20:33+08:00">
+                2017-04-07
+              </time>
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>次浏览
-</span>
 
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
 
         </div>
-        <div class="post-count-custom">
-            <i class="icon icon-lg icon-comment-o"></i>
-            阅读本文可能花费您&nbsp;<span class="post-count">26</span>&nbsp;分钟
-        </div>
-        <div class="post-content" id="post-content" itemprop="postContent">
-            <h1 id="MySQL-调优"><a href="#MySQL-调优" class="headerlink" title="MySQL 调优"></a>MySQL 调优</h1><h2 id="mysql中的两个关键参数"><a href="#mysql中的两个关键参数" class="headerlink" title="mysql中的两个关键参数"></a>mysql中的两个关键参数</h2><p>(1)interactive_timeout:</p>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="MySQL-调优"><a href="#MySQL-调优" class="headerlink" title="MySQL 调优"></a>MySQL 调优</h1><h2 id="mysql中的两个关键参数"><a href="#mysql中的两个关键参数" class="headerlink" title="mysql中的两个关键参数"></a>mysql中的两个关键参数</h2><p>(1)interactive_timeout:</p>
 <p>参数含义：服务器关闭交互式连接前等待活动的秒数。交互式客户端定义为在mysql_real_connect()中使用CLIENT_INTERACTIVE选项的客户端。<br>参数默认值：28800秒（8小时）</p>
 <p>(2)wait_timeout:</p>
 <p>参数含义：服务器关闭非交互连接之前等待活动的秒数。<br>在线程启动时，根据全局wait_timeout值或全局interactive_timeout值初始化会话wait_timeout值，取决于客户端类型(由mysql_real_connect()的连接选项CLIENT_INTERACTIVE定义)。<br>参数默认值：28800秒（8小时）</p>
@@ -433,372 +581,316 @@
 <p>#log-queries-not-using-indexes<br>将没有使用索引的查询也记录下来</p>
 <p><code>`</code></p>
 
-        </div>
-
-        <blockquote class="post-copyright">
-    <div class="content">
-        
-<span class="post-time">
-    post.last_updated<time datetime="2018-04-13T07:56:04.000Z" itemprop="dateUpdated">2018-04-13 15:56:04</time>
-</span>
-
-
-        
-        原文链接：<a href="/2017/04/07/mysql调优/" target="_blank" rel="external">http://jiaxf.github.io/2017/04/07/mysql调优/</a>
-        
+      
     </div>
-    <footer>
-        <div onclick="location.href='http://jiaxf.github.io'">
-            <img src="/img/avatar.jpg" alt="Jiaxf">
-            <a>Jiaxf</a>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mysql/" rel="tag"># mysql</a>
+          
         </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/12/前端自适应CSS3相对单位rem/" rel="next" title="前端自适应css3相对单位rem">
+                <i class="fa fa-chevron-left"></i> 前端自适应css3相对单位rem
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/03/mysqlMySQL双主一致性架构优化/" rel="prev" title="MySQL双主一致性架构优化">
+                MySQL双主一致性架构优化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
     </footer>
-</blockquote>
+  </article>
 
-        
-    <div class="page-reward">
-        <nav class="myreward">
-            <a id="rewardBtn" href="javascript:;"><span>打&nbsp;赏</span><span>装成好像很多人打赏的样子</span></a>
-        </nav>
+
+
+    <div class="post-spread">
+      
     </div>
+  </div>
 
 
-
-        <div class="post-footer">
-            
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
+          </div>
+          
 
 
-            
-<div class="page-share-wrap">
+          
+  <div class="comments" id="comments">
     
-
-<div class="page-share" id="pageShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://jiaxf.github.io/2017/04/07/mysql调优/&title=《mysql调优》 — 飞天雪的技术博客&pic=http://jiaxf.github.io/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://jiaxf.github.io/2017/04/07/mysql调优/&title=《mysql调优》 — 飞天雪的技术博客&source=MySQL 调优mysql中的两个关键参数(1)interactive_timeout:
-参数含义：服务器关闭交互式连接前等待活动的秒数。交互式客户端定义..." data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://jiaxf.github.io/2017/04/07/mysql调优/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《mysql调优》 — 飞天雪的技术博客&url=http://jiaxf.github.io/2017/04/07/mysql调优/&via=http://jiaxf.github.io" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://jiaxf.github.io/2017/04/07/mysql调优/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-
-    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
-        <i class="icon icon-share-alt icon-lg"></i>
-    </a>
-</div>
-
+  </div>
 
 
         </div>
-    </div>
-
-    
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2017/07/03/mysqlMySQL双主一致性架构优化/" id="post-prev" class="post-nav-link">
-        <h4 class="title" >
-          上一篇：MySQL双主一致性架构优化
-        </h4>
-      </a>
-    </div>
-  
-
-  
-    <div class="waves-block waves-effect next">
-      <a href="/2017/01/12/前端自适应CSS3相对单位rem/" id="post-next" class="post-nav-link">
-        <h4 class="title" data-hover="下一篇：前端自适应css3相对单位rem">下一篇：前端自适应css3相对单位rem</h4>
-      </a>
-    </div>
-  
-</nav>
-
-
-
-    
-    
-
-    
-
-    
-
-
-</article>
-
-</div>
-
-        <footer class="footer">
-    <div class="footer-content">
-        <span class="power">
-            <i class="icon icon-lg icon-copyright"></i>
-            2017
-            <i class="icon icon-lg icon-heart"></i>
-            <a href="http://jiaxf.github.io">tomotoes.com</a>
-            <br/>
-            Power by
-            <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
-            Theme
-            <a class="tomotoeslink" href="https://github.com/tomotoes/hexo-theme-tomotoes/" target="_blank" rel="external nofollow">tomotoes</a>
-        </span>
-
-        <br/>
-
-        <span id="RunTime" style="color:#a7a7a2;"></span>
-        <br/>
-
-        <span>
-            
-	<i class="icon icon-lg icon-user">
-<span id="busuanzi_container_site_uv" style='display:none'>
-       访问用户：<span id="busuanzi_value_site_uv"></span>
-    </span>人</i>
-    ·
-    <i class="icon icon-lg icon-eye">
-    <span id="busuanzi_container_site_pv" style='display:none'>
-      访问次数：<span id="busuanzi_value_site_pv"></span>
-    </span>次
-    </i>
-
-
-        </span>
-        <br/>
-
-        <span class="license">footer.license</span>
-    </div>
-</footer>
-
-    </main>
-    
         
-<div id="reward" class="page-modal reward-lay">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <h3 class="reward-title">
-        <i class="icon icon-quote-left"></i>
-        <span>感谢您的鼓励支持！</span>
-        <i class="icon icon-quote-right"></i>
-    </h3>
-    <div class="reward-content">
-        
-        <div class="reward-code">
-            <img id="rewardCode" data-img="/img/dog.png" alt="打赏二维码">
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Jiaxf" />
+          <p class="site-author-name" itemprop="name">Jiaxf</p>
+          <p class="site-description motion-element" itemprop="description">jiaxf's blog | js | node | javascript</p>
         </div>
-        
-        <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
-                data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
-            <div class="reward-toggle-ctrol">
-                <span class="reward-toggle-item wechatPay">&nbsp;&nbsp;微信&nbsp;&nbsp;</span>
-                <span class="reward-toggle-item alipayPay">支付宝</span>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
             </div>
-        </label>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
         
-        <i class="icon icon-caret-up"></i>
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL-调优"><span class="nav-number">1.</span> <span class="nav-text">MySQL 调优</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql中的两个关键参数"><span class="nav-number">1.1.</span> <span class="nav-text">mysql中的两个关键参数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#mysqladmin-uroot-ppassword-variables-grep-cache"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">mysqladmin -uroot -ppassword variables|grep _cache</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Basic-Settings"><span class="nav-number">2.</span> <span class="nav-text">* Basic Settings</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Instead-of-skip-networking-the-default-is-now-to-listen-only-on"><span class="nav-number">3.</span> <span class="nav-text">Instead of skip-networking the default is now to listen only on</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#localhost-which-is-more-compatible-and-is-not-less-secure"><span class="nav-number">4.</span> <span class="nav-text">localhost which is more compatible and is not less secure.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Fine-Tuning"><span class="nav-number">5.</span> <span class="nav-text">* Fine Tuning</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sort-Buffer-Size-是一个connection级参数，在每个connection（session）第一次需要使用这个buffer的时候，一次性分配设置的内存。"><span class="nav-number">6.</span> <span class="nav-text">Sort_Buffer_Size 是一个connection级参数，在每个connection（session）第一次需要使用这个buffer的时候，一次性分配设置的内存。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MySql读入缓冲区大小。对表进行顺序扫描的请求将分配一个读入缓冲区，MySql会为它分配一段内存缓冲区。read-buffer-size变量控制这一缓冲区的大小。如果对表的顺序扫-gt-描请求非常频繁，并且你认为频繁扫描进行得太慢，可以通过增加该变量值以及内存缓冲区大小提高其性能。"><span class="nav-number">7.</span> <span class="nav-text">MySql读入缓冲区大小。对表进行顺序扫描的请求将分配一个读入缓冲区，MySql会为它分配一段内存缓冲区。read_buffer_size变量控制这一缓冲区的大小。如果对表的顺序扫&gt;描请求非常频繁，并且你认为频繁扫描进行得太慢，可以通过增加该变量值以及内存缓冲区大小提高其性能。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MySql的随机读（查询操作）缓冲区大小。当按任意顺序读取行时-例如，按照排序顺序-，将分配一个随机读缓存区。进行排序查询时，MySql会首先扫描一遍该缓冲，以避免磁-gt-盘搜索，提高查询速度，如果需要排序大量数据，可适当调高该值。但MySql会为每个客户连接发放该缓冲空间，所以应尽量适当设置该值，以避免内存开销过-gt-大。"><span class="nav-number">8.</span> <span class="nav-text">MySql的随机读（查询操作）缓冲区大小。当按任意顺序读取行时(例如，按照排序顺序)，将分配一个随机读缓存区。进行排序查询时，MySql会首先扫描一遍该缓冲，以避免磁&gt;盘搜索，提高查询速度，如果需要排序大量数据，可适当调高该值。但MySql会为每个客户连接发放该缓冲空间，所以应尽量适当设置该值，以避免内存开销过&gt;大。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MyISAM表发生变化时重新排序所需的缓冲"><span class="nav-number">9.</span> <span class="nav-text">MyISAM表发生变化时重新排序所需的缓冲</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#This-replaces-the-startup-script-and-checks-MyISAM-tables-if-needed"><span class="nav-number">10.</span> <span class="nav-text">This replaces the startup script and checks MyISAM tables if needed</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the-first-time-they-are-touch"><span class="nav-number">11.</span> <span class="nav-text">the first time they are touch</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Query-Cache-Configuration"><span class="nav-number">12.</span> <span class="nav-text">* Query Cache Configuration</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Logging-and-Replication"><span class="nav-number">13.</span> <span class="nav-text">* Logging and Replication</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Both-location-gets-rotated-by-the-cronjob"><span class="nav-number">14.</span> <span class="nav-text">Both location gets rotated by the cronjob.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Be-aware-that-this-log-type-is-a-performance-killer"><span class="nav-number">15.</span> <span class="nav-text">Be aware that this log type is a performance killer.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#As-of-5-1-you-can-enable-the-log-at-runtime"><span class="nav-number">16.</span> <span class="nav-text">As of 5.1 you can enable the log at runtime!</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Error-logging-goes-to-syslog-due-to-etc-mysql-conf-d-mysqld-safe-syslog-cnf"><span class="nav-number">17.</span> <span class="nav-text">Error logging goes to syslog due to /etc/mysql/conf.d/mysqld_safe_syslog.cnf.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Here-you-can-see-queries-with-especially-long-duration"><span class="nav-number">18.</span> <span class="nav-text">Here you can see queries with especially long duration</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#The-following-can-be-used-as-easy-to-replay-backup-logs-or-for-replication"><span class="nav-number">19.</span> <span class="nav-text">The following can be used as easy to replay backup logs or for replication.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#note-if-you-are-setting-up-a-replication-slave-see-README-Debian-about"><span class="nav-number">20.</span> <span class="nav-text">note: if you are setting up a replication slave, see README.Debian about</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#other-settings-you-may-need-to-change"><span class="nav-number">21.</span> <span class="nav-text">other settings you may need to change.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Set-buffer-pool-size-to-50-80-of-your-computer’s-memory"><span class="nav-number">22.</span> <span class="nav-text">Set buffer pool size to 50-80% of your computer’s memory</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#附加的内存池被InnoDB用来保存-metadata-信息"><span class="nav-number">23.</span> <span class="nav-text">附加的内存池被InnoDB用来保存 metadata 信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如果InnoDB为此目的需要更多的内存-它会开始从OS这里申请内存"><span class="nav-number">24.</span> <span class="nav-text">如果InnoDB为此目的需要更多的内存,它会开始从OS这里申请内存.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#由于这个操作在大多数现代操作系统上已经足够快-你一般不需要修改此值"><span class="nav-number">25.</span> <span class="nav-text">由于这个操作在大多数现代操作系统上已经足够快, 你一般不需要修改此值.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SHOW-INNODB-STATUS-命令会显示当先使用的数量"><span class="nav-number">26.</span> <span class="nav-text">SHOW INNODB STATUS 命令会显示当先使用的数量.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#根据表的多少来确定大小，一般16M己能适用于几百个表"><span class="nav-number">27.</span> <span class="nav-text">根据表的多少来确定大小，一般16M己能适用于几百个表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在InnoDb核心内的允许线程数量"><span class="nav-number">28.</span> <span class="nav-text">在InnoDb核心内的允许线程数量.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最优值依赖于应用程序-硬件以及操作系统的调度方式"><span class="nav-number">29.</span> <span class="nav-text">最优值依赖于应用程序,硬件以及操作系统的调度方式.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#过高的值可能导致线程的互斥颠簸"><span class="nav-number">30.</span> <span class="nav-text">过高的值可能导致线程的互斥颠簸.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Buffer-Pool中Dirty-Page所占的数量，直接影响InnoDB的关闭时间。参数innodb-max-dirty-pages-pct可以直接控制了Dirty-Page在Buffer-Pool中所占的比率，而且幸运的是innodb-max-dirty-pages-pct是可以动态改变的。所以，在关闭InnoDB之前先将innodb-max-dirty-pages-pct调小，强制数据块Flush一段时间，则能够大大缩-gt-短MySQL关闭的时间-gt-。"><span class="nav-number">31.</span> <span class="nav-text">Buffer_Pool中Dirty_Page所占的数量，直接影响InnoDB的关闭时间。参数innodb_max_dirty_pages_pct可以直接控制了Dirty_Page在Buffer_Pool中所占的比率，而且幸运的是innodb_max_dirty_pages_pct是可以动态改变的。所以，在关闭InnoDB之前先将innodb_max_dirty_pages_pct调小，强制数据块Flush一段时间，则能够大大缩&gt;短MySQL关闭的时间&gt;。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#当-Mysql-访问一个表时，如果该表在缓存中已经被打开，则可以直接访问缓存；如果-还没有被缓存，但是在-Mysql-表缓冲区中还有空间，那么这个表就被打开并放入表缓-冲区；如果表缓存满了，则会按照一定的规则将当前未用的表释放，或者临时扩大表缓存来存放，使用表缓存的好处是可以更快速地访问表中的内容。执行-flush-tables-会-清空缓存的内容。一般来说，可以通过查看数据库运行峰值时间的状态值-Open-tables-和-Opened-tables-，判断是否需要增加-table-cache-的值（其中-open-tables-是当-前打开的表的数量，-Opened-tables-则是已经打开的表的数量）。即如果open-tables接近table-cache的时候，并且Opened-tables这个值在逐步增加，那就要考虑增加这个-值的大小了。还有就是Table-locks-waited比较高的时候，也需要增加table-cache。"><span class="nav-number">32.</span> <span class="nav-text">当 Mysql 访问一个表时，如果该表在缓存中已经被打开，则可以直接访问缓存；如果#还没有被缓存，但是在 Mysql 表缓冲区中还有空间，那么这个表就被打开并放入表缓#冲区；如果表缓存满了，则会按照一定的规则将当前未用的表释放，或者临时扩大表缓存来存放，使用表缓存的好处是可以更快速地访问表中的内容。执行 flush tables 会#清空缓存的内容。一般来说，可以通过查看数据库运行峰值时间的状态值 Open_tables #和 Opened_tables ，判断是否需要增加 table_cache 的值（其中 open_tables 是当#前打开的表的数量， Opened_tables 则是已经打开的表的数量）。即如果open_tables接近table_cache的时候，并且Opened_tables这个值在逐步增加，那就要考虑增加这个#值的大小了。还有就是Table_locks_waited比较高的时候，也需要增加table_cache。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sort-Buffer-Size-是一个connection级参数，在每个connection（session）第一次需要使用这个buffer的时候，一次性分配设置的内存。-1"><span class="nav-number">33.</span> <span class="nav-text">Sort_Buffer_Size 是一个connection级参数，在每个connection（session）第一次需要使用这个buffer的时候，一次性分配设置的内存。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#服务器线程缓存这个值表示可以重新利用保存在缓存中线程的数量-当断开连接时如果缓存中还有空间-那么客户端的线程将被放到缓存中-如果线程重新被请求，那么请求将从缓存中读取-如果缓存中是空的或者是新的请求，那么这个线程将被重新创建-如果有很多新的线程，增加这个值可以改善系统性能-通过比较-Connections-和-Threads-created-状态的变量，可以看到这个变量的作用。设置规则如下：1GB-内存配置为8，2GB配置为16，3GB配置为32，4GB或更高内存，可配置更大。"><span class="nav-number">34.</span> <span class="nav-text">服务器线程缓存这个值表示可以重新利用保存在缓存中线程的数量,当断开连接时如果缓存中还有空间,那么客户端的线程将被放到缓存中,如果线程重新被请求，那么请求将从缓存中读取,如果缓存中是空的或者是新的请求，那么这个线程将被重新创建,如果有很多新的线程，增加这个值可以改善系统性能.通过比较 Connections 和 Threads_created 状态的变量，可以看到这个变量的作用。设置规则如下：1GB 内存配置为8，2GB配置为16，3GB配置为32，4GB或更高内存，可配置更大。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置thread-concurrency的值的正确与否-对mysql的性能影响很大-在多个cpu-或多核-的情况下，错误设置了thread-concurrency的值-会导致mysql不能充分利用多cpu-或多核-出现同一时刻只能一个cpu-或核-在工作的情况。thread-concurrency应设为CPU核数的2倍-比如有一个双核的CPU-那么thread-concurrency的应该为4-2个双核的cpu-thread-concurrency的值应为8"><span class="nav-number">35.</span> <span class="nav-text">设置thread_concurrency的值的正确与否, 对mysql的性能影响很大, 在多个cpu(或多核)的情况下，错误设置了thread_concurrency的值, 会导致mysql不能充分利用多cpu(或多核), 出现同一时刻只能一个cpu(或核)在工作的情况。thread_concurrency应设为CPU核数的2倍. 比如有一个双核的CPU, 那么thread_concurrency的应该为4; 2个双核的cpu, thread_concurrency的值应为8</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#对于使用MySQL的用户，对于这个变量大家一定不会陌生。前几年的MyISAM引擎优化中，这个参数也是一个重要的优化参数。但随着发展，这个参数也爆露出来一些问题。机器的内存越来越大，人们也都习惯性的把以前有用的参数分配的值越来越大。这个参数加大后也引发了一系列问题。我们首先分析一下-query-cache-size的工作原理：一个SELECT查询在DB中工作后，DB会把该语句缓存下来，当同样的一个SQL再次来到DB里调用时，DB在该表没发生变化的情况下把结果从缓存中返回给Client。这里有一个关建点，就是DB在利用Query-cache工作时，要求该语句涉及的表在这段时间内没有发生变更。那如果该表在发生变更时，Query-cache里的数据又怎么处理呢？首先要把Query-cache和该表相关的语句全部置为失效，然后在写入更新。那么如果Query-cache非常大，该表的查询结构又比较多，查询语句失效也慢，一个更新或是Insert就会很慢，这样看到的就是Update或是Insert怎么这么慢了。所以在数据库写入量或是更新量也比较大的系统，该参数不适合分配过大。而且在高并发，写入量大的系统，建议把该功能禁掉。"><span class="nav-number">35.1.</span> <span class="nav-text">对于使用MySQL的用户，对于这个变量大家一定不会陌生。前几年的MyISAM引擎优化中，这个参数也是一个重要的优化参数。但随着发展，这个参数也爆露出来一些问题。机器的内存越来越大，人们也都习惯性的把以前有用的参数分配的值越来越大。这个参数加大后也引发了一系列问题。我们首先分析一下 query_cache_size的工作原理：一个SELECT查询在DB中工作后，DB会把该语句缓存下来，当同样的一个SQL再次来到DB里调用时，DB在该表没发生变化的情况下把结果从缓存中返回给Client。这里有一个关建点，就是DB在利用Query_cache工作时，要求该语句涉及的表在这段时间内没有发生变更。那如果该表在发生变更时，Query_cache里的数据又怎么处理呢？首先要把Query_cache和该表相关的语句全部置为失效，然后在写入更新。那么如果Query_cache非常大，该表的查询结构又比较多，查询语句失效也慢，一个更新或是Insert就会很慢，这样看到的就是Update或是Insert怎么这么慢了。所以在数据库写入量或是更新量也比较大的系统，该参数不适合分配过大。而且在高并发，写入量大的系统，建议把该功能禁掉。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设定默认的事务隔离级别-可用的级别如下"><span class="nav-number">36.</span> <span class="nav-text">设定默认的事务隔离级别.可用的级别如下:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#READ-UNCOMMITTED-READ-COMMITTED-REPEATABLE-READ-SERIALIZABLE"><span class="nav-number">37.</span> <span class="nav-text">READ-UNCOMMITTED, READ-COMMITTED, REPEATABLE-READ, SERIALIZABLE</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-READ-UNCOMMITTED-读未提交2-READ-COMMITTE-读已提交3-REPEATABLE-READ-可重复读4-SERIALIZABLE-串行"><span class="nav-number">38.</span> <span class="nav-text">1.READ UNCOMMITTED-读未提交2.READ COMMITTE-读已提交3.REPEATABLE READ -可重复读4.SERIALIZABLE -串行</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tmp-table-size-的默认大小是-32M。如果一张临时表超出该大小，MySQL产生一个-The-table-tbl-name-is-full-形式的错误，如果你做很多高级-GROUP-BY-查询，增加-tmp-table-size-值。如果超过该值，则会将临时表写入磁盘。"><span class="nav-number">39.</span> <span class="nav-text">tmp_table_size 的默认大小是 32M。如果一张临时表超出该大小，MySQL产生一个 The table tbl_name is full 形式的错误，如果你做很多高级 GROUP BY 查询，增加 tmp_table_size 值。如果超过该值，则会将临时表写入磁盘。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MySql读入缓冲区大小。对表进行顺序扫描的请求将分配一个读入缓冲区，MySql会为它分配一段内存缓冲区。read-buffer-size变量控制这一缓冲区的大小。如果对表的顺序扫描请求非常频繁，并且你认为频繁扫描进行得太慢，可以通过增加该变量值以及内存缓冲区大小提高其性能。和sort-buffer-size一样，该参数对应的分配内存也是每个连接独享。"><span class="nav-number">40.</span> <span class="nav-text">MySql读入缓冲区大小。对表进行顺序扫描的请求将分配一个读入缓冲区，MySql会为它分配一段内存缓冲区。read_buffer_size变量控制这一缓冲区的大小。如果对表的顺序扫描请求非常频繁，并且你认为频繁扫描进行得太慢，可以通过增加该变量值以及内存缓冲区大小提高其性能。和sort_buffer_size一样，该参数对应的分配内存也是每个连接独享。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MySql的随机读（查询操作）缓冲区大小。当按任意顺序读取行时-例如，按照排序顺序-，将分配一个随机读缓存区。进行排序查询时，MySql会首先扫描一遍该缓冲，以避免磁盘搜索，提高查询速度，如果需要排序大量数据，可适当调高该值。但MySql会为每个客户连接发放该缓冲空间，所以应尽量适当设置该值，以避免内存开销过大。"><span class="nav-number">41.</span> <span class="nav-text">MySql的随机读（查询操作）缓冲区大小。当按任意顺序读取行时(例如，按照排序顺序)，将分配一个随机读缓存区。进行排序查询时，MySql会首先扫描一遍该缓冲，以避免磁盘搜索，提高查询速度，如果需要排序大量数据，可适当调高该值。但MySql会为每个客户连接发放该缓冲空间，所以应尽量适当设置该值，以避免内存开销过大。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MyISAM表发生变化时重新排序所需的缓冲-1"><span class="nav-number">42.</span> <span class="nav-text">MyISAM表发生变化时重新排序所需的缓冲</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL重建索引时所允许的最大临时文件的大小-当-REPAIR-ALTER-TABLE-或者-LOAD-DATA-INFILE"><span class="nav-number">43.</span> <span class="nav-text">MySQL重建索引时所允许的最大临时文件的大小 (当 REPAIR, ALTER TABLE 或者 LOAD DATA INFILE).</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如果文件大小比此值更大-索引会通过键值缓冲创建-更慢"><span class="nav-number">44.</span> <span class="nav-text">如果文件大小比此值更大,索引会通过键值缓冲创建(更慢)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如果一个表拥有超过一个索引-MyISAM-可以通过并行排序使用超过一个线程去修复他们"><span class="nav-number">45.</span> <span class="nav-text">如果一个表拥有超过一个索引, MyISAM 可以通过并行排序使用超过一个线程去修复他们.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#这对于拥有多个CPU以及大量内存情况的用户-是一个很好的选择"><span class="nav-number">46.</span> <span class="nav-text">这对于拥有多个CPU以及大量内存情况的用户,是一个很好的选择.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#这对Innodb表来说非常重要。Innodb相比MyISAM表对缓冲更为敏感。MyISAM可以在默认的-key-buffer-size-设置下运行的可以，然而Innodb在默认的-innodb-buffer-pool-size-设置下却跟蜗牛似的。由于Innodb把数据和索引都缓存起来，无需留给操作系统太多的内存，因此如果只需要用Innodb的话则可以设置它高达-70-80-的可用内存。一些应用于-key-buffer-的规则有-—-如果你的数据量不大，并且不会暴增，那么无需把-innodb-buffer-pool-size-设置的太大了"><span class="nav-number">47.</span> <span class="nav-text">这对Innodb表来说非常重要。Innodb相比MyISAM表对缓冲更为敏感。MyISAM可以在默认的 key_buffer_size 设置下运行的可以，然而Innodb在默认的 innodb_buffer_pool_size 设置下却跟蜗牛似的。由于Innodb把数据和索引都缓存起来，无需留给操作系统太多的内存，因此如果只需要用Innodb的话则可以设置它高达 70-80% 的可用内存。一些应用于 key_buffer 的规则有 — 如果你的数据量不大，并且不会暴增，那么无需把 innodb_buffer_pool_size 设置的太大了</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如果将此参数设置为1，将在每次提交事务后将日志写入磁盘。为提供性能，可以设置为0或2，但要承担在发生故障时丢失数据的风险。设置为0表示事务日志写入日志文件，而日志文件每秒刷新到磁盘一次。设置为2表示事务日志将在提交时写入日志，但日志文件每次刷新到磁盘一次。"><span class="nav-number">48.</span> <span class="nav-text">如果将此参数设置为1，将在每次提交事务后将日志写入磁盘。为提供性能，可以设置为0或2，但要承担在发生故障时丢失数据的风险。设置为0表示事务日志写入日志文件，而日志文件每秒刷新到磁盘一次。设置为2表示事务日志将在提交时写入日志，但日志文件每次刷新到磁盘一次。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Buffer-Pool中Dirty-Page所占的数量，直接影响InnoDB的关闭时间。参数innodb-max-dirty-pages-pct-可以直接控制了Dirty-Page在Buffer-Pool中所占的比率，而且幸运的是innodb-max-dirty-pages-pct是可以动态改变的。所以，在关闭InnoDB之前先将innodb-max-dirty-pages-pct调小，强制数据块Flush一段时间，则能够大大缩短-MySQL关闭的时间。"><span class="nav-number">49.</span> <span class="nav-text">Buffer_Pool中Dirty_Page所占的数量，直接影响InnoDB的关闭时间。参数innodb_max_dirty_pages_pct 可以直接控制了Dirty_Page在Buffer_Pool中所占的比率，而且幸运的是innodb_max_dirty_pages_pct是可以动态改变的。所以，在关闭InnoDB之前先将innodb_max_dirty_pages_pct调小，强制数据块Flush一段时间，则能够大大缩短 MySQL关闭的时间。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#InnoDB-有其内置的死锁检测机制，能导致未完成的事务回滚。但是，如果结合InnoDB使用MyISAM的lock-tables-语句或第三方事务引擎-则InnoDB无法识别死锁。为消除这种可能性，可以将innodb-lock-wait-timeout设置为一个整数值，指示-MySQL在允许其他事务修改那些最终受事务回滚的数据之前要等待多长时间-秒数"><span class="nav-number">50.</span> <span class="nav-text">InnoDB 有其内置的死锁检测机制，能导致未完成的事务回滚。但是，如果结合InnoDB使用MyISAM的lock tables 语句或第三方事务引擎,则InnoDB无法识别死锁。为消除这种可能性，可以将innodb_lock_wait_timeout设置为一个整数值，指示 MySQL在允许其他事务修改那些最终受事务回滚的数据之前要等待多长时间(秒数)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
     </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiaxf</span>
 </div>
 
 
-    
-    <div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
 
-
-
-<div class="global-share" id="globalShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://jiaxf.github.io/2017/04/07/mysql调优/&title=《mysql调优》 — 飞天雪的技术博客&pic=http://jiaxf.github.io/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://jiaxf.github.io/2017/04/07/mysql调优/&title=《mysql调优》 — 飞天雪的技术博客&source=MySQL 调优mysql中的两个关键参数(1)interactive_timeout:
-参数含义：服务器关闭交互式连接前等待活动的秒数。交互式客户端定义..." data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://jiaxf.github.io/2017/04/07/mysql调优/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《mysql调优》 — 飞天雪的技术博客&url=http://jiaxf.github.io/2017/04/07/mysql调优/&via=http://jiaxf.github.io" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://jiaxf.github.io/2017/04/07/mysql调优/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-<div class="page-modal wx-share" id="wxShare">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p class="wechatshare">扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://jiaxf.github.io/2017/04/07/mysql调优/" alt="微信分享二维码">
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
 </div>
 
 
+        
 
+        
+      </div>
+    </footer>
 
-    <!-- waves按钮特效 -->
-<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
 
-<!-- 主题配置脚本 -->
-<script>
-var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
-</script>
+  
 
-<!-- jquery -->
-<script src="/js/jquery.min.js?v=3.0"></script>
-
-<!-- 搜索 -->
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<template id="search-tpl">
-<li class="item waves-block waves-effect" onclick="location.href='{path}'">
-    <div class="title ellipsis" title="{title}">{title}</div>
-</li>
-</template>
-
-
-<!-- main博客脚本 -->
-<script src="/js/main.min.js?v=3.0" ></script>
-
-<!-- 动画&配置 -->
-<script src="/js/script.min.js?v=3.0" ></script>
-
-<!-- 脚本管理 -->
-<script>
-
-if(window.innerWidth > 800){
-	/* 3D标题 */
-	$(".content-header").on("mousemove", threedee);
-
-	/* 底部追随鼠标 */
-	$(".footer").hover(2);
-
-	/* gotop键的涟漪 */
-	$("#gotop").hover(1);
-
-	/* 赞赏的粒子雨 */
-	$("#reward").hover(3);
-
-	/* 微信公众号的底部渲染 */
-	$("#wechat").hover(4);
-
-    /* 标题跳动 */
-    $(".archivestitle").bumpyText();
-
-	/* 图片点击放大 */
-	const postimg = jQuery(".post-content img:not(.github-emoji)");
-	postimg.on("click",function(){
-
-		mask.classList.add("in");
-		main.classList.add("Mask");
-		menu.classList.add("Mask");
-		var myimg = this.cloneNode(true);
-		myimg.classList.add("imgShow");
-
-		setTimeout(function(){
-			jQuery(myimg).animate({
-				opacity:"1"
-			},1000);
-		},0);
-
-		document.body.appendChild(myimg);
-
-		myimg.onclick=function(){
-			document.body.removeChild(myimg);
-			mask.classList.remove("in");
-			main.classList.remove("Mask");
-			menu.classList.remove("Mask");
-		};
-
-	});
-
-}
-
-/* 名字跳动 */
-$("#name").bumpyText();
-
-
-/* 网站运行时间 */
-setInterval(function () {
-	setTime("2017/10/11");
-}, 1000);
-
-/* 文章块的淡出 */
-postshow();
-
-/* 座右铭 */
-
-   getHitokoto();
-
-
-
-/* 粘贴提示 */
-G($(".post-content"), location.href, "Jiaxf");
-
-
-/* 控制台 */
-if (window.console && window.console.log) {
-	setTimeout(function () {
-		console.log("\n %c 一个坏掉的番茄 %c  © Simon Ma  http://tomotoes.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
-	}, 0);
-}
-
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
 </script>
 
 
 
 
-<!-- 公式渲染 -->
 
 
 
-<!-- 不蒜子 -->
 
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
 
 
 </body>
