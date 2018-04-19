@@ -1,92 +1,11 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
+  <meta charset="utf-8">
   
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Hexo, NexT" />
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="飞天雪的技术博客" type="application/atom+xml" />
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
-
-
-
-
-
-
-<meta name="description" content="jiaxf&apos;s blog | js | node | javascript">
+  <title>飞天雪的技术博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="jiaxf&apos;s blog | js | node | javascript">
 <meta property="og:type" content="website">
 <meta property="og:title" content="飞天雪的技术博客">
 <meta property="og:url" content="http://jiaxf.github.io/page/3/index.html">
@@ -96,862 +15,547 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="飞天雪的技术博客">
 <meta name="twitter:description" content="jiaxf&apos;s blog | js | node | javascript">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://jiaxf.github.io/page/3/"/>
-
-
-
-
-
-  <title> 飞天雪的技术博客 </title>
+  
+    <link rel="alternative" href="/atom.xml" title="飞天雪的技术博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+    
+    
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: true,
+          isPost: false,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
 </head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-
-
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">飞天雪的技术博客</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-  <p class="site-subtitle">技术无止境</p>
-</div>
-
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            <img lazy-src="/img/linux.jpg" class="js-avatar">
             
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-sitemap">
-          <a href="/sitemap.xml" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
-            
-            Sitemap
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404.html" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
-            
-            公益404
-          </a>
-        </li>
-      
+        </a>
 
-      
-    </ul>
-  
-
-  
-</nav>
-
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-  <section id="posts" class="posts-expand">
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://jiaxf.github.io/2016/12/21/redis3/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Jiaxf">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="飞天雪的技术博客">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="飞天雪的技术博客" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="jiaxf欢迎您来访！">Jiaxf</a></h1>
+        </hgroup>
 
         
+        <p class="header-subtitle">技术无止境</p>
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="search" placeholder=" Search...">
+            </form>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">博客首页</a></li>
+                        
+                            <li><a href="/archives">技术文摘</a></li>
+                        
+                            <li><a href="/works">前端集锦</a></li>
+                        
+                            <li><a href="/readings">阅读书单</a></li>
+                        
+                            <li><a href="/about">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="mailto:jiaxuefeng0@gmail.com" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/jiaxf" title="github">github</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="https://zhihu.com/people/jia-xue-feng-0" title="zhihu">zhihu</a>
+                            
+                                <a class="fl weibo" target="_blank" href="http://weibo.com/jiaxuefeng" title="weibo">weibo</a>
+                            
+                                <a class="fl linkedin" target="_blank" href="http://cn.linkedin.com/in/jiaxuefeng" title="linkedin">linkedin</a>
+                            
+                                <a class="fl rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                                <a class="fl douban" target="_blank" href="https://www.douban.com/people/54387876/" title="douban">douban</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
                 
-                <a class="post-title-link" href="/2016/12/21/redis3/" itemprop="url">
-                  Redis学习记录3
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-21T09:39:14+08:00">
-                2016-12-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/functional/" style="font-size: 18.75px;">functional</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/js/" style="font-size: 16.25px;">js</a> <a href="/tags/jsx/" style="font-size: 10px;">jsx</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/mysql/" style="font-size: 11.25px;">mysql</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/pattern/" style="font-size: 10px;">pattern</a> <a href="/tags/php/" style="font-size: 11.25px;">php</a> <a href="/tags/ramda/" style="font-size: 17.5px;">ramda</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/redis/" style="font-size: 13.75px;">redis</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/web/" style="font-size: 11.25px;">web</a> <a href="/tags/函数式编程/" style="font-size: 15px;">函数式编程</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/技术/" style="font-size: 13.75px;">技术</a> <a href="/tags/缓存/" style="font-size: 12.5px;">缓存</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://luuman.github.io/">luuman</a>
+                    
+                    </div>
+                </section>
+                
 
                 
                 
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">码农一枚，追求极客！</div>
+                </section>
+                
+            </div>
         </div>
-      </header>
+    </header>                
+</div>
+<script type="text/javascript">(function(){document.write(unescape('%3Cdiv id="bdcs"%3E%3C/div%3E'));var bdcs = document.createElement('script');bdcs.type = 'text/javascript';bdcs.async = true;bdcs.src = 'http://znsv.baidu.com/customer_search/api/js?sid=13578845068435931330' + '&plate_url=' + encodeURIComponent(window.location.href) + '&t=' + Math.ceil(new Date()/3600000);var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(bdcs, s);})();</script>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Jiaxf</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/linux.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Jiaxf</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">技术无止境</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">博客首页</a></li>
+                
+                    <li><a href="/archives">技术文摘</a></li>
+                
+                    <li><a href="/works">前端集锦</a></li>
+                
+                    <li><a href="/readings">阅读书单</a></li>
+                
+                    <li><a href="/about">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="mailto:jiaxuefeng0@gmail.com" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/jiaxf" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://zhihu.com/people/jia-xue-feng-0" title="zhihu">zhihu</a>
+                    
+                        <a class="weibo" target="_blank" href="http://weibo.com/jiaxuefeng" title="weibo">weibo</a>
+                    
+                        <a class="linkedin" target="_blank" href="http://cn.linkedin.com/in/jiaxuefeng" title="linkedin">linkedin</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                        <a class="douban" target="_blank" href="https://www.douban.com/people/54387876/" title="douban">douban</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap">
+  
+    <article id="post-redis3" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/21/redis3/" class="article-date">
+      <time datetime="2016-12-21T01:39:14.000Z" itemprop="datePublished">2016-12-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
     
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
         
-          <h2 id="Redis优化配置和redis-conf说明"><a href="#Redis优化配置和redis-conf说明" class="headerlink" title="Redis优化配置和redis.conf说明"></a>Redis优化配置和redis.conf说明</h2><ol>
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/21/redis3/">Redis学习记录3</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="Redis优化配置和redis-conf说明"><a href="#Redis优化配置和redis-conf说明" class="headerlink" title="Redis优化配置和redis.conf说明"></a>Redis优化配置和redis.conf说明</h2><ol>
 <li>redis.conf 配置参数：</li>
 </ol>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#是否作为守护进程运行</span></span><br><span class="line">daemonize <span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#如以后台进程运行，则需指定一个pid，默认为/var/run/redis.pid</span></span><br><span class="line"></span><br><span class="line">pidfile redis.pid</span><br><span class="line"></span><br><span class="line"><span class="comment">#绑定主机IP，默认值为127.0.0.1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#bind 127.0.0.1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#Redis默认监听端口</span></span><br><span class="line"></span><br><span class="line">port 6379</span><br><span class="line"></span><br><span class="line"><span class="comment">#客户端闲置多少秒后，断开连接，默认为300（秒）</span></span><br><span class="line"></span><br><span class="line">timeout 300</span><br><span class="line"></span><br><span class="line"><span class="comment">#日志记录等级，有4个可选值，debug，verbose（默认值），notice，warning</span></span><br><span class="line"></span><br><span class="line">loglevel verbose</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/21/redis3/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+          
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
     
+    <div class="article-info article-info-index">
       
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
 
-  
 
-  
-  
-  
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
+    </div>
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://jiaxf.github.io/2016/12/21/redis2/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Jiaxf">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="飞天雪的技术博客">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="飞天雪的技术博客" src="">
-    </span>
-  </span>
-
+      
+        <p class="article-more-link">
+          <a  href="/2016/12/21/redis3/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
     
-      <header class="post-header">
+  </div>
+  
+</article>
 
+
+
+
+
+
+
+
+
+  
+    <article id="post-redis2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/21/redis2/" class="article-date">
+      <time datetime="2016-12-21T00:53:37.000Z" itemprop="datePublished">2016-12-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
         
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/21/redis2/" itemprop="url">
-                  Redis学习记录2
-                </a>
-              
-            
-          </h1>
-        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/21/redis2/">Redis学习记录2</a>
+    </h1>
+  
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-21T08:53:37+08:00">
-                2016-12-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
       </header>
+      
     
-
-
-    <div class="post-body" itemprop="articleBody">
-
+    <div class="article-entry" itemprop="articleBody">
       
-      
-
-      
-        
-          <h2 id="redis-bgrewriteaof问题"><a href="#redis-bgrewriteaof问题" class="headerlink" title="redis bgrewriteaof问题"></a>redis bgrewriteaof问题</h2><p>一、背景</p>
+          
+              <h2 id="redis-bgrewriteaof问题"><a href="#redis-bgrewriteaof问题" class="headerlink" title="redis bgrewriteaof问题"></a>redis bgrewriteaof问题</h2><p>一、背景</p>
 <ol>
 <li><p>AOF:</p>
 <p> Redis的AOF机制有点类似于Mysql binlog，是Redis的提供的一种持久化方式（另一种是RDB），<br> 它会将所有的写命令按照一定频率(no, always, every seconds)写入到日志文件中，当Redis停机<br> 重启后恢复数据库。</p>
 </li>
 </ol>
 <p><img src="/images/20160203203442_310.png" alt=""><br>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/21/redis2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+          
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
     
+    <div class="article-info article-info-index">
       
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
 
-  
 
-  
-  
-  
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
+    </div>
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://jiaxf.github.io/2016/12/20/fp2/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Jiaxf">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="飞天雪的技术博客">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="飞天雪的技术博客" src="">
-    </span>
-  </span>
-
+      
+        <p class="article-more-link">
+          <a  href="/2016/12/21/redis2/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
     
-      <header class="post-header">
+  </div>
+  
+</article>
 
+
+
+
+
+
+
+
+
+  
+    <article id="post-fp2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/20/fp2/" class="article-date">
+      <time datetime="2016-12-20T04:02:11.000Z" itemprop="datePublished">2016-12-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
         
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/20/fp2/" itemprop="url">
-                  函数式编程入门
-                </a>
-              
-            
-          </h1>
-        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/20/fp2/">函数式编程入门</a>
+    </h1>
+  
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-20T12:02:11+08:00">
-                2016-12-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
       </header>
+      
     
-
-
-    <div class="post-body" itemprop="articleBody">
-
+    <div class="article-entry" itemprop="articleBody">
       
-      
-
-      
-        
-          <h1 id="Functional-programs"><a href="#Functional-programs" class="headerlink" title="Functional programs"></a>Functional programs</h1><h2 id="PURE-FUNCTIONS"><a href="#PURE-FUNCTIONS" class="headerlink" title="PURE FUNCTIONS"></a>PURE FUNCTIONS</h2><pre><code>Pure functions are functions that have no side-effects.They don&apos;t assign to any outside variables, they don&apos;t consume input, they don&apos;t produce output, they don&apos;t read from or writ to a database, they don&apos;t modify the parameters they&apos;re passed, etc.
+          
+              <h1 id="Functional-programs"><a href="#Functional-programs" class="headerlink" title="Functional programs"></a>Functional programs</h1><h2 id="PURE-FUNCTIONS"><a href="#PURE-FUNCTIONS" class="headerlink" title="PURE FUNCTIONS"></a>PURE FUNCTIONS</h2><pre><code>Pure functions are functions that have no side-effects.They don&apos;t assign to any outside variables, they don&apos;t consume input, they don&apos;t produce output, they don&apos;t read from or writ to a database, they don&apos;t modify the parameters they&apos;re passed, etc.
 
 The basic idea is that, if you call a function with the same inputs over and over again, you alwyas get the same result.
 
 You can certainly do things with impure functions(and you must, if your program is going to do amything interesting), but for the most part you&apos;ll want to keep most of your funtions pure.
 </code></pre>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/20/fp2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+          
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
     
+    <div class="article-info article-info-index">
       
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
 
-  
 
-  
-  
-  
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li></ul>
+    </div>
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://jiaxf.github.io/2016/12/20/curry/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Jiaxf">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="飞天雪的技术博客">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="飞天雪的技术博客" src="">
-    </span>
-  </span>
-
+      
+        <p class="article-more-link">
+          <a  href="/2016/12/20/fp2/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
     
-      <header class="post-header">
+  </div>
+  
+</article>
 
+
+
+
+
+
+
+
+
+  
+    <article id="post-curry" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/20/curry/" class="article-date">
+      <time datetime="2016-12-20T04:02:11.000Z" itemprop="datePublished">2016-12-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
         
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/20/curry/" itemprop="url">
-                  函数式编程入门
-                </a>
-              
-            
-          </h1>
-        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/20/curry/">函数式编程入门</a>
+    </h1>
+  
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-20T12:02:11+08:00">
-                2016-12-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
       </header>
+      
     
-
-
-    <div class="post-body" itemprop="articleBody">
-
+    <div class="article-entry" itemprop="articleBody">
       
-      
-
-      
-        
-          <h2 id="curring"><a href="#curring" class="headerlink" title="curring"></a>curring</h2><p>A curried function is one where multiple arguments are descirbed by a series of one<br>argument funtions.For example, curried addition would be :</p>
+          
+              <h2 id="curring"><a href="#curring" class="headerlink" title="curring"></a>curring</h2><p>A curried function is one where multiple arguments are descirbed by a series of one<br>argument funtions.For example, curried addition would be :</p>
 <pre><code>记录传入的参数，在需要的时候求值。
 </code></pre><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">var</span> curry = require(<span class="string">'curry'</span>)</span><br><span class="line"><span class="selector-tag">var</span> add = curry(function(<span class="selector-tag">a</span>, b)&#123; return <span class="selector-tag">a</span> + b&#125;)</span><br><span class="line"><span class="selector-tag">var</span> add100 = add(<span class="number">100</span>)</span><br><span class="line"><span class="function"><span class="title">add100</span><span class="params">(<span class="number">1</span>)</span></span> <span class="comment">// =101</span></span><br></pre></td></tr></table></figure>
 <p>Curry allows you can aslo call a function with multiple arguments at once:</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">var</span> sum3 = curry(function(<span class="selector-tag">a</span>, <span class="selector-tag">b</span>, c) &#123; return <span class="selector-tag">a</span> + <span class="selector-tag">b</span> + c&#125;)</span><br><span class="line"><span class="function"><span class="title">sum3</span><span class="params">(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span></span> <span class="comment">// =6</span></span><br><span class="line"><span class="function"><span class="title">sum3</span><span class="params">(<span class="number">1</span>)</span><span class="params">(<span class="number">2</span>,<span class="number">3</span>)</span></span> <span class="comment">// =6</span></span><br><span class="line"><span class="function"><span class="title">sum3</span><span class="params">(<span class="number">1</span>,<span class="number">2</span>)</span><span class="params">(<span class="number">3</span>)</span></span> <span class="comment">// =6</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/20/curry/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+          
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
     
+    <div class="article-info article-info-index">
       
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
 
-  
 
-  
-  
-  
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li></ul>
+    </div>
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://jiaxf.github.io/2016/12/20/redis/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Jiaxf">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="飞天雪的技术博客">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="飞天雪的技术博客" src="">
-    </span>
-  </span>
-
+      
+        <p class="article-more-link">
+          <a  href="/2016/12/20/curry/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
     
-      <header class="post-header">
+  </div>
+  
+</article>
 
+
+
+
+
+
+
+
+
+  
+    <article id="post-redis" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/20/redis/" class="article-date">
+      <time datetime="2016-12-20T03:13:01.000Z" itemprop="datePublished">2016-12-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
         
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/20/redis/" itemprop="url">
-                  Redis学习记录
-                </a>
-              
-            
-          </h1>
-        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/20/redis/">Redis学习记录</a>
+    </h1>
+  
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-20T11:13:01+08:00">
-                2016-12-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
       </header>
+      
     
-
-
-    <div class="post-body" itemprop="articleBody">
-
+    <div class="article-entry" itemprop="articleBody">
       
-      
-
-      
-        
-          <h1 id="Redis学习记录"><a href="#Redis学习记录" class="headerlink" title="Redis学习记录"></a>Redis学习记录</h1><p>业界常用的一些 key-value分布式缓存系统如下：</p>
+          
+              <h1 id="Redis学习记录"><a href="#Redis学习记录" class="headerlink" title="Redis学习记录"></a>Redis学习记录</h1><p>业界常用的一些 key-value分布式缓存系统如下：</p>
 <ul>
 <li>Redis</li>
 <li>Memcached</li>
@@ -970,145 +574,72 @@ You can certainly do things with impure functions(and you must, if your program 
 <li>超快的性能，见其官方性能测试《<a href="https://redis.io/topics/benchmarks" target="_blank" rel="noopener">How fast is Redis?</a>》。</li>
 <li>拥有比较成熟的Java客户端 - Jedis，像新浪微博都是使用它作为客户端。（官方推荐的Clients）</li>
 </ul>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/20/redis/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+          
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
     
+    <div class="article-info article-info-index">
       
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
 
-  
 
-  
-  
-  
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
+    </div>
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://jiaxf.github.io/2016/12/19/FP/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Jiaxf">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="飞天雪的技术博客">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="飞天雪的技术博客" src="">
-    </span>
-  </span>
-
+      
+        <p class="article-more-link">
+          <a  href="/2016/12/20/redis/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
     
-      <header class="post-header">
+  </div>
+  
+</article>
 
+
+
+
+
+
+
+
+
+  
+    <article id="post-FP" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/19/FP/" class="article-date">
+      <time datetime="2016-12-19T01:52:21.000Z" itemprop="datePublished">2016-12-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
         
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/19/FP/" itemprop="url">
-                  函数式编程入门
-                </a>
-              
-            
-          </h1>
-        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/19/FP/">函数式编程入门</a>
+    </h1>
+  
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-19T09:52:21+08:00">
-                2016-12-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
       </header>
+      
     
-
-
-    <div class="post-body" itemprop="articleBody">
-
+    <div class="article-entry" itemprop="articleBody">
       
-      
-
-      
-        
-          <h1 id="Function-Program"><a href="#Function-Program" class="headerlink" title="Function Program"></a>Function Program</h1><h2 id="几个原则"><a href="#几个原则" class="headerlink" title="几个原则"></a>几个原则</h2><ul>
+          
+              <h1 id="Function-Program"><a href="#Function-Program" class="headerlink" title="Function Program"></a>Function Program</h1><h2 id="几个原则"><a href="#几个原则" class="headerlink" title="几个原则"></a>几个原则</h2><ul>
 <li>DRY（不要重复自己，don’t repeat yourself）</li>
 <li>高内聚低耦合（loose coupling high cohesion）</li>
 <li>YAGNI （你不会用到它的，ya ain’t gonna need it）</li>
@@ -1121,146 +652,72 @@ You can certainly do things with impure functions(and you must, if your program 
 </blockquote>
 <blockquote>
 <p><em>副作用</em>是在计算结果的过程中，系统状态的一种变化，或者与外部世界进行的<em>可观察的交互</em>。<br>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/19/FP/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+          
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
     
+    <div class="article-info article-info-index">
       
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
 
-  
 
-  
-  
-  
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li></ul>
+    </div>
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://jiaxf.github.io/2016/12/16/applicativeFunctor/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Jiaxf">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="飞天雪的技术博客">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="飞天雪的技术博客" src="">
-    </span>
-  </span>
-
+      
+        <p class="article-more-link">
+          <a  href="/2016/12/19/FP/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
     
-      <header class="post-header">
+  </div>
+  
+</article>
 
+
+
+
+
+
+
+
+
+  
+    <article id="post-applicativeFunctor" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/16/applicativeFunctor/" class="article-date">
+      <time datetime="2016-12-16T06:15:09.000Z" itemprop="datePublished">2016-12-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
         
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/16/applicativeFunctor/" itemprop="url">
-                  函数式编程入门（2）
-                </a>
-              
-            
-          </h1>
-        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/16/applicativeFunctor/">函数式编程入门（2）</a>
+    </h1>
+  
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-16T14:15:09+08:00">
-                2016-12-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
       </header>
+      
     
-
-
-    <div class="post-body" itemprop="articleBody">
-
+    <div class="article-entry" itemprop="articleBody">
       
-      
-
-      
-        
           
-            <h1 id="Applicative-functor"><a href="#Applicative-functor" class="headerlink" title="Applicative functor"></a>Applicative functor</h1><p>应用applicative functor作为一个接口可以让不通funcotr可以相互应用（apply）的能力。</p>
+        <h1 id="Applicative-functor"><a href="#Applicative-functor" class="headerlink" title="Applicative functor"></a>Applicative functor</h1><p>应用applicative functor作为一个接口可以让不通funcotr可以相互应用（apply）的能力。</p>
 <h2 id="协调与激励"><a href="#协调与激励" class="headerlink" title="协调与激励"></a>协调与激励</h2><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Http.get :: String -&gt; Task Error HTML</span></span><br><span class="line"><span class="keyword">var</span> renderPage = curry(<span class="function"><span class="keyword">function</span></span>(destinations, event) &#123;</span><br><span class="line">    <span class="comment">/* render page */</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">Task.of(renderPage).ap(Http.<span class="keyword">get</span>(<span class="string">'/destinations'</span>)).ap(Http.<span class="keyword">get</span>(<span class="string">'/events'</span>))</span><br><span class="line"><span class="comment">// Task("&lt;div&gt;some page with dest and events&lt;/div&gt;")</span></span><br></pre></td></tr></table></figure>
 <p>两个请求将会同时立即执行，当两者的响应都返回之后，renderPage 就会被调用。这与 monad 版本的那种必须等待前一个任务完成才能继续执行后面的操作完全不同。本来我们就无需根据目的地来获取事件，因此也就不需要依赖顺序执行。</p>
 <p>再次强调，因为我们是使用局部调用的函数来达成上述结果的，所以必须要保证 renderpage 是 curry 函数，否则它就不会一直等到两个 Task 都完成。而且如果你碰巧自己做过类似的事，那你一定会感激 applicative functor 这个异常简洁的接口的。这就是那种能够让我们离“奇点”（singularity）更近一步的优美代码。</p>
@@ -1288,421 +745,203 @@ You can certainly do things with impure functions(and you must, if your program 
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="keyword">u</span> = IO.of(_.toUpper);</span><br><span class="line"><span class="keyword">var</span> v = IO.of(_.concat(<span class="string">"&amp; beyond"</span>));</span><br><span class="line"><span class="keyword">var</span> w = IO.of(<span class="string">"lood bath"</span>);</span><br><span class="line"></span><br><span class="line">IO.of(_compose).<span class="keyword">ap</span>(<span class="keyword">u</span>).<span class="keyword">ap</span>(v).<span class="keyword">ap</span>(w) == <span class="keyword">u</span>.<span class="keyword">ap</span>(v.<span class="keyword">ap</span>(w))</span><br></pre></td></tr></table></figure>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>函数式嗯编程</p>
 
-          
-        
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
     
+    <div class="article-info article-info-index">
       
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
 
-  
 
-  
-  
-  
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li></ul>
+    </div>
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://jiaxf.github.io/2016/12/13/javascriptIntroduce/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Jiaxf">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="飞天雪的技术博客">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="飞天雪的技术博客" src="">
-    </span>
-  </span>
-
+      
+      <div class="clearfix"></div>
+    </div>
     
-      <header class="post-header">
+  </div>
+  
+</article>
 
+
+
+
+
+
+
+
+
+  
+    <article id="post-javascriptIntroduce" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/13/javascriptIntroduce/" class="article-date">
+      <time datetime="2016-12-13T06:32:42.000Z" itemprop="datePublished">2016-12-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
         
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/13/javascriptIntroduce/" itemprop="url">
-                  前端知识学习（摘自阮一峰博客）
-                </a>
-              
-            
-          </h1>
-        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/13/javascriptIntroduce/">前端知识学习（摘自阮一峰博客）</a>
+    </h1>
+  
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-13T14:32:42+08:00">
-                2016-12-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
       </header>
+      
     
-
-
-    <div class="post-body" itemprop="articleBody">
-
+    <div class="article-entry" itemprop="articleBody">
       
-      
-
-      
-        
-          <h1 id="前端开发的历史和趋势"><a href="#前端开发的历史和趋势" class="headerlink" title="前端开发的历史和趋势"></a>前端开发的历史和趋势</h1><hr>
+          
+              <h1 id="前端开发的历史和趋势"><a href="#前端开发的历史和趋势" class="headerlink" title="前端开发的历史和趋势"></a>前端开发的历史和趋势</h1><hr>
 <h2 id="什么是前端"><a href="#什么是前端" class="headerlink" title="什么是前端"></a>什么是前端</h2><ul>
 <li>前端：针对浏览器的开发，代码在浏览器运行</li>
 <li>后端：针对服务器的开发，代码在服务器运行</li>
 </ul>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/13/javascriptIntroduce/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+          
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
     
+    <div class="article-info article-info-index">
       
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
 
-  
 
-  
-  
-  
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
+    </div>
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://jiaxf.github.io/2016/12/13/category theory/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Jiaxf">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="飞天雪的技术博客">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="飞天雪的技术博客" src="">
-    </span>
-  </span>
-
+      
+        <p class="article-more-link">
+          <a  href="/2016/12/13/javascriptIntroduce/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
     
-      <header class="post-header">
+  </div>
+  
+</article>
 
+
+
+
+
+
+
+
+
+  
+    <article id="post-category theory" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/13/category theory/" class="article-date">
+      <time datetime="2016-12-13T02:45:55.000Z" itemprop="datePublished">2016-12-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
         
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/13/category theory/" itemprop="url">
-                  范畴学基本知识
-                </a>
-              
-            
-          </h1>
-        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/13/category theory/">范畴学基本知识</a>
+    </h1>
+  
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-13T10:45:55+08:00">
-                2016-12-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
       </header>
+      
     
-
-
-    <div class="post-body" itemprop="articleBody">
-
+    <div class="article-entry" itemprop="articleBody">
       
-      
-
-      
-        
-          <h2 id="范畴学基本知识"><a href="#范畴学基本知识" class="headerlink" title="范畴学基本知识"></a>范畴学基本知识</h2><p>范畴学（category theory）是数学中的一个抽象分支，能够形式化诸如集合论（set theory）、类型论（type theory）、群论（group theory）以及逻辑学（logic）等数学分支中的一些概念。范畴学主要处理对象（object）、态射（morphism）和变化式（transformation），而这些概念跟编程的联系非常紧密。下图是一些相同的概念分别在不同理论下的形式：<br>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/13/category theory/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+          
+              <h2 id="范畴学基本知识"><a href="#范畴学基本知识" class="headerlink" title="范畴学基本知识"></a>范畴学基本知识</h2><p>范畴学（category theory）是数学中的一个抽象分支，能够形式化诸如集合论（set theory）、类型论（type theory）、群论（group theory）以及逻辑学（logic）等数学分支中的一些概念。范畴学主要处理对象（object）、态射（morphism）和变化式（transformation），而这些概念跟编程的联系非常紧密。下图是一些相同的概念分别在不同理论下的形式：<br>
+          
       
     </div>
-
-    <div>
+    
+    <div class="article-info article-info-index">
       
-    </div>
-
-    <div>
       
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
     </div>
 
 
-    <footer class="post-footer">
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li></ul>
+    </div>
 
       
-
+        <p class="article-more-link">
+          <a  href="/2016/12/13/category theory/#more">more >></a>
+        </p>
       
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
+      <div class="clearfix"></div>
+    </div>
     
-      
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
 
   
-
+    <article id="post-javascriptEvent" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2016/12/01/javascriptEvent/" class="article-date">
+      <time datetime="2016-12-01T02:35:00.000Z" itemprop="datePublished">2016-12-01</time>
+</a>
+    </div>
   
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://jiaxf.github.io/2016/12/01/javascriptEvent/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Jiaxf">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="飞天雪的技术博客">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="飞天雪的技术博客" src="">
-    </span>
-  </span>
-
+  <div class="article-inner">
     
-      <header class="post-header">
-
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
         
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/01/javascriptEvent/" itemprop="url">
-                  JavaScriptEvent
-                </a>
-              
-            
-          </h1>
-        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/01/javascriptEvent/">JavaScriptEvent</a>
+    </h1>
+  
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-01T10:35:00+08:00">
-                2016-12-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
       </header>
+      
     
-
-
-    <div class="post-body" itemprop="articleBody">
-
+    <div class="article-entry" itemprop="articleBody">
       
-      
-
-      
-        
-          <h3 id="JavaScript事件"><a href="#JavaScript事件" class="headerlink" title="JavaScript事件"></a>JavaScript事件</h3><h2 id="1-相关术语"><a href="#1-相关术语" class="headerlink" title="1. 相关术语"></a>1. 相关术语</h2><ul>
+          
+              <h3 id="JavaScript事件"><a href="#JavaScript事件" class="headerlink" title="JavaScript事件"></a>JavaScript事件</h3><h2 id="1-相关术语"><a href="#1-相关术语" class="headerlink" title="1. 相关术语"></a>1. 相关术语</h2><ul>
 <li>事件类型（event type）是一个用来说明发生什么类型事件的字符串。<br>  例如，“mousemove”表示用户移动鼠标，“keydown”表示键盘上某个键被按下等等。</li>
 <li>事件目标（event target）是发生的事件与之相关的对象。当讲事件时，我必须同时指明类型和目标。<br>  比如：window上的load事件或button元素的click事件。<br>  在客户端JavaScript应用程序中，Window、Document和Element对象是最常见的事件目标。</li>
 <li>事件处理程序（event handler）或事件监听程序（event listener）是处理或响应事件的函数。</li>
@@ -1711,265 +950,176 @@ You can certainly do things with impure functions(and you must, if your program 
 <li>事件捕获（event capturing）：在容器元素上注册的特定处理程序有机会在事件传播到真实目标之前捕获它。</li>
 </ul>
 <hr>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/01/javascriptEvent/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+          
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
     
-  </section>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
-
-
-          </div>
-          
-
-
-          
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
     </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/event/">event</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/12/01/javascriptEvent/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
   </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
-               alt="Jiaxf" />
-          <p class="site-author-name" itemprop="name">Jiaxf</p>
-          <p class="site-description motion-element" itemprop="description">jiaxf's blog | js | node | javascript</p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">35</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
-
-          
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
-                <span class="site-state-item-count">1</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">23</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
-      </section>
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
   
-  &copy; 
-  <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Jiaxf</span>
-</div>
+</article>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
 
 
-        
 
-        
-      </div>
-    </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
-  </div>
+
+
 
   
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+    </nav>
+  
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2018 Jiaxf
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >用户到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
 
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 30;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
 <script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-70677304-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
 </script>
 
 
+    <script type="text/javascript">
+      window.onload = function(){
+        document.getElementById("search").onclick = function(){
+            console.log("search")
+            search();
+        }
+      }
+      function search(){
+        (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+        (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+        })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
 
+        _st('install','f9SxgsuoT3T5zTyGctUR','2.0.0');
+        
+      }
+    </script>
 
-
-
-
-
-
-  
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
-
-
-
-  
-
-
-
-  
-
-
-
-
-	
-
-
-
-
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-
+  </div>
 </body>
 </html>
+<a href="https://github.com/jiaxf"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
