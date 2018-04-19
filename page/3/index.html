@@ -246,6 +246,75 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-redis3" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/21/redis3/" class="article-date">
+      <time datetime="2016-12-21T01:39:14.000Z" itemprop="datePublished">2016-12-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/21/redis3/">Redis学习记录3</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="Redis优化配置和redis-conf说明"><a href="#Redis优化配置和redis-conf说明" class="headerlink" title="Redis优化配置和redis.conf说明"></a>Redis优化配置和redis.conf说明</h2><ol>
+<li>redis.conf 配置参数：</li>
+</ol>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#是否作为守护进程运行</span></span><br><span class="line">daemonize <span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#如以后台进程运行，则需指定一个pid，默认为/var/run/redis.pid</span></span><br><span class="line"></span><br><span class="line">pidfile redis.pid</span><br><span class="line"></span><br><span class="line"><span class="comment">#绑定主机IP，默认值为127.0.0.1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#bind 127.0.0.1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#Redis默认监听端口</span></span><br><span class="line"></span><br><span class="line">port 6379</span><br><span class="line"></span><br><span class="line"><span class="comment">#客户端闲置多少秒后，断开连接，默认为300（秒）</span></span><br><span class="line"></span><br><span class="line">timeout 300</span><br><span class="line"></span><br><span class="line"><span class="comment">#日志记录等级，有4个可选值，debug，verbose（默认值），notice，warning</span></span><br><span class="line"></span><br><span class="line">loglevel verbose</span><br></pre></td></tr></table></figure>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/12/21/redis3/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-redis2" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -318,76 +387,6 @@
 
 
   
-    <article id="post-curry" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/12/20/curry/" class="article-date">
-      <time datetime="2016-12-20T04:02:11.000Z" itemprop="datePublished">2016-12-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/20/curry/">函数式编程入门</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="curring"><a href="#curring" class="headerlink" title="curring"></a>curring</h2><p>A curried function is one where multiple arguments are descirbed by a series of one<br>argument funtions.For example, curried addition would be :</p>
-<pre><code>记录传入的参数，在需要的时候求值。
-</code></pre><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">var</span> curry = require(<span class="string">'curry'</span>)</span><br><span class="line"><span class="selector-tag">var</span> add = curry(function(<span class="selector-tag">a</span>, b)&#123; return <span class="selector-tag">a</span> + b&#125;)</span><br><span class="line"><span class="selector-tag">var</span> add100 = add(<span class="number">100</span>)</span><br><span class="line"><span class="function"><span class="title">add100</span><span class="params">(<span class="number">1</span>)</span></span> <span class="comment">// =101</span></span><br></pre></td></tr></table></figure>
-<p>Curry allows you can aslo call a function with multiple arguments at once:</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">var</span> sum3 = curry(function(<span class="selector-tag">a</span>, <span class="selector-tag">b</span>, c) &#123; return <span class="selector-tag">a</span> + <span class="selector-tag">b</span> + c&#125;)</span><br><span class="line"><span class="function"><span class="title">sum3</span><span class="params">(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span></span> <span class="comment">// =6</span></span><br><span class="line"><span class="function"><span class="title">sum3</span><span class="params">(<span class="number">1</span>)</span><span class="params">(<span class="number">2</span>,<span class="number">3</span>)</span></span> <span class="comment">// =6</span></span><br><span class="line"><span class="function"><span class="title">sum3</span><span class="params">(<span class="number">1</span>,<span class="number">2</span>)</span><span class="params">(<span class="number">3</span>)</span></span> <span class="comment">// =6</span></span><br></pre></td></tr></table></figure>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/12/20/curry/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-fp2" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -441,6 +440,76 @@ You can certainly do things with impure functions(and you must, if your program 
       
         <p class="article-more-link">
           <a  href="/2016/12/20/fp2/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-curry" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/20/curry/" class="article-date">
+      <time datetime="2016-12-20T04:02:11.000Z" itemprop="datePublished">2016-12-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/20/curry/">函数式编程入门</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="curring"><a href="#curring" class="headerlink" title="curring"></a>curring</h2><p>A curried function is one where multiple arguments are descirbed by a series of one<br>argument funtions.For example, curried addition would be :</p>
+<pre><code>记录传入的参数，在需要的时候求值。
+</code></pre><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">var</span> curry = require(<span class="string">'curry'</span>)</span><br><span class="line"><span class="selector-tag">var</span> add = curry(function(<span class="selector-tag">a</span>, b)&#123; return <span class="selector-tag">a</span> + b&#125;)</span><br><span class="line"><span class="selector-tag">var</span> add100 = add(<span class="number">100</span>)</span><br><span class="line"><span class="function"><span class="title">add100</span><span class="params">(<span class="number">1</span>)</span></span> <span class="comment">// =101</span></span><br></pre></td></tr></table></figure>
+<p>Curry allows you can aslo call a function with multiple arguments at once:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">var</span> sum3 = curry(function(<span class="selector-tag">a</span>, <span class="selector-tag">b</span>, c) &#123; return <span class="selector-tag">a</span> + <span class="selector-tag">b</span> + c&#125;)</span><br><span class="line"><span class="function"><span class="title">sum3</span><span class="params">(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span></span> <span class="comment">// =6</span></span><br><span class="line"><span class="function"><span class="title">sum3</span><span class="params">(<span class="number">1</span>)</span><span class="params">(<span class="number">2</span>,<span class="number">3</span>)</span></span> <span class="comment">// =6</span></span><br><span class="line"><span class="function"><span class="title">sum3</span><span class="params">(<span class="number">1</span>,<span class="number">2</span>)</span><span class="params">(<span class="number">3</span>)</span></span> <span class="comment">// =6</span></span><br></pre></td></tr></table></figure>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/12/20/curry/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -901,87 +970,6 @@ You can certainly do things with impure functions(and you must, if your program 
       
         <p class="article-more-link">
           <a  href="/2016/12/01/javascriptEvent/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-jsPattern" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/12/01/jsPattern/" class="article-date">
-      <time datetime="2016-12-01T01:11:46.000Z" itemprop="datePublished">2016-12-01</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/01/jsPattern/">javascript模式</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="javascriptPattern"><a href="#javascriptPattern" class="headerlink" title="javascriptPattern"></a>javascriptPattern</h1><p>《javascript设计模式与开发实践》学习记录</p>
-<h1 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h1><hr>
-<h2 id="什么是模式"><a href="#什么是模式" class="headerlink" title="什么是模式"></a>什么是模式</h2><p>模式是一个可复用的解决方案，可用于解决软件设计中的常见问题。三大好处：</p>
-<ol>
-<li>模式是已验证的解决方案</li>
-<li>模式很容易被复用</li>
-<li>模式富有表达力</li>
-</ol>
-<h2 id="优秀的模式"><a href="#优秀的模式" class="headerlink" title="优秀的模式"></a>优秀的模式</h2><p>优秀的模式应当可以执行以下操作：</p>
-<ol>
-<li>解决特殊问题</li>
-<li>没有显而易见的解决方案</li>
-<li>描述经过验证的概念</li>
-<li>描述一种关系</li>
-</ol>
-<h1 id="设计模式的类别"><a href="#设计模式的类别" class="headerlink" title="设计模式的类别"></a>设计模式的类别</h1>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pattern/">pattern</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/12/01/jsPattern/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
