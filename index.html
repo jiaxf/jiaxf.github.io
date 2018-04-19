@@ -1,11 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  
-  <title>飞天雪的技术博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="jiaxf&apos;s blog | js | node | javascript">
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta charset="utf-8">
+    
+    
+    
+    <title>飞天雪的技术博客 | 技术无止境</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    
+    <meta name="theme-color" content="#77AAFF">
+    
+    
+    <meta name="keywords" content="undefined">
+    
+    
+
+    
+
+    <!-- Baidu Push -->
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https') {
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else {
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+
+	var _hmt = _hmt || [];
+</script>
+
+
+
+    
+    <meta name="description" content="jiaxf&apos;s blog | js | node | javascript">
 <meta property="og:type" content="website">
 <meta property="og:title" content="飞天雪的技术博客">
 <meta property="og:url" content="http://jiaxf.github.io/index.html">
@@ -15,264 +49,171 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="飞天雪的技术博客">
 <meta name="twitter:description" content="jiaxf&apos;s blog | js | node | javascript">
-  
-    <link rel="alternative" href="/atom.xml" title="飞天雪的技术博客" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/img/favicon.png">
-  
-  
-      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  
     
+        <link rel="alternate" type="application/atom+xml" title="飞天雪的技术博客" href="/atom.xml">
     
-  
-  
-      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  
-  <!-- 加载特效 -->
-    <script src="/js/pace.js"></script>
-    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
-  <script>
-      var yiliaConfig = {
-          rootUrl: '/',
-          fancybox: true,
-          animate: true,
-          isHome: true,
-          isPost: false,
-          isArchive: false,
-          isTag: false,
-          isCategory: false,
-          open_in_new: false
-      }
-  </script>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+            
 </head>
+
 <body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-    <header id="header" class="inner">
-        <a href="/" class="profilepic">
-            
-            <img lazy-src="/img/linux.jpg" class="js-avatar">
-            
+    <div id="loading" class="active"></div>
+    <aside id="menu"   >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" >
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg" alt="avatar">
         </a>
-
-        <hgroup>
-          <h1 class="header-author"><a href="/" title="jiaxf欢迎您来访！">Jiaxf</a></h1>
-        </hgroup>
-
-        
-        <p class="header-subtitle">技术无止境</p>
-        
-        
-            <form>
-                <input type="text" class="st-default-search-input search" id="search" placeholder=" Search...">
-            </form>
-        
-        
-            <div id="switch-btn" class="switch-btn">
-                <div class="icon">
-                    <div class="icon-ctn">
-                        <div class="icon-wrap icon-house" data-idx="0">
-                            <div class="birdhouse"></div>
-                            <div class="birdhouse_holes"></div>
-                        </div>
-                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
-                            <div class="ribbon"></div>
-                        </div>
-                        
-                        <div class="icon-wrap icon-link hide" data-idx="2">
-                            <div class="loopback_l"></div>
-                            <div class="loopback_r"></div>
-                        </div>
-                        
-                        
-                        <div class="icon-wrap icon-me hide" data-idx="3">
-                            <div class="user"></div>
-                            <div class="shoulder"></div>
-                        </div>
-                        
-                    </div>
-                    
-                </div>
-                <div class="tips-box hide">
-                    <div class="tips-arrow"></div>
-                    <ul class="tips-inner">
-                        <li>菜单</li>
-                        <li>标签</li>
-                        
-                        <li>友情链接</li>
-                        
-                        
-                        <li>关于我</li>
-                        
-                    </ul>
-                </div>
-            </div>
-        
-
-        <div id="switch-area" class="switch-area">
-            <div class="switch-wrap">
-                <section class="switch-part switch-part1">
-                    <nav class="header-menu">
-                        <ul>
-                        
-                            <li><a href="/">博客首页</a></li>
-                        
-                            <li><a href="/archives">技术文摘</a></li>
-                        
-                            <li><a href="/works">前端集锦</a></li>
-                        
-                            <li><a href="/readings">阅读书单</a></li>
-                        
-                            <li><a href="/about">关于我</a></li>
-                        
-                        </ul>
-                    </nav>
-                    <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fl mail" target="_blank" href="mailto:jiaxuefeng0@gmail.com" title="mail">mail</a>
-                            
-                                <a class="fl github" target="_blank" href="https://github.com/jiaxf" title="github">github</a>
-                            
-                                <a class="fl zhihu" target="_blank" href="https://zhihu.com/people/jia-xue-feng-0" title="zhihu">zhihu</a>
-                            
-                                <a class="fl weibo" target="_blank" href="http://weibo.com/jiaxuefeng" title="weibo">weibo</a>
-                            
-                                <a class="fl linkedin" target="_blank" href="http://cn.linkedin.com/in/jiaxuefeng" title="linkedin">linkedin</a>
-                            
-                                <a class="fl rss" target="_blank" href="/atom.xml" title="rss">rss</a>
-                            
-                                <a class="fl douban" target="_blank" href="https://www.douban.com/people/54387876/" title="douban">douban</a>
-                            
-                        </ul>
-                    </nav>
-                </section>
-                
-                
-                <section class="switch-part switch-part2">
-                    <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/functional/" style="font-size: 18.75px;">functional</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/js/" style="font-size: 16.25px;">js</a> <a href="/tags/jsx/" style="font-size: 10px;">jsx</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/mysql/" style="font-size: 11.25px;">mysql</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/pattern/" style="font-size: 10px;">pattern</a> <a href="/tags/php/" style="font-size: 11.25px;">php</a> <a href="/tags/ramda/" style="font-size: 17.5px;">ramda</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/redis/" style="font-size: 13.75px;">redis</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/web/" style="font-size: 11.25px;">web</a> <a href="/tags/函数式编程/" style="font-size: 15px;">函数式编程</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/技术/" style="font-size: 13.75px;">技术</a> <a href="/tags/缓存/" style="font-size: 12.5px;">缓存</a>
-                    </div>
-                </section>
-                
-                
-                
-                <section class="switch-part switch-part3">
-                    <div id="js-friends">
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://luuman.github.io/">luuman</a>
-                    
-                    </div>
-                </section>
-                
-
-                
-                
-                <section class="switch-part switch-part4">
-                
-                    <div id="js-aboutme">码农一枚，追求极客！</div>
-                </section>
-                
-            </div>
-        </div>
-    </header>                
-</div>
-<script type="text/javascript">(function(){document.write(unescape('%3Cdiv id="bdcs"%3E%3C/div%3E'));var bdcs = document.createElement('script');bdcs.type = 'text/javascript';bdcs.async = true;bdcs.src = 'http://znsv.baidu.com/customer_search/api/js?sid=13578845068435931330' + '&plate_url=' + encodeURIComponent(window.location.href) + '&t=' + Math.ceil(new Date()/3600000);var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(bdcs, s);})();</script>
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-      <div class="overlay">
-          <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Jiaxf</a></h1>
-      </div>
-    <div class="intrude-less">
-        <header id="header" class="inner">
-            <a href="/" class="profilepic">
-                
-                    <img lazy-src="/img/linux.jpg" class="js-avatar">
-                
-            </a>
-            <hgroup>
-              <h1 class="header-author"><a href="/" title="Me">Jiaxf</a></h1>
-            </hgroup>
-            
-            <p class="header-subtitle">技术无止境</p>
-            
-            <nav class="header-menu">
-                <ul>
-                
-                    <li><a href="/">博客首页</a></li>
-                
-                    <li><a href="/archives">技术文摘</a></li>
-                
-                    <li><a href="/works">前端集锦</a></li>
-                
-                    <li><a href="/readings">阅读书单</a></li>
-                
-                    <li><a href="/about">关于我</a></li>
-                
-                <div class="clearfix"></div>
-                </ul>
-            </nav>
-            <nav class="header-nav">
-                <div class="social">
-                    
-                        <a class="mail" target="_blank" href="mailto:jiaxuefeng0@gmail.com" title="mail">mail</a>
-                    
-                        <a class="github" target="_blank" href="https://github.com/jiaxf" title="github">github</a>
-                    
-                        <a class="zhihu" target="_blank" href="https://zhihu.com/people/jia-xue-feng-0" title="zhihu">zhihu</a>
-                    
-                        <a class="weibo" target="_blank" href="http://weibo.com/jiaxuefeng" title="weibo">weibo</a>
-                    
-                        <a class="linkedin" target="_blank" href="http://cn.linkedin.com/in/jiaxuefeng" title="linkedin">linkedin</a>
-                    
-                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
-                    
-                        <a class="douban" target="_blank" href="https://www.douban.com/people/54387876/" title="douban">douban</a>
-                    
-                </div>
-            </nav>
-        </header>                
-    </div>
-</nav>
-      <div class="body-wrap">
-  
-    <article id="post-函数式编程" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/04/19/函数式编程/" class="article-date">
-      <time datetime="2018-04-19T06:19:50.000Z" itemprop="datePublished">2018-04-19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/19/函数式编程/">函数式编程</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+        <hgroup class="introduce">
+          <h5 class="nickname" id="name">Jiaxf</h5>
           
+            <div id="yiyanmotto" class="motto">&nbsp;</div>
+          
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+              <li class="waves-block waves-effect active">
+                  <a href="/"  >
+                    <i class="icon icon-lg icon-home"></i>
+                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/archives"  >
+                    <i class="icon icon-lg icon-archives"></i>
+                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/categories"  >
+                    <i class="icon icon-lg icon-th-list"></i>
+                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/tags"  >
+                    <i class="icon icon-lg icon-tags"></i>
+                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/about"  >
+                    <i class="icon icon-lg icon-smile-o"></i>
+                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+      <div class="nav2">
+          
+              <a class="nav2item" data-title="Email" href="mailto:jiaxuefeng0@gmail.com" target="_parent"title="Email" >
+                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Github" href="https://github.com/jiaxf" target="_blank"title="Github" >
+                <i class="icon icon-lg icon-github github"></i>
+              </a>
+          
+              <a class="nav2item" data-title="微博" href="https://weibo.com/u/jiaxuefeng" target="_blank"title="微博" >
+                <i class="icon icon-lg icon-weibo weibo"></i>
+              </a>
+          
+
+            </div>
+        
+      </ul>
+        
+    </div>
+  </div>
+ 
+</aside>
+
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">飞天雪的技术博客</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="global.search_input_hint">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+    </div>
+</header>
+<header class="content-header index-header">
+    
+    
+    <div class="container fade-scale">
+        <div id="myheader">
+            <h1 class="title">
+                 
+                    飞天雪的技术博客
+                
+            </h1>
+            <h5 class="subtitle">
+                
+                    在Web全栈的道路上努力前行
+                
+            </h5>
+        </div>
+    </div>
+
+</header>
+
+<div class="container body-wrap">
+    <ul class="post-list">
+    
+        <li class="post-list-item fade">
+            <article id="post-函数式编程"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a href="/2018/04/19/函数式编程/">函数式编程</a>
+    </h3>
+  
+
+
+
+
+     <div class="post-meta">
+        <time class="post-time" title="2018-04-19 14:19:50" datetime="2018-04-19T06:19:50.000Z"  itemprop="datePublished">2018-04-19</time>
+
+    </div>
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
         <h1 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h1><h2 id="Javascript的箭头函数"><a href="#Javascript的箭头函数" class="headerlink" title="Javascript的箭头函数"></a>Javascript的箭头函数</h2><p><code>ECMAScript2015</code>引入箭头表达式。箭头函数其实是匿名函数，基本语法如下：</p>
 <blockquote>
 <p>(param1, param2, …, paramN) =&gt; { statements }</p>
@@ -305,66 +246,48 @@
 <li><em><a href="https://en.wikipedia.org/wiki/Fixed-point_combinator" target="_blank" rel="noopener">《Wikipedia: Fixed-point combinator》</a></em></li>
 </ul>
 
-      
+    
+        <div>
+            <a href="/2018/04/19/函数式编程/" class="post-more waves-button">
+                post.continue_reading
+            </a>
+        </div>
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-    </div>
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/functional/">functional</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li></ul>
 
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/functional/">functional</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
     </div>
     
-  </div>
-  
 </article>
 
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-2018-04-19-项目基础架构"
+  class="article-card article-type-post" itemprop="blogPost">
 
-
-
-
-
-
+    
 
 
   
-    <article id="post-2018-04-19-项目基础架构" class="article article-type-post" itemscope itemprop="blogPost">
+    <h3 class="post-title" itemprop="name">
+      <a href="/2018/04/19/2018-04-19-项目基础架构/">2018-04-19-项目基础架构</a>
+    </h3>
   
-    <div class="article-meta">
-      <a href="/2018/04/19/2018-04-19-项目基础架构/" class="article-date">
-      <time datetime="2018-04-19T03:32:54.000Z" itemprop="datePublished">2018-04-19</time>
-</a>
+
+
+
+
+     <div class="post-meta">
+        <time class="post-time" title="2018-04-19 11:32:54" datetime="2018-04-19T03:32:54.000Z"  itemprop="datePublished">2018-04-19</time>
+
     </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/19/2018-04-19-项目基础架构/">2018-04-19-项目基础架构</a>
-    </h1>
-  
 
-      </header>
-      
+    <div class="post-content" id="post-content" itemprop="postContent">
+
     
-    <div class="article-entry" itemprop="articleBody">
-      
-          
         <h1 id="项目基础架构"><a href="#项目基础架构" class="headerlink" title="项目基础架构"></a>项目基础架构</h1><h2 id="为什么要建设基础架构？"><a href="#为什么要建设基础架构？" class="headerlink" title="为什么要建设基础架构？"></a>为什么要建设基础架构？</h2><ol>
 <li>夯实基础，事半功倍</li>
 <li>提高系统可用性</li>
@@ -378,62 +301,48 @@
 <li>亡羊补牢，犹未为晚</li>
 </ol>
 
-      
+    
+        <div>
+            <a href="/2018/04/19/2018-04-19-项目基础架构/" class="post-more waves-button">
+                post.continue_reading
+            </a>
+        </div>
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
 
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
     </div>
     
-  </div>
-  
 </article>
 
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-2018-04-17-spring-cloud简介"
+  class="article-card article-type-post" itemprop="blogPost">
 
-
-
-
-
-
+    
 
 
   
-    <article id="post-2018-04-17-spring-cloud简介" class="article article-type-post" itemscope itemprop="blogPost">
+    <h3 class="post-title" itemprop="name">
+      <a href="/2018/04/17/2018-04-17-spring-cloud简介/">2018-04-17-spring_cloud简介</a>
+    </h3>
   
-    <div class="article-meta">
-      <a href="/2018/04/17/2018-04-17-spring-cloud简介/" class="article-date">
-      <time datetime="2018-04-17T07:14:10.000Z" itemprop="datePublished">2018-04-17</time>
-</a>
+
+
+
+
+     <div class="post-meta">
+        <time class="post-time" title="2018-04-17 15:14:10" datetime="2018-04-17T07:14:10.000Z"  itemprop="datePublished">2018-04-17</time>
+
     </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/17/2018-04-17-spring-cloud简介/">2018-04-17-spring_cloud简介</a>
-    </h1>
-  
 
-      </header>
-      
+    <div class="post-content" id="post-content" itemprop="postContent">
+
     
-    <div class="article-entry" itemprop="articleBody">
-      
-          
         <h1 id="Spring-Cloud-简介"><a href="#Spring-Cloud-简介" class="headerlink" title="Spring Cloud 简介"></a>Spring Cloud 简介</h1><p>Spring Cloud是一系列框架的有序集合。它利用Spring Boot的开发便利性巧妙地简化了分布式系统基础设施的开发，如服务发现注册、配置中心、消息总线、负载均衡、断路器、数据监控等，都可以用Spring Boot的开发风格做到一键启动和部署。Spring并没有重复制造轮子，它只是将目前各家公司开发的比较成熟、经得起实际考验的服务框架组合起来，通过Spring Boot风格进行再封装屏蔽掉了复杂的配置和实现原理，最终给开发者留出了一套简单易懂、易部署和易维护的分布式系统开发工具包。</p>
 <p>微服务是可以独立部署、水平扩展、独立访问（或者有独立的数据库）的服务单元，springcloud就是这些微服务的大管家，采用了微服务这种架构之后，项目的数量会非常多，springcloud做为大管家需要管理好这些微服务，自然需要很多小弟来帮忙。</p>
 <p>主要的小弟有：Spring Cloud Config、Spring Cloud Netflix（Eureka、Hystrix、Zuul、Archaius…）、Spring Cloud Bus、Spring Cloud for Cloud Foundry、Spring Cloud Cluster、Spring Cloud Consul、Spring Cloud Security、Spring Cloud Sleuth、Spring Cloud Data Flow、Spring Cloud Stream、Spring Cloud Task、Spring Cloud Zookeeper、Spring Cloud Connectors、Spring Cloud Starters、Spring Cloud CLI。</p>
@@ -479,58 +388,42 @@
 </ul>
 <p>Spring Cloud对于中小型互联网公司来说是一种福音，因为这类公司往往没有实力或者没有足够的资金投入去开发自己的分布式系统基础设施，使用Spring Cloud一站式解决方案能在从容应对业务发展的同时大大减少开发成本。同时，随着近几年微服务架构和Docker容器概念的火爆，也会让Spring Cloud在未来越来越“云”化的软件开发风格中立有一席之地，尤其是在目前五花八门的分布式解决方案中提供了标准化的、全站式的技术方案，意义可能会堪比当前Servlet规范的诞生，有效推进服务端软件系统技术水平的进步。</p>
 
-      
+    
+        <div>
+            <a href="/2018/04/17/2018-04-17-spring-cloud简介/" class="post-more waves-button">
+                post.continue_reading
+            </a>
+        </div>
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
 </article>
 
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-2018-04-17-spring-boot入门"
+  class="article-card article-type-post" itemprop="blogPost">
 
-
-
-
-
-
+    
 
 
   
-    <article id="post-2018-04-17-spring-boot入门" class="article article-type-post" itemscope itemprop="blogPost">
+    <h3 class="post-title" itemprop="name">
+      <a href="/2018/04/17/2018-04-17-spring-boot入门/">2018/04/17/spring-boot入门.md</a>
+    </h3>
   
-    <div class="article-meta">
-      <a href="/2018/04/17/2018-04-17-spring-boot入门/" class="article-date">
-      <time datetime="2018-04-17T06:19:50.000Z" itemprop="datePublished">2018-04-17</time>
-</a>
+
+
+
+
+     <div class="post-meta">
+        <time class="post-time" title="2018-04-17 14:19:50" datetime="2018-04-17T06:19:50.000Z"  itemprop="datePublished">2018-04-17</time>
+
     </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/17/2018-04-17-spring-boot入门/">2018/04/17/spring-boot入门.md</a>
-    </h1>
-  
 
-      </header>
-      
+    <div class="post-content" id="post-content" itemprop="postContent">
+
     
-    <div class="article-entry" itemprop="articleBody">
-      
-          
         <h1 id="SpringBoot入门"><a href="#SpringBoot入门" class="headerlink" title="SpringBoot入门"></a>SpringBoot入门</h1><h2 id="什么是Spring-Boot？"><a href="#什么是Spring-Boot？" class="headerlink" title="什么是Spring Boot？"></a>什么是Spring Boot？</h2><p>SpringBoot简化了基于Spring的应用开发，通过少量代码就能创建一个独立的、产品级别的Spring应用。<br>SpringBoot为spring平台及第三方库提供开箱即用的设置，该框架使用特定的方式来进行配置，从而使开发人员<br>不再需要定义样板化的配置。<br>SpringBoot的核心思想是约定大于配置，一切自动完成。采用SpringBoot可以大大的简化开发模式。</p>
 <h2 id="使用spring-boot的好处"><a href="#使用spring-boot的好处" class="headerlink" title="使用spring boot的好处"></a>使用spring boot的好处</h2><p>简单、快速、方便。</p>
 <p>平时搭建一个spring web 项目的时候需要怎么做呢？</p>
@@ -581,62 +474,48 @@
 <p>该模块在完整的打包环境下运行的时候会被禁用。如果你使用java -jar启动应用或者用一个特定的classloader启动，它会认为这是一个“生产环境”。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>使用spring boot可以非常方便、快速搭建项目，使我们不用关心框架之间的兼容性，适用版本等各种问题，我们想使用任何东西，仅仅添加一个配置就可以，所以使用sping boot非常适合构建微服务。</p>
 
-      
+    
+        <div>
+            <a href="/2018/04/17/2018-04-17-spring-boot入门/" class="post-more waves-button">
+                post.continue_reading
+            </a>
+        </div>
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
 
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
     </div>
     
-  </div>
-  
 </article>
 
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="draft-2018-04-16-github上备份Hexo博客"
+  class="article-card article-type-draft" itemprop="blogPost">
 
-
-
-
-
-
+    
 
 
   
-    <article id="draft-2018-04-16-github上备份Hexo博客" class="article article-type-draft" itemscope itemprop="blogPost">
+    <h3 class="post-title" itemprop="name">
+      <a href="/2018/04/16/2018-04-16-github上备份Hexo博客/">2018-04-16-github上备份Hexo博客.md</a>
+    </h3>
   
-    <div class="article-meta">
-      <a href="/2018/04/16/2018-04-16-github上备份Hexo博客/" class="article-date">
-      <time datetime="2018-04-16T01:06:04.000Z" itemprop="datePublished">2018-04-16</time>
-</a>
+
+
+
+
+     <div class="post-meta">
+        <time class="post-time" title="2018-04-16 09:06:04" datetime="2018-04-16T01:06:04.000Z"  itemprop="datePublished">2018-04-16</time>
+
     </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/16/2018-04-16-github上备份Hexo博客/">2018-04-16-github上备份Hexo博客.md</a>
-    </h1>
-  
 
-      </header>
-      
+    <div class="post-content" id="post-content" itemprop="postContent">
+
     
-    <div class="article-entry" itemprop="articleBody">
-      
-          
         <h1 id="Github上备份Hexo博客"><a href="#Github上备份Hexo博客" class="headerlink" title="Github上备份Hexo博客"></a>Github上备份Hexo博客</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>配置好Git和Github环境后，Hexo博客的markdown文件备份。Git相关操作请参考<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">廖雪峰的Git教程</a>。</p>
 <h2 id="备份博客"><a href="#备份博客" class="headerlink" title="备份博客"></a>备份博客</h2><p>假设本地Hexo博客已经初始化，如果没有配置好Hexo博客详见<a href="https://lrscy.github.io/2017/11/10/Ubuntu-Github-io-config-Hexo" target="_blank" rel="noopener">「Ubuntu16.04下从零起步搭建配置github.io博客————Hexo」</a>。</p>
 <h2 id="创建新分支"><a href="#创建新分支" class="headerlink" title="创建新分支"></a>创建新分支</h2><p>git可以很方便和低代价的创建新分支，可以利用git的新分支来备份博客。</p>
@@ -659,62 +538,48 @@
 <p>注：不再需要执行<code>hexo init</code>命令。</p>
 </blockquote>
 
-      
+    
+        <div>
+            <a href="/2018/04/16/2018-04-16-github上备份Hexo博客/" class="post-more waves-button">
+                post.continue_reading
+            </a>
+        </div>
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
 
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
     </div>
     
-  </div>
-  
 </article>
 
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="draft-2018-04-13-python-md-1"
+  class="article-card article-type-draft" itemprop="blogPost">
 
-
-
-
-
-
+    
 
 
   
-    <article id="draft-2018-04-13-python-md-1" class="article article-type-draft" itemscope itemprop="blogPost">
+    <h3 class="post-title" itemprop="name">
+      <a href="/2018/04/13/2018-04-13-python-md-1/">2018-04-13-技术随笔.md</a>
+    </h3>
   
-    <div class="article-meta">
-      <a href="/2018/04/13/2018-04-13-python-md-1/" class="article-date">
-      <time datetime="2018-04-13T03:31:04.000Z" itemprop="datePublished">2018-04-13</time>
-</a>
+
+
+
+
+     <div class="post-meta">
+        <time class="post-time" title="2018-04-13 11:31:04" datetime="2018-04-13T03:31:04.000Z"  itemprop="datePublished">2018-04-13</time>
+
     </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/13/2018-04-13-python-md-1/">2018-04-13-技术随笔.md</a>
-    </h1>
-  
 
-      </header>
-      
+    <div class="post-content" id="post-content" itemprop="postContent">
+
     
-    <div class="article-entry" itemprop="articleBody">
-      
-          
         <h1 id="Mac下零配置server"><a href="#Mac下零配置server" class="headerlink" title="Mac下零配置server"></a>Mac下零配置server</h1><p>Pow<a href="http://pow.cx/" target="_blank" rel="noopener">Pow</a> is a zero-config Rack Server for Mac。</p>
 <h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><p><code>curl get.pow.cx | sh</code></p>
 <h2 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h2><p>Symlink the folder into ~/.pow</p>
@@ -722,63 +587,49 @@
  $ ln -s /path/to/myapp</code></p>
 <p>Your website will be up and running at <a href="http://myapp.dev" target="_blank" rel="noopener">http://myapp.dev</a>. The URL is based on the name of the symlink.</p>
 
-      
+    
+        <div>
+            <a href="/2018/04/13/2018-04-13-python-md-1/" class="post-more waves-button">
+                post.continue_reading
+            </a>
+        </div>
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
 
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
     </div>
     
-  </div>
-  
 </article>
 
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-redis配置"
+  class="article-card article-type-post" itemprop="blogPost">
 
-
-
-
-
-
+    
 
 
   
-    <article id="post-redis配置" class="article article-type-post" itemscope itemprop="blogPost">
+    <h3 class="post-title" itemprop="name">
+      <a href="/2018/03/29/redis配置/">redis配置</a>
+    </h3>
   
-    <div class="article-meta">
-      <a href="/2018/03/29/redis配置/" class="article-date">
-      <time datetime="2018-03-29T01:27:13.000Z" itemprop="datePublished">2018-03-29</time>
-</a>
+
+
+
+
+     <div class="post-meta">
+        <time class="post-time" title="2018-03-29 09:27:13" datetime="2018-03-29T01:27:13.000Z"  itemprop="datePublished">2018-03-29</time>
+
     </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/29/redis配置/">redis配置</a>
-    </h1>
-  
 
-      </header>
-      
+    <div class="post-content" id="post-content" itemprop="postContent">
+
     
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="redis-配置"><a href="#redis-配置" class="headerlink" title="redis 配置"></a>redis 配置</h1><p>redis.conf 配置项说明如下：</p>
+        <h1 id="redis-配置"><a href="#redis-配置" class="headerlink" title="redis 配置"></a>redis 配置</h1><p>redis.conf 配置项说明如下：</p>
 <ol>
 <li>Redis默认不是以守护进程的方式运行，可以通过该配置项修改，使用yes启用守护进程<br> daemonize no</li>
 <li>当Redis以守护进程方式运行时，Redis默认会把pid写入/var/run/redis.pid文件，可以通过pidfile指定<br> pidfile /var/run/redis.pid</li>
@@ -787,72 +638,49 @@
 <li>指定日志记录级别，Redis总共支持四个级别：debug、verbose、notice、warning，默认为verbose<br> loglevel verbose</li>
 <li>日志记录方式，默认为标准输出，如果配置Redis为守护进程方式运行，而这里又配置为日志记录方式为标准输出，则日志将会发送给/dev/null<br> logfile stdout</li>
 <li>设置数据库的数量，默认数据库为0，可以使用SELECT <dbid>命令在连接上指定数据库id<br> databases 16
-          
-      
+    
+        <div>
+            <a href="/2018/03/29/redis配置/" class="post-more waves-button">
+                post.continue_reading
+            </a>
+        </div>
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-    </div>
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li></ul>
 
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2018/03/29/redis配置/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
     </div>
     
-  </div>
-  
 </article>
 
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-mysqlMySQL双主一致性架构优化"
+  class="article-card article-type-post" itemprop="blogPost">
 
-
-
-
-
-
+    
 
 
   
-    <article id="post-mysqlMySQL双主一致性架构优化" class="article article-type-post" itemscope itemprop="blogPost">
+    <h3 class="post-title" itemprop="name">
+      <a href="/2017/07/03/mysqlMySQL双主一致性架构优化/">MySQL双主一致性架构优化</a>
+    </h3>
   
-    <div class="article-meta">
-      <a href="/2017/07/03/mysqlMySQL双主一致性架构优化/" class="article-date">
-      <time datetime="2017-07-03T00:57:39.000Z" itemprop="datePublished">2017-07-03</time>
-</a>
+
+
+
+
+     <div class="post-meta">
+        <time class="post-time" title="2017-07-03 08:57:39" datetime="2017-07-03T00:57:39.000Z"  itemprop="datePublished">2017-07-03</time>
+
     </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/03/mysqlMySQL双主一致性架构优化/">MySQL双主一致性架构优化</a>
-    </h1>
-  
 
-      </header>
-      
+    <div class="post-content" id="post-content" itemprop="postContent">
+
     
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="MySQL双主一致性架构优化"><a href="#MySQL双主一致性架构优化" class="headerlink" title="MySQL双主一致性架构优化"></a>MySQL双主一致性架构优化</h1><p>一、双主保证高可用</p>
+        <h1 id="MySQL双主一致性架构优化"><a href="#MySQL双主一致性架构优化" class="headerlink" title="MySQL双主一致性架构优化"></a>MySQL双主一致性架构优化</h1><p>一、双主保证高可用</p>
 <p>MySQL数据库集群常使用一主多从，主从同步，读写分离的方式来扩充数据库的读性能，保证读库的高可用，但此时写库仍然是单点。</p>
 <p>在一个MySQL数据库集群中可以设置两个主库，并设置双向同步，以冗余写库的方式来保证写库的高可用。</p>
 <p>二、并发引发不一致</p>
@@ -866,142 +694,96 @@
 <li>数据同步成功之前，主库2也插入了一条记录，由于数据还没有同步成功，插入记录生成的主键也为4，并向主库1也同步数据</li>
 <li>主库1和主库2都插入了主键为4的记录，双主同步失败，数据不一致</li>
 </ul>
-          
-      
+    
+        <div>
+            <a href="/2017/07/03/mysqlMySQL双主一致性架构优化/" class="post-more waves-button">
+                post.continue_reading
+            </a>
+        </div>
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-    </div>
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
 
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/07/03/mysqlMySQL双主一致性架构优化/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
     </div>
     
-  </div>
-  
 </article>
 
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-mysql调优"
+  class="article-card article-type-post" itemprop="blogPost">
 
-
-
-
-
-
+    
 
 
   
-    <article id="post-mysql调优" class="article article-type-post" itemscope itemprop="blogPost">
+    <h3 class="post-title" itemprop="name">
+      <a href="/2017/04/07/mysql调优/">mysql调优</a>
+    </h3>
   
-    <div class="article-meta">
-      <a href="/2017/04/07/mysql调优/" class="article-date">
-      <time datetime="2017-04-07T07:20:33.000Z" itemprop="datePublished">2017-04-07</time>
-</a>
+
+
+
+
+     <div class="post-meta">
+        <time class="post-time" title="2017-04-07 15:20:33" datetime="2017-04-07T07:20:33.000Z"  itemprop="datePublished">2017-04-07</time>
+
     </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/07/mysql调优/">mysql调优</a>
-    </h1>
-  
 
-      </header>
-      
+    <div class="post-content" id="post-content" itemprop="postContent">
+
     
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="MySQL-调优"><a href="#MySQL-调优" class="headerlink" title="MySQL 调优"></a>MySQL 调优</h1><h2 id="mysql中的两个关键参数"><a href="#mysql中的两个关键参数" class="headerlink" title="mysql中的两个关键参数"></a>mysql中的两个关键参数</h2><p>(1)interactive_timeout:</p>
+        <h1 id="MySQL-调优"><a href="#MySQL-调优" class="headerlink" title="MySQL 调优"></a>MySQL 调优</h1><h2 id="mysql中的两个关键参数"><a href="#mysql中的两个关键参数" class="headerlink" title="mysql中的两个关键参数"></a>mysql中的两个关键参数</h2><p>(1)interactive_timeout:</p>
 <p>参数含义：服务器关闭交互式连接前等待活动的秒数。交互式客户端定义为在mysql_real_connect()中使用CLIENT_INTERACTIVE选项的客户端。<br>参数默认值：28800秒（8小时）</p>
 <p>(2)wait_timeout:</p>
 <p>参数含义：服务器关闭非交互连接之前等待活动的秒数。<br>在线程启动时，根据全局wait_timeout值或全局interactive_timeout值初始化会话wait_timeout值，取决于客户端类型(由mysql_real_connect()的连接选项CLIENT_INTERACTIVE定义)。<br>参数默认值：28800秒（8小时）</p>
 <p>wait_timeout过大有弊端，其体现就是MySQL里大量的SLEEP进程无法及时释放，拖累系统性能，不过也不能把这个指设置的过小，否则你可 能会遭遇到“MySQL has gone away”之类的问题，通常来说，我觉得把wait_timeout设置为10是个不错的选择，但某些情况下可能也会出问题，比如说有一个CRON脚本， 其中两次SQL查询的间隔时间大于10秒的话，那么这个设置就有问题了（当然，这也不是不能解决的问题，你可以在程序里时不时mysql_ping一下， 以便服务器知道你还活着，重新计算wait_timeout时间）</p>
-          
-      
+    
+        <div>
+            <a href="/2017/04/07/mysql调优/" class="post-more waves-button">
+                post.continue_reading
+            </a>
+        </div>
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-    </div>
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
 
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/04/07/mysql调优/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
     </div>
     
-  </div>
-  
 </article>
 
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-前端自适应CSS3相对单位rem"
+  class="article-card article-type-post" itemprop="blogPost">
 
-
-
-
-
-
+    
 
 
   
-    <article id="post-前端自适应CSS3相对单位rem" class="article article-type-post" itemscope itemprop="blogPost">
+    <h3 class="post-title" itemprop="name">
+      <a href="/2017/01/12/前端自适应CSS3相对单位rem/">前端自适应css3相对单位rem</a>
+    </h3>
   
-    <div class="article-meta">
-      <a href="/2017/01/12/前端自适应CSS3相对单位rem/" class="article-date">
-      <time datetime="2017-01-12T02:14:40.000Z" itemprop="datePublished">2017-01-12</time>
-</a>
+
+
+
+
+     <div class="post-meta">
+        <time class="post-time" title="2017-01-12 10:14:40" datetime="2017-01-12T02:14:40.000Z"  itemprop="datePublished">2017-01-12</time>
+
     </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/12/前端自适应CSS3相对单位rem/">前端自适应css3相对单位rem</a>
-    </h1>
-  
 
-      </header>
-      
+    <div class="post-content" id="post-content" itemprop="postContent">
+
     
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="相对单位rem"><a href="#相对单位rem" class="headerlink" title="相对单位rem"></a>相对单位rem</h1><p>rem(font size of the root element)是指相对于根元素的字体大小的单位。</p>
+        <h1 id="相对单位rem"><a href="#相对单位rem" class="headerlink" title="相对单位rem"></a>相对单位rem</h1><p>rem(font size of the root element)是指相对于根元素的字体大小的单位。</p>
 <blockquote>
 <p>rem是相对长度单位，相对于根元素（即html元素） font-size计算值的倍数。<br>使用： 根据根标签html设置文字大小后（大部分浏览器默认为16px），其他标签设置rem都是html大小的倍数。</p>
 </blockquote>
@@ -1009,176 +791,204 @@
 <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">html</span>&#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">1rem</span>;  <span class="comment">// 16px</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">h1</span>&#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">0.625rem</span> // <span class="number">10px</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="web-app的几种屏幕适配："><a href="#web-app的几种屏幕适配：" class="headerlink" title="web app的几种屏幕适配："></a>web app的几种屏幕适配：</h1><h2 id="1-固定高度（流式布局）"><a href="#1-固定高度（流式布局）" class="headerlink" title="1. 固定高度（流式布局）"></a>1. 固定高度（流式布局）</h2><p>流式布局通过百分比来定义宽度，但是高度大都是用px固定住。 高度不变，宽度拉伸。</p>
 <h2 id="2-固定宽度"><a href="#2-固定宽度" class="headerlink" title="2. 固定宽度"></a>2. 固定宽度</h2><p>固定宽度，超出部分留白。</p>
-          
-      
+    
+        <div>
+            <a href="/2017/01/12/前端自适应CSS3相对单位rem/" class="post-more waves-button">
+                post.continue_reading
+            </a>
+        </div>
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-    </div>
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css3/">css3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
 
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css3/">css3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/01/12/前端自适应CSS3相对单位rem/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
     </div>
     
-  </div>
-  
 </article>
 
+        </li>
+    
+    </ul>
+
+    
+<nav id="page-nav">
+    <div class="inner">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    </div>
+</nav>
 
 
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
-  
 </div>
-      <footer id="footer">
-    <div class="outer">
-        <div id="footer-info">
-            <div class="footer-left">
-                &copy; 2018 Jiaxf
-            </div>
-            <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
-            </div>
-        </div>
-        
-            <div class="visit">
-                
-                    <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" >用户到访数: 
-                            <span id="busuanzi_value_site_uv"></span>
-                        </span>
-                    </span>
-                
-                
-                    <span>, </span>
-                
-                
-                    <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit">本页阅读量: 
-                            <span id="busuanzi_value_page_pv"></span>
-                        </span>
-                    </span>
-                
-            </div>
-        
+
+        <footer class="footer">
+    <div class="footer-content">
+        <span class="power">
+            <i class="icon icon-lg icon-copyright"></i>
+            2017
+            <i class="icon icon-lg icon-heart"></i>
+            <a href="http://jiaxf.github.io">tomotoes.com</a>
+            <br/>
+            Power by
+            <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
+            Theme
+            <a class="tomotoeslink" href="https://github.com/tomotoes/hexo-theme-tomotoes/" target="_blank" rel="external nofollow">tomotoes</a>
+        </span>
+
+        <br/>
+
+        <span id="RunTime" style="color:#a7a7a2;"></span>
+        <br/>
+
+        <span>
+            
+	<i class="icon icon-lg icon-user">
+<span id="busuanzi_container_site_uv" style='display:none'>
+       访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>人</i>
+    ·
+    <i class="icon icon-lg icon-eye">
+    <span id="busuanzi_container_site_pv" style='display:none'>
+      访问次数：<span id="busuanzi_value_site_pv"></span>
+    </span>次
+    </i>
+
+
+        </span>
+        <br/>
+
+        <span class="license">footer.license</span>
     </div>
 </footer>
 
-    </div>
-    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-<script src="/js/main.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            var backgroundnum = 30;
-            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
-            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
-            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
-        })
-    </script>
+    </main>
+    
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
-<!-- Google Analytics -->
-<script type="text/javascript">
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    <!-- waves按钮特效 -->
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 
-ga('create', 'UA-70677304-1', 'auto');
-ga('send', 'pageview');
-
-</script>
-<!-- End Google Analytics -->
-
-
-
-
-<div class="scroll" id="scroll">
-    <a href="#"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
-</div>
+<!-- 主题配置脚本 -->
 <script>
-    $(document).ready(function() {
-        if ($("#comments").length < 1) {
-            $("#scroll > a:nth-child(2)").hide();
-        };
-    })
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </script>
 
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+<!-- jquery -->
+<script src="/js/jquery.min.js?v=3.0"></script>
+
+<!-- 搜索 -->
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item waves-block waves-effect" onclick="location.href='{path}'">
+    <div class="title ellipsis" title="{title}">{title}</div>
+</li>
+</template>
+
+
+<!-- main博客脚本 -->
+<script src="/js/main.min.js?v=3.0" ></script>
+
+<!-- 动画&配置 -->
+<script src="/js/script.min.js?v=3.0" ></script>
+
+<!-- 脚本管理 -->
+<script>
+
+if(window.innerWidth > 800){
+	/* 3D标题 */
+	$(".content-header").on("mousemove", threedee);
+
+	/* 底部追随鼠标 */
+	$(".footer").hover(2);
+
+	/* gotop键的涟漪 */
+	$("#gotop").hover(1);
+
+	/* 赞赏的粒子雨 */
+	$("#reward").hover(3);
+
+	/* 微信公众号的底部渲染 */
+	$("#wechat").hover(4);
+
+    /* 标题跳动 */
+    $(".archivestitle").bumpyText();
+
+	/* 图片点击放大 */
+	const postimg = jQuery(".post-content img:not(.github-emoji)");
+	postimg.on("click",function(){
+
+		mask.classList.add("in");
+		main.classList.add("Mask");
+		menu.classList.add("Mask");
+		var myimg = this.cloneNode(true);
+		myimg.classList.add("imgShow");
+
+		setTimeout(function(){
+			jQuery(myimg).animate({
+				opacity:"1"
+			},1000);
+		},0);
+
+		document.body.appendChild(myimg);
+
+		myimg.onclick=function(){
+			document.body.removeChild(myimg);
+			mask.classList.remove("in");
+			main.classList.remove("Mask");
+			menu.classList.remove("Mask");
+		};
+
+	});
+
+}
+
+/* 名字跳动 */
+$("#name").bumpyText();
+
+
+/* 网站运行时间 */
+setInterval(function () {
+	setTime("2017/10/11");
+}, 1000);
+
+/* 文章块的淡出 */
+postshow();
+
+/* 座右铭 */
+
+   getHitokoto();
+
+
+
+/* 粘贴提示 */
+G($(".post-content"), location.href, "Jiaxf");
+
+
+/* 控制台 */
+if (window.console && window.console.log) {
+	setTimeout(function () {
+		console.log("\n %c 一个坏掉的番茄 %c  © Simon Ma  http://tomotoes.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
+	}, 0);
+}
+
 </script>
 
-  <script language="javascript">
-    $(function() {
-        $("a[title]").each(function() {
-            var a = $(this);
-            var title = a.attr('title');
-            if (title == undefined || title == "") return;
-            a.data('title', title).removeAttr('title').hover(
-
-            function() {
-                var offset = a.offset();
-                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
-                    top: offset.top - a.outerHeight() - 15,
-                    left: offset.left + a.outerWidth()/2 + 1
-                }).fadeIn(function() {
-                    var pop = $(this);
-                    setTimeout(function() {
-                        pop.remove();
-                    }, pop.text().length * 800);
-                });
-            }, function() {
-                $("#anchortitlecontainer").remove();
-            });
-        });
-    });
-</script>
 
 
-    <script type="text/javascript">
-      window.onload = function(){
-        document.getElementById("search").onclick = function(){
-            console.log("search")
-            search();
-        }
-      }
-      function search(){
-        (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-        (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-        })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
 
-        _st('install','f9SxgsuoT3T5zTyGctUR','2.0.0');
-        
-      }
-    </script>
+<!-- 公式渲染 -->
 
-  </div>
+
+
+<!-- 不蒜子 -->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
 </body>
 </html>
-<a href="https://github.com/jiaxf"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>

@@ -1,11 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  
-  <title>JavaScriptEvent | 飞天雪的技术博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="JavaScript事件1. 相关术语 事件类型（event type）是一个用来说明发生什么类型事件的字符串。  例如，“mousemove”表示用户移动鼠标，“keydown”表示键盘上某个键被按下等等。 事件目标（event target）是发生的事件与之相关的对象。当讲事件时，我必须同时指明类型和目标。  比如：window上的load事件或button元素的click事件。  在客户端J">
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta charset="utf-8">
+    
+    
+    
+    <title>JavaScriptEvent | 飞天雪的技术博客 | 技术无止境</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    
+    <meta name="theme-color" content="#77AAFF">
+    
+    
+    <meta name="keywords" content="javascript,event">
+    
+    
+
+    
+
+    <!-- Baidu Push -->
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https') {
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else {
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+
+	var _hmt = _hmt || [];
+</script>
+
+
+
+    
+    <meta name="description" content="JavaScript事件1. 相关术语 事件类型（event type）是一个用来说明发生什么类型事件的字符串。  例如，“mousemove”表示用户移动鼠标，“keydown”表示键盘上某个键被按下等等。 事件目标（event target）是发生的事件与之相关的对象。当讲事件时，我必须同时指明类型和目标。  比如：window上的load事件或button元素的click事件。  在客户端J">
 <meta name="keywords" content="javascript,event">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScriptEvent">
@@ -17,275 +51,181 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScriptEvent">
 <meta name="twitter:description" content="JavaScript事件1. 相关术语 事件类型（event type）是一个用来说明发生什么类型事件的字符串。  例如，“mousemove”表示用户移动鼠标，“keydown”表示键盘上某个键被按下等等。 事件目标（event target）是发生的事件与之相关的对象。当讲事件时，我必须同时指明类型和目标。  比如：window上的load事件或button元素的click事件。  在客户端J">
-  
-    <link rel="alternative" href="/atom.xml" title="飞天雪的技术博客" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/img/favicon.png">
-  
-  
-      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  
-  
-      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  
-  <!-- 加载特效 -->
-    <script src="/js/pace.js"></script>
-    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
-  <script>
-      var yiliaConfig = {
-          rootUrl: '/',
-          fancybox: true,
-          animate: true,
-          isHome: false,
-          isPost: true,
-          isArchive: false,
-          isTag: false,
-          isCategory: false,
-          open_in_new: false
-      }
-  </script>
+    
+        <link rel="alternate" type="application/atom+xml" title="飞天雪的技术博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+            
 </head>
+
 <body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-    <header id="header" class="inner">
-        <a href="/" class="profilepic">
-            
-            <img lazy-src="/img/linux.jpg" class="js-avatar">
-            
+    <div id="loading" class="active"></div>
+    <aside id="menu"  class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" >
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg" alt="avatar">
         </a>
-
-        <hgroup>
-          <h1 class="header-author"><a href="/" title="jiaxf欢迎您来访！">Jiaxf</a></h1>
-        </hgroup>
-
-        
-        <p class="header-subtitle">技术无止境</p>
-        
-        
-            <form>
-                <input type="text" class="st-default-search-input search" id="search" placeholder=" Search...">
-            </form>
-        
-        
-            <div id="switch-btn" class="switch-btn">
-                <div class="icon">
-                    <div class="icon-ctn">
-                        <div class="icon-wrap icon-house" data-idx="0">
-                            <div class="birdhouse"></div>
-                            <div class="birdhouse_holes"></div>
-                        </div>
-                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
-                            <div class="ribbon"></div>
-                        </div>
-                        
-                        <div class="icon-wrap icon-link hide" data-idx="2">
-                            <div class="loopback_l"></div>
-                            <div class="loopback_r"></div>
-                        </div>
-                        
-                        
-                        <div class="icon-wrap icon-me hide" data-idx="3">
-                            <div class="user"></div>
-                            <div class="shoulder"></div>
-                        </div>
-                        
-                    </div>
-                    
-                </div>
-                <div class="tips-box hide">
-                    <div class="tips-arrow"></div>
-                    <ul class="tips-inner">
-                        <li>菜单</li>
-                        <li>标签</li>
-                        
-                        <li>友情链接</li>
-                        
-                        
-                        <li>关于我</li>
-                        
-                    </ul>
-                </div>
-            </div>
-        
-
-        <div id="switch-area" class="switch-area">
-            <div class="switch-wrap">
-                <section class="switch-part switch-part1">
-                    <nav class="header-menu">
-                        <ul>
-                        
-                            <li><a href="/">博客首页</a></li>
-                        
-                            <li><a href="/archives">技术文摘</a></li>
-                        
-                            <li><a href="/works">前端集锦</a></li>
-                        
-                            <li><a href="/readings">阅读书单</a></li>
-                        
-                            <li><a href="/about">关于我</a></li>
-                        
-                        </ul>
-                    </nav>
-                    <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fl mail" target="_blank" href="mailto:jiaxuefeng0@gmail.com" title="mail">mail</a>
-                            
-                                <a class="fl github" target="_blank" href="https://github.com/jiaxf" title="github">github</a>
-                            
-                                <a class="fl zhihu" target="_blank" href="https://zhihu.com/people/jia-xue-feng-0" title="zhihu">zhihu</a>
-                            
-                                <a class="fl weibo" target="_blank" href="http://weibo.com/jiaxuefeng" title="weibo">weibo</a>
-                            
-                                <a class="fl linkedin" target="_blank" href="http://cn.linkedin.com/in/jiaxuefeng" title="linkedin">linkedin</a>
-                            
-                                <a class="fl rss" target="_blank" href="/atom.xml" title="rss">rss</a>
-                            
-                                <a class="fl douban" target="_blank" href="https://www.douban.com/people/54387876/" title="douban">douban</a>
-                            
-                        </ul>
-                    </nav>
-                </section>
-                
-                
-                <section class="switch-part switch-part2">
-                    <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/functional/" style="font-size: 18.75px;">functional</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/js/" style="font-size: 16.25px;">js</a> <a href="/tags/jsx/" style="font-size: 10px;">jsx</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/mysql/" style="font-size: 11.25px;">mysql</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/pattern/" style="font-size: 10px;">pattern</a> <a href="/tags/php/" style="font-size: 11.25px;">php</a> <a href="/tags/ramda/" style="font-size: 17.5px;">ramda</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/redis/" style="font-size: 13.75px;">redis</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/web/" style="font-size: 11.25px;">web</a> <a href="/tags/函数式编程/" style="font-size: 15px;">函数式编程</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/技术/" style="font-size: 13.75px;">技术</a> <a href="/tags/缓存/" style="font-size: 12.5px;">缓存</a>
-                    </div>
-                </section>
-                
-                
-                
-                <section class="switch-part switch-part3">
-                    <div id="js-friends">
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://luuman.github.io/">luuman</a>
-                    
-                    </div>
-                </section>
-                
-
-                
-                
-                <section class="switch-part switch-part4">
-                
-                    <div id="js-aboutme">码农一枚，追求极客！</div>
-                </section>
-                
-            </div>
-        </div>
-    </header>                
-</div>
-<script type="text/javascript">(function(){document.write(unescape('%3Cdiv id="bdcs"%3E%3C/div%3E'));var bdcs = document.createElement('script');bdcs.type = 'text/javascript';bdcs.async = true;bdcs.src = 'http://znsv.baidu.com/customer_search/api/js?sid=13578845068435931330' + '&plate_url=' + encodeURIComponent(window.location.href) + '&t=' + Math.ceil(new Date()/3600000);var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(bdcs, s);})();</script>
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-      <div class="overlay">
-          <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Jiaxf</a></h1>
-      </div>
-    <div class="intrude-less">
-        <header id="header" class="inner">
-            <a href="/" class="profilepic">
-                
-                    <img lazy-src="/img/linux.jpg" class="js-avatar">
-                
-            </a>
-            <hgroup>
-              <h1 class="header-author"><a href="/" title="Me">Jiaxf</a></h1>
-            </hgroup>
-            
-            <p class="header-subtitle">技术无止境</p>
-            
-            <nav class="header-menu">
-                <ul>
-                
-                    <li><a href="/">博客首页</a></li>
-                
-                    <li><a href="/archives">技术文摘</a></li>
-                
-                    <li><a href="/works">前端集锦</a></li>
-                
-                    <li><a href="/readings">阅读书单</a></li>
-                
-                    <li><a href="/about">关于我</a></li>
-                
-                <div class="clearfix"></div>
-                </ul>
-            </nav>
-            <nav class="header-nav">
-                <div class="social">
-                    
-                        <a class="mail" target="_blank" href="mailto:jiaxuefeng0@gmail.com" title="mail">mail</a>
-                    
-                        <a class="github" target="_blank" href="https://github.com/jiaxf" title="github">github</a>
-                    
-                        <a class="zhihu" target="_blank" href="https://zhihu.com/people/jia-xue-feng-0" title="zhihu">zhihu</a>
-                    
-                        <a class="weibo" target="_blank" href="http://weibo.com/jiaxuefeng" title="weibo">weibo</a>
-                    
-                        <a class="linkedin" target="_blank" href="http://cn.linkedin.com/in/jiaxuefeng" title="linkedin">linkedin</a>
-                    
-                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
-                    
-                        <a class="douban" target="_blank" href="https://www.douban.com/people/54387876/" title="douban">douban</a>
-                    
-                </div>
-            </nav>
-        </header>                
-    </div>
-</nav>
-      <div class="body-wrap"><article id="post-javascriptEvent" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/12/01/javascriptEvent/" class="article-date">
-      <time datetime="2016-12-01T02:35:00.000Z" itemprop="datePublished">2016-12-01</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      JavaScriptEvent
-    </h1>
-  
-
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-    </div>
-
-
-        
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/event/">event</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
-    </div>
-
-        <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+        <hgroup class="introduce">
+          <h5 class="nickname" id="name">Jiaxf</h5>
           
-        <h3 id="JavaScript事件"><a href="#JavaScript事件" class="headerlink" title="JavaScript事件"></a>JavaScript事件</h3><h2 id="1-相关术语"><a href="#1-相关术语" class="headerlink" title="1. 相关术语"></a>1. 相关术语</h2><ul>
+            <div id="yiyanmotto" class="motto">&nbsp;</div>
+          
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+              <li class="waves-block waves-effect">
+                  <a href="/"  >
+                    <i class="icon icon-lg icon-home"></i>
+                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/archives"  >
+                    <i class="icon icon-lg icon-archives"></i>
+                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/categories"  >
+                    <i class="icon icon-lg icon-th-list"></i>
+                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/tags"  >
+                    <i class="icon icon-lg icon-tags"></i>
+                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/about"  >
+                    <i class="icon icon-lg icon-smile-o"></i>
+                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+      <div class="nav2">
+          
+              <a class="nav2item" data-title="Email" href="mailto:jiaxuefeng0@gmail.com" target="_parent"title="Email" >
+                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Github" href="https://github.com/jiaxf" target="_blank"title="Github" >
+                <i class="icon icon-lg icon-github github"></i>
+              </a>
+          
+              <a class="nav2item" data-title="微博" href="https://weibo.com/u/jiaxuefeng" target="_blank"title="微博" >
+                <i class="icon icon-lg icon-weibo weibo"></i>
+              </a>
+          
+
+            </div>
+        
+      </ul>
+        
+    </div>
+  </div>
+ 
+</aside>
+
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">JavaScriptEvent</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="global.search_input_hint">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+    </div>
+</header>
+<header class="content-header post-header">
+    
+    
+    <div class="container fade-scale">
+        <div id="myheader">
+            <h1 class="title">
+                
+            </h1>
+            <h5 class="subtitle">
+                
+                
+            </h5>
+        </div>
+    </div>
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#JavaScript事件"><span class="post-toc-number">1.</span> <span class="post-toc-text">JavaScript事件</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-相关术语"><span class="post-toc-number"></span> <span class="post-toc-text">1. 相关术语</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-Event事件"><span class="post-toc-number"></span> <span class="post-toc-text">2.Event事件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-文档事件"><span class="post-toc-number"></span> <span class="post-toc-text">3. 文档事件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-鼠标事件"><span class="post-toc-number"></span> <span class="post-toc-text">4. 鼠标事件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-鼠标滚轮事件"><span class="post-toc-number"></span> <span class="post-toc-text">5. 鼠标滚轮事件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#7-表单事件"><span class="post-toc-number"></span> <span class="post-toc-text">7. 表单事件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#8-触控事件"><span class="post-toc-number"></span> <span class="post-toc-text">8. 触控事件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#9-进度事件"><span class="post-toc-number"></span> <span class="post-toc-text">9. 进度事件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#10-拖放事件"><span class="post-toc-number"></span> <span class="post-toc-text">10. 拖放事件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#11-自定义事件"><span class="post-toc-number"></span> <span class="post-toc-text">11. 自定义事件</span></a>
+        </nav>
+    </aside>
+   
+<article id="post-javascriptEvent"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">JavaScriptEvent</h1>
+        <div class="post-meta">
+            <i class="icon icon-lg icon-calendar-o"></i>
+            发表于
+            <time class="post-time" title="2016-12-01 10:35:00" datetime="2016-12-01T02:35:00.000Z"  itemprop="datePublished">2016-12-01</time>
+
+            <br id="mybreak"/>
+            
+	<i class="icon icon-lg icon-folder-o"></i>
+	分类：<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/技术/">技术</a></li></ul>
+
+
+            <i>·</i>
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>次浏览
+</span>
+
+
+        </div>
+        <div class="post-count-custom">
+            <i class="icon icon-lg icon-comment-o"></i>
+            阅读本文可能花费您&nbsp;<span class="post-count">11</span>&nbsp;分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="JavaScript事件"><a href="#JavaScript事件" class="headerlink" title="JavaScript事件"></a>JavaScript事件</h3><h2 id="1-相关术语"><a href="#1-相关术语" class="headerlink" title="1. 相关术语"></a>1. 相关术语</h2><ul>
 <li>事件类型（event type）是一个用来说明发生什么类型事件的字符串。<br>  例如，“mousemove”表示用户移动鼠标，“keydown”表示键盘上某个键被按下等等。</li>
 <li>事件目标（event target）是发生的事件与之相关的对象。当讲事件时，我必须同时指明类型和目标。<br>  比如：window上的load事件或button元素的click事件。<br>  在客户端JavaScript应用程序中，Window、Document和Element对象是最常见的事件目标。</li>
 <li>事件处理程序（event handler）或事件监听程序（event listener）是处理或响应事件的函数。</li>
@@ -400,288 +340,373 @@ setData() 用来设置事件所带有的指定类型的数据。两个参数：�
 <li>option：为事件对象指定额外的属性。</li>
 </ul>
 
-      
-    </div>
-    
-  </div>
-  
-    
-    <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/12/01/javascriptEvent/">JavaScriptEvent</a></p>
-        <p><span>文章作者:</span><a href="/" title="访问 Jiaxf 的个人博客">Jiaxf</a></p>
-        <p><span>发布时间:</span>2016年12月01日 - 10时35分</p>
-        <p><span>最后更新:</span>2018年04月13日 - 15时56分</p>
-        <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/12/01/javascriptEvent/" title="JavaScriptEvent">http://jiaxf.github.io/2016/12/01/javascriptEvent/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://jiaxf.github.io/2016/12/01/javascriptEvent/　　作者: Jiaxf" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
-            <script src="/js/clipboard.min.js"></script>
-            <script> var clipboard = new Clipboard('.copy-path'); </script>
-        </p>
-        <p>
-            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
-        </p>
-    </div>
+        </div>
 
-
-
-<nav id="article-nav">
-  
-    <a href="/2016/12/13/category theory/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
+        <blockquote class="post-copyright">
+    <div class="content">
         
-          范畴学基本知识
+<span class="post-time">
+    post.last_updated<time datetime="2018-04-13T07:56:04.000Z" itemprop="dateUpdated">2018-04-13 15:56:04</time>
+</span>
+
+
         
-      </div>
+        原文链接：<a href="/2016/12/01/javascriptEvent/" target="_blank" rel="external">http://jiaxf.github.io/2016/12/01/javascriptEvent/</a>
+        
+    </div>
+    <footer>
+        <div onclick="location.href='http://jiaxf.github.io'">
+            <img src="/img/avatar.jpg" alt="Jiaxf">
+            <a>Jiaxf</a>
+        </div>
+    </footer>
+</blockquote>
+
+        
+    <div class="page-reward">
+        <nav class="myreward">
+            <a id="rewardBtn" href="javascript:;"><span>打&nbsp;赏</span><span>装成好像很多人打赏的样子</span></a>
+        </nav>
+    </div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/event/">event</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://jiaxf.github.io/2016/12/01/javascriptEvent/&title=《JavaScriptEvent》 — 飞天雪的技术博客&pic=http://jiaxf.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://jiaxf.github.io/2016/12/01/javascriptEvent/&title=《JavaScriptEvent》 — 飞天雪的技术博客&source=JavaScript事件1. 相关术语
+事件类型（event type）是一个用来说明发生什么类型事件的字符串。  例如，“mousemove”表示用户移..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://jiaxf.github.io/2016/12/01/javascriptEvent/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JavaScriptEvent》 — 飞天雪的技术博客&url=http://jiaxf.github.io/2016/12/01/javascriptEvent/&via=http://jiaxf.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://jiaxf.github.io/2016/12/01/javascriptEvent/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
     </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
   
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/12/13/category theory/" id="post-prev" class="post-nav-link">
+        <h4 class="title" >
+          上一篇：范畴学基本知识
+        </h4>
+      </a>
+    </div>
   
-    <a href="/2016/12/01/jsPattern/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">javascript模式</div>
-      <strong class="article-nav-caption">></strong>
-    </a>
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/12/01/jsPattern/" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：javascript模式">下一篇：javascript模式</h4>
+      </a>
+    </div>
   
 </nav>
 
-  
+
+
+    
+    
+
+    
+
+    
+
+
 </article>
 
-    <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#JavaScript事件"><span class="toc-number">1.</span> <span class="toc-text">JavaScript事件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-相关术语"><span class="toc-number"></span> <span class="toc-text">1. 相关术语</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Event事件"><span class="toc-number"></span> <span class="toc-text">2.Event事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-文档事件"><span class="toc-number"></span> <span class="toc-text">3. 文档事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-鼠标事件"><span class="toc-number"></span> <span class="toc-text">4. 鼠标事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-鼠标滚轮事件"><span class="toc-number"></span> <span class="toc-text">5. 鼠标滚轮事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-表单事件"><span class="toc-number"></span> <span class="toc-text">7. 表单事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-触控事件"><span class="toc-number"></span> <span class="toc-text">8. 触控事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-进度事件"><span class="toc-number"></span> <span class="toc-text">9. 进度事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-拖放事件"><span class="toc-number"></span> <span class="toc-text">10. 拖放事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-自定义事件"><span class="toc-number"></span> <span class="toc-text">11. 自定义事件</span></a>
-</div>
-<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-<script>
-    var valueHide = "隐藏目录";
-    var valueShow = "显示目录";
-
-    if ($(".left-col").is(":hidden")) {
-        $("#tocButton").attr("value", valueShow);
-    }
-    $("#tocButton").click(function() {
-        if ($("#toc").is(":hidden")) {
-            $("#tocButton").attr("value", valueHide);
-            $("#toc").slideDown(320);
-        }
-        else {
-            $("#tocButton").attr("value", valueShow);
-            $("#toc").slideUp(350);
-        }
-    })
-    if ($(".toc").length < 1) {
-        $("#toc, #tocButton").hide();
-    }
-</script>
-
-
-
-
-
-<div class="bdsharebuttonbox">
-	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
-	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
-	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
-	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
-</div>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-
-
-
-
-    
-      <div class="duoshuo" id="comments">
-    <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/12/01/javascriptEvent/" data-title="JavaScriptEvent" data-url="http://jiaxf.github.io/2016/12/01/javascriptEvent/"></div>
-    <!-- 多说评论框 end -->
-    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-    <script type="text/javascript">
-    var duoshuoQuery = {short_name:"jiaxf"};
-    (function() {
-        var ds = document.createElement('script');
-        ds.type = 'text/javascript';ds.async = true;
-        ds.src = '/js/embed.js';
-        ds.charset = 'UTF-8';
-        (document.getElementsByTagName('head')[0] 
-         || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-    </script>
-    <!-- 多说公共JS代码 end -->
 </div>
 
-    
+        <footer class="footer">
+    <div class="footer-content">
+        <span class="power">
+            <i class="icon icon-lg icon-copyright"></i>
+            2017
+            <i class="icon icon-lg icon-heart"></i>
+            <a href="http://jiaxf.github.io">tomotoes.com</a>
+            <br/>
+            Power by
+            <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
+            Theme
+            <a class="tomotoeslink" href="https://github.com/tomotoes/hexo-theme-tomotoes/" target="_blank" rel="external nofollow">tomotoes</a>
+        </span>
+
+        <br/>
+
+        <span id="RunTime" style="color:#a7a7a2;"></span>
+        <br/>
+
+        <span>
+            
+	<i class="icon icon-lg icon-user">
+<span id="busuanzi_container_site_uv" style='display:none'>
+       访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>人</i>
+    ·
+    <i class="icon icon-lg icon-eye">
+    <span id="busuanzi_container_site_pv" style='display:none'>
+      访问次数：<span id="busuanzi_value_site_pv"></span>
+    </span>次
+    </i>
 
 
+        </span>
+        <br/>
 
-    <div class="scroll" id="post-nav-button">
-        
-            <a href="/2016/12/13/category theory/" title="上一篇: 范畴学基本知识">
-                <i class="fa fa-angle-left"></i>
-            </a>
-        
-        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
-        
-            <a href="/2016/12/01/jsPattern/" title="下一篇: javascript模式">
-                <i class="fa fa-angle-right"></i>
-            </a>
-        
-    </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/函数式编程/">函数式编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/2018-04-19-项目基础架构/">2018-04-19-项目基础架构</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/17/2018-04-17-spring-cloud简介/">2018-04-17-spring_cloud简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/17/2018-04-17-spring-boot入门/">2018/04/17/spring-boot入门.md</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/16/2018-04-16-github上备份Hexo博客/">2018-04-16-github上备份Hexo博客.md</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/13/2018-04-13-python-md-1/">2018-04-13-技术随笔.md</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/29/redis配置/">redis配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/03/mysqlMySQL双主一致性架构优化/">MySQL双主一致性架构优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/07/mysql调优/">mysql调优</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/前端自适应CSS3相对单位rem/">前端自适应css3相对单位rem</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/03/webWorkers/">Web Worker study</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/26/9-Thinking in Ramda/">Thinking in Ramda 9</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/26/8-Thinking in Ramda/">Thinking in Ramda 8</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/23/7-Thinking in Ramda/">Thinking in Ramda 7</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/23/6-Thinking in Ramda/">Thinking in Ramda 6</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/5-Thinking in Radam/">Thinking in Ramda 5</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/4-Thinking in Ramda/">Thinking in Ramda 4</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/3-Thinking in Ramda/">Thinking in Ramda 3</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/2-Thinking in Ramda/">Thinking in Ramda 2</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/1-Thinking in Ramda/">Thinking in Ramda 1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/redis3/">Redis学习记录3</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/redis2/">Redis学习记录2</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/fp2/">函数式编程入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/curry/">函数式编程入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/redis/">Redis学习记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/FP/">函数式编程入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/applicativeFunctor/">函数式编程入门（2）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/javascriptIntroduce/">前端知识学习（摘自阮一峰博客）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/category theory/">范畴学基本知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/javascriptEvent/">JavaScriptEvent</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/jsPattern/">javascript模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/30/reactStudy/">React入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/29/javascript错误/">js错误类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/14/2015-02-14-php数据类型/">php数据类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/14/2015-02-14-php学习笔记/">php学习笔记</a></li></ul>
-    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-    <script>
-        $(".post-list").addClass("toc-article");
-        $(".post-list-item a").attr("target","_blank");
-        $("#post-nav-button > a:nth-child(2)").click(function() {
-            $(".fa-bars, .fa-times").toggle();
-            $(".post-list").toggle(300);
-            if ($(".toc").length > 0) {
-                $("#toc, #tocButton").toggle(200, function() {
-                    if ($(".switch-area").is(":visible")) {
-                        $("#tocButton").attr("value", valueHide);
-                        }
-                    })
-            }
-            else {
-            }
-        })
-    </script>
-
-
-
-    <script>
-        
-    </script>
-</div>
-      <footer id="footer">
-    <div class="outer">
-        <div id="footer-info">
-            <div class="footer-left">
-                &copy; 2018 Jiaxf
-            </div>
-            <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
-            </div>
-        </div>
-        
-            <div class="visit">
-                
-                    <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" >用户到访数: 
-                            <span id="busuanzi_value_site_uv"></span>
-                        </span>
-                    </span>
-                
-                
-                    <span>, </span>
-                
-                
-                    <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit">本页阅读量: 
-                            <span id="busuanzi_value_page_pv"></span>
-                        </span>
-                    </span>
-                
-            </div>
-        
+        <span class="license">footer.license</span>
     </div>
 </footer>
 
-    </div>
-    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-<script src="/js/main.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            var backgroundnum = 30;
-            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
-            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
-            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
-        })
-    </script>
-
-
-<!-- Google Analytics -->
-<script type="text/javascript">
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-70677304-1', 'auto');
-ga('send', 'pageview');
-
-</script>
-<!-- End Google Analytics -->
-
-
-
-
-<div class="scroll" id="scroll">
-    <a href="#"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
-</div>
-<script>
-    $(document).ready(function() {
-        if ($("#comments").length < 1) {
-            $("#scroll > a:nth-child(2)").hide();
-        };
-    })
-</script>
-
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-
-  <script language="javascript">
-    $(function() {
-        $("a[title]").each(function() {
-            var a = $(this);
-            var title = a.attr('title');
-            if (title == undefined || title == "") return;
-            a.data('title', title).removeAttr('title').hover(
-
-            function() {
-                var offset = a.offset();
-                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
-                    top: offset.top - a.outerHeight() - 15,
-                    left: offset.left + a.outerWidth()/2 + 1
-                }).fadeIn(function() {
-                    var pop = $(this);
-                    setTimeout(function() {
-                        pop.remove();
-                    }, pop.text().length * 800);
-                });
-            }, function() {
-                $("#anchortitlecontainer").remove();
-            });
-        });
-    });
-</script>
-
-
-    <script type="text/javascript">
-      window.onload = function(){
-        document.getElementById("search").onclick = function(){
-            console.log("search")
-            search();
-        }
-      }
-      function search(){
-        (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-        (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-        })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-
-        _st('install','f9SxgsuoT3T5zTyGctUR','2.0.0');
+    </main>
+    
         
-      }
-    </script>
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        <span>感谢您的鼓励支持！</span>
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" data-img="/img/dog.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechatPay">&nbsp;&nbsp;微信&nbsp;&nbsp;</span>
+                <span class="reward-toggle-item alipayPay">支付宝</span>
+            </div>
+        </label>
+        
+        <i class="icon icon-caret-up"></i>
+    </div>
+</div>
 
-  </div>
+
+    
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://jiaxf.github.io/2016/12/01/javascriptEvent/&title=《JavaScriptEvent》 — 飞天雪的技术博客&pic=http://jiaxf.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://jiaxf.github.io/2016/12/01/javascriptEvent/&title=《JavaScriptEvent》 — 飞天雪的技术博客&source=JavaScript事件1. 相关术语
+事件类型（event type）是一个用来说明发生什么类型事件的字符串。  例如，“mousemove”表示用户移..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://jiaxf.github.io/2016/12/01/javascriptEvent/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JavaScriptEvent》 — 飞天雪的技术博客&url=http://jiaxf.github.io/2016/12/01/javascriptEvent/&via=http://jiaxf.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://jiaxf.github.io/2016/12/01/javascriptEvent/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p class="wechatshare">扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://jiaxf.github.io/2016/12/01/javascriptEvent/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <!-- waves按钮特效 -->
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<!-- 主题配置脚本 -->
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+</script>
+
+<!-- jquery -->
+<script src="/js/jquery.min.js?v=3.0"></script>
+
+<!-- 搜索 -->
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item waves-block waves-effect" onclick="location.href='{path}'">
+    <div class="title ellipsis" title="{title}">{title}</div>
+</li>
+</template>
+
+
+<!-- main博客脚本 -->
+<script src="/js/main.min.js?v=3.0" ></script>
+
+<!-- 动画&配置 -->
+<script src="/js/script.min.js?v=3.0" ></script>
+
+<!-- 脚本管理 -->
+<script>
+
+if(window.innerWidth > 800){
+	/* 3D标题 */
+	$(".content-header").on("mousemove", threedee);
+
+	/* 底部追随鼠标 */
+	$(".footer").hover(2);
+
+	/* gotop键的涟漪 */
+	$("#gotop").hover(1);
+
+	/* 赞赏的粒子雨 */
+	$("#reward").hover(3);
+
+	/* 微信公众号的底部渲染 */
+	$("#wechat").hover(4);
+
+    /* 标题跳动 */
+    $(".archivestitle").bumpyText();
+
+	/* 图片点击放大 */
+	const postimg = jQuery(".post-content img:not(.github-emoji)");
+	postimg.on("click",function(){
+
+		mask.classList.add("in");
+		main.classList.add("Mask");
+		menu.classList.add("Mask");
+		var myimg = this.cloneNode(true);
+		myimg.classList.add("imgShow");
+
+		setTimeout(function(){
+			jQuery(myimg).animate({
+				opacity:"1"
+			},1000);
+		},0);
+
+		document.body.appendChild(myimg);
+
+		myimg.onclick=function(){
+			document.body.removeChild(myimg);
+			mask.classList.remove("in");
+			main.classList.remove("Mask");
+			menu.classList.remove("Mask");
+		};
+
+	});
+
+}
+
+/* 名字跳动 */
+$("#name").bumpyText();
+
+
+/* 网站运行时间 */
+setInterval(function () {
+	setTime("2017/10/11");
+}, 1000);
+
+/* 文章块的淡出 */
+postshow();
+
+/* 座右铭 */
+
+   getHitokoto();
+
+
+
+/* 粘贴提示 */
+G($(".post-content"), location.href, "Jiaxf");
+
+
+/* 控制台 */
+if (window.console && window.console.log) {
+	setTimeout(function () {
+		console.log("\n %c 一个坏掉的番茄 %c  © Simon Ma  http://tomotoes.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
+	}, 0);
+}
+
+</script>
+
+
+
+
+<!-- 公式渲染 -->
+
+
+
+<!-- 不蒜子 -->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
 </body>
 </html>
-<a href="https://github.com/jiaxf"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
