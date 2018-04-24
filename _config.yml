@@ -8,7 +8,7 @@ subtitle: 技术无止境
 description: jiaxf's blog | js | node | javascript
 author: Jiaxf
 language: zh-Hans
-timezone: Asia/Shanghai 
+timezone: Asia/Shanghai
 email: jiaxuefeng0@gmail.com #联系邮箱
 
 # URL
@@ -61,11 +61,11 @@ time_format: HH:mm:ss
 per_page: 10
 pagination_dir: page
 
-# Archives 
-#存档，这里的说明好像不对。全部选择1，这个选项与主题中的选项有时候会有冲突 
-## 2: Enable pagination 
-## 1: Disable pagination 
-## 0: Fully Disable 
+# Archives
+#存档，这里的说明好像不对。全部选择1，这个选项与主题中的选项有时候会有冲突
+## 2: Enable pagination
+## 1: Disable pagination
+## 0: Fully Disable
 archive: 1
 category: 1
 tag: 1
