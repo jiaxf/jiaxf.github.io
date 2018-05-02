@@ -159,7 +159,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/functional/" style="font-size: 18.75px;">functional</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/js/" style="font-size: 16.25px;">js</a> <a href="/tags/jsx/" style="font-size: 10px;">jsx</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/mysql/" style="font-size: 11.25px;">mysql</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/pattern/" style="font-size: 10px;">pattern</a> <a href="/tags/php/" style="font-size: 11.25px;">php</a> <a href="/tags/ramda/" style="font-size: 17.5px;">ramda</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/redis/" style="font-size: 13.75px;">redis</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/web/" style="font-size: 11.25px;">web</a> <a href="/tags/函数式编程/" style="font-size: 15px;">函数式编程</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/区块链/" style="font-size: 10px;">区块链</a> <a href="/tags/技术/" style="font-size: 15px;">技术</a> <a href="/tags/缓存/" style="font-size: 12.5px;">缓存</a>
+                        <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/functional/" style="font-size: 18.75px;">functional</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 11.25px;">java</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/js/" style="font-size: 16.25px;">js</a> <a href="/tags/jsx/" style="font-size: 10px;">jsx</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/mysql/" style="font-size: 11.25px;">mysql</a> <a href="/tags/node/" style="font-size: 11.25px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/pattern/" style="font-size: 10px;">pattern</a> <a href="/tags/php/" style="font-size: 11.25px;">php</a> <a href="/tags/ramda/" style="font-size: 17.5px;">ramda</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/redis/" style="font-size: 13.75px;">redis</a> <a href="/tags/spring/" style="font-size: 11.25px;">spring</a> <a href="/tags/web/" style="font-size: 11.25px;">web</a> <a href="/tags/函数式编程/" style="font-size: 15px;">函数式编程</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/区块链/" style="font-size: 10px;">区块链</a> <a href="/tags/技术/" style="font-size: 16.25px;">技术</a> <a href="/tags/缓存/" style="font-size: 12.5px;">缓存</a>
                     </div>
                 </section>
                 
@@ -457,10 +457,10 @@ You can certainly do things with impure functions(and you must, if your program 
 
 
   
-    <article id="post-redis" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-redis3" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/04/19/redis/" class="article-date">
+      <a href="/2018/04/19/redis3/" class="article-date">
       <time datetime="2018-04-19T03:48:54.000Z" itemprop="datePublished">2018-04-19</time>
 </a>
     </div>
@@ -474,7 +474,7 @@ You can certainly do things with impure functions(and you must, if your program 
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/19/redis/">Redis学习记录</a>
+      <a class="article-title" href="/2018/04/19/redis3/">Redis学习记录3</a>
     </h1>
   
 
@@ -484,25 +484,10 @@ You can certainly do things with impure functions(and you must, if your program 
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h1 id="Redis学习记录"><a href="#Redis学习记录" class="headerlink" title="Redis学习记录"></a>Redis学习记录</h1><p>业界常用的一些 key-value分布式缓存系统如下：</p>
-<ul>
-<li>Redis</li>
-<li>Memcached</li>
-<li>Cassandra（Facebook 开源）</li>
-<li>Tokyo Tyrant (Tokyo Cabinet)</li>
-</ul>
-<h2 id="Redis的几个特点："><a href="#Redis的几个特点：" class="headerlink" title="Redis的几个特点："></a>Redis的几个特点：</h2><ul>
-<li>Redis 是一个 key-value 的缓存(cache)和存储(store)系统（适合作缓存或DB）</li>
-<li>支持丰富的数据结构<ul>
-<li>List 就专门用于存储列表型数据，默认按操作时间排序</li>
-<li>Sorted Set 可以按分数排序元素，分数是一种广义概念，可以是时间或评分</li>
-<li>其丰富的数据结构为日后扩展提供了很大的方便。</li>
-</ul>
-</li>
-<li>提供的所有操作都是原子操作，为并发天然保驾护航。</li>
-<li>超快的性能，见其官方性能测试《<a href="https://redis.io/topics/benchmarks" target="_blank" rel="noopener">How fast is Redis?</a>》。</li>
-<li>拥有比较成熟的Java客户端 - Jedis，像新浪微博都是使用它作为客户端。（官方推荐的Clients）</li>
-</ul>
+              <h2 id="Redis优化配置和redis-conf说明"><a href="#Redis优化配置和redis-conf说明" class="headerlink" title="Redis优化配置和redis.conf说明"></a>Redis优化配置和redis.conf说明</h2><ol>
+<li>redis.conf 配置参数：</li>
+</ol>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#是否作为守护进程运行</span></span><br><span class="line">daemonize <span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#如以后台进程运行，则需指定一个pid，默认为/var/run/redis.pid</span></span><br><span class="line"></span><br><span class="line">pidfile redis.pid</span><br><span class="line"></span><br><span class="line"><span class="comment">#绑定主机IP，默认值为127.0.0.1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#bind 127.0.0.1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#Redis默认监听端口</span></span><br><span class="line"></span><br><span class="line">port 6379</span><br><span class="line"></span><br><span class="line"><span class="comment">#客户端闲置多少秒后，断开连接，默认为300（秒）</span></span><br><span class="line"></span><br><span class="line">timeout 300</span><br><span class="line"></span><br><span class="line"><span class="comment">#日志记录等级，有4个可选值，debug，verbose（默认值），notice，warning</span></span><br><span class="line"></span><br><span class="line">loglevel verbose</span><br></pre></td></tr></table></figure>
           
       
     </div>
@@ -522,7 +507,7 @@ You can certainly do things with impure functions(and you must, if your program 
 
       
         <p class="article-more-link">
-          <a  href="/2018/04/19/redis/#more">more >></a>
+          <a  href="/2018/04/19/redis3/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -622,6 +607,78 @@ You can certainly do things with impure functions(and you must, if your program 
 
 
   
+    <article id="post-redis2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/04/19/redis2/" class="article-date">
+      <time datetime="2018-04-19T03:48:54.000Z" itemprop="datePublished">2018-04-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/19/redis2/">Redis学习记录2</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="redis-bgrewriteaof问题"><a href="#redis-bgrewriteaof问题" class="headerlink" title="redis bgrewriteaof问题"></a>redis bgrewriteaof问题</h2><p>一、背景</p>
+<ol>
+<li><p>AOF:</p>
+<p> Redis的AOF机制有点类似于Mysql binlog，是Redis的提供的一种持久化方式（另一种是RDB），<br> 它会将所有的写命令按照一定频率(no, always, every seconds)写入到日志文件中，当Redis停机<br> 重启后恢复数据库。</p>
+</li>
+</ol>
+<p><img src="/images/20160203203442_310.png" alt=""><br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2018/04/19/redis2/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-mysqlMySQL双主一致性架构优化" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -701,10 +758,10 @@ You can certainly do things with impure functions(and you must, if your program 
 
 
   
-    <article id="post-applicativeFunctor" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-redis" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/04/19/applicativeFunctor/" class="article-date">
+      <a href="/2018/04/19/redis/" class="article-date">
       <time datetime="2018-04-19T03:48:54.000Z" itemprop="datePublished">2018-04-19</time>
 </a>
     </div>
@@ -718,7 +775,7 @@ You can certainly do things with impure functions(and you must, if your program 
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/19/applicativeFunctor/">函数式编程入门（2）</a>
+      <a class="article-title" href="/2018/04/19/redis/">Redis学习记录</a>
     </h1>
   
 
@@ -728,34 +785,26 @@ You can certainly do things with impure functions(and you must, if your program 
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="Applicative-functor"><a href="#Applicative-functor" class="headerlink" title="Applicative functor"></a>Applicative functor</h1><p>应用applicative functor作为一个接口可以让不通funcotr可以相互应用（apply）的能力。</p>
-<h2 id="协调与激励"><a href="#协调与激励" class="headerlink" title="协调与激励"></a>协调与激励</h2><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Http.get :: String -&gt; Task Error HTML</span></span><br><span class="line"><span class="keyword">var</span> renderPage = curry(<span class="function"><span class="keyword">function</span></span>(destinations, event) &#123;</span><br><span class="line">    <span class="comment">/* render page */</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">Task.of(renderPage).ap(Http.<span class="keyword">get</span>(<span class="string">'/destinations'</span>)).ap(Http.<span class="keyword">get</span>(<span class="string">'/events'</span>))</span><br><span class="line"><span class="comment">// Task("&lt;div&gt;some page with dest and events&lt;/div&gt;")</span></span><br></pre></td></tr></table></figure>
-<p>两个请求将会同时立即执行，当两者的响应都返回之后，renderPage 就会被调用。这与 monad 版本的那种必须等待前一个任务完成才能继续执行后面的操作完全不同。本来我们就无需根据目的地来获取事件，因此也就不需要依赖顺序执行。</p>
-<p>再次强调，因为我们是使用局部调用的函数来达成上述结果的，所以必须要保证 renderpage 是 curry 函数，否则它就不会一直等到两个 Task 都完成。而且如果你碰巧自己做过类似的事，那你一定会感激 applicative functor 这个异常简洁的接口的。这就是那种能够让我们离“奇点”（singularity）更近一步的优美代码。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 帮助函数：</span></span><br><span class="line"><span class="comment">// ===================</span></span><br><span class="line"><span class="comment">// $ :: String -&gt; IO DOM</span></span><br><span class="line"><span class="keyword">var</span> $ = <span class="function"><span class="keyword">function</span>(<span class="params">selector</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> IO(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">document</span>.querySelector(selector)</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// getVal :: String -&gt; IO String</span></span><br><span class="line"><span class="keyword">var</span> getVal = compose(map(_.prop(<span class="string">'value'</span>)), $);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Exapmle</span></span><br><span class="line"><span class="comment">// ===================</span></span><br><span class="line"><span class="comment">// signIn :: String -&gt; String -&gt; Bool -&gt; User</span></span><br><span class="line"><span class="keyword">var</span> signIn = curry(<span class="function"><span class="keyword">function</span>(<span class="params">username, password, remember_me</span>)) </span>&#123;<span class="comment">/* singing in */</span>&#125;</span><br><span class="line"></span><br><span class="line">IO.of(signIn).ap(getVal(<span class="string">'#email'</span>)).ap(getVal(<span class="string">'#password'</span>)).ap(IO.of(<span class="literal">false</span>));</span><br></pre></td></tr></table></figure>
-<p><code>signIn</code> 是一个接收 3 个参数的 curry 函数，因此我们需要调用 <code>ap</code> 3 次。在每一次的 <code>ap</code> 调用中，<code>signIn</code> 就收到一个参数然后运行，直到所有的参数都传进来，它也就执行完毕了。我们可以继续扩展这种模式，处理任意多的参数。另外，左边两个参数在使用 getVal 调用后自然而然地成为了一个 <code>IO</code>，但是最右边的那个却需要手动 <code>lift</code>，然后变成一个 <code>IO</code>，这是因为 <code>ap</code> 需要调用者及其参数都属于同一类型。</p>
-<h2 id="lift"><a href="#lift" class="headerlink" title="lift"></a>lift</h2><p>我们来试试以一种 pointfree 的方式调用 applicative functor。因为 <code>map</code> 等价于 <code>of/ap</code>，那么我们就可以定义无数个能够 <code>ap</code> 通用函数。</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> liftA2 = curry(<span class="function"><span class="keyword">function</span><span class="params">(f, functor1, functor2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> functor1.map(f).ap(functor2);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> liftA3 = curry(<span class="function"><span class="keyword">function</span><span class="params">(f, functor1, functor2, functor3)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> functor1.map(f).ap(functor2).ap(functor3);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// liftA4, etc</span></span><br></pre></td></tr></table></figure>
-<h2 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h2><p>在haskell、scala、PureScript以及swift等语言中，开发者可以创建自定义的中缀操作符(infix operators)</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-- haskell</span><br><span class="line">add <span class="tag">&lt;<span class="name">$</span>&gt;</span> Right 2 <span class="tag">&lt;<span class="name">*</span>&gt;</span> Right 3</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">map(add, Right(<span class="number">2</span>)).ap(Right(<span class="number">3</span>))</span><br></pre></td></tr></table></figure>
-<p><code>&lt;$&gt;</code> 就是<code>map</code>（亦即<code>fmap</code>）， <code>&lt;*&gt;</code>就是<code>ap</code>。</p>
-<h2 id="衍生函数（derived-function）"><a href="#衍生函数（derived-function）" class="headerlink" title="衍生函数（derived function）"></a>衍生函数（derived function）</h2><p><code>of/ap</code> 等价于<code>map</code>。</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 从of/ap衍生出的map</span></span><br><span class="line">X.prototype.map = function(f) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.<span class="keyword">constructor</span>.of(f).ap(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果已经有<code>chain</code>函数，可以免费得到functor 和 applicative：</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 从chain 衍生出的map</span></span><br><span class="line">X.prototype.map = <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> m = <span class="keyword">this</span>;</span><br><span class="line">  <span class="keyword">return</span> m.chain(<span class="function"><span class="keyword">function</span><span class="params">(a)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> m.constructor.of(f(a));</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 从 chain/map 衍生出的ap</span></span><br><span class="line">X.prototype.ap = <span class="function"><span class="keyword">function</span><span class="params">(other)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.chain(<span class="function"><span class="keyword">function</span><span class="params">(f)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> other.map(f);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="定律"><a href="#定律" class="headerlink" title="定律"></a>定律</h2><p>applicative functor 是“组合关闭”（closed under composition）的，意味着 <code>ap</code> 永远不会改变容器类型。</p>
-<p>###　同一律<br><figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 同一律</span></span><br><span class="line">A.of<span class="comment">(id)</span>.ap<span class="comment">(v)</span> == v</span><br></pre></td></tr></table></figure></p>
-<h3 id="同态"><a href="#同态" class="headerlink" title="同态"></a>同态</h3><figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//同态</span></span><br><span class="line">A.of<span class="comment">(f)</span>.ap<span class="comment">(A.of(x)</span>) == A.of<span class="comment">(f(x)</span>)</span><br></pre></td></tr></table></figure>
-<p>同态就是一个能够保持接结构的映射（structure preserving map).实际上，funcotr就是一个再不通范畴间的同态，因为funcotr在经过映射之后保持了原始范畴的结构。</p>
-<h3 id="互换（interchange）"><a href="#互换（interchange）" class="headerlink" title="互换（interchange）"></a>互换（interchange）</h3><p>互换（interchange）表明的是选择让函数再<code>ap</code>的左边还是右边发生lift是无关紧要的。</p>
-<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 互换</span></span><br><span class="line">v.ap(A.<span class="keyword">of</span>(x)) == A.<span class="keyword">of</span>(<span class="function"><span class="keyword">function</span><span class="params">(f)</span> <span class="comment">&#123; return f(x)&#125;</span>).<span class="title">ap</span><span class="params">(v)</span></span></span><br></pre></td></tr></table></figure>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var v = <span class="keyword">Task</span>.<span class="keyword">of</span>(_.<span class="keyword">reverse</span>);</span><br><span class="line">var x = <span class="symbol">'Sparklehorse</span>';</span><br><span class="line"></span><br><span class="line">v.ap(<span class="keyword">Task</span>.<span class="keyword">of</span>(x)) == <span class="keyword">Task</span>.<span class="keyword">of</span>(<span class="keyword">function</span>(f) &#123; <span class="keyword">return</span> f(x)&#125;).ap(v)</span><br></pre></td></tr></table></figure>
-<h3 id="组合（composition"><a href="#组合（composition" class="headerlink" title="组合（composition)"></a>组合（composition)</h3><p>组合不过是在检查标准的函数组合是否适用于容器内部的函数调用。</p>
-<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 组合</span></span><br><span class="line">A.of<span class="comment">(compose)</span>.ap<span class="comment">(u)</span>.ap<span class="comment">(v)</span>.ap<span class="comment">(w)</span> == u.ap<span class="comment">(v.ap(w)</span>);</span><br></pre></td></tr></table></figure>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="keyword">u</span> = IO.of(_.toUpper);</span><br><span class="line"><span class="keyword">var</span> v = IO.of(_.concat(<span class="string">"&amp; beyond"</span>));</span><br><span class="line"><span class="keyword">var</span> w = IO.of(<span class="string">"lood bath"</span>);</span><br><span class="line"></span><br><span class="line">IO.of(_compose).<span class="keyword">ap</span>(<span class="keyword">u</span>).<span class="keyword">ap</span>(v).<span class="keyword">ap</span>(w) == <span class="keyword">u</span>.<span class="keyword">ap</span>(v.<span class="keyword">ap</span>(w))</span><br></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>函数式嗯编程</p>
-
+              <h1 id="Redis学习记录"><a href="#Redis学习记录" class="headerlink" title="Redis学习记录"></a>Redis学习记录</h1><p>业界常用的一些 key-value分布式缓存系统如下：</p>
+<ul>
+<li>Redis</li>
+<li>Memcached</li>
+<li>Cassandra（Facebook 开源）</li>
+<li>Tokyo Tyrant (Tokyo Cabinet)</li>
+</ul>
+<h2 id="Redis的几个特点："><a href="#Redis的几个特点：" class="headerlink" title="Redis的几个特点："></a>Redis的几个特点：</h2><ul>
+<li>Redis 是一个 key-value 的缓存(cache)和存储(store)系统（适合作缓存或DB）</li>
+<li>支持丰富的数据结构<ul>
+<li>List 就专门用于存储列表型数据，默认按操作时间排序</li>
+<li>Sorted Set 可以按分数排序元素，分数是一种广义概念，可以是时间或评分</li>
+<li>其丰富的数据结构为日后扩展提供了很大的方便。</li>
+</ul>
+</li>
+<li>提供的所有操作都是原子操作，为并发天然保驾护航。</li>
+<li>超快的性能，见其官方性能测试《<a href="https://redis.io/topics/benchmarks" target="_blank" rel="noopener">How fast is Redis?</a>》。</li>
+<li>拥有比较成熟的Java客户端 - Jedis，像新浪微博都是使用它作为客户端。（官方推荐的Clients）</li>
+</ul>
+          
       
     </div>
     
@@ -769,9 +818,13 @@ You can certainly do things with impure functions(and you must, if your program 
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a  href="/2018/04/19/redis/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -938,112 +991,6 @@ You can certainly do things with impure functions(and you must, if your program 
       
 
       
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-2018-04-17-spring-boot入门" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/04/17/2018-04-17-spring-boot入门/" class="article-date">
-      <time datetime="2018-04-17T06:19:50.000Z" itemprop="datePublished">2018-04-17</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/17/2018-04-17-spring-boot入门/">2018/04/17/spring-boot入门.md</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="SpringBoot入门"><a href="#SpringBoot入门" class="headerlink" title="SpringBoot入门"></a>SpringBoot入门</h1><h2 id="什么是Spring-Boot？"><a href="#什么是Spring-Boot？" class="headerlink" title="什么是Spring Boot？"></a>什么是Spring Boot？</h2><p>SpringBoot简化了基于Spring的应用开发，通过少量代码就能创建一个独立的、产品级别的Spring应用。<br>SpringBoot为spring平台及第三方库提供开箱即用的设置，该框架使用特定的方式来进行配置，从而使开发人员<br>不再需要定义样板化的配置。<br>SpringBoot的核心思想是约定大于配置，一切自动完成。采用SpringBoot可以大大的简化开发模式。</p>
-<h2 id="使用spring-boot的好处"><a href="#使用spring-boot的好处" class="headerlink" title="使用spring boot的好处"></a>使用spring boot的好处</h2><p>简单、快速、方便。</p>
-<p>平时搭建一个spring web 项目的时候需要怎么做呢？</p>
-<ul>
-<li>1) 配置web.xml,加载spring和spring mvc</li>
-<li>2) 配置数据库连接、配置spring事务</li>
-<li>3) 配置加载配置文件的读取，开启注解</li>
-<li>4) 配置日志文件</li>
-<li>…</li>
-<li>配置完成部署tomcat调试</li>
-<li>…</li>
-</ul>
-<p>使用spring boot快速搭建，构建微服务。</p>
-<h2 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h2><h3 id="maven构建项目"><a href="#maven构建项目" class="headerlink" title="maven构建项目"></a>maven构建项目</h3><ol>
-<li>访问<a href="http://start.spring.io" target="_blank" rel="noopener">http://start.spring.io</a></li>
-<li>选择构建工具Maven Project、Spring Boot版本及一些工程信息，点击“Switch to the full version”。<br> <img src="/img/springboot1.png" alt=""></li>
-<li>点击Generate Project下周项目压缩包</li>
-<li>解压后，使用eclipse， Import-&gt;Existing Maven Projects-&gt; Next -&gt; 选择解压后的文件夹-&gt; Finsh, OK done!</li>
-</ol>
-<h3 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h3><p>   <img src="/img/springboot2.png" alt=""></p>
-<p>如上图所示，Spring Boot的基础结构共三个文件:</p>
-<p>   src/main/java 程序开发以及主程序入口<br>   src/main/resources 配置文件<br>   src/test/java 测试程序<br>   另外，spingboot建议的目录结果如下：<br>   root package结构：com.example.myproject</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">com</span><br><span class="line">  +- example</span><br><span class="line">    +- myproject</span><br><span class="line">      +- Application.java</span><br><span class="line">      |</span><br><span class="line">      +- domain</span><br><span class="line">      |  +- Customer.java</span><br><span class="line">      |  +- CustomerRepository.java</span><br><span class="line">      |</span><br><span class="line">      +- service</span><br><span class="line">      |  +- CustomerService.java</span><br><span class="line">      |</span><br><span class="line">      +- controller</span><br><span class="line">      |  +- CustomerController.java</span><br><span class="line">      |</span><br></pre></td></tr></table></figure>
-<ol>
-<li>Application.java 建议放到根目录下面,主要用于做一些框架配置</li>
-<li>domain目录主要用于实体（Entity）与数据访问层（Repository）</li>
-<li>service 层主要是业务类代码</li>
-<li>controller 负责页面访问控制</li>
-</ol>
-<blockquote>
-<p>采用默认配置可以省去很多配置，当然也可以根据自己的喜欢来进行更改。</p>
-</blockquote>
-<p>最后，启动Application main方法，至此一个java项目搭建好了！</p>
-<h3 id="引入web模块"><a href="#引入web模块" class="headerlink" title="引入ｗｅｂ模块"></a>引入ｗｅｂ模块</h3><p> 1、pom.xml中添加支持web的模块：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>pom.xml文件中默认有两个模块：</p>
-<ul>
-<li>spring-boot-starter ：核心模块，包括自动配置支持、日志和YAML；</li>
-</ul>
-<ul>
-<li>spring-boot-starter-test ：测试模块，包括JUnit、Hamcrest、Mockito。</li>
-</ul>
-<p>2、编写controller内容：<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorldController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping(<span class="meta-string">"/hello"</span>)</span></span><br><span class="line">    <span class="keyword">public</span> String index() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Hello World"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>@RestController 的意思就是controller里面的方法都以json格式输出，不用再写什么jackjson配置的了！</p>
-<p>3、启动主程序，打开浏览器访问<a href="http://localhost:8080/hello" target="_blank" rel="noopener">http://localhost:8080/hello</a>，就可以看到效果了，有木有很简单！</p>
-<h3 id="如何做单元测试"><a href="#如何做单元测试" class="headerlink" title="如何做单元测试"></a>如何做单元测试</h3><p>打开的src/test/下的测试入口，编写简单的http请求来测试；使用mockmvc进行，利用MockMvcResultHandlers.print()打印出执行结果。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith</span>(SpringRunner.class)</span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloTests</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> MockMvc mvc;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUp</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        mvc = MockMvcBuilders.standaloneSetup(<span class="keyword">new</span> HelloWorldController()).build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getHello</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        mvc.perform(MockMvcRequestBuilders.get(<span class="string">"/hello"</span>).accept(MediaType.APPLICATION_JSON))</span><br><span class="line">                .andExpect(status().isOk())</span><br><span class="line">                .andExpect(content().string(equalTo(<span class="string">"Hello World"</span>)));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="开发环境调试"><a href="#开发环境调试" class="headerlink" title="开发环境调试"></a>开发环境调试</h3><p>springBoot对调试支持很好，修改之后可以实时生效，需要添加以下的配置：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-devtools<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">fork</span>&gt;</span>true<span class="tag">&lt;/<span class="name">fork</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>该模块在完整的打包环境下运行的时候会被禁用。如果你使用java -jar启动应用或者用一个特定的classloader启动，它会认为这是一个“生产环境”。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>使用spring boot可以非常方便、快速搭建项目，使我们不用关心框架之间的兼容性，适用版本等各种问题，我们想使用任何东西，仅仅添加一个配置就可以，所以使用sping boot非常适合构建微服务。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
-    </div>
-
       
       <div class="clearfix"></div>
     </div>
