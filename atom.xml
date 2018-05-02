@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jiaxf.github.io/"/>
-  <updated>2018-05-02T02:02:38.000Z</updated>
+  <updated>2018-05-02T02:05:44.000Z</updated>
   <id>http://jiaxf.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>2018-05-12-Node.js10和npm6发布</title>
+    <title>2018-05-02-Node.js10和npm6发布</title>
     <link href="http://jiaxf.github.io/2018/05/02/2018-05-02-Node.js10%E5%92%8Cnpm6%E5%8F%91%E5%B8%83/"/>
     <id>http://jiaxf.github.io/2018/05/02/2018-05-02-Node.js10和npm6发布/</id>
     <published>2018-05-02T00:54:19.000Z</published>
-    <updated>2018-05-02T02:02:38.000Z</updated>
+    <updated>2018-05-02T02:05:44.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Node-js10及npm6发布"><a href="#Node-js10及npm6发布" class="headerlink" title="Node.js10及npm6发布"></a>Node.js10及npm6发布</h1><p>Node.js 发布最新版本 Node.js 10.0.0，同时，npm 6 也随之发布。据了解，今年 10 月，Node.js 10.x 将成为长期支持版本，该版本专注于稳定性、扩展支持以及为各类应用提供一个可靠稳定的平台。</p><p>Node.js 10.x 将是第一个支持 OpenSSL 1.1.0 的版本。该版本配备了 Google V8 6.6 JavaScript 引擎，性能会增强，错误处理和跟踪诊断能力也将会提升。<br>此版本还将推出 Node.js API（N-API），N-API 是一个稳定的 API 模块，它独立于 V8，这样就不会阻碍模块在不重新编译的情况下运行新版本的 Node.js。</p><h2 id="关于-N-API"><a href="#关于-N-API" class="headerlink" title="关于 N-API"></a>关于 N-API</h2><p>N-API 提高了 Node.js 的 ABI 稳定性，有助于模块的部署和维护。<br>Node.js 10 将 ABI 的稳定模块 API（N-API）作为官方支持的 API 层。N-API 旨在解决当今生态系统中的两个问题，一是降低本地模块的维护成本，二是在升级 Node.js 版本时，降低模块使用者之间的摩擦。</p><p>升级到最新的 Node.js 版本后，Node.js 版本之间的模块损坏将不再成为 N-API 模块的问题，这对于开发者和消费者来说都是双赢的。为了提高此功能的实用性，N-API 也将被移植到 Node.js 8.x 和 6.x 中，还包括下一版本。</p><h2 id="现代化的加密"><a href="#现代化的加密" class="headerlink" title="现代化的加密"></a>现代化的加密</h2><p>Node.js 10.x 是第一代支持 OpenSSL 1.1.0 的版本，Node.js 现在能够充分利用由 OpenSSL 团队在代码质量、清理和现代化上提供的服务。</p><p>Node.js 现在可以将其加密支持扩展到对称加密算法 ChaCha20 和身份认证算法 Poly1305 上，它们共同构成了现代加密系统，增加了 Node.js 使用“ AEAD ”密码套件的可能性。<br>伴随着最近 TLS 1.3 规范的完成，网络安全迈出了一大步，OpenSSL 团队正准备发布 1.1.1 版本，其主要特性是支持 TLS 1.3，而支持 OpenSSL 1.1.1 的 Node.js 10 将可以轻松实现 API 和 ABI 的稳定升级。</p><h2 id="错误处理能力提升"><a href="#错误处理能力提升" class="headerlink" title="错误处理能力提升"></a>错误处理能力提升</h2><p>Node.js 10.x 在利用错误代码以缓解持续性的错误检验上取得了很好的进展。过去，更改文本里的错误都需要等到 semver 主版本更新后，这也意味着只有等到下一个主版本的 Node.js 才能对错误进行更改，而 Node.js 主版本每六个月发布一次。使用错误代码将可以在不中断应用程序的情况下更新文本。</p><h2 id="性能改进"><a href="#性能改进" class="headerlink" title="性能改进"></a>性能改进</h2><p>最新的 V8 在 Promise、异步生成器和阵列性能（array performance）有了很大的改进，Promise 和异步函数的改进消除了异步函数和 desugarded promise 链之间的隔阂，这有利于提高使用 Node.js 构建的应用程序性能。</p><h2 id="诊断跟踪和Post-mortem"><a href="#诊断跟踪和Post-mortem" class="headerlink" title="诊断跟踪和Post mortem"></a>诊断跟踪和Post mortem</h2><p>在 Node.js 10 中，新的跟踪事件由 performance API 发布，提高了代码的透明性。此外，它还将引入了新的 API，允许用户在代码运行时按需启用和禁用跟踪事件，从而提高了运行时诊断 Node.js 应用程序问题的灵活性。</p><h2 id="Node-js-10-x引入npm6"><a href="#Node-js-10-x引入npm6" class="headerlink" title="Node.js 10.x引入npm6"></a>Node.js 10.x引入npm6</h2><p>Node.js 10.0.0 附带 npm 5.7.x， 但是，预计在 Node.js 10.x 生命周期的早期会更新为 npm 6。第 6 版将侧重于性能、稳定性和安全性，与先前版本的 npm 相比，性能提高 1700％。<br>以后，如果使用具有已知安全问题的代码，npm Registry 的用户会收到警告通知。npm 将自动检查针对 NSP 数据库的安装请求，并在代码包含漏洞时发出警告通知。</p><p>有关npm6的更多信息，可访问<a href="https://go.npm.me/npm6" target="_blank" rel="noopener">https://go.npm.me/npm6</a></p><blockquote><p>注意： Node.js 10 版本可能还会发生其他变动，可参考<a href="https://medium.com/the-node-js-collection/the-node-js-project-introduces-latest-release-line-node-js-10-x-bf07abfa9076" target="_blank" rel="noopener">https://medium.com/the-node-js-collection/the-node-js-project-introduces-latest-release-line-node-js-10-x-bf07abfa9076</a></p></blockquote><h3 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h3><ol><li><a href="https://nodejs.org/en/blog/release/v10.0.0/" target="_blank" rel="noopener">Node.js 10文档</a></li><li><a href="http://nodejs.cn/api/" target="_blank" rel="noopener">Node.js API 中文文档</a></li></ol>]]></content>
     
