@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>MD5、SHA1、HMAC、HMAC_SHA1区别 | 飞天雪的技术博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="MD5、SHA1、HMAC、HMAC_SHA1区别MD5MD5 – message-digest algorithm 5(信息-摘要算法)缩写，是一种不可逆的加密算法，对任何字符串都可以加密成一段唯一的固定长度的代码。可以是128位。MD5码可以唯一地代码原信息的特征，通常用于密码的加密存储，数字签名，文件完整性验证等。 1234567891011121314/**   * MD5加密   *">
+<meta name="keywords" content="技术,加密,解密,Base64,md5,算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MD5、SHA1、HMAC、HMAC_SHA1区别">
+<meta property="og:url" content="http://jiaxf.github.io/2018/05/02/MD5、SHA1、HMAC、HMAC_SHA1/index.html">
+<meta property="og:site_name" content="飞天雪的技术博客">
+<meta property="og:description" content="MD5、SHA1、HMAC、HMAC_SHA1区别MD5MD5 – message-digest algorithm 5(信息-摘要算法)缩写，是一种不可逆的加密算法，对任何字符串都可以加密成一段唯一的固定长度的代码。可以是128位。MD5码可以唯一地代码原信息的特征，通常用于密码的加密存储，数字签名，文件完整性验证等。 1234567891011121314/**   * MD5加密   *">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-03T01:13:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MD5、SHA1、HMAC、HMAC_SHA1区别">
+<meta name="twitter:description" content="MD5、SHA1、HMAC、HMAC_SHA1区别MD5MD5 – message-digest algorithm 5(信息-摘要算法)缩写，是一种不可逆的加密算法，对任何字符串都可以加密成一段唯一的固定长度的代码。可以是128位。MD5码可以唯一地代码原信息的特征，通常用于密码的加密存储，数字签名，文件完整性验证等。 1234567891011121314/**   * MD5加密   *">
+  
+    <link rel="alternative" href="/atom.xml" title="飞天雪的技术博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/linux.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="jiaxf欢迎您来访！">Jiaxf</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">技术无止境</p>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="search" placeholder=" Search...">
+            </form>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">博客首页</a></li>
+                        
+                            <li><a href="/archives">技术文摘</a></li>
+                        
+                            <li><a href="/works">前端集锦</a></li>
+                        
+                            <li><a href="/readings">阅读书单</a></li>
+                        
+                            <li><a href="/about">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="mailto:jiaxuefeng0@gmail.com" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/jiaxf" title="github">github</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="https://zhihu.com/people/jia-xue-feng-0" title="zhihu">zhihu</a>
+                            
+                                <a class="fl weibo" target="_blank" href="http://weibo.com/jiaxuefeng" title="weibo">weibo</a>
+                            
+                                <a class="fl linkedin" target="_blank" href="http://cn.linkedin.com/in/jiaxuefeng" title="linkedin">linkedin</a>
+                            
+                                <a class="fl rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                                <a class="fl douban" target="_blank" href="https://www.douban.com/people/54387876/" title="douban">douban</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Base64/" style="font-size: 10px;">Base64</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/functional/" style="font-size: 18.75px;">functional</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 11.25px;">java</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/js/" style="font-size: 16.25px;">js</a> <a href="/tags/jsx/" style="font-size: 10px;">jsx</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/md5/" style="font-size: 10px;">md5</a> <a href="/tags/mysql/" style="font-size: 11.25px;">mysql</a> <a href="/tags/node/" style="font-size: 11.25px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/pattern/" style="font-size: 10px;">pattern</a> <a href="/tags/php/" style="font-size: 11.25px;">php</a> <a href="/tags/ramda/" style="font-size: 17.5px;">ramda</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/redis/" style="font-size: 13.75px;">redis</a> <a href="/tags/spring/" style="font-size: 11.25px;">spring</a> <a href="/tags/web/" style="font-size: 11.25px;">web</a> <a href="/tags/函数式编程/" style="font-size: 15px;">函数式编程</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/加密/" style="font-size: 10px;">加密</a> <a href="/tags/区块链/" style="font-size: 10px;">区块链</a> <a href="/tags/技术/" style="font-size: 17.5px;">技术</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/缓存/" style="font-size: 12.5px;">缓存</a> <a href="/tags/解密/" style="font-size: 10px;">解密</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://luuman.github.io/">luuman</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">码农一枚，追求极客！</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+<script type="text/javascript">(function(){document.write(unescape('%3Cdiv id="bdcs"%3E%3C/div%3E'));var bdcs = document.createElement('script');bdcs.type = 'text/javascript';bdcs.async = true;bdcs.src = 'http://znsv.baidu.com/customer_search/api/js?sid=13578845068435931330' + '&plate_url=' + encodeURIComponent(window.location.href) + '&t=' + Math.ceil(new Date()/3600000);var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(bdcs, s);})();</script>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Jiaxf</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/linux.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Jiaxf</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">技术无止境</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">博客首页</a></li>
+                
+                    <li><a href="/archives">技术文摘</a></li>
+                
+                    <li><a href="/works">前端集锦</a></li>
+                
+                    <li><a href="/readings">阅读书单</a></li>
+                
+                    <li><a href="/about">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="mailto:jiaxuefeng0@gmail.com" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/jiaxf" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://zhihu.com/people/jia-xue-feng-0" title="zhihu">zhihu</a>
+                    
+                        <a class="weibo" target="_blank" href="http://weibo.com/jiaxuefeng" title="weibo">weibo</a>
+                    
+                        <a class="linkedin" target="_blank" href="http://cn.linkedin.com/in/jiaxuefeng" title="linkedin">linkedin</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                        <a class="douban" target="_blank" href="https://www.douban.com/people/54387876/" title="douban">douban</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-MD5、SHA1、HMAC、HMAC_SHA1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/05/02/MD5、SHA1、HMAC、HMAC_SHA1/" class="article-date">
+      <time datetime="2018-05-02T07:43:02.000Z" itemprop="datePublished">2018-05-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MD5、SHA1、HMAC、HMAC_SHA1区别
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Base64/">Base64</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/md5/">md5</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/加密/">加密</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/解密/">解密</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="MD5、SHA1、HMAC、HMAC-SHA1区别"><a href="#MD5、SHA1、HMAC、HMAC-SHA1区别" class="headerlink" title="MD5、SHA1、HMAC、HMAC_SHA1区别"></a>MD5、SHA1、HMAC、HMAC_SHA1区别</h1><h2 id="MD5"><a href="#MD5" class="headerlink" title="MD5"></a>MD5</h2><p>MD5 – message-digest algorithm 5(信息-摘要算法)缩写，是一种不可逆的加密算法，对任何字符串都可以加密成一段唯一的固定长度的代码。可以是128位。<br>MD5码可以唯一地代码原信息的特征，通常用于密码的加密存储，数字签名，文件完整性验证等。</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**  </span></span><br><span class="line"><span class="comment"> * MD5加密  </span></span><br><span class="line"><span class="comment"> *   </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> data  </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span>  </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> Exception  </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] encryptMD5(<span class="keyword">byte</span> [] data) <span class="keyword">throws</span> Exception &#123;</span><br><span class="line"></span><br><span class="line">  MessageDigest md5 = MessageDigest.getInstance(KEY_MD5);</span><br><span class="line">  md5.update(data);</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">return</span> md5.<span class="title">digest</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="SHA1"><a href="#SHA1" class="headerlink" title="SHA1"></a>SHA1</h2><p>SHA(Secure Hash Algorithm,安全散列算法)，较MD5更安全。<br>SHA1是由NISTNSA设计，对长度小于264的输入，产生长度为160bit的散列值，可穷举性(brute-force<br>  )更好。SHA-1是由美国标准技术局（NIST）颁布的国家标准，是一种应用最为广泛的Hash函数算法，也是<br>  目前最先进的加密技术，被政府部门和私营业主用来处理敏感信息。也常用于验证文件有没有被篡改。</p>
+  <figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] encryptSHA(<span class="keyword">byte</span>[] data) <span class="keyword">throws</span> Exception &#123;</span><br><span class="line"></span><br><span class="line">  MessageDigest sha = MessageDigest.getInstance(KEY_SHA);</span><br><span class="line">  sha.update(data);</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">return</span> sha.<span class="title">digest</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="HMAC-SHA1"><a href="#HMAC-SHA1" class="headerlink" title="HMAC_SHA1"></a>HMAC_SHA1</h2><p>HMAC是密钥相关的哈希运算消息认证码(Hash-based Message Authentication Code, 散列消息鉴别码),HMAC运算利用哈希算法，以一个密钥和一个消息为输入，生产一个消息摘要作为输出。消息鉴别码实现鉴别的原理是，<br>用公开函数和密钥产生一个固定长度的值作为认证标识，用这个标识鉴别消息的完整性。使用一个密钥生成一个<br>固定大小的小数据块，即MAC,并将其加入到消息中，然后传输。接收方利用与发送方共享的密钥进行鉴别认证等。</p>
+<p>HMAC_SHA1需要一个密钥，而SHA1不需要。</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**  </span></span><br><span class="line"><span class="comment"> * 初始化HMAC密钥  </span></span><br><span class="line"><span class="comment"> *   </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span>  </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> Exception  </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="function">String <span class="title">initMacKey</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">  Keygenerator keyGenerator = KeyGenerator.getInstance(KEY_MAC);</span><br><span class="line"></span><br><span class="line">  SecretKey secretKey = keyGenerator.geterateKey();</span><br><span class="line">  <span class="keyword">return</span> encryptBASE64(secretKey.getEncoded());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**  </span></span><br><span class="line"><span class="comment"> * HMAC加密  </span></span><br><span class="line"><span class="comment"> *   </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> data  </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> key  </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span>  </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> Exception  </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] encryptHMAC(<span class="keyword">byte</span>[] data, String key) <span class="keyword">throws</span> Exception &#123;</span><br><span class="line"></span><br><span class="line">  SecretKey secretKey = <span class="keyword">new</span> SecretKeySpec(decryptBASE64(key), KEY_MAC);</span><br><span class="line">  Mac mac = Mac.getInstance(secretKey.getAlgorithm());</span><br><span class="line">  mac.init(secretKey);</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">return</span> mac.<span class="title">doFinal</span><span class="params">(data)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="CRC"><a href="#CRC" class="headerlink" title="CRC"></a>CRC</h2><p>CRC的全称为CyclicRedundancyCheck，中文名称为循环冗余校验。它是一类重要的线性分组码，编码和解码方法<br>简单，检错和纠错能力强，在通信领域广泛地用于实现差错控制。</p>
+<h2 id="BASE64"><a href="#BASE64" class="headerlink" title="BASE64"></a>BASE64</h2><p>按照RFC2045的定义，Base64被定义为：Base64内容传送编码被设计用来把任意序列的8位字节描述为一种<br>不易被人直接识别的形式。（The Base64 Content-Transfer-Encoding is designed to represent<br> brbitrary sequences of octets in a form that need not be humamly readable.）</p>
+ <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="markdown">/**  </span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>BASE64解密  </span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">*   </span></span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>@param key  </span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>@return  </span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>@throws Exception  </span></span></span><br><span class="line"><span class="comment"><span class="markdown">*/</span></span></span><br><span class="line">public <span class="keyword">static</span> byte[] decryptBASE64(<span class="built_in">String</span> key) throws Exception &#123;</span><br><span class="line">  <span class="keyword">return</span> (<span class="keyword">new</span> BASE64Decoder()).decodeBuffer(key);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="markdown">/**  </span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>BASE64加密  </span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">*   </span></span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>@param key  </span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>@return  </span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>@throws Exception  </span></span></span><br><span class="line"><span class="comment"><span class="markdown">*/</span></span>    </span><br><span class="line">public <span class="keyword">static</span> <span class="built_in">String</span> encryptBASE64(byte[] key) throws Exception &#123;</span><br><span class="line">  <span class="keyword">return</span> (<span class="keyword">new</span> BASE64Encoder()).encodeBuffer(key);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>##　hash算法的作用</p>
+<ul>
+<li><ol>
+<li>文件校验</li>
+</ol>
+</li>
+</ul>
+<p>MD5Hash算法的“数字指纹”，使它成为目前应用最广泛的一种文件完整性校验和（Checksum）算法，不少Unix<br>系统有提供计算md5checksum的命令。</p>
+<ul>
+<li><ol start="2">
+<li>数字签名</li>
+</ol>
+</li>
+</ul>
+<p>Hash算法也是现代密码体系中的一个重要组成部分，由于非对称算法的运算速度较慢，所以在数字签名协议中，<br>单项散列函数扮演了一个重要的角色。对Hash值，又称”数字摘要”进行数字签名，在统计上可以任务与对文件<br>本身进行数字签名是等效的。</p>
+<ul>
+<li><ol start="3">
+<li>鉴权协议</li>
+</ol>
+</li>
+</ul>
+<p><em>完整代码</em></p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.security.MessageDigest;    </span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.crypto.KeyGenerator;    </span><br><span class="line"><span class="keyword">import</span> javax.crypto.Mac;    </span><br><span class="line"><span class="keyword">import</span> javax.crypto.SecretKey;    </span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sun.misc.BASE64Decoder;    </span><br><span class="line"><span class="keyword">import</span> sun.misc.BASE64Encoder;    </span><br><span class="line"></span><br><span class="line"><span class="comment">/**  </span></span><br><span class="line"><span class="comment"> * 基础加密组件  </span></span><br><span class="line"><span class="comment"> *   </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> jiaxf  </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.0  </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 1.0  </span></span><br><span class="line"><span class="comment"> */</span>    </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Coder</span> </span>&#123;    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String KEY_SHA = <span class="string">"SHA"</span>;    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String KEY_MD5 = <span class="string">"MD5"</span>;    </span><br><span class="line"></span><br><span class="line">    <span class="comment">/**  </span></span><br><span class="line"><span class="comment">     * MAC算法可选以下多种算法  </span></span><br><span class="line"><span class="comment">     *   </span></span><br><span class="line"><span class="comment">     * &lt;pre&gt;  </span></span><br><span class="line"><span class="comment">     * HmacMD5   </span></span><br><span class="line"><span class="comment">     * HmacSHA1   </span></span><br><span class="line"><span class="comment">     * HmacSHA256   </span></span><br><span class="line"><span class="comment">     * HmacSHA384   </span></span><br><span class="line"><span class="comment">     * HmacSHA512  </span></span><br><span class="line"><span class="comment">     * &lt;/pre&gt;  </span></span><br><span class="line"><span class="comment">     */</span>    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String KEY_MAC = <span class="string">"HmacMD5"</span>;    </span><br><span class="line"></span><br><span class="line">    <span class="comment">/**  </span></span><br><span class="line"><span class="comment">     * BASE64解密  </span></span><br><span class="line"><span class="comment">     *   </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> key  </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span>  </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception  </span></span><br><span class="line"><span class="comment">     */</span>    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] decryptBASE64(String key) <span class="keyword">throws</span> Exception &#123;    </span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">new</span> BASE64Decoder()).decodeBuffer(key);    </span><br><span class="line">    &#125;    </span><br><span class="line"></span><br><span class="line">    <span class="comment">/**  </span></span><br><span class="line"><span class="comment">     * BASE64加密  </span></span><br><span class="line"><span class="comment">     *   </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> key  </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span>  </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception  </span></span><br><span class="line"><span class="comment">     */</span>    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function">String <span class="title">encryptBASE64</span><span class="params">(<span class="keyword">byte</span>[] key)</span> <span class="keyword">throws</span> Exception </span>&#123;    </span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">new</span> BASE64Encoder()).encodeBuffer(key);    </span><br><span class="line">    &#125;    </span><br><span class="line"></span><br><span class="line">    <span class="comment">/**  </span></span><br><span class="line"><span class="comment">     * MD5加密  </span></span><br><span class="line"><span class="comment">     *   </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> data  </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span>  </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception  </span></span><br><span class="line"><span class="comment">     */</span>    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] encryptMD5(<span class="keyword">byte</span>[] data) <span class="keyword">throws</span> Exception &#123;    </span><br><span class="line"></span><br><span class="line">        MessageDigest md5 = MessageDigest.getInstance(KEY_MD5);    </span><br><span class="line">        md5.update(data);    </span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">return</span> md5.<span class="title">digest</span><span class="params">()</span></span>;    </span><br><span class="line"></span><br><span class="line">    &#125;    </span><br><span class="line"></span><br><span class="line">    <span class="comment">/**  </span></span><br><span class="line"><span class="comment">     * SHA加密  </span></span><br><span class="line"><span class="comment">     *   </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> data  </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span>  </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception  </span></span><br><span class="line"><span class="comment">     */</span>    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] encryptSHA(<span class="keyword">byte</span>[] data) <span class="keyword">throws</span> Exception &#123;    </span><br><span class="line"></span><br><span class="line">        MessageDigest sha = MessageDigest.getInstance(KEY_SHA);    </span><br><span class="line">        sha.update(data);    </span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">return</span> sha.<span class="title">digest</span><span class="params">()</span></span>;    </span><br><span class="line"></span><br><span class="line">    &#125;    </span><br><span class="line"></span><br><span class="line">    <span class="comment">/**  </span></span><br><span class="line"><span class="comment">     * 初始化HMAC密钥  </span></span><br><span class="line"><span class="comment">     *   </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span>  </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception  </span></span><br><span class="line"><span class="comment">     */</span>    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function">String <span class="title">initMacKey</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;    </span><br><span class="line">        KeyGenerator keyGenerator = KeyGenerator.getInstance(KEY_MAC);    </span><br><span class="line"></span><br><span class="line">        SecretKey secretKey = keyGenerator.generateKey();    </span><br><span class="line">        <span class="keyword">return</span> encryptBASE64(secretKey.getEncoded());    </span><br><span class="line">    &#125;    </span><br><span class="line"></span><br><span class="line">    <span class="comment">/**  </span></span><br><span class="line"><span class="comment">     * HMAC加密  </span></span><br><span class="line"><span class="comment">     *   </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> data  </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> key  </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span>  </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception  </span></span><br><span class="line"><span class="comment">     */</span>    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] encryptHMAC(<span class="keyword">byte</span>[] data, String key) <span class="keyword">throws</span> Exception &#123;    </span><br><span class="line"></span><br><span class="line">        SecretKey secretKey = <span class="keyword">new</span> SecretKeySpec(decryptBASE64(key), KEY_MAC);    </span><br><span class="line">        Mac mac = Mac.getInstance(secretKey.getAlgorithm());    </span><br><span class="line">        mac.init(secretKey);    </span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">return</span> mac.<span class="title">doFinal</span><span class="params">(data)</span></span>;    </span><br><span class="line"></span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>测试类</em></p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span>  <span class="keyword">static</span> org.junit.Assert.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**  </span></span><br><span class="line"><span class="comment"> *   </span></span><br><span class="line"><span class="comment"> * @author jiaxf</span></span><br><span class="line"><span class="comment"> * @version 1.0  </span></span><br><span class="line"><span class="comment"> * @since 1.0  </span></span><br><span class="line"><span class="comment"> */</span>    </span><br><span class="line"><span class="keyword">public</span> class CoderTest &#123;    </span><br><span class="line"></span><br><span class="line">    @Test    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> test() <span class="keyword">throws</span> Exception &#123;    </span><br><span class="line">        <span class="keyword">String</span> inputStr = <span class="string">"简单加密"</span>;    </span><br><span class="line">        System.err.<span class="built_in">println</span>(<span class="string">"原文:/n"</span> + inputStr);    </span><br><span class="line"></span><br><span class="line">        <span class="built_in">byte</span>[] inputData = inputStr.getBytes();    </span><br><span class="line">        <span class="keyword">String</span> code = Coder.encryptBASE64(inputData);    </span><br><span class="line"></span><br><span class="line">        System.err.<span class="built_in">println</span>(<span class="string">"BASE64加密后:/n"</span> + code);    </span><br><span class="line"></span><br><span class="line">        <span class="built_in">byte</span>[] output = Coder.decryptBASE64(code);    </span><br><span class="line"></span><br><span class="line">        <span class="keyword">String</span> outputStr = <span class="keyword">new</span> <span class="keyword">String</span>(output);    </span><br><span class="line"></span><br><span class="line">        System.err.<span class="built_in">println</span>(<span class="string">"BASE64解密后:/n"</span> + outputStr);    </span><br><span class="line"></span><br><span class="line">        <span class="comment">// 验证BASE64加密解密一致性    </span></span><br><span class="line">        assertEquals(inputStr, outputStr);    </span><br><span class="line"></span><br><span class="line">        <span class="comment">// 验证MD5对于同一内容加密是否一致    </span></span><br><span class="line">        assertArrayEquals(Coder.encryptMD5(inputData), Coder    </span><br><span class="line">                .encryptMD5(inputData));    </span><br><span class="line"></span><br><span class="line">        <span class="comment">// 验证SHA对于同一内容加密是否一致    </span></span><br><span class="line">        assertArrayEquals(Coder.encryptSHA(inputData), Coder    </span><br><span class="line">                .encryptSHA(inputData));    </span><br><span class="line"></span><br><span class="line">        <span class="keyword">String</span> <span class="built_in">key</span> = Coder.initMacKey();    </span><br><span class="line">        System.err.<span class="built_in">println</span>(<span class="string">"Mac密钥:/n"</span> + <span class="built_in">key</span>);  </span><br><span class="line"></span><br><span class="line">        <span class="comment">// 验证HMAC对于同一内容，同一密钥加密是否一致    </span></span><br><span class="line">        assertArrayEquals(Coder.encryptHMAC(inputData, <span class="built_in">key</span>), Coder.encryptHMAC(    </span><br><span class="line">                inputData, <span class="built_in">key</span>));    </span><br><span class="line"></span><br><span class="line">        BigInteger md5 = <span class="keyword">new</span> BigInteger(Coder.encryptMD5(inputData));    </span><br><span class="line">        System.err.<span class="built_in">println</span>(<span class="string">"MD5:/n"</span> + md5.toString(<span class="number">16</span>));    </span><br><span class="line"></span><br><span class="line">        BigInteger sha = <span class="keyword">new</span> BigInteger(Coder.encryptSHA(inputData));    </span><br><span class="line">        System.err.<span class="built_in">println</span>(<span class="string">"SHA:/n"</span> + sha.toString(<span class="number">32</span>));    </span><br><span class="line"></span><br><span class="line">        BigInteger mac = <span class="keyword">new</span> BigInteger(Coder.encryptHMAC(inputData, inputStr));    </span><br><span class="line">        System.err.<span class="built_in">println</span>(<span class="string">"HMAC:/n"</span> + mac.toString(<span class="number">16</span>));    </span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="https://blog.csdn.net/lplj717/article/details/51828692" target="_blank" rel="noopener">加密算法中BASE64、MD5、SHA、HMAC等之间的区别</a></li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/05/02/MD5、SHA1、HMAC、HMAC_SHA1/">MD5、SHA1、HMAC、HMAC_SHA1区别</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Jiaxf 的个人博客">Jiaxf</a></p>
+        <p><span>发布时间:</span>2018年05月02日 - 15时43分</p>
+        <p><span>最后更新:</span>2018年05月03日 - 09时13分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/05/02/MD5、SHA1、HMAC、HMAC_SHA1/" title="MD5、SHA1、HMAC、HMAC_SHA1区别">http://jiaxf.github.io/2018/05/02/MD5、SHA1、HMAC、HMAC_SHA1/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://jiaxf.github.io/2018/05/02/MD5、SHA1、HMAC、HMAC_SHA1/　　作者: Jiaxf" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/02/2018-05-02-Node.js10和npm6发布/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">2018-05-02-Node.js10和npm6发布</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MD5、SHA1、HMAC、HMAC-SHA1区别"><span class="toc-number">1.</span> <span class="toc-text">MD5、SHA1、HMAC、HMAC_SHA1区别</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#MD5"><span class="toc-number">1.1.</span> <span class="toc-text">MD5</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SHA1"><span class="toc-number">1.2.</span> <span class="toc-text">SHA1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HMAC-SHA1"><span class="toc-number">1.3.</span> <span class="toc-text">HMAC_SHA1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CRC"><span class="toc-number">1.4.</span> <span class="toc-text">CRC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BASE64"><span class="toc-number">1.5.</span> <span class="toc-text">BASE64</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.6.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2018/05/02/MD5、SHA1、HMAC、HMAC_SHA1/" data-title="MD5、SHA1、HMAC、HMAC_SHA1区别" data-url="http://jiaxf.github.io/2018/05/02/MD5、SHA1、HMAC、HMAC_SHA1/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jiaxf"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2018/05/02/2018-05-02-Node.js10和npm6发布/" title="下一篇: 2018-05-02-Node.js10和npm6发布">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/05/02/MD5、SHA1、HMAC、HMAC_SHA1/">MD5、SHA1、HMAC、HMAC_SHA1区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/02/2018-05-02-Node.js10和npm6发布/">2018-05-02-Node.js10和npm6发布</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/25/PWA简介/">PWA简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/区块链的几个基本概念/">区块链的几个基本概念</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/函数式编程/">函数式编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/webWorkers/">Web Worker study</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/前端自适应CSS3相对单位rem/">前端自适应css3相对单位rem</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/1-Thinking in Ramda/">Thinking in Ramda 1</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/3-Thinking in Ramda/">Thinking in Ramda 3</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/4-Thinking in Ramda/">Thinking in Ramda 4</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/5-Thinking in Radam/">Thinking in Ramda 5</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/6-Thinking in Ramda/">Thinking in Ramda 6</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/7-Thinking in Ramda/">Thinking in Ramda 7</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/2-Thinking in Ramda/">Thinking in Ramda 2</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/8-Thinking in Ramda/">Thinking in Ramda 8</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/9-Thinking in Ramda/">Thinking in Ramda 9</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/mysql调优/">mysql调优</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/FP/">函数式编程入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/applicativeFunctor/">函数式编程入门（2）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/category theory/">范畴学基本知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/redis配置/">redis配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/fp2/">函数式编程入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/javascriptIntroduce/">前端知识学习（摘自阮一峰博客）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/redis3/">Redis学习记录3</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/jsPattern/">javascript模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/redis2/">Redis学习记录2</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/mysqlMySQL双主一致性架构优化/">MySQL双主一致性架构优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/redis/">Redis学习记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/curry/">函数式编程入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/2018-04-19-项目基础架构/">2018-04-19-项目基础架构</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/17/2018-04-17-spring-cloud简介/">2018-04-17-spring_cloud简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/17/2018-04-17-spring-boot入门/">2018/04/17/spring-boot入门.md</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/17/2018-04-17-spring-boot入门0/">2018/04/17/spring-boot入门.md</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/16/2018-04-16-github上备份Hexo博客/">2018-04-16-github上备份Hexo博客.md</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/13/2018-04-13-python-md-1/">2018-04-13-技术随笔.md</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/javascriptEvent/">JavaScriptEvent</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/30/reactStudy/">React入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/29/javascript错误/">js错误类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/14/2015-02-14-php学习笔记/">php学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/14/2015-02-14-php数据类型/">php数据类型</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2018 Jiaxf
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >用户到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 30;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-70677304-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+    <script type="text/javascript">
+      window.onload = function(){
+        document.getElementById("search").onclick = function(){
+            console.log("search")
+            search();
+        }
+      }
+      function search(){
+        (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+        (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+        })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+        _st('install','f9SxgsuoT3T5zTyGctUR','2.0.0');
+        
+      }
+    </script>
+
+  </div>
+</body>
+</html>
+<a href="https://github.com/jiaxf"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
