@@ -8,6 +8,7 @@ tags:
   - Base64
   - md5
   - 算法
+abbrlink: 54986
 ---
 
 # MD5、SHA1、HMAC、HMAC_SHA1区别
