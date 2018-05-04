@@ -159,7 +159,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Base64/" style="font-size: 10px;">Base64</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/functional/" style="font-size: 18.75px;">functional</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 11.25px;">java</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/js/" style="font-size: 16.25px;">js</a> <a href="/tags/jsx/" style="font-size: 10px;">jsx</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/md5/" style="font-size: 10px;">md5</a> <a href="/tags/mysql/" style="font-size: 11.25px;">mysql</a> <a href="/tags/node/" style="font-size: 11.25px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/pattern/" style="font-size: 10px;">pattern</a> <a href="/tags/php/" style="font-size: 11.25px;">php</a> <a href="/tags/ramda/" style="font-size: 17.5px;">ramda</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/redis/" style="font-size: 13.75px;">redis</a> <a href="/tags/spring/" style="font-size: 11.25px;">spring</a> <a href="/tags/web/" style="font-size: 11.25px;">web</a> <a href="/tags/函数式编程/" style="font-size: 15px;">函数式编程</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/加密/" style="font-size: 11.25px;">加密</a> <a href="/tags/区块链/" style="font-size: 10px;">区块链</a> <a href="/tags/技术/" style="font-size: 18.75px;">技术</a> <a href="/tags/算法/" style="font-size: 11.25px;">算法</a> <a href="/tags/缓存/" style="font-size: 12.5px;">缓存</a> <a href="/tags/解密/" style="font-size: 11.25px;">解密</a>
+                        <a href="/tags/Base64/" style="font-size: 10px;">Base64</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/functional/" style="font-size: 17.78px;">functional</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 11.11px;">java</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/js/" style="font-size: 15.56px;">js</a> <a href="/tags/jsx/" style="font-size: 10px;">jsx</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/md5/" style="font-size: 10px;">md5</a> <a href="/tags/mysql/" style="font-size: 11.11px;">mysql</a> <a href="/tags/node/" style="font-size: 11.11px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/pattern/" style="font-size: 10px;">pattern</a> <a href="/tags/php/" style="font-size: 11.11px;">php</a> <a href="/tags/ramda/" style="font-size: 16.67px;">ramda</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/redis/" style="font-size: 13.33px;">redis</a> <a href="/tags/spring/" style="font-size: 11.11px;">spring</a> <a href="/tags/web/" style="font-size: 11.11px;">web</a> <a href="/tags/函数式编程/" style="font-size: 14.44px;">函数式编程</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/加密/" style="font-size: 11.11px;">加密</a> <a href="/tags/区块链/" style="font-size: 10px;">区块链</a> <a href="/tags/技术/" style="font-size: 18.89px;">技术</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/算法/" style="font-size: 11.11px;">算法</a> <a href="/tags/缓存/" style="font-size: 12.22px;">缓存</a> <a href="/tags/解密/" style="font-size: 11.11px;">解密</a>
                     </div>
                 </section>
                 
@@ -245,6 +245,77 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-fp2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/04/19/fp2/" class="article-date">
+      <time datetime="2018-04-19T03:48:54.000Z" itemprop="datePublished">2018-04-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/19/fp2/">函数式编程入门</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h1 id="Functional-programs"><a href="#Functional-programs" class="headerlink" title="Functional programs"></a>Functional programs</h1><h2 id="PURE-FUNCTIONS"><a href="#PURE-FUNCTIONS" class="headerlink" title="PURE FUNCTIONS"></a>PURE FUNCTIONS</h2><pre><code>Pure functions are functions that have no side-effects.They don&apos;t assign to any outside variables, they don&apos;t consume input, they don&apos;t produce output, they don&apos;t read from or writ to a database, they don&apos;t modify the parameters they&apos;re passed, etc.
+
+The basic idea is that, if you call a function with the same inputs over and over again, you alwyas get the same result.
+
+You can certainly do things with impure functions(and you must, if your program is going to do amything interesting), but for the most part you&apos;ll want to keep most of your funtions pure.
+</code></pre>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2018/04/19/fp2/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-2018-04-19-项目基础架构" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -965,83 +1036,6 @@
       
         <p class="article-more-link">
           <a  href="/2016/11/29/javascript错误/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-2015-02-14-php学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/02/14/2015-02-14-php学习笔记/" class="article-date">
-      <time datetime="2015-02-13T16:00:00.000Z" itemprop="datePublished">2015-02-14</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/02/14/2015-02-14-php学习笔记/">php学习笔记</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="php学习笔记"><a href="#php学习笔记" class="headerlink" title="php学习笔记"></a>php学习笔记</h1><h2 id="php能做什么？"><a href="#php能做什么？" class="headerlink" title="php能做什么？"></a>php能做什么？</h2><pre><code>php能够生成动态页面内容；
-php能够创建、打开、读取、写入、删除并关闭服务器上的文件；
-php能够接收表单数据；
-php能够发送并取回cookie；
-pph能够添加、删除、修改数据库中的数据； 
-php能够限制用户访问网站中的某些页面；
-php能够对数据进行加密；
-</code></pre><h2 id="为什么使用php？"><a href="#为什么使用php？" class="headerlink" title="为什么使用php？"></a>为什么使用php？</h2><pre><code>php运行于各种平台
-php兼容所有服务器（apache\iis）
-php支持多种数据库
-php高效，易于学习
-</code></pre>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/02/14/2015-02-14-php学习笔记/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
