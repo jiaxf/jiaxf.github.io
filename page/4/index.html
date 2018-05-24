@@ -159,7 +159,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Base64/" style="font-size: 10px;">Base64</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/functional/" style="font-size: 17.5px;">functional</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 11.25px;">java</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/jsx/" style="font-size: 10px;">jsx</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/md5/" style="font-size: 10px;">md5</a> <a href="/tags/mysql/" style="font-size: 11.25px;">mysql</a> <a href="/tags/node/" style="font-size: 11.25px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/pattern/" style="font-size: 10px;">pattern</a> <a href="/tags/php/" style="font-size: 11.25px;">php</a> <a href="/tags/ramda/" style="font-size: 16.25px;">ramda</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/redis/" style="font-size: 13.75px;">redis</a> <a href="/tags/spring/" style="font-size: 11.25px;">spring</a> <a href="/tags/web/" style="font-size: 11.25px;">web</a> <a href="/tags/函数式编程/" style="font-size: 13.75px;">函数式编程</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/加密/" style="font-size: 11.25px;">加密</a> <a href="/tags/区块链/" style="font-size: 10px;">区块链</a> <a href="/tags/技术/" style="font-size: 18.75px;">技术</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/生活乐趣/" style="font-size: 10px;">生活乐趣</a> <a href="/tags/算法/" style="font-size: 11.25px;">算法</a> <a href="/tags/缓存/" style="font-size: 12.5px;">缓存</a> <a href="/tags/解密/" style="font-size: 11.25px;">解密</a>
+                        <a href="/tags/Base64/" style="font-size: 10px;">Base64</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/functional/" style="font-size: 17.5px;">functional</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 11.25px;">java</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/jsx/" style="font-size: 10px;">jsx</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/md5/" style="font-size: 10px;">md5</a> <a href="/tags/mysql/" style="font-size: 11.25px;">mysql</a> <a href="/tags/node/" style="font-size: 11.25px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/pattern/" style="font-size: 10px;">pattern</a> <a href="/tags/php/" style="font-size: 11.25px;">php</a> <a href="/tags/ramda/" style="font-size: 16.25px;">ramda</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/redis/" style="font-size: 13.75px;">redis</a> <a href="/tags/spring/" style="font-size: 11.25px;">spring</a> <a href="/tags/web/" style="font-size: 11.25px;">web</a> <a href="/tags/函数式编程/" style="font-size: 12.5px;">函数式编程</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/加密/" style="font-size: 11.25px;">加密</a> <a href="/tags/区块链/" style="font-size: 10px;">区块链</a> <a href="/tags/技术/" style="font-size: 18.75px;">技术</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/生活乐趣/" style="font-size: 10px;">生活乐趣</a> <a href="/tags/算法/" style="font-size: 11.25px;">算法</a> <a href="/tags/缓存/" style="font-size: 12.5px;">缓存</a> <a href="/tags/解密/" style="font-size: 11.25px;">解密</a>
                     </div>
                 </section>
                 
@@ -246,6 +246,85 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-mysqlMySQL双主一致性架构优化" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/04/19/mysqlMySQL双主一致性架构优化/" class="article-date">
+      <time datetime="2018-04-19T03:48:54.000Z" itemprop="datePublished">2018-04-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/19/mysqlMySQL双主一致性架构优化/">MySQL双主一致性架构优化</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h1 id="MySQL双主一致性架构优化"><a href="#MySQL双主一致性架构优化" class="headerlink" title="MySQL双主一致性架构优化"></a>MySQL双主一致性架构优化</h1><p>一、双主保证高可用</p>
+<p>MySQL数据库集群常使用一主多从，主从同步，读写分离的方式来扩充数据库的读性能，保证读库的高可用，但此时写库仍然是单点。</p>
+<p>在一个MySQL数据库集群中可以设置两个主库，并设置双向同步，以冗余写库的方式来保证写库的高可用。</p>
+<p>二、并发引发不一致</p>
+<p>数据冗余会引发数据的一致性问题，因为数据的同步有一个时间差，并发的写入可能导致数据同步失败，引起数据丢失：</p>
+<p><img src="/images/640.png" alt=""></p>
+<p>如上图所述，假设主库使用了auto increment来作为自增主键：</p>
+<ul>
+<li>两个MySQL-master设置双向同步可以用来保证主库的高可用</li>
+<li>数据库中现存的记录主键是1，2，3</li>
+<li>主库1插入了一条记录，主键为4，并向主库2同步数据</li>
+<li>数据同步成功之前，主库2也插入了一条记录，由于数据还没有同步成功，插入记录生成的主键也为4，并向主库1也同步数据</li>
+<li>主库1和主库2都插入了主键为4的记录，双主同步失败，数据不一致</li>
+</ul>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2018/04/19/mysqlMySQL双主一致性架构优化/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-mysql调优" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -316,10 +395,10 @@
 
 
   
-    <article id="post-1-Thinking in Ramda" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-redis2" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/04/19/1-Thinking in Ramda/" class="article-date">
+      <a href="/2018/04/19/redis2/" class="article-date">
       <time datetime="2018-04-19T03:48:54.000Z" itemprop="datePublished">2018-04-19</time>
 </a>
     </div>
@@ -333,7 +412,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/19/1-Thinking in Ramda/">Thinking in Ramda 1</a>
+      <a class="article-title" href="/2018/04/19/redis2/">Redis学习记录2</a>
     </h1>
   
 
@@ -343,9 +422,13 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h1 id="Thinking-in-Ramda-getting-started"><a href="#Thinking-in-Ramda-getting-started" class="headerlink" title="Thinking in Ramda: getting started"></a>Thinking in Ramda: getting started</h1><h2 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a>Getting Started</h2><p>I’ll be using the Ramda JavaScript library fro this series,though many of the ideas apply to other JavaScript libraries such as  Underscore and Lodash as well as to other languages.</p>
-<p>I’m going to stick to the lighter,less-academic end of functional programing.</p>
-<h2 id="Ramda"><a href="#Ramda" class="headerlink" title="Ramda"></a>Ramda</h2><p>I find Ramda to be a nicely designed library that provides a lot of tools for doing functional programming in JavaScript in a clean, elegant way.<br>
+              <h2 id="redis-bgrewriteaof问题"><a href="#redis-bgrewriteaof问题" class="headerlink" title="redis bgrewriteaof问题"></a>redis bgrewriteaof问题</h2><p>一、背景</p>
+<ol>
+<li><p>AOF:</p>
+<p> Redis的AOF机制有点类似于Mysql binlog，是Redis的提供的一种持久化方式（另一种是RDB），<br> 它会将所有的写命令按照一定频率(no, always, every seconds)写入到日志文件中，当Redis停机<br> 重启后恢复数据库。</p>
+</li>
+</ol>
+<p><img src="/images/20160203203442_310.png" alt=""><br>
           
       
     </div>
@@ -360,12 +443,12 @@
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/functional/">functional</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ramda/">ramda</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
     </div>
 
       
         <p class="article-more-link">
-          <a  href="/2018/04/19/1-Thinking in Ramda/#more">more >></a>
+          <a  href="/2018/04/19/redis2/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -384,10 +467,10 @@
 
 
   
-    <article id="post-3-Thinking in Ramda" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-redis" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/04/19/3-Thinking in Ramda/" class="article-date">
+      <a href="/2018/04/19/redis/" class="article-date">
       <time datetime="2018-04-19T03:48:54.000Z" itemprop="datePublished">2018-04-19</time>
 </a>
     </div>
@@ -401,7 +484,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/19/3-Thinking in Ramda/">Thinking in Ramda 3</a>
+      <a class="article-title" href="/2018/04/19/redis/">Redis学习记录</a>
     </h1>
   
 
@@ -411,86 +494,91 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h1 id="Thinking-in-Ramda-Partial-Application"><a href="#Thinking-in-Ramda-Partial-Application" class="headerlink" title="Thinking in Ramda: Partial Application"></a>Thinking in Ramda: Partial Application</h1><h2 id="Higher-Order-Functions"><a href="#Higher-Order-Functions" class="headerlink" title="Higher-Order Functions"></a>Higher-Order Functions</h2><p>Functions that take or return other functions are known as “higher-order functions”.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  Full function version:</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">publishedInYear</span>(<span class="params">year</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">book</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> book.year === year</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Arrow function version:</span></span><br><span class="line"><span class="keyword">const</span> publishedInYear = <span class="function"><span class="params">year</span> =&gt;</span> book =&gt; book.year === year</span><br><span class="line"><span class="keyword">const</span> titlesForYear = <span class="function">(<span class="params">books, year</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> selected = filter(publishedInYear(year), books)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> map(<span class="function"><span class="params">book</span> =&gt;</span> book.title, selected)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/functional/">functional</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ramda/">ramda</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2018/04/19/3-Thinking in Ramda/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-FP" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/04/19/FP/" class="article-date">
-      <time datetime="2018-04-19T03:48:54.000Z" itemprop="datePublished">2018-04-19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/19/FP/">函数式编程入门</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="Function-Program"><a href="#Function-Program" class="headerlink" title="Function Program"></a>Function Program</h1><h2 id="几个原则"><a href="#几个原则" class="headerlink" title="几个原则"></a>几个原则</h2><ul>
-<li>DRY（不要重复自己，don’t repeat yourself）</li>
-<li>高内聚低耦合（loose coupling high cohesion）</li>
-<li>YAGNI （你不会用到它的，ya ain’t gonna need it）</li>
-<li>最小意外原则（Principle of least surprise）</li>
-<li>单一责任（single responsibility）</li>
-<li>纯函数，尽量减少副作用</li>
+              <h1 id="Redis学习记录"><a href="#Redis学习记录" class="headerlink" title="Redis学习记录"></a>Redis学习记录</h1><p>业界常用的一些 key-value分布式缓存系统如下：</p>
+<ul>
+<li>Redis</li>
+<li>Memcached</li>
+<li>Cassandra（Facebook 开源）</li>
+<li>Tokyo Tyrant (Tokyo Cabinet)</li>
 </ul>
-<blockquote>
-<p>纯函数是这样一种函数，即相同的输入，永远会得到相同的输出，而且没有任何可观察的副作用。</p>
-</blockquote>
-<blockquote>
-<p><em>副作用</em>是在计算结果的过程中，系统状态的一种变化，或者与外部世界进行的<em>可观察的交互</em>。<br>
+<h2 id="Redis的几个特点："><a href="#Redis的几个特点：" class="headerlink" title="Redis的几个特点："></a>Redis的几个特点：</h2><ul>
+<li>Redis 是一个 key-value 的缓存(cache)和存储(store)系统（适合作缓存或DB）</li>
+<li>支持丰富的数据结构<ul>
+<li>List 就专门用于存储列表型数据，默认按操作时间排序</li>
+<li>Sorted Set 可以按分数排序元素，分数是一种广义概念，可以是时间或评分</li>
+<li>其丰富的数据结构为日后扩展提供了很大的方便。</li>
+</ul>
+</li>
+<li>提供的所有操作都是原子操作，为并发天然保驾护航。</li>
+<li>超快的性能，见其官方性能测试《<a href="https://redis.io/topics/benchmarks" target="_blank" rel="noopener">How fast is Redis?</a>》。</li>
+<li>拥有比较成熟的Java客户端 - Jedis，像新浪微博都是使用它作为客户端。（官方推荐的Clients）</li>
+</ul>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2018/04/19/redis/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-category theory" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/04/19/category theory/" class="article-date">
+      <time datetime="2018-04-19T03:48:54.000Z" itemprop="datePublished">2018-04-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/19/category theory/">范畴学基本知识</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="范畴学基本知识"><a href="#范畴学基本知识" class="headerlink" title="范畴学基本知识"></a>范畴学基本知识</h2><p>范畴学（category theory）是数学中的一个抽象分支，能够形式化诸如集合论（set theory）、类型论（type theory）、群论（group theory）以及逻辑学（logic）等数学分支中的一些概念。范畴学主要处理对象（object）、态射（morphism）和变化式（transformation），而这些概念跟编程的联系非常紧密。下图是一些相同的概念分别在不同理论下的形式：<br>
           
       
     </div>
@@ -510,7 +598,7 @@
 
       
         <p class="article-more-link">
-          <a  href="/2018/04/19/FP/#more">more >></a>
+          <a  href="/2018/04/19/category theory/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -966,69 +1054,6 @@
       
     <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="draft-2018-04-13-python-md-1" class="article article-type-draft" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/04/13/2018-04-13-python-md-1/" class="article-date">
-      <time datetime="2018-04-13T03:31:04.000Z" itemprop="datePublished">2018-04-13</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/13/2018-04-13-python-md-1/">2018-04-13-技术随笔.md</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="Mac下零配置server"><a href="#Mac下零配置server" class="headerlink" title="Mac下零配置server"></a>Mac下零配置server</h1><p>Pow<a href="http://pow.cx/" target="_blank" rel="noopener">Pow</a> is a zero-config Rack Server for Mac。</p>
-<h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><p><code>curl get.pow.cx | sh</code></p>
-<h2 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h2><p>Symlink the folder into ~/.pow</p>
-<p><code>$ cd ~/.pow
- $ ln -s /path/to/myapp</code></p>
-<p>Your website will be up and running at <a href="http://myapp.dev" target="_blank" rel="noopener">http://myapp.dev</a>. The URL is based on the name of the symlink.</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
     </div>
 
       
