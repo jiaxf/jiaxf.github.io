@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>获取Let‘sEncrypt免费证书.md | 飞天雪的技术博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Let’s Encrypt通配符证书开启HTTPS什么是Let’s Encrypt?部署 HTTPS 网站的时候需要证书，证书由 CA 机构签发，大部分传统 CA 机构签发证书是需要收费的，这不利于推动 HTTPS 协议的使用。 Let’s Encrypt 也是一个 CA 机构，但这个 CA 机构是免费的！也就是说签发证书不需要任何费用。 什么是通配符证书在没有出现通配符证书之前，Let’s En">
+<meta name="keywords" content="技术,https,Let&#39;s Encrypt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="获取Let‘sEncrypt免费证书.md">
+<meta property="og:url" content="http://jiaxf.github.io/2018/06/12/Let's Encrypt通配符证书开启HTTPS/index.html">
+<meta property="og:site_name" content="飞天雪的技术博客">
+<meta property="og:description" content="Let’s Encrypt通配符证书开启HTTPS什么是Let’s Encrypt?部署 HTTPS 网站的时候需要证书，证书由 CA 机构签发，大部分传统 CA 机构签发证书是需要收费的，这不利于推动 HTTPS 协议的使用。 Let’s Encrypt 也是一个 CA 机构，但这个 CA 机构是免费的！也就是说签发证书不需要任何费用。 什么是通配符证书在没有出现通配符证书之前，Let’s En">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-12T09:01:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="获取Let‘sEncrypt免费证书.md">
+<meta name="twitter:description" content="Let’s Encrypt通配符证书开启HTTPS什么是Let’s Encrypt?部署 HTTPS 网站的时候需要证书，证书由 CA 机构签发，大部分传统 CA 机构签发证书是需要收费的，这不利于推动 HTTPS 协议的使用。 Let’s Encrypt 也是一个 CA 机构，但这个 CA 机构是免费的！也就是说签发证书不需要任何费用。 什么是通配符证书在没有出现通配符证书之前，Let’s En">
+  
+    <link rel="alternative" href="/atom.xml" title="飞天雪的技术博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/linux.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="jiaxf欢迎您来访！">Jiaxf</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">技术无止境</p>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="search" placeholder=" Search...">
+            </form>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">博客首页</a></li>
+                        
+                            <li><a href="/archives">技术文摘</a></li>
+                        
+                            <li><a href="/works">前端集锦</a></li>
+                        
+                            <li><a href="/readings">阅读书单</a></li>
+                        
+                            <li><a href="/about">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="mailto:jiaxuefeng0@gmail.com" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/jiaxf" title="github">github</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="https://zhihu.com/people/jia-xue-feng-0" title="zhihu">zhihu</a>
+                            
+                                <a class="fl weibo" target="_blank" href="http://weibo.com/jiaxuefeng" title="weibo">weibo</a>
+                            
+                                <a class="fl linkedin" target="_blank" href="http://cn.linkedin.com/in/jiaxuefeng" title="linkedin">linkedin</a>
+                            
+                                <a class="fl rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                                <a class="fl douban" target="_blank" href="https://www.douban.com/people/54387876/" title="douban">douban</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Base64/" style="font-size: 10px;">Base64</a> <a href="/tags/Let-s-Encrypt/" style="font-size: 10px;">Let's Encrypt</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/event/" style="font-size: 10px;">event</a> <a href="/tags/functional/" style="font-size: 17.5px;">functional</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/https/" style="font-size: 11.25px;">https</a> <a href="/tags/java/" style="font-size: 11.25px;">java</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/jsx/" style="font-size: 10px;">jsx</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/md5/" style="font-size: 10px;">md5</a> <a href="/tags/mysql/" style="font-size: 11.25px;">mysql</a> <a href="/tags/node/" style="font-size: 11.25px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/pattern/" style="font-size: 10px;">pattern</a> <a href="/tags/php/" style="font-size: 11.25px;">php</a> <a href="/tags/ramda/" style="font-size: 16.25px;">ramda</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/redis/" style="font-size: 13.75px;">redis</a> <a href="/tags/spring/" style="font-size: 11.25px;">spring</a> <a href="/tags/web/" style="font-size: 11.25px;">web</a> <a href="/tags/函数式编程/" style="font-size: 12.5px;">函数式编程</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/加密/" style="font-size: 11.25px;">加密</a> <a href="/tags/区块链/" style="font-size: 10px;">区块链</a> <a href="/tags/技术/" style="font-size: 18.75px;">技术</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/生活乐趣/" style="font-size: 10px;">生活乐趣</a> <a href="/tags/算法/" style="font-size: 11.25px;">算法</a> <a href="/tags/缓存/" style="font-size: 12.5px;">缓存</a> <a href="/tags/解密/" style="font-size: 11.25px;">解密</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://luuman.github.io/">luuman</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">码农一枚，追求极客！</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+<script type="text/javascript">(function(){document.write(unescape('%3Cdiv id="bdcs"%3E%3C/div%3E'));var bdcs = document.createElement('script');bdcs.type = 'text/javascript';bdcs.async = true;bdcs.src = 'http://znsv.baidu.com/customer_search/api/js?sid=13578845068435931330' + '&plate_url=' + encodeURIComponent(window.location.href) + '&t=' + Math.ceil(new Date()/3600000);var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(bdcs, s);})();</script>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Jiaxf</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/linux.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Jiaxf</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">技术无止境</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">博客首页</a></li>
+                
+                    <li><a href="/archives">技术文摘</a></li>
+                
+                    <li><a href="/works">前端集锦</a></li>
+                
+                    <li><a href="/readings">阅读书单</a></li>
+                
+                    <li><a href="/about">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="mailto:jiaxuefeng0@gmail.com" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/jiaxf" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://zhihu.com/people/jia-xue-feng-0" title="zhihu">zhihu</a>
+                    
+                        <a class="weibo" target="_blank" href="http://weibo.com/jiaxuefeng" title="weibo">weibo</a>
+                    
+                        <a class="linkedin" target="_blank" href="http://cn.linkedin.com/in/jiaxuefeng" title="linkedin">linkedin</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                        <a class="douban" target="_blank" href="https://www.douban.com/people/54387876/" title="douban">douban</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-Let&#39;s Encrypt通配符证书开启HTTPS" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/06/12/Let's Encrypt通配符证书开启HTTPS/" class="article-date">
+      <time datetime="2018-06-12T07:50:50.000Z" itemprop="datePublished">2018-06-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      获取Let‘sEncrypt免费证书.md
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Let-s-Encrypt/">Let's Encrypt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/https/">https</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="Let’s-Encrypt通配符证书开启HTTPS"><a href="#Let’s-Encrypt通配符证书开启HTTPS" class="headerlink" title="Let’s Encrypt通配符证书开启HTTPS"></a>Let’s Encrypt通配符证书开启HTTPS</h1><h2 id="什么是Let’s-Encrypt"><a href="#什么是Let’s-Encrypt" class="headerlink" title="什么是Let’s Encrypt?"></a>什么是Let’s Encrypt?</h2><p>部署 HTTPS 网站的时候需要证书，证书由 CA 机构签发，大部分传统 CA 机构签发证书是需要收费的，这不利于推动 HTTPS 协议的使用。</p>
+<p>Let’s Encrypt 也是一个 CA 机构，但这个 CA 机构是免费的！也就是说签发证书不需要任何费用。</p>
+<h2 id="什么是通配符证书"><a href="#什么是通配符证书" class="headerlink" title="什么是通配符证书"></a>什么是通配符证书</h2><p>在没有出现通配符证书之前，Let’s Encrypt 支持两种证书。</p>
+<p>1）单域名证书：证书仅仅包含一个主机。</p>
+<p>2）SAN 证书：一张证书可以包括多个主机（Let’s Encrypt 限制是 20），也就是证书可以包含下列的主机：<a href="http://www.example.com、www.example.cn、blog.example.com" target="_blank" rel="noopener">www.example.com、www.example.cn、blog.example.com</a> 等等。</p>
+<p>证书包含的主机可以不是同一个注册域，不要问我注册域是什么？注册域就是向域名注册商购买的域名。</p>
+<p>对于个人用户来说，由于主机并不是太多，所以使用 SAN 证书完全没有问题，但是对于大公司来说有一些问题：</p>
+<p>子域名非常多，而且过一段时间可能就要使用一个新的主机。</p>
+<p>注册域也非常多。</p>
+<p>读者可以思考下，对于大企业来说，SAN 证书可能并不能满足需求，类似于 sina 这样的网站，所有的主机全部包含在一张证书中，而使用 Let’s Encrypt 证书是无法满足的。</p>
+<h2 id="Let’s-Encrypt-通配符证书"><a href="#Let’s-Encrypt-通配符证书" class="headerlink" title="Let’s Encrypt 通配符证书"></a>Let’s Encrypt 通配符证书</h2><p>通配符证书就是证书中可以包含一个通配符，比如 .example.com、.example.cn，读者很快明白，大型企业也可以使用通配符证书了，一张证书可以防止更多的主机了。</p>
+<p>这个功能可以说非常重要，从功能上看 Let’s Encrypt 和传统 CA 机构没有什么区别了，会不会触动传统 CA 机构的利益呢？</p>
+<h2 id="如何申请Let’s-Encrypt通配符证书"><a href="#如何申请Let’s-Encrypt通配符证书" class="headerlink" title="如何申请Let’s Encrypt通配符证书"></a>如何申请Let’s Encrypt通配符证书</h2><p>为了实现通配符证书，Let’s Encrypt 对 ACME 协议的实现进行了升级，只有 v2 协议才能支持通配符证书。</p>
+<p>也就是说任何客户端只要支持 ACME v2 版本，就可以申请通配符证书了，是不是很激动。</p>
+<p>读者可以查看下自己惯用的客户端是不是支持 ACME v2 版本，官方介绍 Certbot 0.22.0 版本支持新的协议版本，我立刻进行了升级：</p>
+<p>./certbot-auto -V<br>Upgrading certbot-auto 0.21.1 to 0.22.0…<br>Replacing certbot-auto…</p>
+<p>./certbot-auto -V<br>certbot 0.22.0<br>在了解该协议之前有几个注意点：</p>
+<p>1）客户在申请 Let’s Encrypt 证书的时候，需要校验域名的所有权，证明操作者有权利为该域名申请证书，目前支持三种验证方式：</p>
+<p>dns-01：给域名添加一个 DNS TXT 记录。</p>
+<p>http-01：在域名对应的 Web 服务器下放置一个 HTTP well-known URL 资源文件。</p>
+<p>tls-sni-01：在域名对应的 Web 服务器下放置一个 HTTPS well-known URL 资源文件。</p>
+<p>而申请通配符证书，只能使用 dns-01 的方式。</p>
+<p>2）ACME v2 和 v1 协议是互相不兼容的，为了使用 v2 版本，客户端需要创建另外一个账户（代表客户端操作者），以 Certbot 客户端为例，大家可以查看：</p>
+<p>$ tree /etc/letsencrypt/accounts<br>.<br>├── acme-staging.api.letsencrypt.org<br>└── acme-v01.api.letsencrypt.org<br>3）Enumerable Orders 和限制</p>
+<p>为了实现通配符证书，Let’s Encrypt 在申请者身份校验上做了很大的改变。</p>
+<p>有了订单 ID 的概念，主要是为了追踪通配符域名。</p>
+<p>申请限制，在 V1 版本，Let’s Encrypt 为了避免滥操作，对申请证书有一些限制（很难学习，但是正常使用不会遇到该限制）。而 v2 版本，对于通配符证书，多了一个限制，New Orders per Account（每个证书订单数限制）。</p>
+<p>这两个细节，后续再仔细研究。</p>
+<h2 id="实践测试"><a href="#实践测试" class="headerlink" title="实践测试"></a>实践测试</h2><p>我迫不及待想使用 Certbot 申请通配符证书，升级 Certbot 版本运行下列命令：</p>
+<p>$ certbot-auto certonly  -d *.newyingyong.cn –manual –preferred-challenges dns</p>
+<p>Saving debug log to /var/log/letsencrypt/letsencrypt.log<br>Plugins selected: Authenticator manual, Installer None<br>Obtaining a new certificate<br>The currently selected ACME CA endpoint does not support issuing wildcard certificates.</p>
+<p>参数说明：</p>
+<p>certonly，插件，Certbot 有很多插件，不同的插件都可以申请证书，用户可以根据需要自行选择<br>-d 为那些主机申请证书，如果是通配符，输入 *.newyingyong.cn<br>–preferred-challenges dns，使用 DNS 方式校验域名所有权<br>接下去就是命令行的输出：</p>
+<p>Saving debug log to /var/log/letsencrypt/letsencrypt.log<br>Plugins selected: Authenticator manual, Installer None<br>Enter email address (used for urgent renewal and security notices) (Enter ‘c’ to<br>cancel): <a href="mailto:ywdblog@gmail.com" target="_blank" rel="noopener">ywdblog@gmail.com</a></p>
+<hr>
+<p>Please read the Terms of Service at<br><a href="https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf" target="_blank" rel="noopener">https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf</a>. You must<br>agree in order to register with the ACME server at</p>
+<h2 id="https-acme-v02-api-letsencrypt-org-directory"><a href="#https-acme-v02-api-letsencrypt-org-directory" class="headerlink" title="https://acme-v02.api.letsencrypt.org/directory"></a><a href="https://acme-v02.api.letsencrypt.org/directory" target="_blank" rel="noopener">https://acme-v02.api.letsencrypt.org/directory</a></h2><p>(A)gree/(C)ancel: A</p>
+<p>Plugins selected: Authenticator manual, Installer None<br>Obtaining a new certificate<br>Performing the following challenges:<br>dns-01 challenge for newyingyong.cn</p>
+<hr>
+<p>NOTE: The IP of this machine will be publicly logged as having requested this<br>certificate. If you’re running certbot in manual mode on a machine that is not<br>your server, please ensure you’re okay with that.</p>
+<h2 id="Are-you-OK-with-your-IP-being-logged"><a href="#Are-you-OK-with-your-IP-being-logged" class="headerlink" title="Are you OK with your IP being logged?"></a>Are you OK with your IP being logged?</h2><p>(Y)es/(N)o: y</p>
+<p>上述有两个交互式的提示：</p>
+<p>是否同意 Let’s Encrypt 协议要求</p>
+<p>询问是否对域名和机器（IP）进行绑定</p>
+<p>确认同意才能继续。</p>
+<p>继续查看命令行的输出，非常关键：</p>
+<hr>
+<p>Please deploy a DNS TXT record under the name<br>_acme-challenge.newyingyong.cn with the following value:</p>
+<p>2_8KBE_jXH8nYZ2unEViIbW52LhIqxkg6i9mcwsRvhQ</p>
+<h2 id="Before-continuing-verify-the-record-is-deployed"><a href="#Before-continuing-verify-the-record-is-deployed" class="headerlink" title="Before continuing, verify the record is deployed."></a>Before continuing, verify the record is deployed.</h2><p>Press Enter to Continue<br>Waiting for verification…<br>Cleaning up challenges</p>
+<p>要求配置 DNS TXT 记录，从而校验域名所有权，也就是判断证书申请者是否有域名的所有权。</p>
+<p>上面输出要求给 _acme-challenge.newyingyong.cn 配置一条 TXT 记录，在没有确认 TXT 记录生效之前不要回车执行。</p>
+<p>我使用的是阿里云的域名服务器，登录控制台操作如下图：</p>
+<p>然后输入下列命令确认 TXT 记录是否生效：</p>
+<p>$ dig  -t txt  _acme-challenge.newyingyong.cn @8.8.8.8    </p>
+<p>;; OPT PSEUDOSECTION:<br>; EDNS: version: 0, flags:; udp: 512<br>;; QUESTION SECTION:<br>;_acme-challenge.newyingyong.cn.        IN      TXT</p>
+<p>;; ANSWER SECTION:<br>_acme-challenge.newyingyong.cn. 599 IN  TXT     “2_8KBE_jXH8nYZ2unEViIbW52LhIqxkg6i9mcwsRvhQ”</p>
+<p>确认生效后，回车执行，输出如下：</p>
+<p>IMPORTANT NOTES:</p>
+<ul>
+<li>Congratulations! Your certificate and chain have been saved at:<br>/etc/letsencrypt/live/newyingyong.cn/fullchain.pem<br>Your key file has been saved at:<br>/etc/letsencrypt/live/newyingyong.cn/privkey.pem<br>Your cert will expire on 2018-06-12. To obtain a new or tweaked<br>version of this certificate in the future, simply run certbot-auto<br>again. To non-interactively renew <em>all</em> of your certificates, run<br>“certbot-auto renew”</li>
+<li><p>If you like Certbot, please consider supporting our work by:</p>
+<p>Donating to ISRG / Let’s Encrypt:   <a href="https://letsencrypt.org/donate" target="_blank" rel="noopener">https://letsencrypt.org/donate</a><br>Donating to EFF:                    <a href="https://eff.org/donate-le" target="_blank" rel="noopener">https://eff.org/donate-le</a></p>
+</li>
+</ul>
+<p>恭喜您，证书申请成功，证书和密钥保存在下列目录：</p>
+<p>$ tree /etc/letsencrypt/archive/newyingyong.cn<br>.<br>├── cert1.pem<br>├── chain1.pem<br>├── fullchain1.pem<br>└── privkey1.pem</p>
+<p>然后校验证书信息，输入如下命令：</p>
+<p>openssl x509 -in  /etc/letsencrypt/archive/newyingyong.cn/cert1.pem -noout -text</p>
+<p>关键输出如下：</p>
+<p>Authority Information Access:<br>        OCSP - URI:<a href="http://ocsp.int-x3.letsencrypt.org" target="_blank" rel="noopener">http://ocsp.int-x3.letsencrypt.org</a><br>        CA Issuers - URI:<a href="http://cert.int-x3.letsencrypt.org/" target="_blank" rel="noopener">http://cert.int-x3.letsencrypt.org/</a></p>
+<p>X509v3 Subject Alternative Name:<br>    DNS:*.newyingyong.cn</p>
+<p>完美，证书包含了 SAN 扩展，该扩展的值就是 *.newyingyong.cn。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/06/12/Let's Encrypt通配符证书开启HTTPS/">获取Let‘sEncrypt免费证书.md</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Jiaxf 的个人博客">Jiaxf</a></p>
+        <p><span>发布时间:</span>2018年06月12日 - 15时50分</p>
+        <p><span>最后更新:</span>2018年06月12日 - 17时01分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/06/12/Let's Encrypt通配符证书开启HTTPS/" title="获取Let‘sEncrypt免费证书.md">http://jiaxf.github.io/2018/06/12/Let&#39;s Encrypt通配符证书开启HTTPS/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://jiaxf.github.io/2018/06/12/Let&#39;s Encrypt通配符证书开启HTTPS/　　作者: Jiaxf" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2018/06/12/获取Let'sEncrypt免费证书/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">获取Let‘sEncrypt免费证书.md</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Let’s-Encrypt通配符证书开启HTTPS"><span class="toc-number">1.</span> <span class="toc-text">Let’s Encrypt通配符证书开启HTTPS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是Let’s-Encrypt"><span class="toc-number">1.1.</span> <span class="toc-text">什么是Let’s Encrypt?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是通配符证书"><span class="toc-number">1.2.</span> <span class="toc-text">什么是通配符证书</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Let’s-Encrypt-通配符证书"><span class="toc-number">1.3.</span> <span class="toc-text">Let’s Encrypt 通配符证书</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何申请Let’s-Encrypt通配符证书"><span class="toc-number">1.4.</span> <span class="toc-text">如何申请Let’s Encrypt通配符证书</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实践测试"><span class="toc-number">1.5.</span> <span class="toc-text">实践测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#https-acme-v02-api-letsencrypt-org-directory"><span class="toc-number">1.6.</span> <span class="toc-text">https://acme-v02.api.letsencrypt.org/directory</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Are-you-OK-with-your-IP-being-logged"><span class="toc-number">1.7.</span> <span class="toc-text">Are you OK with your IP being logged?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Before-continuing-verify-the-record-is-deployed"><span class="toc-number">1.8.</span> <span class="toc-text">Before continuing, verify the record is deployed.</span></a></li></ol></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2018/06/12/Let&#39;s Encrypt通配符证书开启HTTPS/" data-title="获取Let‘sEncrypt免费证书.md" data-url="http://jiaxf.github.io/2018/06/12/Let&#39;s Encrypt通配符证书开启HTTPS/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jiaxf"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2018/06/12/获取Let'sEncrypt免费证书/" title="下一篇: 获取Let‘sEncrypt免费证书.md">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/06/12/Let's Encrypt通配符证书开启HTTPS/">获取Let‘sEncrypt免费证书.md</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/12/获取Let'sEncrypt免费证书/">获取Let‘sEncrypt免费证书.md</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/24/Redis数据介绍与指令大全/">Redis数据介绍与指令大全</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/24/redis常用命令总结/">redis常用命令总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/24/redis通配符删除/">redis通配符删除</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/04/程序猿灯谜/">程序猿灯谜</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/04/高性能web平台OpenResty/">高性能web平台OpenResty</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/03/对称加密&非对称加密/">对称加密&非对称加密</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/02/MD5、SHA1、HMAC、HMAC_SHA1/">MD5、SHA1、HMAC、HMAC_SHA1区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/02/2018-05-02-Node.js10和npm6发布/">2018-05-02-Node.js10和npm6发布</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/25/PWA简介/">PWA简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/20/区块链的几个基本概念/">区块链的几个基本概念</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/函数式编程/">函数式编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/5-Thinking in Radam/">Thinking in Ramda 5</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/6-Thinking in Ramda/">Thinking in Ramda 6</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/7-Thinking in Ramda/">Thinking in Ramda 7</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/1-Thinking in Ramda/">Thinking in Ramda 1</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/8-Thinking in Ramda/">Thinking in Ramda 8</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/9-Thinking in Ramda/">Thinking in Ramda 9</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/redis配置/">redis配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/FP/">函数式编程入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/category theory/">范畴学基本知识</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/applicativeFunctor/">函数式编程入门（2）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/curry/">函数式编程入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/2-Thinking in Ramda/">Thinking in Ramda 2</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/4-Thinking in Ramda/">Thinking in Ramda 4</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/3-Thinking in Ramda/">Thinking in Ramda 3</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/redis3/">Redis学习记录3</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/javascriptIntroduce/">前端知识学习（摘自阮一峰博客）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/redis2/">Redis学习记录2</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/jsPattern/">javascript模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/mysqlMySQL双主一致性架构优化/">MySQL双主一致性架构优化</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/redis/">Redis学习记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/mysql调优/">mysql调优</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/webWorkers/">Web Worker study</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/前端自适应CSS3相对单位rem/">前端自适应css3相对单位rem</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/fp2/">函数式编程入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/19/2018-04-19-项目基础架构/">2018-04-19-项目基础架构</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/17/2018-04-17-spring-cloud简介/">2018-04-17-spring_cloud简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/17/2018-04-17-spring-boot入门0/">2018/04/17/spring-boot入门.md</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/17/2018-04-17-spring-boot入门/">2018/04/17/spring-boot入门.md</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/16/2018-04-16-github上备份Hexo博客/">2018-04-16-github上备份Hexo博客.md</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/13/2018-04-13-python-md-1/">2018-04-13-技术随笔.md</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/javascriptEvent/">JavaScriptEvent</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/30/reactStudy/">React入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/29/javascript错误/">js错误类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/14/2015-02-14-php数据类型/">php数据类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/14/2015-02-14-php学习笔记/">php学习笔记</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2018 Jiaxf
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >用户到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 30;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-70677304-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+    <script type="text/javascript">
+      window.onload = function(){
+        document.getElementById("search").onclick = function(){
+            console.log("search")
+            search();
+        }
+      }
+      function search(){
+        (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+        (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+        })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+        _st('install','f9SxgsuoT3T5zTyGctUR','2.0.0');
+        
+      }
+    </script>
+
+  </div>
+</body>
+</html>
+<a href="https://github.com/jiaxf"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
