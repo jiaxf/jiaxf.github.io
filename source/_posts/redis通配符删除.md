@@ -2,6 +2,7 @@
 layout: post
 title: redis通配符删除
 tags:
+  - 技术
   - redis
   - 缓存
 abbrlink: 9768

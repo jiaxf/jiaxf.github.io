@@ -2,6 +2,7 @@
 layout: post
 title: redis常用命令总结
 tags:
+  - 技术
   - redis
   - 缓存
 abbrlink: 13920

@@ -83,7 +83,7 @@ com
 
 最后，启动Application main方法，至此一个java项目搭建好了！
 
-### 引入ｗｅｂ模块
+### 引入web模块
 
  1、pom.xml中添加支持web的模块：
 
