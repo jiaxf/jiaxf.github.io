@@ -105,4 +105,23 @@ max.input buffer size: 262144 kB
 ```
 
 > tcp  0   0 0.0.0.0:6311   0.0.0.0:*   LISTEN  73821/Rserve
+>
 > 0.0.0.0:6311 代表不受限的IP访问
+
+
+2. Java远程连接Rserve
+
+首先，我们需要下载Rserve所使用到的两个Jar包：REngine.jar和RserveEngine.jar，下载地址[http://www.rforge.net/Rserve/files/](http://www.rforge.net/Rserve/files/)
+如果项目使用maven进行管理，那么将下面的内容放入pom.xml文件中：
+```
+<dependency>
+   <groupId>org.rosuda.REngine</groupId>
+   <artifactId>REngine</artifactId>
+   <version>2.1.0</version>
+</dependency>
+<dependency>
+   <groupId>org.rosuda.REngine</groupId>
+   <artifactId>Rserve</artifactId>
+   <version>1.8.1</version>
+</dependency>
+``````
