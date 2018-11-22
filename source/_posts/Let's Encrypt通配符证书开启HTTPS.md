@@ -1,10 +1,11 @@
 ---
 layout: post
-title: 获取Let‘sEncrypt免费证书.md
+title: Let's Encrypt通配符证书开启HTTPS
 tags:
   - 技术
   - https
   - Let's Encrypt
+abbrlink: 40398
 date: 2018-06-12 15:50:50
 ---
 
@@ -47,13 +48,14 @@ Let's Encrypt 也是一个 CA 机构，但这个 CA 机构是免费的！也就�
 也就是说任何客户端只要支持 ACME v2 版本，就可以申请通配符证书了，是不是很激动。
 
 读者可以查看下自己惯用的客户端是不是支持 ACME v2 版本，官方介绍 Certbot 0.22.0 版本支持新的协议版本，我立刻进行了升级：
-
+```
 ./certbot-auto -V
 Upgrading certbot-auto 0.21.1 to 0.22.0...
 Replacing certbot-auto...
 
 ./certbot-auto -V
 certbot 0.22.0
+```
 在了解该协议之前有几个注意点：
 
 1）客户在申请 Let's Encrypt 证书的时候，需要校验域名的所有权，证明操作者有权利为该域名申请证书，目前支持三种验证方式：
@@ -67,11 +69,12 @@ tls-sni-01：在域名对应的 Web 服务器下放置一个 HTTPS well-known UR
 而申请通配符证书，只能使用 dns-01 的方式。
 
 2）ACME v2 和 v1 协议是互相不兼容的，为了使用 v2 版本，客户端需要创建另外一个账户（代表客户端操作者），以 Certbot 客户端为例，大家可以查看：
-
+```
 $ tree /etc/letsencrypt/accounts
 .
 ├── acme-staging.api.letsencrypt.org
 └── acme-v01.api.letsencrypt.org
+```
 3）Enumerable Orders 和限制
 
 为了实现通配符证书，Let's Encrypt 在申请者身份校验上做了很大的改变。
@@ -85,13 +88,14 @@ $ tree /etc/letsencrypt/accounts
 ## 实践测试
 我迫不及待想使用 Certbot 申请通配符证书，升级 Certbot 版本运行下列命令：
 
+```
 $ certbot-auto certonly  -d *.newyingyong.cn --manual --preferred-challenges dns
 
 Saving debug log to /var/log/letsencrypt/letsencrypt.log
 Plugins selected: Authenticator manual, Installer None
 Obtaining a new certificate
 The currently selected ACME CA endpoint does not support issuing wildcard certificates.
-
+```
 参数说明：
 
 certonly，插件，Certbot 有很多插件，不同的插件都可以申请证书，用户可以根据需要自行选择
@@ -99,6 +103,7 @@ certonly，插件，Certbot 有很多插件，不同的插件都可以申请证�
 –preferred-challenges dns，使用 DNS 方式校验域名所有权
 接下去就是命令行的输出：
 
+```
 Saving debug log to /var/log/letsencrypt/letsencrypt.log
 Plugins selected: Authenticator manual, Installer None
 Enter email address (used for urgent renewal and security notices) (Enter 'c' to
@@ -125,6 +130,7 @@ your server, please ensure you're okay with that.
 Are you OK with your IP being logged?
 -------------------------------------------------------------------------------
 (Y)es/(N)o: y
+```
 
 上述有两个交互式的提示：
 
@@ -136,6 +142,7 @@ Are you OK with your IP being logged?
 
 继续查看命令行的输出，非常关键：
 
+```
 -------------------------------------------------------------------------------
 Please deploy a DNS TXT record under the name
 _acme-challenge.newyingyong.cn with the following value:
@@ -147,6 +154,7 @@ Before continuing, verify the record is deployed.
 Press Enter to Continue
 Waiting for verification...
 Cleaning up challenges
+```
 
 要求配置 DNS TXT 记录，从而校验域名所有权，也就是判断证书申请者是否有域名的所有权。
 
@@ -154,10 +162,11 @@ Cleaning up challenges
 
 我使用的是阿里云的域名服务器，登录控制台操作如下图：
 
-
+![](/img/alidns.png)
 
 然后输入下列命令确认 TXT 记录是否生效：
 
+```
 $ dig  -t txt  _acme-challenge.newyingyong.cn @8.8.8.8    
 
 ;; OPT PSEUDOSECTION:
@@ -167,10 +176,11 @@ $ dig  -t txt  _acme-challenge.newyingyong.cn @8.8.8.8
 
 ;; ANSWER SECTION:
 _acme-challenge.newyingyong.cn. 599 IN  TXT     "2_8KBE_jXH8nYZ2unEViIbW52LhIqxkg6i9mcwsRvhQ"
-
+```
 
 确认生效后，回车执行，输出如下：
 
+```
 IMPORTANT NOTES:
  - Congratulations! Your certificate and chain have been saved at:
    /etc/letsencrypt/live/newyingyong.cn/fullchain.pem
@@ -184,27 +194,29 @@ IMPORTANT NOTES:
 
    Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
    Donating to EFF:                    https://eff.org/donate-le
-
+```
 恭喜您，证书申请成功，证书和密钥保存在下列目录：
 
+
+```
 $ tree /etc/letsencrypt/archive/newyingyong.cn
 .
 ├── cert1.pem
 ├── chain1.pem
 ├── fullchain1.pem
 └── privkey1.pem
-
+```
 然后校验证书信息，输入如下命令：
-
+```
 openssl x509 -in  /etc/letsencrypt/archive/newyingyong.cn/cert1.pem -noout -text
-
+```
 关键输出如下：
-
+```
 Authority Information Access:
         OCSP - URI:http://ocsp.int-x3.letsencrypt.org
         CA Issuers - URI:http://cert.int-x3.letsencrypt.org/
 
 X509v3 Subject Alternative Name:
     DNS:*.newyingyong.cn
-
+```
 完美，证书包含了 SAN 扩展，该扩展的值就是 *.newyingyong.cn。

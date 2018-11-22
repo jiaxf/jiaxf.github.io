@@ -1,9 +1,10 @@
 ---
 layout: post
-title: 获取Let‘sEncrypt免费证书.md
+title: 获取Let's Encrypt免费通配符证书实现Https
 tags:
   - 技术
   - https
+abbrlink: 40399
 date: 2018-06-12 15:19:50
 ---
 
