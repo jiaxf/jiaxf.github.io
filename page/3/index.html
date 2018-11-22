@@ -687,10 +687,10 @@ You can certainly do things with impure functions(and you must, if your program 
 
 
   
-    <article id="post-1-Thinking in Ramda" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-6-Thinking in Ramda" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/04/19/1-Thinking in Ramda/" class="article-date">
+      <a href="/2018/04/19/6-Thinking in Ramda/" class="article-date">
       <time datetime="2018-04-19T03:48:54.000Z" itemprop="datePublished">2018-04-19</time>
 </a>
     </div>
@@ -704,7 +704,7 @@ You can certainly do things with impure functions(and you must, if your program 
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/19/1-Thinking in Ramda/">Thinking in Ramda 1</a>
+      <a class="article-title" href="/2018/04/19/6-Thinking in Ramda/">Thinking in Ramda 6</a>
     </h1>
   
 
@@ -714,9 +714,9 @@ You can certainly do things with impure functions(and you must, if your program 
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h1 id="Thinking-in-Ramda-getting-started"><a href="#Thinking-in-Ramda-getting-started" class="headerlink" title="Thinking in Ramda: getting started"></a>Thinking in Ramda: getting started</h1><h2 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a>Getting Started</h2><p>I’ll be using the Ramda JavaScript library fro this series,though many of the ideas apply to other JavaScript libraries such as  Underscore and Lodash as well as to other languages.</p>
-<p>I’m going to stick to the lighter,less-academic end of functional programing.</p>
-<h2 id="Ramda"><a href="#Ramda" class="headerlink" title="Ramda"></a>Ramda</h2><p>I find Ramda to be a nicely designed library that provides a lot of tools for doing functional programming in JavaScript in a clean, elegant way.<br>
+              <h1 id="Thinking-in-Ramda-Immutability-and-Objects"><a href="#Thinking-in-Ramda-Immutability-and-Objects" class="headerlink" title="Thinking in Ramda: Immutability and Objects"></a>Thinking in Ramda: Immutability and Objects</h1><h2 id="Reading-Object-Properties"><a href="#Reading-Object-Properties" class="headerlink" title="Reading Object Properties"></a>Reading Object Properties</h2><p>We can make the functions more declarative using <code>equals</code> and <code>gte</code>.</p>
+<h2 id="Prop"><a href="#Prop" class="headerlink" title="Prop"></a>Prop</h2><p>Fortunately, Ramda can help us out.It provides the <code>prop</code> function for accesing properties of an object.</p>
+<h2 id="Pick"><a href="#Pick" class="headerlink" title="Pick"></a>Pick</h2><p>Where <code>prop</code> reads a single property from an object and returns the value, <code>p ick</code> reads multiple properties from an object and returns a new object with just those properties.<br>
           
       
     </div>
@@ -736,149 +736,7 @@ You can certainly do things with impure functions(and you must, if your program 
 
       
         <p class="article-more-link">
-          <a  href="/2018/04/19/1-Thinking in Ramda/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-5-Thinking in Radam" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/04/19/5-Thinking in Radam/" class="article-date">
-      <time datetime="2018-04-19T03:48:54.000Z" itemprop="datePublished">2018-04-19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/19/5-Thinking in Radam/">Thinking in Ramda 5</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="Thinking-in-Ramda-Pointfree-Style"><a href="#Thinking-in-Ramda-Pointfree-Style" class="headerlink" title="Thinking in Ramda: Pointfree Style"></a>Thinking in Ramda: Pointfree Style</h1><h2 id="Pointfree-Style"><a href="#Pointfree-Style" class="headerlink" title="Pointfree Style"></a>Pointfree Style</h2><ul>
-<li>Put the data last</li>
-<li>Curry all the things</li>
-</ul>
-<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const water = cond([</span><br><span class="line">    [equals(<span class="number">0</span>), always('water freezes at <span class="number">0</span>°C')],</span><br><span class="line">    [equals(<span class="number">100</span>), alwyas('water boils at <span class="number">100</span>°C')],</span><br><span class="line">    [T,           temp =&gt; `nothing sepcial happends at $&#123;temp&#125;°C`]</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
-<h2 id="Multi-argument-Functions"><a href="#Multi-argument-Functions" class="headerlink" title="Multi-argument Functions"></a>Multi-argument Functions</h2><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const titlesForYear = curry((<span class="name">year</span>, books) =&gt;</span><br><span class="line">  pipe(</span><br><span class="line">      filter(<span class="name">publishedInYear</span>(<span class="name">year</span>)),</span><br><span class="line">      map(<span class="name">book</span> =&gt; book.title)</span><br><span class="line">  )(<span class="name">books</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const titlesForYear = year =&gt;</span><br><span class="line">  pipe(</span><br><span class="line">      filter(<span class="name">publishedInYear</span>(<span class="name">year</span>)),</span><br><span class="line">      map(<span class="name">book</span> =&gt; book.title)</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/functional/">functional</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ramda/">ramda</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2018/04/19/5-Thinking in Radam/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-javascriptIntroduce" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/04/19/javascriptIntroduce/" class="article-date">
-      <time datetime="2018-04-19T03:48:54.000Z" itemprop="datePublished">2018-04-19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/19/javascriptIntroduce/">前端知识学习（摘自阮一峰博客）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="前端开发的历史和趋势"><a href="#前端开发的历史和趋势" class="headerlink" title="前端开发的历史和趋势"></a>前端开发的历史和趋势</h1><hr>
-<h2 id="什么是前端"><a href="#什么是前端" class="headerlink" title="什么是前端"></a>什么是前端</h2><ul>
-<li>前端：针对浏览器的开发，代码在浏览器运行</li>
-<li>后端：针对服务器的开发，代码在服务器运行</li>
-</ul>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2018/04/19/javascriptIntroduce/#more">more >></a>
+          <a  href="/2018/04/19/6-Thinking in Ramda/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -970,9 +828,148 @@ You can certainly do things with impure functions(and you must, if your program 
 
 
   
+    <article id="post-javascriptIntroduce" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/04/19/javascriptIntroduce/" class="article-date">
+      <time datetime="2018-04-19T03:48:54.000Z" itemprop="datePublished">2018-04-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/19/javascriptIntroduce/">前端知识学习（摘自阮一峰博客）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h1 id="前端开发的历史和趋势"><a href="#前端开发的历史和趋势" class="headerlink" title="前端开发的历史和趋势"></a>前端开发的历史和趋势</h1><hr>
+<h2 id="什么是前端"><a href="#什么是前端" class="headerlink" title="什么是前端"></a>什么是前端</h2><ul>
+<li>前端：针对浏览器的开发，代码在浏览器运行</li>
+<li>后端：针对服务器的开发，代码在服务器运行</li>
+</ul>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2018/04/19/javascriptIntroduce/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-7-Thinking in Ramda" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/04/19/7-Thinking in Ramda/" class="article-date">
+      <time datetime="2018-04-19T03:48:54.000Z" itemprop="datePublished">2018-04-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/19/7-Thinking in Ramda/">Thinking in Ramda 7</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h1 id="Thinking-in-Ramda-Immutability-and-Arrays"><a href="#Thinking-in-Ramda-Immutability-and-Arrays" class="headerlink" title="Thinking in Ramda: Immutability and Arrays"></a>Thinking in Ramda: Immutability and Arrays</h1><h2 id="Reading-Array-Elements"><a href="#Reading-Array-Elements" class="headerlink" title="Reading Array Elements"></a>Reading Array Elements</h2><p>Ramda functions for reading array elements <code>nth</code> and  <code>slice</code> and <code>contains</code></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const numbers = [<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>,<span class="number">60</span>]</span><br><span class="line"><span class="function"><span class="title">nth</span><span class="params">(<span class="number">3</span>, numbers)</span></span>  <span class="comment">// =&gt; 40 (0-based indexing)</span></span><br><span class="line"><span class="function"><span class="title">nth</span><span class="params">(-<span class="number">2</span>, numbers)</span></span> <span class="comment">// =&gt;50 (negative numbers start from the right)</span></span><br><span class="line"><span class="function"><span class="title">slice</span><span class="params">(<span class="number">2</span>, <span class="number">5</span>, numbers)</span></span> <span class="comment">// =&gt; [30,40, 50] (see below)</span></span><br><span class="line"><span class="function"><span class="title">contains</span><span class="params">(<span class="number">20</span>, numbers)</span></span> <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
+<p> <code>nth(0)</code>  equals <code>head</code>, <code>nth(-1)</code> equals <code>last</code>.</p>
+<p> It also provides functions for accesing all-but-the-first element <code>tail</code>,all-but-the-last element <code>init</code>,the first N elements <code>take(N)</code>, and the last N elments <code>takeLast(N)</code>.<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/functional/">functional</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ramda/">ramda</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2018/04/19/7-Thinking in Ramda/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 </div>

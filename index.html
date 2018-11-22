@@ -246,6 +246,68 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-RServe高级配置2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/11/22/RServe高级配置2/" class="article-date">
+      <time datetime="2018-11-22T01:50:35.000Z" itemprop="datePublished">2018-11-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <hr>
+<p>layout: post<br>title: RServe安装配置<br>categories: 技术<br>tags:</p>
+<ul>
+<li>R</li>
+</ul>
+<h1 id="RServe高级配置"><a href="#RServe高级配置" class="headerlink" title="RServe高级配置"></a>RServe高级配置</h1><p>##　1.RServe服务器启动</p>
+<p>1） 在程序中，启动RServe服务器<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> library(Rserve)</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> Rserve()</span></span><br></pre></td></tr></table></figure></p>
+<p>2) 在命令行，启动RServe服务器<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">~ R CMD Rserve --help</span><br><span class="line"></span><br><span class="line">Usage: R CMD Rserve [&lt;options&gt;]</span><br><span class="line"></span><br><span class="line">Options: --help  this help screen</span><br><span class="line"> --version  prints Rserve version (also passed <span class="keyword">to</span> R)</span><br><span class="line"> --RS-port &lt;port&gt;  listen on the specified TCP port</span><br><span class="line"> --RS-socket &lt;socket&gt;  use specified local (unix) socket instead of TCP/IP.</span><br><span class="line"> --RS-workdir &lt;path&gt;  use specified working directory root <span class="keyword">for</span> connections.</span><br><span class="line"> --RS-encoding &lt;enc&gt;  <span class="builtin-name">set</span><span class="built_in"> default server </span>string encoding <span class="keyword">to</span> &lt;enc&gt;.</span><br><span class="line"> --RS-conf &lt;file&gt;  load additional<span class="built_in"> config </span>file.</span><br><span class="line"> --RS-settings  dumps current<span class="built_in"> settings </span>of the Rserve</span><br><span class="line"> --RS-source &lt;file&gt;  source the specified file on startup.</span><br><span class="line"> --RS-enable-control  <span class="builtin-name">enable</span> control commands</span><br><span class="line"> --RS-enable-remote  <span class="builtin-name">enable</span> remote connections</span><br><span class="line"> --RS-pidfile &lt;file&gt;  store the pid of the Rserve process <span class="keyword">in</span> &lt;file&gt;</span><br><span class="line"> --RS-<span class="builtin-name">set</span> &lt;config&gt;=&lt;value&gt;   <span class="builtin-name">set</span> configuration option as <span class="keyword">if</span> it was</span><br><span class="line">                             read <span class="keyword">from</span> a configuration file</span><br><span class="line"></span><br><span class="line">All other options are passed <span class="keyword">to</span> the R engine.</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">~ R <span class="keyword">CMD</span><span class="bash"> Rserve --RS-enable-remote</span></span><br></pre></td></tr></table></figure>
+<h2 id="查看Rserve进程"><a href="#查看Rserve进程" class="headerlink" title="查看Rserve进程"></a>查看Rserve进程</h2><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">~ ps -aux|grep Rserve</span><br><span class="line">conan    <span class="number">27639</span>  <span class="number">0.0</span>  <span class="number">1.2</span> <span class="number">116288</span> <span class="number">25236</span> ?        Ss   <span class="number">20</span>:<span class="number">41</span>   <span class="number">0</span>:<span class="number">00</span> /usr/<span class="class"><span class="keyword">lib</span>/<span class="title">R</span>/<span class="title">bin</span>/<span class="title">Rserve</span> --<span class="title">RS</span>-<span class="title">enable</span>-<span class="title">remote</span></span></span><br><span class="line"></span><br><span class="line">~ netstat -nltp|grep Rserve</span><br><span class="line">tcp        <span class="number">0</span>      <span class="number">0</span> <span class="number">0.0</span>.<span class="number">0.0</span>:<span class="number">6311</span>            <span class="number">0.0</span>.<span class="number">0.0</span>:*               LISTEN      <span class="number">27639</span>/Rserve</span><br></pre></td></tr></table></figure>
+<h2 id="2-Rserve配置"><a href="#2-Rserve配置" class="headerlink" title="2. Rserve配置"></a>2. Rserve配置</h2><p>通过配置文件，管理Rserve服务器。</p>
+<p>Rserv.conf: 配置文件<br>source.R:初始化脚步文件<br>查看当前的Rserve 服务器的默认配置信息</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">~ R CMD Rserve --RS-settings</span><br><span class="line">Rserve v1.7-1</span><br><span class="line"></span><br><span class="line">config file: /etc/Rserv.conf</span><br><span class="line">working root: /tmp/Rserv</span><br><span class="line">port: 6311</span><br><span class="line">local socket: [none, TCP<span class="built_in">/IP </span>used]</span><br><span class="line">authorization required: <span class="literal">no</span></span><br><span class="line">plain text password: <span class="keyword">not</span> allowed</span><br><span class="line">passwords file: [none]</span><br><span class="line">allow I/O: <span class="literal">yes</span></span><br><span class="line">allow remote access: <span class="literal">no</span></span><br><span class="line">control commands: <span class="literal">no</span></span><br><span class="line">interactive: <span class="literal">yes</span></span><br><span class="line">max.input buffer size: 262144 kB</span><br></pre></td></tr></table></figure>
+<p>修改默认配置，新建文件：/etc/Rserv.conf<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">~ sudo vi /etc/Rserv.conf</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  workdir /tmp/Rserv</span><br><span class="line">  remote enable</span><br><span class="line">  fileio enable</span><br><span class="line">  interactive <span class="literal">yes</span></span><br><span class="line"> <span class="built_in"> port </span>6311</span><br><span class="line">  maxinbuf 262144</span><br><span class="line">  encoding utf8</span><br><span class="line">  control enable</span><br><span class="line">  source /home/jiaxf/R/RServe/source.R</span><br><span class="line">  eval <span class="attribute">xx</span>=1</span><br><span class="line"></span><br><span class="line">  ~ vi /home/jiaxf/R/RServe/source.R</span><br><span class="line"></span><br><span class="line">    cat(<span class="string">"This is my Rserve!!"</span>)</span><br><span class="line">    <span class="builtin-name">print</span>(paste(<span class="string">"Server start at"</span>,Sys.time()))</span><br></pre></td></tr></table></figure></p>
+<p>source选项，用来配置Rserve服务器启动时加载的文件，例如：初始化系统变量，初始化系统函数等。</p>
+<p>eval选项，直接定义环境变量。</p>
+<p>##　4. Rserve高级使用：用户登陆认证</p>
+<p>增加用户登陆认证，修改文件：/etc/Rserv.conf<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">~ sudo vi /etc/Rserv.conf</span><br><span class="line"></span><br><span class="line">workdir /tmp/Rserv</span><br><span class="line">remote enable</span><br><span class="line">fileio enable</span><br><span class="line">interactive <span class="literal">yes</span></span><br><span class="line">port 6311</span><br><span class="line">maxinbuf 262144</span><br><span class="line">encoding utf8</span><br><span class="line">control enable</span><br><span class="line">source /home/jiaxf/R/RServe/source.R</span><br><span class="line">eval <span class="attribute">xx</span>=1</span><br><span class="line">auth required</span><br><span class="line">plaintext enable</span><br></pre></td></tr></table></figure></p>
+<p>用RSclient登陆</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> library(RSclient)</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> conn&lt;-RS.connect()</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> RS.login(conn,<span class="string">"jiaxf"</span>,<span class="string">"jiaxf"</span>,authkey=RS.authkey(conn))</span></span><br><span class="line">[1] TRUE</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-RServe安装配置" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1139,131 +1201,9 @@ control enable
 
 
   
-    <article id="post-对称加密&amp;非对称加密" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/05/03/对称加密&非对称加密/" class="article-date">
-      <time datetime="2018-05-03T01:27:09.000Z" itemprop="datePublished">2018-05-03</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/03/对称加密&非对称加密/">对称加密&amp;非对称加密</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="对称加密-DES"><a href="#对称加密-DES" class="headerlink" title="对称加密 - DES"></a>对称加密 - DES</h1><ol>
-<li>真正的加密算法，带密钥，加密和解密使用相同的密钥</li>
-<li>对称加密优点是算法公开、计算量小、加密速度快、加密效率高</li>
-<li>双方都保存秘钥，其次如果一方的秘钥被泄露，那么加密信息也就不安全了。另外，每对用户每次使用对称加密算法时，都需要使用其他人不知道的唯一秘钥，这会使得收、发双方所拥有的钥匙数量巨大，密钥管理成为双方的负担</li>
-<li>DES使用56位密钥，以现代计算能力，24小时内即可被破解。虽然如此，在某些简单应用中，我们还是可以使用DES加密算法</li>
-</ol>
-<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DES</span> </span>&#123;  </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 加密</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> datasource byte[]</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> password   String</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> byte[]</span></span><br><span class="line"><span class="comment">     */</span>  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] encrypt(<span class="keyword">byte</span>[] datasource, String password) &#123;  </span><br><span class="line">        <span class="keyword">try</span> &#123;  </span><br><span class="line">              SecureRandom random = <span class="keyword">new</span> SecureRandom();  </span><br><span class="line">              DESKeySpec desKey = <span class="keyword">new</span> DESKeySpec(password.getBytes());  </span><br><span class="line">              <span class="comment">//创建一个密匙工厂，然后用它把DESKeySpec转换成  </span></span><br><span class="line">              SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(<span class="string">"DES"</span>);  </span><br><span class="line">              SecretKey securekey = keyFactory.generateSecret(desKey);  </span><br><span class="line">              <span class="comment">//Cipher对象实际完成加密操作  </span></span><br><span class="line">              Cipher cipher = Cipher.getInstance(<span class="string">"DES"</span>);  </span><br><span class="line">              <span class="comment">//用密匙初始化Cipher对象,Cipher.ENCRYPT_MODE代表编码模式  </span></span><br><span class="line">              cipher.init(Cipher.ENCRYPT_MODE, securekey, random);  </span><br><span class="line">              <span class="comment">//现在，获取数据并加密  </span></span><br><span class="line">              <span class="comment">//正式执行加密操作  </span></span><br><span class="line">              <span class="function"><span class="keyword">return</span> cipher.<span class="title">doFinal</span><span class="params">(datasource)</span></span>;  </span><br><span class="line">          &#125; <span class="keyword">catch</span> (Throwable e) &#123;  </span><br><span class="line">              e.printStackTrace();  </span><br><span class="line">          &#125;  </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 解密</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> src      byte[]</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> password String</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> byte[]</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span>  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] decrypt(<span class="keyword">byte</span>[] src, String password) <span class="keyword">throws</span> Exception &#123;  </span><br><span class="line">      <span class="comment">// DES算法要求有一个可信任的随机数源  </span></span><br><span class="line">      SecureRandom random = <span class="keyword">new</span> SecureRandom();  </span><br><span class="line">      <span class="comment">// 创建一个DESKeySpec对象  </span></span><br><span class="line">      DESKeySpec desKey = <span class="keyword">new</span> DESKeySpec(password.getBytes());  </span><br><span class="line">      <span class="comment">// 创建一个密匙工厂  </span></span><br><span class="line">      SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(<span class="string">"DES"</span>);  </span><br><span class="line">      <span class="comment">// 将DESKeySpec对象转换成SecretKey对象  </span></span><br><span class="line">      SecretKey securekey = keyFactory.generateSecret(desKey);  </span><br><span class="line">      <span class="comment">// Cipher对象实际完成解密操作  </span></span><br><span class="line">      Cipher cipher = Cipher.getInstance(<span class="string">"DES"</span>);  </span><br><span class="line">      <span class="comment">// 用密匙初始化Cipher对象  </span></span><br><span class="line">      cipher.init(Cipher.DECRYPT_MODE, securekey, random);  </span><br><span class="line">      <span class="comment">// 真正开始解密操作  </span></span><br><span class="line">      <span class="function"><span class="keyword">return</span> cipher.<span class="title">doFinal</span><span class="params">(src)</span></span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="非对称加密-RSA"><a href="#非对称加密-RSA" class="headerlink" title="非对称加密 - RSA"></a>非对称加密 - RSA</h1><p>1、用RSA算法生成一对密钥，公钥发放给外部客户，私钥自己保管；有以下应用场景：<br>     【公钥加密、私钥解密】或者【私钥签名、公钥验证】<br>2、非对称加解密的理解：</p>
-<ul>
-<li>小明想秘密给小英发送消息</li>
-<li>小英手里有一个盒子（public key），这个盒子只有小英手里的钥匙（private key）才打得开</li>
-<li>小英把盒子送给小明（分发公钥）</li>
-<li>小明写好消息放进盒子里，锁上盒子（公钥加密）</li>
-<li>小明把盒子寄给小英（密文传输）</li>
-<li>小英用手里的钥匙打开盒子，得到小明的消息（私钥解密）</li>
-<li>假设小刚劫持了盒子，因为没有小英的钥匙，他也打不开</li>
-</ul>
-<p>与DES不同，RSA算法中，每个通信主体都有两个钥匙，一个公钥一个私钥。<br>就是有2把钥匙</p>
-<ol>
-<li>使用publicKey可以对数据进行加密</li>
-<li>使用Key才能对数据进行解密</li>
-</ol>
-<p>单方向传输<br>用公钥加密的数据，只有私钥能解开（可用于加密）；<br>同时，使用私钥加密的数据，只有公钥能解开（签名）。但是速度很慢（比私钥加密慢100到1000倍），<br>公钥的主要算法有RSA，还包括Blowfish,Diffie-Helman等。</p>
-<p>公钥与私钥</p>
-<ol>
-<li>权威数字认证机构（CA）给所有通信主体（个人或组织）颁发公钥和私钥，彼此配对，分别唯一。</li>
-<li>私钥好比数字指纹，同时具有解密和加密功能。个人保管，不公开。</li>
-<li>公钥好比安全性极高的挂号信箱地址，公开。</li>
-</ol>
-<p><em>公私钥加解密举例</em></p>
-<p><img src="/images/20160122203001725.jpeg" alt=""></p>
-<p>设若甲有一份需保密的数字商业合同发给乙签署。经过如下步骤：</p>
-<ol>
-<li>甲用乙的公钥对合同加密。</li>
-<li>密文从甲发送到乙。</li>
-<li>乙收到密文，并用自己的私钥对其解密。</li>
-<li>解密正确，经阅读，乙用自己的私钥对合同进行签署。</li>
-<li>乙用甲的公钥对已经签署的合同进行加密。</li>
-<li>乙将密文发给甲。</li>
-<li>甲用自己的私钥将已签署合同解密。</li>
-<li>解密正确，确认签署。</li>
-</ol>
-<p>公私钥加解密说明<br>从以上步骤，我们知道：</p>
-<ol>
-<li>用公钥加密的密文能且只能用与其唯一配对的私钥才能解开。</li>
-<li>如果某份密文被解开，那么肯定是密文的目标信息主体解开的。</li>
-<li>私钥因其唯一标识所有者的属性，被用于数字签名，具有法律效力。</li>
-</ol>
-<p>一。 公私钥生成</p>
-<ol>
-<li>随机选定两个大素数p, q.</li>
-<li>计算公钥和私钥的公共模数 n = pq .</li>
-<li>计算模数n的欧拉函数 φ(n) .</li>
-<li>选定一个正整数e, 使1 &lt; e &lt; φ(n) , 且e与φ(n)互质.</li>
-<li>计算d, 满足 de ≡ 1  (mod φ(n) ), (k为某个正整数).<br>6.n与e决定公钥, n与d决定私钥.</li>
-</ol>
-<p>二。加解密<br>该过程为小张给小李发消息，公钥为小李的公钥(n &amp; e), 私钥为小李的私钥(n &amp; d).</p>
-<ol>
-<li>小张欲给小李发一个消息M, 他先把M转换为一个大数m &lt; n, 然后用小李的公钥(n &amp; e)把m加密为另一个大数:<br>c = me    mod n</li>
-<li>小李收到小张发来的大数c, 着手解密. 通过自己的私钥(n &amp; d), 得到原来的大数m:<br>m = cd    mod n<br>3.再把m转换为M, 小李即得到小张的原始消息.</li>
-</ol>
-<p>这个过程之所以能通过, 是因为有如下等式:<br>  cd ≡(me)d ≡med    (mod n)</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
-<li><a href="https://blog.csdn.net/program008/article/details/50563944" target="_blank" rel="noopener">编码和加密算法的使用（MD5、Base64、DES、RSA）</a></li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/加密/">加密</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/解密/">解密</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 </div>
