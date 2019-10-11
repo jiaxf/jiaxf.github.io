@@ -246,6 +246,73 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-3-Thinking in Ramda" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/04/19/3-Thinking in Ramda/" class="article-date">
+      <time datetime="2018-04-19T03:48:54.000Z" itemprop="datePublished">2018-04-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/19/3-Thinking in Ramda/">Thinking in Ramda 3</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h1 id="Thinking-in-Ramda-Partial-Application"><a href="#Thinking-in-Ramda-Partial-Application" class="headerlink" title="Thinking in Ramda: Partial Application"></a>Thinking in Ramda: Partial Application</h1><h2 id="Higher-Order-Functions"><a href="#Higher-Order-Functions" class="headerlink" title="Higher-Order Functions"></a>Higher-Order Functions</h2><p>Functions that take or return other functions are known as “higher-order functions”.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  Full function version:</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">publishedInYear</span>(<span class="params">year</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">book</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> book.year === year</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Arrow function version:</span></span><br><span class="line"><span class="keyword">const</span> publishedInYear = <span class="function"><span class="params">year</span> =&gt;</span> book =&gt; book.year === year</span><br><span class="line"><span class="keyword">const</span> titlesForYear = <span class="function">(<span class="params">books, year</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> selected = filter(publishedInYear(year), books)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> map(<span class="function"><span class="params">book</span> =&gt;</span> book.title, selected)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/functional/">functional</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ramda/">ramda</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2018/04/19/3-Thinking in Ramda/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-4-Thinking in Ramda" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -296,73 +363,6 @@
       
         <p class="article-more-link">
           <a  href="/2018/04/19/4-Thinking in Ramda/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-3-Thinking in Ramda" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/04/19/3-Thinking in Ramda/" class="article-date">
-      <time datetime="2018-04-19T03:48:54.000Z" itemprop="datePublished">2018-04-19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/19/3-Thinking in Ramda/">Thinking in Ramda 3</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="Thinking-in-Ramda-Partial-Application"><a href="#Thinking-in-Ramda-Partial-Application" class="headerlink" title="Thinking in Ramda: Partial Application"></a>Thinking in Ramda: Partial Application</h1><h2 id="Higher-Order-Functions"><a href="#Higher-Order-Functions" class="headerlink" title="Higher-Order Functions"></a>Higher-Order Functions</h2><p>Functions that take or return other functions are known as “higher-order functions”.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  Full function version:</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">publishedInYear</span>(<span class="params">year</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">book</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> book.year === year</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Arrow function version:</span></span><br><span class="line"><span class="keyword">const</span> publishedInYear = <span class="function"><span class="params">year</span> =&gt;</span> book =&gt; book.year === year</span><br><span class="line"><span class="keyword">const</span> titlesForYear = <span class="function">(<span class="params">books, year</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> selected = filter(publishedInYear(year), books)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> map(<span class="function"><span class="params">book</span> =&gt;</span> book.title, selected)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/functional/">functional</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ramda/">ramda</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2018/04/19/3-Thinking in Ramda/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -453,6 +453,74 @@
 
 
   
+    <article id="post-6-Thinking in Ramda" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/04/19/6-Thinking in Ramda/" class="article-date">
+      <time datetime="2018-04-19T03:48:54.000Z" itemprop="datePublished">2018-04-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/19/6-Thinking in Ramda/">Thinking in Ramda 6</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h1 id="Thinking-in-Ramda-Immutability-and-Objects"><a href="#Thinking-in-Ramda-Immutability-and-Objects" class="headerlink" title="Thinking in Ramda: Immutability and Objects"></a>Thinking in Ramda: Immutability and Objects</h1><h2 id="Reading-Object-Properties"><a href="#Reading-Object-Properties" class="headerlink" title="Reading Object Properties"></a>Reading Object Properties</h2><p>We can make the functions more declarative using <code>equals</code> and <code>gte</code>.</p>
+<h2 id="Prop"><a href="#Prop" class="headerlink" title="Prop"></a>Prop</h2><p>Fortunately, Ramda can help us out.It provides the <code>prop</code> function for accesing properties of an object.</p>
+<h2 id="Pick"><a href="#Pick" class="headerlink" title="Pick"></a>Pick</h2><p>Where <code>prop</code> reads a single property from an object and returns the value, <code>p ick</code> reads multiple properties from an object and returns a new object with just those properties.<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/functional/">functional</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ramda/">ramda</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2018/04/19/6-Thinking in Ramda/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-7-Thinking in Ramda" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -504,74 +572,6 @@
       
         <p class="article-more-link">
           <a  href="/2018/04/19/7-Thinking in Ramda/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-6-Thinking in Ramda" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/04/19/6-Thinking in Ramda/" class="article-date">
-      <time datetime="2018-04-19T03:48:54.000Z" itemprop="datePublished">2018-04-19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/19/6-Thinking in Ramda/">Thinking in Ramda 6</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="Thinking-in-Ramda-Immutability-and-Objects"><a href="#Thinking-in-Ramda-Immutability-and-Objects" class="headerlink" title="Thinking in Ramda: Immutability and Objects"></a>Thinking in Ramda: Immutability and Objects</h1><h2 id="Reading-Object-Properties"><a href="#Reading-Object-Properties" class="headerlink" title="Reading Object Properties"></a>Reading Object Properties</h2><p>We can make the functions more declarative using <code>equals</code> and <code>gte</code>.</p>
-<h2 id="Prop"><a href="#Prop" class="headerlink" title="Prop"></a>Prop</h2><p>Fortunately, Ramda can help us out.It provides the <code>prop</code> function for accesing properties of an object.</p>
-<h2 id="Pick"><a href="#Pick" class="headerlink" title="Pick"></a>Pick</h2><p>Where <code>prop</code> reads a single property from an object and returns the value, <code>p ick</code> reads multiple properties from an object and returns a new object with just those properties.<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/functional/">functional</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ramda/">ramda</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2018/04/19/6-Thinking in Ramda/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
