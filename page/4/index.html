@@ -246,6 +246,145 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-javascriptIntroduce" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/04/19/javascriptIntroduce/" class="article-date">
+      <time datetime="2018-04-19T03:48:54.000Z" itemprop="datePublished">2018-04-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/19/javascriptIntroduce/">前端知识学习（摘自阮一峰博客）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h1 id="前端开发的历史和趋势"><a href="#前端开发的历史和趋势" class="headerlink" title="前端开发的历史和趋势"></a>前端开发的历史和趋势</h1><hr>
+<h2 id="什么是前端"><a href="#什么是前端" class="headerlink" title="什么是前端"></a>什么是前端</h2><ul>
+<li>前端：针对浏览器的开发，代码在浏览器运行</li>
+<li>后端：针对服务器的开发，代码在服务器运行</li>
+</ul>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2018/04/19/javascriptIntroduce/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-redis3" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/04/19/redis3/" class="article-date">
+      <time datetime="2018-04-19T03:48:54.000Z" itemprop="datePublished">2018-04-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/19/redis3/">Redis学习记录3</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="Redis优化配置和redis-conf说明"><a href="#Redis优化配置和redis-conf说明" class="headerlink" title="Redis优化配置和redis.conf说明"></a>Redis优化配置和redis.conf说明</h2><ol>
+<li>redis.conf 配置参数：</li>
+</ol>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#是否作为守护进程运行</span></span><br><span class="line">daemonize <span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#如以后台进程运行，则需指定一个pid，默认为/var/run/redis.pid</span></span><br><span class="line"></span><br><span class="line">pidfile redis.pid</span><br><span class="line"></span><br><span class="line"><span class="comment">#绑定主机IP，默认值为127.0.0.1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#bind 127.0.0.1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#Redis默认监听端口</span></span><br><span class="line"></span><br><span class="line">port 6379</span><br><span class="line"></span><br><span class="line"><span class="comment">#客户端闲置多少秒后，断开连接，默认为300（秒）</span></span><br><span class="line"></span><br><span class="line">timeout 300</span><br><span class="line"></span><br><span class="line"><span class="comment">#日志记录等级，有4个可选值，debug，verbose（默认值），notice，warning</span></span><br><span class="line"></span><br><span class="line">loglevel verbose</span><br></pre></td></tr></table></figure>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2018/04/19/redis3/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-jsPattern" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -327,10 +466,10 @@
 
 
   
-    <article id="post-5-Thinking in Radam" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-mysqlMySQL双主一致性架构优化" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/04/19/5-Thinking in Radam/" class="article-date">
+      <a href="/2018/04/19/mysqlMySQL双主一致性架构优化/" class="article-date">
       <time datetime="2018-04-19T03:48:54.000Z" itemprop="datePublished">2018-04-19</time>
 </a>
     </div>
@@ -344,7 +483,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/19/5-Thinking in Radam/">Thinking in Ramda 5</a>
+      <a class="article-title" href="/2018/04/19/mysqlMySQL双主一致性架构优化/">MySQL双主一致性架构优化</a>
     </h1>
   
 
@@ -354,13 +493,89 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h1 id="Thinking-in-Ramda-Pointfree-Style"><a href="#Thinking-in-Ramda-Pointfree-Style" class="headerlink" title="Thinking in Ramda: Pointfree Style"></a>Thinking in Ramda: Pointfree Style</h1><h2 id="Pointfree-Style"><a href="#Pointfree-Style" class="headerlink" title="Pointfree Style"></a>Pointfree Style</h2><ul>
-<li>Put the data last</li>
-<li>Curry all the things</li>
+              <h1 id="MySQL双主一致性架构优化"><a href="#MySQL双主一致性架构优化" class="headerlink" title="MySQL双主一致性架构优化"></a>MySQL双主一致性架构优化</h1><p>一、双主保证高可用</p>
+<p>MySQL数据库集群常使用一主多从，主从同步，读写分离的方式来扩充数据库的读性能，保证读库的高可用，但此时写库仍然是单点。</p>
+<p>在一个MySQL数据库集群中可以设置两个主库，并设置双向同步，以冗余写库的方式来保证写库的高可用。</p>
+<p>二、并发引发不一致</p>
+<p>数据冗余会引发数据的一致性问题，因为数据的同步有一个时间差，并发的写入可能导致数据同步失败，引起数据丢失：</p>
+<p><img src="/images/640.png" alt=""></p>
+<p>如上图所述，假设主库使用了auto increment来作为自增主键：</p>
+<ul>
+<li>两个MySQL-master设置双向同步可以用来保证主库的高可用</li>
+<li>数据库中现存的记录主键是1，2，3</li>
+<li>主库1插入了一条记录，主键为4，并向主库2同步数据</li>
+<li>数据同步成功之前，主库2也插入了一条记录，由于数据还没有同步成功，插入记录生成的主键也为4，并向主库1也同步数据</li>
+<li>主库1和主库2都插入了主键为4的记录，双主同步失败，数据不一致</li>
 </ul>
-<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const water = cond([</span><br><span class="line">    [equals(<span class="number">0</span>), always('water freezes at <span class="number">0</span>°C')],</span><br><span class="line">    [equals(<span class="number">100</span>), alwyas('water boils at <span class="number">100</span>°C')],</span><br><span class="line">    [T,           temp =&gt; `nothing sepcial happends at $&#123;temp&#125;°C`]</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
-<h2 id="Multi-argument-Functions"><a href="#Multi-argument-Functions" class="headerlink" title="Multi-argument Functions"></a>Multi-argument Functions</h2><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const titlesForYear = curry((<span class="name">year</span>, books) =&gt;</span><br><span class="line">  pipe(</span><br><span class="line">      filter(<span class="name">publishedInYear</span>(<span class="name">year</span>)),</span><br><span class="line">      map(<span class="name">book</span> =&gt; book.title)</span><br><span class="line">  )(<span class="name">books</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const titlesForYear = year =&gt;</span><br><span class="line">  pipe(</span><br><span class="line">      filter(<span class="name">publishedInYear</span>(<span class="name">year</span>)),</span><br><span class="line">      map(<span class="name">book</span> =&gt; book.title)</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2018/04/19/mysqlMySQL双主一致性架构优化/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-7-Thinking in Ramda" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/04/19/7-Thinking in Ramda/" class="article-date">
+      <time datetime="2018-04-19T03:48:54.000Z" itemprop="datePublished">2018-04-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/19/7-Thinking in Ramda/">Thinking in Ramda 7</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h1 id="Thinking-in-Ramda-Immutability-and-Arrays"><a href="#Thinking-in-Ramda-Immutability-and-Arrays" class="headerlink" title="Thinking in Ramda: Immutability and Arrays"></a>Thinking in Ramda: Immutability and Arrays</h1><h2 id="Reading-Array-Elements"><a href="#Reading-Array-Elements" class="headerlink" title="Reading Array Elements"></a>Reading Array Elements</h2><p>Ramda functions for reading array elements <code>nth</code> and  <code>slice</code> and <code>contains</code></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const numbers = [<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>,<span class="number">60</span>]</span><br><span class="line"><span class="function"><span class="title">nth</span><span class="params">(<span class="number">3</span>, numbers)</span></span>  <span class="comment">// =&gt; 40 (0-based indexing)</span></span><br><span class="line"><span class="function"><span class="title">nth</span><span class="params">(-<span class="number">2</span>, numbers)</span></span> <span class="comment">// =&gt;50 (negative numbers start from the right)</span></span><br><span class="line"><span class="function"><span class="title">slice</span><span class="params">(<span class="number">2</span>, <span class="number">5</span>, numbers)</span></span> <span class="comment">// =&gt; [30,40, 50] (see below)</span></span><br><span class="line"><span class="function"><span class="title">contains</span><span class="params">(<span class="number">20</span>, numbers)</span></span> <span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
+<p> <code>nth(0)</code>  equals <code>head</code>, <code>nth(-1)</code> equals <code>last</code>.</p>
+<p> It also provides functions for accesing all-but-the-first element <code>tail</code>,all-but-the-last element <code>init</code>,the first N elements <code>take(N)</code>, and the last N elments <code>takeLast(N)</code>.<br>
           
       
     </div>
@@ -380,81 +595,7 @@
 
       
         <p class="article-more-link">
-          <a  href="/2018/04/19/5-Thinking in Radam/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-redis配置" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/04/19/redis配置/" class="article-date">
-      <time datetime="2018-04-19T03:48:54.000Z" itemprop="datePublished">2018-04-19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/19/redis配置/">redis配置</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="redis-配置"><a href="#redis-配置" class="headerlink" title="redis 配置"></a>redis 配置</h1><p>redis.conf 配置项说明如下：</p>
-<ol>
-<li>Redis默认不是以守护进程的方式运行，可以通过该配置项修改，使用yes启用守护进程<br> daemonize no</li>
-<li>当Redis以守护进程方式运行时，Redis默认会把pid写入/var/run/redis.pid文件，可以通过pidfile指定<br> pidfile /var/run/redis.pid</li>
-<li>指定Redis监听端口，默认端口为6379，作者在自己的一篇博文中解释了为什么选用6379作为默认端口，因为6379在手机按键上MERZ对应的号码，而MERZ取自意大利歌女Alessia Merz的名字<br> port 6379</li>
-<li>绑定的主机地址<br> bind 127.0.0.1<br>5.当 客户端闲置多长时间后关闭连接，如果指定为0，表示关闭该功能<br> timeout 300</li>
-<li>指定日志记录级别，Redis总共支持四个级别：debug、verbose、notice、warning，默认为verbose<br> loglevel verbose</li>
-<li>日志记录方式，默认为标准输出，如果配置Redis为守护进程方式运行，而这里又配置为日志记录方式为标准输出，则日志将会发送给/dev/null<br> logfile stdout</li>
-<li>设置数据库的数量，默认数据库为0，可以使用SELECT <dbid>命令在连接上指定数据库id<br> databases 16
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2018/04/19/redis配置/#more">more >></a>
+          <a  href="/2018/04/19/7-Thinking in Ramda/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -525,155 +666,6 @@
       
         <p class="article-more-link">
           <a  href="/2018/04/19/mysql调优/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-4-Thinking in Ramda" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/04/19/4-Thinking in Ramda/" class="article-date">
-      <time datetime="2018-04-19T03:48:54.000Z" itemprop="datePublished">2018-04-19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/19/4-Thinking in Ramda/">Thinking in Ramda 4</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="Thinking-in-Ramda-Declarative-Programming"><a href="#Thinking-in-Ramda-Declarative-Programming" class="headerlink" title="Thinking in Ramda: Declarative Programming"></a>Thinking in Ramda: Declarative Programming</h1><p>As we start writing small functional building blocks and combining them, we find that we have to write a lot of functions that wrap JavaScript’s operators such as arithmetic, comparison, logic, and control flow. This can feel tedious, but Ramda has our back.</p>
-<p>There are many different ways to divide up the programming language/style landscape. There’s static typing vs dynamic typing, interpreted languages vs compiled languages, low-level vs high-level, etc.</p>
-<p>Another such division is imperative programming vs declarative programming.<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/functional/">functional</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ramda/">ramda</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2018/04/19/4-Thinking in Ramda/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-webWorkers" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/04/19/webWorkers/" class="article-date">
-      <time datetime="2018-04-19T03:48:54.000Z" itemprop="datePublished">2018-04-19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/19/webWorkers/">Web Worker study</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="Web-Workers"><a href="#Web-Workers" class="headerlink" title="Web Workers"></a>Web Workers</h1><p>javaScript属于单线程环境，无法同时运行多个脚本。HTML5提供了WebWorker，为JavaScript引入线程技术。</p>
-<h2 id="Web-Worker简介"><a href="#Web-Worker简介" class="headerlink" title="Web Worker简介"></a>Web Worker简介</h2><p>WebWorker规范定义了在网络应用中生成背景脚本的API。可以通过Web Worker执行线程。例如触发长时间运行的脚本<br>以处理计算密集型任务，同时却不会阻碍UI或其他脚本处理用户互动。</p>
-<p>Woker利用类似线程的消息传递实现并行。</p>
-<h2 id="Web-Worker的类型"><a href="#Web-Worker的类型" class="headerlink" title="Web Worker的类型"></a>Web Worker的类型</h2><ul>
-<li>专用Woker</li>
-<li>共有Woker</li>
-</ul>
-<h3 id="使用入门"><a href="#使用入门" class="headerlink" title="使用入门"></a>使用入门</h3><p>Web Worker在独立线程中运行，因此，它们执行的代码需要保存在一个单独的文件中。</p>
-<ol>
-<li>创建新的Worker对象</li>
-</ol>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> worker = <span class="keyword">new</span> <span class="type">Woker</span>(<span class="string">'task.js'</span>);</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>创建Worker后通过调用postMessage() 方法启动</li>
-</ol>
-<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">worker.postMessage<span class="comment">()</span>; <span class="comment">// start the worker</span></span><br></pre></td></tr></table></figure>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2018/04/19/webWorkers/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -848,10 +840,10 @@
 
 
   
-    <article id="post-redis3" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-8-Thinking in Ramda" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/04/19/redis3/" class="article-date">
+      <a href="/2018/04/19/8-Thinking in Ramda/" class="article-date">
       <time datetime="2018-04-19T03:48:54.000Z" itemprop="datePublished">2018-04-19</time>
 </a>
     </div>
@@ -865,7 +857,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/19/redis3/">Redis学习记录3</a>
+      <a class="article-title" href="/2018/04/19/8-Thinking in Ramda/">Thinking in Ramda 8</a>
     </h1>
   
 
@@ -875,10 +867,11 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h2 id="Redis优化配置和redis-conf说明"><a href="#Redis优化配置和redis-conf说明" class="headerlink" title="Redis优化配置和redis.conf说明"></a>Redis优化配置和redis.conf说明</h2><ol>
-<li>redis.conf 配置参数：</li>
-</ol>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#是否作为守护进程运行</span></span><br><span class="line">daemonize <span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#如以后台进程运行，则需指定一个pid，默认为/var/run/redis.pid</span></span><br><span class="line"></span><br><span class="line">pidfile redis.pid</span><br><span class="line"></span><br><span class="line"><span class="comment">#绑定主机IP，默认值为127.0.0.1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#bind 127.0.0.1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#Redis默认监听端口</span></span><br><span class="line"></span><br><span class="line">port 6379</span><br><span class="line"></span><br><span class="line"><span class="comment">#客户端闲置多少秒后，断开连接，默认为300（秒）</span></span><br><span class="line"></span><br><span class="line">timeout 300</span><br><span class="line"></span><br><span class="line"><span class="comment">#日志记录等级，有4个可选值，debug，verbose（默认值），notice，warning</span></span><br><span class="line"></span><br><span class="line">loglevel verbose</span><br></pre></td></tr></table></figure>
+              <h1 id="Thinking-in-Ramda-Lenses"><a href="#Thinking-in-Ramda-Lenses" class="headerlink" title="Thinking in Ramda: Lenses"></a>Thinking in Ramda: Lenses</h1><p>Ramda provides a more general tool for performing the operations such as read, update, and transform object properties and array elements in a declarative, immutable way, the lens.</p>
+<h2 id="What-is-a-Lens"><a href="#What-is-a-Lens" class="headerlink" title="What is a Lens?"></a>What is a Lens?</h2><p>A lens combines a “getter” function and a “setter” function into a single unit. Ramda provides a set of functions for working with lenses.</p>
+<p>We can think of a lens as something that focuses on a specific part of a larger data structure.</p>
+<h2 id="How-Do-I-Create-a-Lens"><a href="#How-Do-I-Create-a-Lens" class="headerlink" title="How Do I Create a Lens?"></a>How Do I Create a Lens?</h2><p>The most generic way to create a lens in Ramda is with the lens function. lens takes a getter function and a setter function and returns the new lens.</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">  name: <span class="string">'Randy'</span>,</span><br><span class="line">  socialMedia:&#123;</span><br><span class="line">    github: <span class="string">'randycoulamn'</span>,</span><br><span class="line">    twitter: <span class="string">'@randycoulman'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> nameLens = lens(prop(<span class="string">'name'</span>), assoc(<span class="string">'name'</span>))</span><br><span class="line"><span class="keyword">const</span> twitterLens = lens(</span><br><span class="line">    path([<span class="string">'socialMedia'</span>, <span class="string">'twitter'</span>]),</span><br><span class="line">    assocPath([<span class="string">'socialMedia'</span>, <span class="string">'twitter'</span>])</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
           
       
     </div>
@@ -893,12 +886,12 @@
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/缓存/">缓存</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/functional/">functional</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ramda/">ramda</a></li></ul>
     </div>
 
       
         <p class="article-more-link">
-          <a  href="/2018/04/19/redis3/#more">more >></a>
+          <a  href="/2018/04/19/8-Thinking in Ramda/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -917,10 +910,10 @@
 
 
   
-    <article id="post-mysqlMySQL双主一致性架构优化" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-applicativeFunctor" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/04/19/mysqlMySQL双主一致性架构优化/" class="article-date">
+      <a href="/2018/04/19/applicativeFunctor/" class="article-date">
       <time datetime="2018-04-19T03:48:54.000Z" itemprop="datePublished">2018-04-19</time>
 </a>
     </div>
@@ -934,7 +927,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/19/mysqlMySQL双主一致性架构优化/">MySQL双主一致性架构优化</a>
+      <a class="article-title" href="/2018/04/19/applicativeFunctor/">函数式编程入门（2）</a>
     </h1>
   
 
@@ -944,21 +937,34 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h1 id="MySQL双主一致性架构优化"><a href="#MySQL双主一致性架构优化" class="headerlink" title="MySQL双主一致性架构优化"></a>MySQL双主一致性架构优化</h1><p>一、双主保证高可用</p>
-<p>MySQL数据库集群常使用一主多从，主从同步，读写分离的方式来扩充数据库的读性能，保证读库的高可用，但此时写库仍然是单点。</p>
-<p>在一个MySQL数据库集群中可以设置两个主库，并设置双向同步，以冗余写库的方式来保证写库的高可用。</p>
-<p>二、并发引发不一致</p>
-<p>数据冗余会引发数据的一致性问题，因为数据的同步有一个时间差，并发的写入可能导致数据同步失败，引起数据丢失：</p>
-<p><img src="/images/640.png" alt=""></p>
-<p>如上图所述，假设主库使用了auto increment来作为自增主键：</p>
-<ul>
-<li>两个MySQL-master设置双向同步可以用来保证主库的高可用</li>
-<li>数据库中现存的记录主键是1，2，3</li>
-<li>主库1插入了一条记录，主键为4，并向主库2同步数据</li>
-<li>数据同步成功之前，主库2也插入了一条记录，由于数据还没有同步成功，插入记录生成的主键也为4，并向主库1也同步数据</li>
-<li>主库1和主库2都插入了主键为4的记录，双主同步失败，数据不一致</li>
-</ul>
-          
+        <h1 id="Applicative-functor"><a href="#Applicative-functor" class="headerlink" title="Applicative functor"></a>Applicative functor</h1><p>应用applicative functor作为一个接口可以让不通funcotr可以相互应用（apply）的能力。</p>
+<h2 id="协调与激励"><a href="#协调与激励" class="headerlink" title="协调与激励"></a>协调与激励</h2><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Http.get :: String -&gt; Task Error HTML</span></span><br><span class="line"><span class="keyword">var</span> renderPage = curry(<span class="function"><span class="keyword">function</span></span>(destinations, event) &#123;</span><br><span class="line">    <span class="comment">/* render page */</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">Task.of(renderPage).ap(Http.<span class="keyword">get</span>(<span class="string">'/destinations'</span>)).ap(Http.<span class="keyword">get</span>(<span class="string">'/events'</span>))</span><br><span class="line"><span class="comment">// Task("&lt;div&gt;some page with dest and events&lt;/div&gt;")</span></span><br></pre></td></tr></table></figure>
+<p>两个请求将会同时立即执行，当两者的响应都返回之后，renderPage 就会被调用。这与 monad 版本的那种必须等待前一个任务完成才能继续执行后面的操作完全不同。本来我们就无需根据目的地来获取事件，因此也就不需要依赖顺序执行。</p>
+<p>再次强调，因为我们是使用局部调用的函数来达成上述结果的，所以必须要保证 renderpage 是 curry 函数，否则它就不会一直等到两个 Task 都完成。而且如果你碰巧自己做过类似的事，那你一定会感激 applicative functor 这个异常简洁的接口的。这就是那种能够让我们离“奇点”（singularity）更近一步的优美代码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 帮助函数：</span></span><br><span class="line"><span class="comment">// ===================</span></span><br><span class="line"><span class="comment">// $ :: String -&gt; IO DOM</span></span><br><span class="line"><span class="keyword">var</span> $ = <span class="function"><span class="keyword">function</span>(<span class="params">selector</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> IO(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">document</span>.querySelector(selector)</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// getVal :: String -&gt; IO String</span></span><br><span class="line"><span class="keyword">var</span> getVal = compose(map(_.prop(<span class="string">'value'</span>)), $);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Exapmle</span></span><br><span class="line"><span class="comment">// ===================</span></span><br><span class="line"><span class="comment">// signIn :: String -&gt; String -&gt; Bool -&gt; User</span></span><br><span class="line"><span class="keyword">var</span> signIn = curry(<span class="function"><span class="keyword">function</span>(<span class="params">username, password, remember_me</span>)) </span>&#123;<span class="comment">/* singing in */</span>&#125;</span><br><span class="line"></span><br><span class="line">IO.of(signIn).ap(getVal(<span class="string">'#email'</span>)).ap(getVal(<span class="string">'#password'</span>)).ap(IO.of(<span class="literal">false</span>));</span><br></pre></td></tr></table></figure>
+<p><code>signIn</code> 是一个接收 3 个参数的 curry 函数，因此我们需要调用 <code>ap</code> 3 次。在每一次的 <code>ap</code> 调用中，<code>signIn</code> 就收到一个参数然后运行，直到所有的参数都传进来，它也就执行完毕了。我们可以继续扩展这种模式，处理任意多的参数。另外，左边两个参数在使用 getVal 调用后自然而然地成为了一个 <code>IO</code>，但是最右边的那个却需要手动 <code>lift</code>，然后变成一个 <code>IO</code>，这是因为 <code>ap</code> 需要调用者及其参数都属于同一类型。</p>
+<h2 id="lift"><a href="#lift" class="headerlink" title="lift"></a>lift</h2><p>我们来试试以一种 pointfree 的方式调用 applicative functor。因为 <code>map</code> 等价于 <code>of/ap</code>，那么我们就可以定义无数个能够 <code>ap</code> 通用函数。</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> liftA2 = curry(<span class="function"><span class="keyword">function</span><span class="params">(f, functor1, functor2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> functor1.map(f).ap(functor2);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> liftA3 = curry(<span class="function"><span class="keyword">function</span><span class="params">(f, functor1, functor2, functor3)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> functor1.map(f).ap(functor2).ap(functor3);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// liftA4, etc</span></span><br></pre></td></tr></table></figure>
+<h2 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h2><p>在haskell、scala、PureScript以及swift等语言中，开发者可以创建自定义的中缀操作符(infix operators)</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-- haskell</span><br><span class="line">add <span class="tag">&lt;<span class="name">$</span>&gt;</span> Right 2 <span class="tag">&lt;<span class="name">*</span>&gt;</span> Right 3</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">map(add, Right(<span class="number">2</span>)).ap(Right(<span class="number">3</span>))</span><br></pre></td></tr></table></figure>
+<p><code>&lt;$&gt;</code> 就是<code>map</code>（亦即<code>fmap</code>）， <code>&lt;*&gt;</code>就是<code>ap</code>。</p>
+<h2 id="衍生函数（derived-function）"><a href="#衍生函数（derived-function）" class="headerlink" title="衍生函数（derived function）"></a>衍生函数（derived function）</h2><p><code>of/ap</code> 等价于<code>map</code>。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 从of/ap衍生出的map</span></span><br><span class="line">X.prototype.map = function(f) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.<span class="keyword">constructor</span>.of(f).ap(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果已经有<code>chain</code>函数，可以免费得到functor 和 applicative：</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 从chain 衍生出的map</span></span><br><span class="line">X.prototype.map = <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> m = <span class="keyword">this</span>;</span><br><span class="line">  <span class="keyword">return</span> m.chain(<span class="function"><span class="keyword">function</span><span class="params">(a)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> m.constructor.of(f(a));</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 从 chain/map 衍生出的ap</span></span><br><span class="line">X.prototype.ap = <span class="function"><span class="keyword">function</span><span class="params">(other)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.chain(<span class="function"><span class="keyword">function</span><span class="params">(f)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> other.map(f);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="定律"><a href="#定律" class="headerlink" title="定律"></a>定律</h2><p>applicative functor 是“组合关闭”（closed under composition）的，意味着 <code>ap</code> 永远不会改变容器类型。</p>
+<p>###　同一律<br><figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 同一律</span></span><br><span class="line">A.of<span class="comment">(id)</span>.ap<span class="comment">(v)</span> == v</span><br></pre></td></tr></table></figure></p>
+<h3 id="同态"><a href="#同态" class="headerlink" title="同态"></a>同态</h3><figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//同态</span></span><br><span class="line">A.of<span class="comment">(f)</span>.ap<span class="comment">(A.of(x)</span>) == A.of<span class="comment">(f(x)</span>)</span><br></pre></td></tr></table></figure>
+<p>同态就是一个能够保持接结构的映射（structure preserving map).实际上，funcotr就是一个再不通范畴间的同态，因为funcotr在经过映射之后保持了原始范畴的结构。</p>
+<h3 id="互换（interchange）"><a href="#互换（interchange）" class="headerlink" title="互换（interchange）"></a>互换（interchange）</h3><p>互换（interchange）表明的是选择让函数再<code>ap</code>的左边还是右边发生lift是无关紧要的。</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 互换</span></span><br><span class="line">v.ap(A.<span class="keyword">of</span>(x)) == A.<span class="keyword">of</span>(<span class="function"><span class="keyword">function</span><span class="params">(f)</span> <span class="comment">&#123; return f(x)&#125;</span>).<span class="title">ap</span><span class="params">(v)</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var v = <span class="keyword">Task</span>.<span class="keyword">of</span>(_.<span class="keyword">reverse</span>);</span><br><span class="line">var x = <span class="symbol">'Sparklehorse</span>';</span><br><span class="line"></span><br><span class="line">v.ap(<span class="keyword">Task</span>.<span class="keyword">of</span>(x)) == <span class="keyword">Task</span>.<span class="keyword">of</span>(<span class="keyword">function</span>(f) &#123; <span class="keyword">return</span> f(x)&#125;).ap(v)</span><br></pre></td></tr></table></figure>
+<h3 id="组合（composition"><a href="#组合（composition" class="headerlink" title="组合（composition)"></a>组合（composition)</h3><p>组合不过是在检查标准的函数组合是否适用于容器内部的函数调用。</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 组合</span></span><br><span class="line">A.of<span class="comment">(compose)</span>.ap<span class="comment">(u)</span>.ap<span class="comment">(v)</span>.ap<span class="comment">(w)</span> == u.ap<span class="comment">(v.ap(w)</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="keyword">u</span> = IO.of(_.toUpper);</span><br><span class="line"><span class="keyword">var</span> v = IO.of(_.concat(<span class="string">"&amp; beyond"</span>));</span><br><span class="line"><span class="keyword">var</span> w = IO.of(<span class="string">"lood bath"</span>);</span><br><span class="line"></span><br><span class="line">IO.of(_compose).<span class="keyword">ap</span>(<span class="keyword">u</span>).<span class="keyword">ap</span>(v).<span class="keyword">ap</span>(w) == <span class="keyword">u</span>.<span class="keyword">ap</span>(v.<span class="keyword">ap</span>(w))</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>函数式嗯编程</p>
+
       
     </div>
     
@@ -972,13 +978,9 @@
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li></ul>
     </div>
 
-      
-        <p class="article-more-link">
-          <a  href="/2018/04/19/mysqlMySQL双主一致性架构优化/#more">more >></a>
-        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -1006,7 +1008,7 @@
     <div class="outer">
         <div id="footer-info">
             <div class="footer-left">
-                &copy; 2018 Jiaxf
+                &copy; 2019 Jiaxf
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
