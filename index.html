@@ -305,10 +305,45 @@
 </code></pre><blockquote>
 <p>数字证书如何认证？<br>首先你的证书会在https握手过程中被传递到浏览器，浏览器从你的证书中找到了颁发者，从颁发者的证书（如果你电脑上有的话）又找到了CA的证书<br>（CA证书会在操作系统安装时就安装好，所以每个人电脑上都有根证书），使用CA证书中带的公钥来对颁发者证书做验签，一旦匹配，说明你电脑上的颁发者证书不是伪造的，<br>同理，再用颁发者证书中的公钥去验证你的证书，&gt; 以此证明你的证书不是伪造的。这样整个链状的验证，从而确保你的证书一定是直接或间接从CA签发的，<br>这样浏览器地址栏会显示一个绿色的盾牌，表示你的网站能通过证书验证<br>如果你的电脑上没有颁发者证书（断链）或者你自己本身就是自签名证书（自己做CA，但是要记得，人家电脑上并没有装你的自签名根证书），<br>那么浏览器会报警提示不能验证证书，问你是否还需要继续。</p>
 </blockquote>
+<p><img src="/img/zhengshu.png" alt=""></p>
 <h1 id="对比HTTP和HTTPS的传输"><a href="#对比HTTP和HTTPS的传输" class="headerlink" title="对比HTTP和HTTPS的传输"></a>对比HTTP和HTTPS的传输</h1><p><img src="/img/https传输.png" alt=""></p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
-<li><a href="https://www.jianshu.com/p/116ebf3034d9" target="_blank" rel="noopener">简书 OKHttp源码解析(二)：”前戏”——HTTP的那些事</a></li>
+<h1 id="HTTPS的优化"><a href="#HTTPS的优化" class="headerlink" title="HTTPS的优化"></a>HTTPS的优化</h1><p>HTTPS 连接大致上可以划分为两个部分，第一个是建立连接时时的非对称加密握手，第二个是握手后的对称加密报文传输。<br>在最差的情况下，也就是不做任何的优化措施，HTTPS 建立连甚至几秒，这其中既有网络耗时，也有计算耗时，就会让人产生“打开一个 HTTPS 网站好慢啊”的感觉。</p>
+<p><img src="/img/https优化.png" alt=""></p>
+<h2 id="优化措施"><a href="#优化措施" class="headerlink" title="优化措施"></a>优化措施</h2><ul>
+<li><p>硬件优化 </p>
+<ul>
+<li>更快的CPU</li>
+<li>SSL加速卡 如：阿里的Tengine</li>
+<li>SSL加速服务器</li>
+</ul>
+</li>
+<li><p>软件优化</p>
+<ul>
+<li>软件升级 如：Linux 内核由 2.x 升级到 4.x，把 把 Nginx 由 1.6 升级到 1.16，把 OpenSSSL 由 1.0.1 升级到 1.1.0/1.1.1。</li>
+</ul>
+</li>
+<li><p>协议优化</p>
+<ul>
+<li>采用 TLS1.3</li>
+<li>握手时使用的密钥交换协议应当尽量选用椭圆曲线的 ECDHE 算法。它不仅运算速度快，安全性高，还支持“False Start”</li>
+<li>椭圆曲线也要选择高性能的曲线，最好是 x25519，次优选择是 P-256。对称加密算法方面，也可以选用“AES_128_GCM”，它能比“AES_256_GCM”略快一点点。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>证书优化 </p>
+<ul>
+<li>采用选择椭圆曲线（ECDSA）证书而不是 RSA 证书，因为 224 位的 ECC 相当于 2048 位的 RSA，节约带宽和计算量</li>
+<li>“OCSP Stapling”（OCSP 装订），它可以让服务器预先访问 CA 获取 OCSP 响应，然后在握手时随着证书一起发给客户端，免去了客户端连接 CA 服务器查询的时间。</li>
+</ul>
+</li>
+<li><p>会话复用</p>
+<p> 会话复用的效果类似 Cache，前提是客户端必须之前成功建立连接，后面就可以用“Session ID”“Session Ticket”等凭据跳过密钥交换、证书验证等步骤，直接开始加密通信。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1></li>
+<li><p><a href="https://www.jianshu.com/p/116ebf3034d9" target="_blank" rel="noopener">简书 OKHttp源码解析(二)：”前戏”——HTTP的那些事</a></p>
+</li>
 <li><a href="https://blog.csdn.net/jlin991/article/details/59110060" target="_blank" rel="noopener">CSDN博客 HTTPS/数字证书/数字签名</a></li>
+<li><a href="https://time.geekbang.org/column/article/111287" target="_blank" rel="noopener">极客时间 透视HTTP协议</a></li>
 </ul>
 
       
