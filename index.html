@@ -307,10 +307,10 @@
 </blockquote>
 <p><img src="/img/zhengshu.png" alt=""></p>
 <h1 id="对比HTTP和HTTPS的传输"><a href="#对比HTTP和HTTPS的传输" class="headerlink" title="对比HTTP和HTTPS的传输"></a>对比HTTP和HTTPS的传输</h1><p><img src="/img/https传输.png" alt=""></p>
-<h1 id="HTTPS的优化"><a href="#HTTPS的优化" class="headerlink" title="HTTPS的优化"></a>HTTPS的优化</h1><p>HTTPS 连接大致上可以划分为两个部分，第一个是建立连接时时的非对称加密握手，第二个是握手后的对称加密报文传输。<br>在最差的情况下，也就是不做任何的优化措施，HTTPS 建立连甚至几秒，这其中既有网络耗时，也有计算耗时，就会让人产生“打开一个 HTTPS 网站好慢啊”的感觉。</p>
+<h1 id="HTTPS的优化"><a href="#HTTPS的优化" class="headerlink" title="HTTPS的优化"></a>HTTPS的优化</h1><p>HTTPS 连接大致上可以划分为两个部分，第一个是建立连接时时的非对称加密握手，第二个是握手后的对称加密报文传输。<br>在最差的情况下，也就是不做任何的优化措施，HTTPS 建立连立连接可能会比 HTTP 慢上几百毫秒甚至几秒，这其中既有网络耗时，也有计算耗时，就会让人产生“打开一个 HTTPS 网站好慢啊”的感觉。</p>
 <p><img src="/img/https优化.png" alt=""></p>
 <h2 id="优化措施"><a href="#优化措施" class="headerlink" title="优化措施"></a>优化措施</h2><ul>
-<li><p>硬件优化 </p>
+<li><p>硬件优化</p>
 <ul>
 <li>更快的CPU</li>
 <li>SSL加速卡 如：阿里的Tengine</li>
