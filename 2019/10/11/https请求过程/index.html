@@ -5,19 +5,19 @@
   
   <title>https请求过程 | 飞天雪的技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="HTTPS请求过程 HTTPS协议的本质就是HTTP + SSL(or TLS)。在HTTP报文进入TCP报文之前，先使用SSL对HTTP报文进行加密。从网络的层级结构看它位于HTTP协议与TCP协议之间。  HTTPS在传输数据之前需要客户端与服务器进行一个握手(TLS/SSL握手)，在握手过程中将确立双方加密传输数据的密码信息。">
+  <meta name="description" content="HTTPS的优势 1、内容加密，建立一个信息的安全通道，来保证数据传输过程的安全性。 2、身份认证，确认网站的真是性。 3、数据完整性，防止内容被第三方冒充或者篡改。  HTTPS请求过程HTTPS协议的本质就是HTTP + SSL(or TLS)。在HTTP报文进入TCP报文之前，先使用SSL对HTTP报文进行加密。从网络的层级结构看它位于HTTP协议与TCP协议之间。  HTTPS在传输数据之">
 <meta property="og:type" content="article">
 <meta property="og:title" content="https请求过程">
 <meta property="og:url" content="http://jiaxf.github.io/2019/10/11/https请求过程/index.html">
 <meta property="og:site_name" content="飞天雪的技术博客">
-<meta property="og:description" content="HTTPS请求过程 HTTPS协议的本质就是HTTP + SSL(or TLS)。在HTTP报文进入TCP报文之前，先使用SSL对HTTP报文进行加密。从网络的层级结构看它位于HTTP协议与TCP协议之间。  HTTPS在传输数据之前需要客户端与服务器进行一个握手(TLS/SSL握手)，在握手过程中将确立双方加密传输数据的密码信息。">
+<meta property="og:description" content="HTTPS的优势 1、内容加密，建立一个信息的安全通道，来保证数据传输过程的安全性。 2、身份认证，确认网站的真是性。 3、数据完整性，防止内容被第三方冒充或者篡改。  HTTPS请求过程HTTPS协议的本质就是HTTP + SSL(or TLS)。在HTTP报文进入TCP报文之前，先使用SSL对HTTP报文进行加密。从网络的层级结构看它位于HTTP协议与TCP协议之间。  HTTPS在传输数据之">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://jiaxf.github.io/img/http&https.png">
 <meta property="og:image" content="http://jiaxf.github.io/img/https过程.png">
-<meta property="og:updated_time" content="2019-10-12T01:15:28.000Z">
+<meta property="og:updated_time" content="2019-10-12T02:19:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="https请求过程">
-<meta name="twitter:description" content="HTTPS请求过程 HTTPS协议的本质就是HTTP + SSL(or TLS)。在HTTP报文进入TCP报文之前，先使用SSL对HTTP报文进行加密。从网络的层级结构看它位于HTTP协议与TCP协议之间。  HTTPS在传输数据之前需要客户端与服务器进行一个握手(TLS/SSL握手)，在握手过程中将确立双方加密传输数据的密码信息。">
+<meta name="twitter:description" content="HTTPS的优势 1、内容加密，建立一个信息的安全通道，来保证数据传输过程的安全性。 2、身份认证，确认网站的真是性。 3、数据完整性，防止内容被第三方冒充或者篡改。  HTTPS请求过程HTTPS协议的本质就是HTTP + SSL(or TLS)。在HTTP报文进入TCP报文之前，先使用SSL对HTTP报文进行加密。从网络的层级结构看它位于HTTP协议与TCP协议之间。  HTTPS在传输数据之">
 <meta name="twitter:image" content="http://jiaxf.github.io/img/http&https.png">
   
     <link rel="alternative" href="/atom.xml" title="飞天雪的技术博客" type="application/atom+xml">
@@ -279,8 +279,12 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>HTTPS请求过程</p>
-<p>HTTPS协议的本质就是HTTP + SSL(or TLS)。在HTTP报文进入TCP报文之前，先使用SSL对HTTP报文进行加密。从网络的层级结构看它位于HTTP协议与TCP协议之间。</p>
+        <h1 id="HTTPS的优势"><a href="#HTTPS的优势" class="headerlink" title="HTTPS的优势"></a>HTTPS的优势</h1><ul>
+<li>1、内容加密，建立一个信息的安全通道，来保证数据传输过程的安全性。</li>
+<li>2、身份认证，确认网站的真是性。</li>
+<li>3、数据完整性，防止内容被第三方冒充或者篡改。</li>
+</ul>
+<h1 id="HTTPS请求过程"><a href="#HTTPS请求过程" class="headerlink" title="HTTPS请求过程"></a>HTTPS请求过程</h1><p>HTTPS协议的本质就是HTTP + SSL(or TLS)。在HTTP报文进入TCP报文之前，先使用SSL对HTTP报文进行加密。从网络的层级结构看它位于HTTP协议与TCP协议之间。</p>
 <p><img src="/img/http&amp;https.png" alt=""></p>
 <p>HTTPS在传输数据之前需要客户端与服务器进行一个握手(TLS/SSL握手)，在握手过程中将确立双方加密传输数据的密码信息。</p>
 <p><img src="/img/https过程.png" alt=""></p>
@@ -295,7 +299,7 @@
         <p><span>本文标题:</span><a href="/2019/10/11/https请求过程/">https请求过程</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Jiaxf 的个人博客">Jiaxf</a></p>
         <p><span>发布时间:</span>2019年10月11日 - 09时39分</p>
-        <p><span>最后更新:</span>2019年10月12日 - 09时15分</p>
+        <p><span>最后更新:</span>2019年10月12日 - 10时19分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/10/11/https请求过程/" title="https请求过程">http://jiaxf.github.io/2019/10/11/https请求过程/</a>
             <span class="copy-path" data-clipboard-text="原文: http://jiaxf.github.io/2019/10/11/https请求过程/　　作者: Jiaxf" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -324,7 +328,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTPS的优势"><span class="toc-number">1.</span> <span class="toc-text">HTTPS的优势</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTPS请求过程"><span class="toc-number">2.</span> <span class="toc-text">HTTPS请求过程</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
