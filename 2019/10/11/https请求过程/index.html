@@ -15,7 +15,8 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://jiaxf.github.io/img/http&https.png">
 <meta property="og:image" content="http://jiaxf.github.io/img/https过程.png">
-<meta property="og:updated_time" content="2019-10-12T02:40:06.000Z">
+<meta property="og:image" content="http://jiaxf.github.io/img/https传输.png">
+<meta property="og:updated_time" content="2019-10-12T02:52:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="https请求过程">
 <meta name="twitter:description" content="HTTP与HTTPS的不同点： 1、HTTPS需要用到CA申请证书。 2、HTTP是超文本传输协议，信息是明文的；HTTPS则是具有安全性的SSL加密传输协议。 3、HTTPS和HTTP使用的是完全不同的连接方式，用的端口也不一样，HTTP是80,HTTPS是443。 4、HTTP的连接很简单，是无状态的，HTTPS是HTTP+SSL协议构建的，可进行加密传输、身份认证的网络协议，比HTTP协议安">
@@ -300,6 +301,7 @@
 <li>3、数据完整性，防止内容被第三方冒充或者篡改。</li>
 </ul>
 <h1 id="HTTPS请求过程"><a href="#HTTPS请求过程" class="headerlink" title="HTTPS请求过程"></a>HTTPS请求过程</h1><p>HTTPS协议的本质就是HTTP + SSL(or TLS)。在HTTP报文进入TCP报文之前，先使用SSL对HTTP报文进行加密。从网络的层级结构看它位于HTTP协议与TCP协议之间。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">SSL</span><span class="params">(Secure Sokcet Layer，安全套接字层)</span></span></span><br><span class="line"><span class="function"><span class="title">TLS</span><span class="params">(Transport Layer Security,传输层安全协议)</span></span></span><br></pre></td></tr></table></figure>
 <p><img src="/img/http&amp;https.png" alt=""></p>
 <p>HTTPS在传输数据之前需要客户端与服务器进行一个握手(TLS/SSL握手)，在握手过程中将确立双方加密传输数据的密码信息。</p>
 <p><img src="/img/https过程.png" alt=""></p>
@@ -319,6 +321,11 @@
 </code></pre><blockquote>
 <p>数字证书如何认证？<br>首先你的证书会在https握手过程中被传递到浏览器，浏览器从你的证书中找到了颁发者，从颁发者的证书（如果你电脑上有的话）又找到了CA的证书<br>（CA证书会在操作系统安装时就安装好，所以每个人电脑上都有根证书），使用CA证书中带的公钥来对颁发者证书做验签，一旦匹配，说明你电脑上的颁发者证书不是伪造的，<br>同理，再用颁发者证书中的公钥去验证你的证书，&gt; 以此证明你的证书不是伪造的。这样整个链状的验证，从而确保你的证书一定是直接或间接从CA签发的，<br>这样浏览器地址栏会显示一个绿色的盾牌，表示你的网站能通过证书验证<br>如果你的电脑上没有颁发者证书（断链）或者你自己本身就是自签名证书（自己做CA，但是要记得，人家电脑上并没有装你的自签名根证书），<br>那么浏览器会报警提示不能验证证书，问你是否还需要继续。</p>
 </blockquote>
+<h1 id="对比HTTP和HTTPS的传输"><a href="#对比HTTP和HTTPS的传输" class="headerlink" title="对比HTTP和HTTPS的传输"></a>对比HTTP和HTTPS的传输</h1><p><img src="/img/https传输.png" alt=""></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="https://www.jianshu.com/p/116ebf3034d9" target="_blank" rel="noopener">简书 OKHttp源码解析(二)：”前戏”——HTTP的那些事</a></li>
+<li><a href="https://blog.csdn.net/jlin991/article/details/59110060" target="_blank" rel="noopener">CSDN博客 HTTPS/数字证书/数字签名</a></li>
+</ul>
 
       
     </div>
@@ -330,7 +337,7 @@
         <p><span>本文标题:</span><a href="/2019/10/11/https请求过程/">https请求过程</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Jiaxf 的个人博客">Jiaxf</a></p>
         <p><span>发布时间:</span>2019年10月11日 - 09时39分</p>
-        <p><span>最后更新:</span>2019年10月12日 - 10时40分</p>
+        <p><span>最后更新:</span>2019年10月12日 - 10时52分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/10/11/https请求过程/" title="https请求过程">http://jiaxf.github.io/2019/10/11/https请求过程/</a>
             <span class="copy-path" data-clipboard-text="原文: http://jiaxf.github.io/2019/10/11/https请求过程/　　作者: Jiaxf" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -359,7 +366,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP与HTTPS的不同点："><span class="toc-number">1.</span> <span class="toc-text">HTTP与HTTPS的不同点：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTPS的优势"><span class="toc-number">2.</span> <span class="toc-text">HTTPS的优势</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTPS请求过程"><span class="toc-number">3.</span> <span class="toc-text">HTTPS请求过程</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP与HTTPS的不同点："><span class="toc-number">1.</span> <span class="toc-text">HTTP与HTTPS的不同点：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTPS的优势"><span class="toc-number">2.</span> <span class="toc-text">HTTPS的优势</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTPS请求过程"><span class="toc-number">3.</span> <span class="toc-text">HTTPS请求过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#对比HTTP和HTTPS的传输"><span class="toc-number">4.</span> <span class="toc-text">对比HTTP和HTTPS的传输</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number">5.</span> <span class="toc-text">参考</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
