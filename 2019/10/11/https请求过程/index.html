@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://jiaxf.github.io/img/zhengshu.png">
 <meta property="og:image" content="http://jiaxf.github.io/img/https传输.png">
 <meta property="og:image" content="http://jiaxf.github.io/img/https优化.png">
-<meta property="og:updated_time" content="2019-10-12T05:29:13.000Z">
+<meta property="og:updated_time" content="2019-10-12T05:31:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="https请求过程">
 <meta name="twitter:description" content="HTTP与HTTPS的不同点 1、HTTPS需要用到CA申请证书。 2、HTTP是超文本传输协议，信息是明文的；HTTPS则是具有安全性的SSL加密传输协议。 3、HTTPS和HTTP使用的是完全不同的连接方式，用的端口也不一样，HTTP是80,HTTPS是443。 4、HTTP的连接很简单，是无状态的，HTTPS是HTTP+SSL协议构建的，可进行加密传输、身份认证的网络协议，比HTTP协议安全">
@@ -321,7 +321,7 @@
 7、服务器以 R 为密钥使用了对称加密算法加密网页内容并传输给浏览器。
 8、浏览器以 R 为密钥使用之前约定好的解密算法获取网页内容。
 </code></pre><blockquote>
-<p>数字证书如何认证？<br>首先你的证书会在https握手过程中被传递到浏览器，浏览器从你的证书中找到了颁发者，从颁发者的证书（如果你电脑上有的话）又找到了CA的证书<br>（CA证书会在操作系统安装时就安装好，所以每个人电脑上都有根证书），使用CA证书中带的公钥来对颁发者证书做验签，一旦匹配，说明你电脑上的颁发者证书不是伪造的，<br>同理，再用颁发者证书中的公钥去验证你的证书，&gt; 以此证明你的证书不是伪造的。这样整个链状的验证，从而确保你的证书一定是直接或间接从CA签发的，<br>这样浏览器地址栏会显示一个绿色的盾牌，表示你的网站能通过证书验证<br>如果你的电脑上没有颁发者证书（断链）或者你自己本身就是自签名证书（自己做CA，但是要记得，人家电脑上并没有装你的自签名根证书），<br>那么浏览器会报警提示不能验证证书，问你是否还需要继续。</p>
+<p>数字证书如何认证？ 首先你的证书会在https握手过程中被传递到浏览器，浏览器从你的证书中找到了颁发者，从颁发者的证书（如果你电脑上有的话）又找到了CA的证书<br>（CA证书会在操作系统安装时就安装好，所以每个人电脑上都有根证书），使用CA证书中带的公钥来对颁发者证书做验签，一旦匹配，说明你电脑上的颁发者证书不是伪造的，<br>同理，再用颁发者证书中的公钥去验证你的证书，&gt; 以此证明你的证书不是伪造的。这样整个链状的验证，从而确保你的证书一定是直接或间接从CA签发的，<br>这样浏览器地址栏会显示一个绿色的盾牌，表示你的网站能通过证书验证。<br>如果你的电脑上没有颁发者证书（断链）或者你自己本身就是自签名证书（自己做CA，但是要记得，人家电脑上并没有装你的自签名根证书），那么浏览器会报警提示不能验证证书，问你是否还需要继续。</p>
 </blockquote>
 <p><img src="/img/zhengshu.png" alt=""></p>
 <h1 id="对比HTTP和HTTPS的传输"><a href="#对比HTTP和HTTPS的传输" class="headerlink" title="对比HTTP和HTTPS的传输"></a>对比HTTP和HTTPS的传输</h1><p><img src="/img/https传输.png" alt=""></p>
@@ -377,7 +377,7 @@
         <p><span>本文标题:</span><a href="/2019/10/11/https请求过程/">https请求过程</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Jiaxf 的个人博客">Jiaxf</a></p>
         <p><span>发布时间:</span>2019年10月11日 - 09时39分</p>
-        <p><span>最后更新:</span>2019年10月12日 - 13时29分</p>
+        <p><span>最后更新:</span>2019年10月12日 - 13时31分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/10/11/https请求过程/" title="https请求过程">http://jiaxf.github.io/2019/10/11/https请求过程/</a>
             <span class="copy-path" data-clipboard-text="原文: http://jiaxf.github.io/2019/10/11/https请求过程/　　作者: Jiaxf" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
