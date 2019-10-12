@@ -273,7 +273,12 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        
+        <p>HTTPS请求过程</p>
+<p>HTTPS协议的本质就是HTTP + SSL(or TLS)。在HTTP报文进入TCP报文之前，先使用SSL对HTTP报文进行加密。从网络的层级结构看它位于HTTP协议与TCP协议之间。</p>
+<p><img src="/img/http&amp;https.png" alt=""></p>
+<p>HTTPS在传输数据之前需要客户端与服务器进行一个握手(TLS/SSL握手)，在握手过程中将确立双方加密传输数据的密码信息。</p>
+<p><img src="/img/https过程.png" alt=""></p>
+
       
     </div>
     

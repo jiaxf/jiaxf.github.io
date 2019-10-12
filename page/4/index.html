@@ -246,10 +246,10 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-curry" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-category theory" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/04/19/curry/" class="article-date">
+      <a href="/2018/04/19/category theory/" class="article-date">
       <time datetime="2018-04-19T03:48:54.000Z" itemprop="datePublished">2018-04-19</time>
 </a>
     </div>
@@ -263,7 +263,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/19/curry/">函数式编程入门</a>
+      <a class="article-title" href="/2018/04/19/category theory/">范畴学基本知识</a>
     </h1>
   
 
@@ -273,11 +273,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h2 id="curring"><a href="#curring" class="headerlink" title="curring"></a>curring</h2><p>A curried function is one where multiple arguments are descirbed by a series of one<br>argument funtions.For example, curried addition would be :</p>
-<pre><code>记录传入的参数，在需要的时候求值。
-</code></pre><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">var</span> curry = require(<span class="string">'curry'</span>)</span><br><span class="line"><span class="selector-tag">var</span> add = curry(function(<span class="selector-tag">a</span>, b)&#123; return <span class="selector-tag">a</span> + b&#125;)</span><br><span class="line"><span class="selector-tag">var</span> add100 = add(<span class="number">100</span>)</span><br><span class="line"><span class="function"><span class="title">add100</span><span class="params">(<span class="number">1</span>)</span></span> <span class="comment">// =101</span></span><br></pre></td></tr></table></figure>
-<p>Curry allows you can aslo call a function with multiple arguments at once:</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">var</span> sum3 = curry(function(<span class="selector-tag">a</span>, <span class="selector-tag">b</span>, c) &#123; return <span class="selector-tag">a</span> + <span class="selector-tag">b</span> + c&#125;)</span><br><span class="line"><span class="function"><span class="title">sum3</span><span class="params">(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span></span> <span class="comment">// =6</span></span><br><span class="line"><span class="function"><span class="title">sum3</span><span class="params">(<span class="number">1</span>)</span><span class="params">(<span class="number">2</span>,<span class="number">3</span>)</span></span> <span class="comment">// =6</span></span><br><span class="line"><span class="function"><span class="title">sum3</span><span class="params">(<span class="number">1</span>,<span class="number">2</span>)</span><span class="params">(<span class="number">3</span>)</span></span> <span class="comment">// =6</span></span><br></pre></td></tr></table></figure>
+              <h2 id="范畴学基本知识"><a href="#范畴学基本知识" class="headerlink" title="范畴学基本知识"></a>范畴学基本知识</h2><p>范畴学（category theory）是数学中的一个抽象分支，能够形式化诸如集合论（set theory）、类型论（type theory）、群论（group theory）以及逻辑学（logic）等数学分支中的一些概念。范畴学主要处理对象（object）、态射（morphism）和变化式（transformation），而这些概念跟编程的联系非常紧密。下图是一些相同的概念分别在不同理论下的形式：<br>
           
       
     </div>
@@ -297,7 +293,7 @@
 
       
         <p class="article-more-link">
-          <a  href="/2018/04/19/curry/#more">more >></a>
+          <a  href="/2018/04/19/category theory/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -369,6 +365,76 @@ You can certainly do things with impure functions(and you must, if your program 
       
         <p class="article-more-link">
           <a  href="/2018/04/19/fp2/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-javascriptIntroduce" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/04/19/javascriptIntroduce/" class="article-date">
+      <time datetime="2018-04-19T03:48:54.000Z" itemprop="datePublished">2018-04-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/19/javascriptIntroduce/">前端知识学习（摘自阮一峰博客）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h1 id="前端开发的历史和趋势"><a href="#前端开发的历史和趋势" class="headerlink" title="前端开发的历史和趋势"></a>前端开发的历史和趋势</h1><hr>
+<h2 id="什么是前端"><a href="#什么是前端" class="headerlink" title="什么是前端"></a>什么是前端</h2><ul>
+<li>前端：针对浏览器的开发，代码在浏览器运行</li>
+<li>后端：针对服务器的开发，代码在服务器运行</li>
+</ul>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2018/04/19/javascriptIntroduce/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -468,76 +534,6 @@ You can certainly do things with impure functions(and you must, if your program 
 
 
   
-    <article id="post-javascriptIntroduce" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/04/19/javascriptIntroduce/" class="article-date">
-      <time datetime="2018-04-19T03:48:54.000Z" itemprop="datePublished">2018-04-19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/19/javascriptIntroduce/">前端知识学习（摘自阮一峰博客）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="前端开发的历史和趋势"><a href="#前端开发的历史和趋势" class="headerlink" title="前端开发的历史和趋势"></a>前端开发的历史和趋势</h1><hr>
-<h2 id="什么是前端"><a href="#什么是前端" class="headerlink" title="什么是前端"></a>什么是前端</h2><ul>
-<li>前端：针对浏览器的开发，代码在浏览器运行</li>
-<li>后端：针对服务器的开发，代码在服务器运行</li>
-</ul>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2018/04/19/javascriptIntroduce/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-mysqlMySQL双主一致性架构优化" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -599,76 +595,6 @@ You can certainly do things with impure functions(and you must, if your program 
       
         <p class="article-more-link">
           <a  href="/2018/04/19/mysqlMySQL双主一致性架构优化/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-mysql调优" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/04/19/mysql调优/" class="article-date">
-      <time datetime="2018-04-19T03:48:54.000Z" itemprop="datePublished">2018-04-19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/19/mysql调优/">mysql调优</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="MySQL-调优"><a href="#MySQL-调优" class="headerlink" title="MySQL 调优"></a>MySQL 调优</h1><h2 id="mysql中的两个关键参数"><a href="#mysql中的两个关键参数" class="headerlink" title="mysql中的两个关键参数"></a>mysql中的两个关键参数</h2><p>(1)interactive_timeout:</p>
-<p>参数含义：服务器关闭交互式连接前等待活动的秒数。交互式客户端定义为在mysql_real_connect()中使用CLIENT_INTERACTIVE选项的客户端。<br>参数默认值：28800秒（8小时）</p>
-<p>(2)wait_timeout:</p>
-<p>参数含义：服务器关闭非交互连接之前等待活动的秒数。<br>在线程启动时，根据全局wait_timeout值或全局interactive_timeout值初始化会话wait_timeout值，取决于客户端类型(由mysql_real_connect()的连接选项CLIENT_INTERACTIVE定义)。<br>参数默认值：28800秒（8小时）</p>
-<p>wait_timeout过大有弊端，其体现就是MySQL里大量的SLEEP进程无法及时释放，拖累系统性能，不过也不能把这个指设置的过小，否则你可 能会遭遇到“MySQL has gone away”之类的问题，通常来说，我觉得把wait_timeout设置为10是个不错的选择，但某些情况下可能也会出问题，比如说有一个CRON脚本， 其中两次SQL查询的间隔时间大于10秒的话，那么这个设置就有问题了（当然，这也不是不能解决的问题，你可以在程序里时不时mysql_ping一下， 以便服务器知道你还活着，重新计算wait_timeout时间）</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术/">技术</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2018/04/19/mysql调优/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -753,6 +679,76 @@ You can certainly do things with impure functions(and you must, if your program 
       
         <p class="article-more-link">
           <a  href="/2018/04/19/redis/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-mysql调优" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/04/19/mysql调优/" class="article-date">
+      <time datetime="2018-04-19T03:48:54.000Z" itemprop="datePublished">2018-04-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/19/mysql调优/">mysql调优</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h1 id="MySQL-调优"><a href="#MySQL-调优" class="headerlink" title="MySQL 调优"></a>MySQL 调优</h1><h2 id="mysql中的两个关键参数"><a href="#mysql中的两个关键参数" class="headerlink" title="mysql中的两个关键参数"></a>mysql中的两个关键参数</h2><p>(1)interactive_timeout:</p>
+<p>参数含义：服务器关闭交互式连接前等待活动的秒数。交互式客户端定义为在mysql_real_connect()中使用CLIENT_INTERACTIVE选项的客户端。<br>参数默认值：28800秒（8小时）</p>
+<p>(2)wait_timeout:</p>
+<p>参数含义：服务器关闭非交互连接之前等待活动的秒数。<br>在线程启动时，根据全局wait_timeout值或全局interactive_timeout值初始化会话wait_timeout值，取决于客户端类型(由mysql_real_connect()的连接选项CLIENT_INTERACTIVE定义)。<br>参数默认值：28800秒（8小时）</p>
+<p>wait_timeout过大有弊端，其体现就是MySQL里大量的SLEEP进程无法及时释放，拖累系统性能，不过也不能把这个指设置的过小，否则你可 能会遭遇到“MySQL has gone away”之类的问题，通常来说，我觉得把wait_timeout设置为10是个不错的选择，但某些情况下可能也会出问题，比如说有一个CRON脚本， 其中两次SQL查询的间隔时间大于10秒的话，那么这个设置就有问题了（当然，这也不是不能解决的问题，你可以在程序里时不时mysql_ping一下， 以便服务器知道你还活着，重新计算wait_timeout时间）</p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2018/04/19/mysql调优/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
