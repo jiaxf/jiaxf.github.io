@@ -1,4 +1,7 @@
 ---
+abbrlink: 1
+---
+---
 layout: post
 title: RServe安装配置
 categories: 技术
